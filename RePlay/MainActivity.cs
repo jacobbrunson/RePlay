@@ -24,6 +24,9 @@ namespace RePlay
             {
                 button.Text = $"{count++} clicks!";
             };
+
+            //Hey look, we can access the DummyGame activity!
+            //var gameActivity = new DummyGame.Android.Activity1();
         }
     }
 }

@@ -1,3 +1,5 @@
 source https://www.nuget.org/api/v2
 
-github jacobbrunson/RePlayDummyGame
+git https://github.com/jacobbrunson/RePlayDummyGame master build: "sh build.sh", Packages: /DummyGame/, OS: mono
+
+nuget DummyGame.Android

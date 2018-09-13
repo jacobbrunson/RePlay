@@ -1,9 +1,12 @@
 # RePlay
 
 ## Requirements:
-### Windows
+### Windows (Incomplete TODO)
 #### Visual studio
+  Download and install from this [link](https://visualstudio.microsoft.com/vs/)
 
+#### Paket
+  Download and install from this [link](https://fsprojects.github.io/Paket/installation.html#Installation-per-repository)
 
 ### MacOS
 #### Brew package Manager
@@ -13,6 +16,12 @@
 Execute the following script:
 
     $ brew cask install visual-studio
+
+#### Mono Dependencies
+Execute the following script:
+
+    $ brew install mono
+    $ brew cask install mono-mdk monogame
 
 #### Paket
 Execute the following script:
@@ -36,4 +45,4 @@ Execute the following script:
 ## To install:
     $ git clone https://github.com/ShadowWarrior0/RePlay/
     $ cd RePlay
-    $ paket update && paket install
+    $ ./setup-build.sh

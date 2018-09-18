@@ -18,5 +18,28 @@
     <OutputPath>bin\Release</OutputPath>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <ItemGroup>
+    <None Include="Libraries\FitMi_Research_Puck.dll">
+      <IncludeInPackage>true</IncludeInPackage>
+    </None>
+    <None Include="Libraries\HidSharp.dll">
+      <IncludeInPackage>true</IncludeInPackage>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Libraries\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="FitMi_Research_Puck">
+      <HintPath>Libraries\FitMi_Research_Puck.dll</HintPath>
+    </Reference>
+    <Reference Include="HidSharp">
+      <HintPath>Libraries\HidSharp.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Axes.cs" />
+    <Compile Include="FitMiiController.cs" />
+  </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>

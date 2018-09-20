@@ -5,3 +5,8 @@ git https://github.com/jacobbrunson/RePlayDummyGame master build: "sh build.sh",
 
 nuget MonoGame.Framework.Android
 nuget DummyGame.Android
+nuget Microsoft.AppCenter
+nuget Microsoft.AppCenter.Analytics
+nuget Microsoft.AppCenter.Crashes
+nuget Microsoft.AppCenter.Distribute
+nuget Microsoft.AppCenter.Push

@@ -1,3 +1,6 @@
 .vs/
 RePlay/bin/
 RePlay/obj/
+packages/
+paket.lock
+Resource.designer.cs

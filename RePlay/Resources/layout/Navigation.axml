@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:minWidth="25px"
+    android:minHeight="25px"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/relativeLayout1">
+    <ImageView
+        android:id="@+id/logo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:minHeight="25px"
+        android:minWidth="25px"
+        android:src="@drawable/icon"
+        android:layout_alignParentLeft="true"/>
+    
+    <ImageButton
+        android:id="@+id/settingsButton"
+        android:src="@drawable/icon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:cropToPadding="true"
+        android:layout_alignParentRight="true" />
+    
+    <ImageButton
+        android:id="@+id/connectionButton"
+        android:src="@drawable/icon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:cropToPadding="true"
+        android:layout_toLeftOf="@+id/settingsButton"/>
+    
+    <ImageButton
+        android:id="@+id/gamesButton"
+        android:src="@drawable/icon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:cropToPadding="true"
+        android:layout_toLeftOf="@+id/connectionButton"/>
+    
+    <ImageButton
+        android:id="@+id/homeButton"
+        android:src="@drawable/icon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:cropToPadding="true"
+        android:layout_toLeftOf="@+id/gamesButton"/>
+   
+</RelativeLayout>

@@ -8,7 +8,6 @@ namespace RePlay
     [Activity(Label = "RePlay", MainLauncher = true, Icon = "@mipmap/icon")]
     public class MainActivity : Activity
     {
-
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
@@ -27,9 +26,6 @@ namespace RePlay
                 StartActivity(intent);
                 button.Text = "Launching game...";
             };
-
-            //Hey look, we can access the DummyGame activity!
-            //var gameActivity = new DummyGame.Android.Activity1();
         }
     }
 }

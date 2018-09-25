@@ -4,4 +4,4 @@ RePlay/obj/
 paket-files/
 packages/
 paket.lock
-Resource.designer.cs
+RePlay/Resources/Resource.designer.cs

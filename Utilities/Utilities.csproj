@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <ProjectGuid>{50E7966A-EE62-4A59-B5CE-5DA097568E49}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <TargetFrameworkVersion>v4.7</TargetFrameworkVersion>
+    <RootNamespace>Utilities</RootNamespace>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug</OutputPath>
+    <DefineConstants>DEBUG;</DefineConstants>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release</OutputPath>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <None Include="Libraries\FitMi_Research_Puck.dll">
+      <IncludeInPackage>true</IncludeInPackage>
+    </None>
+    <None Include="Libraries\HidSharp.dll">
+      <IncludeInPackage>true</IncludeInPackage>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Libraries\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="FitMi_Research_Puck">
+      <HintPath>Libraries\FitMi_Research_Puck.dll</HintPath>
+    </Reference>
+    <Reference Include="HidSharp">
+      <HintPath>Libraries\HidSharp.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Axes.cs" />
+    <Compile Include="FitMiiController.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+</Project>

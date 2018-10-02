@@ -21,10 +21,10 @@ namespace RePlay
 
             button.Click += delegate
             {
-                //Hey look, we can access the DummyGame activity!
-                var gameActivity = new DummyGame.Android.Activity1();
-                Intent intent = new Intent(this, gameActivity.Class);
-                this.StartActivity(intent);
+                Intent intent = new Intent(this, typeof(DummyGame.Android.Activity1));
+                intent.PutExtra("CONTENT_DIR", "DummyGame");
+                StartActivity(intent);
+                button.Text = "Launching game...";
             };
         }
     }

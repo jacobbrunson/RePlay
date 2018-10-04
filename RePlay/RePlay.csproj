@@ -79,7 +79,7 @@
     <AndroidResource Include="Resources\drawable\games.png" />
     <AndroidResource Include="Resources\drawable\settings.png" />
     <AndroidResource Include="Resources\drawable\pcmDisconnected.png" />
-    <AndroidResource Include="Resources\drawable\playGreen.png" />
+    <AndroidResource Include="Resources\drawable\play_green.png" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\drawable\" />

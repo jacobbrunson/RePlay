@@ -54,6 +54,7 @@
     <Compile Include="MainActivity.cs" />
     <Compile Include="Resources\Resource.designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="NavigationFragment.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />
@@ -71,6 +72,13 @@
     <AndroidResource Include="Resources\drawable\Splash.png" />
     <AndroidResource Include="Resources\drawable\Icon.png" />
     <AndroidResource Include="Resources\values\Styles.xml" />
+    <AndroidResource Include="Resources\layout\Navigation.axml" />
+    <AndroidResource Include="Resources\drawable\logo.jpg" />
+    <AndroidResource Include="Resources\drawable\HOME.png" />
+    <AndroidResource Include="Resources\drawable\pcmConnected.png" />
+    <AndroidResource Include="Resources\drawable\games.png" />
+    <AndroidResource Include="Resources\drawable\settings.png" />
+    <AndroidResource Include="Resources\drawable\pcmDisconnected.png" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\drawable\" />

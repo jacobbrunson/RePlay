@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:id="@+id/relativeLayout1"
+    android:layout_height="90dp"
+    android:background="#ffffffff"
+    android:paddingTop="10dp">
+    <ImageView
+        android:id="@+id/logo"
+        android:layout_width="400dp"
+        android:layout_height="75dp"
+        android:src="@drawable/logo"
+        android:layout_alignParentLeft="true"
+        android:scaleType="fitCenter"/>
+    <ImageButton
+        android:id="@+id/settingsButton"
+        android:src="@drawable/settings"
+        android:layout_width="75dp"
+        android:layout_height="75dp"
+        android:layout_alignParentRight="true"
+        android:scaleType="fitCenter"
+        android:background="@null"/>
+    <ImageButton
+        android:id="@+id/connectionButton"
+        android:src="@drawable/pcmConnected"
+        android:layout_width="75dp"
+        android:layout_height="75dp"
+        android:layout_toLeftOf="@+id/settingsButton"
+        android:scaleType="fitCenter"
+        android:background="@null"/>
+    <ImageButton
+        android:id="@+id/gamesButton"
+        android:src="@drawable/games"
+        android:layout_width="75dp"
+        android:layout_height="75dp"
+        android:layout_toLeftOf="@+id/connectionButton"
+        android:scaleType="fitCenter"
+        android:background="@null"/>
+    <ImageButton
+        android:id="@+id/homeButton"
+        android:src="@drawable/HOME"
+        android:layout_width="75dp"
+        android:layout_height="75dp"
+        android:layout_toLeftOf="@+id/gamesButton"
+        android:scaleType="fitCenter"
+        android:background="@null"/>
+   
+</RelativeLayout>

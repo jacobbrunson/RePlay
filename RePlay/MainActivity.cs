@@ -1,14 +1,13 @@
 ﻿using Android.App;
 using Android.Widget;
 using Android.OS;
+using Android.Content;
 
 namespace RePlay
 {
     [Activity(Label = "RePlay", MainLauncher = true, Icon = "@mipmap/icon")]
     public class MainActivity : Activity
     {
-        int count = 1;
-
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
@@ -20,13 +19,13 @@ namespace RePlay
             // and attach an event to it
             //Button button = FindViewById<Button>(Resource.Id.myButton);
 
-            //button.Click += delegate
-            //{
-             //   button.Text = $"{count++} clicks!";
-           // };
-
-            //Hey look, we can access the DummyGame activity!
-            //var gameActivity = new DummyGame.Android.Activity1();
+            button.Click += delegate
+            {
+                Intent intent = new Intent(this, typeof(DummyGame.Android.Activity1));
+                intent.PutExtra("CONTENT_DIR", "DummyGame");
+                StartActivity(intent);
+                button.Text = "Launching game...";
+            };
         }
     }
 }

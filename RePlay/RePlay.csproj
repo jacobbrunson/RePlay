@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+﻿<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
@@ -79,35 +78,35 @@
     <AndroidResource Include="Resources\drawable\games.png" />
     <AndroidResource Include="Resources\drawable\settings.png" />
     <AndroidResource Include="Resources\drawable\pcmDisconnected.png" />
-    <AndroidResource Include="Resources\drawable\+.png" />
-    <AndroidResource Include="Resources\drawable\add-photo.png" />
+    <AndroidResource Include="Resources\drawable\plus.png" />
+    <AndroidResource Include="Resources\drawable\add_photo.png" />
     <AndroidResource Include="Resources\drawable\back.png" />
     <AndroidResource Include="Resources\drawable\cancel.png" />
     <AndroidResource Include="Resources\drawable\curls.jpg" />
     <AndroidResource Include="Resources\drawable\FitMi.png" />
-    <AndroidResource Include="Resources\drawable\green-bar.png" />
+    <AndroidResource Include="Resources\drawable\green_bar.png" />
     <AndroidResource Include="Resources\drawable\nate.png" />
     <AndroidResource Include="Resources\drawable\next.png" />
     <AndroidResource Include="Resources\drawable\no.png" />
-    <AndroidResource Include="Resources\drawable\pause-gray.png" />
-    <AndroidResource Include="Resources\drawable\pause-green.png" />
-    <AndroidResource Include="Resources\drawable\pause-red.png" />
-    <AndroidResource Include="Resources\drawable\pcm-connected.png" />
-    <AndroidResource Include="Resources\drawable\pcm-disconnected.png" />
+    <AndroidResource Include="Resources\drawable\pause_gray.png" />
+    <AndroidResource Include="Resources\drawable\pause_green.png" />
+    <AndroidResource Include="Resources\drawable\pause_red.png" />
+    <AndroidResource Include="Resources\drawable\pcm_connected.png" />
+    <AndroidResource Include="Resources\drawable\pcm_disconnected.png" />
     <AndroidResource Include="Resources\drawable\pcm.png" />
-    <AndroidResource Include="Resources\drawable\play-gray.png" />
-    <AndroidResource Include="Resources\drawable\play-green.png" />
-    <AndroidResource Include="Resources\drawable\play-white.png" />
-    <AndroidResource Include="Resources\drawable\reach-across.png" />
-    <AndroidResource Include="Resources\drawable\Rectangle 2 Copy.png" />
-    <AndroidResource Include="Resources\drawable\Rectangle 2.png" />
-    <AndroidResource Include="Resources\drawable\RePlay Logo.jpg" />
+    <AndroidResource Include="Resources\drawable\play_gray.png" />
+    <AndroidResource Include="Resources\drawable\play_green.png" />
+    <AndroidResource Include="Resources\drawable\play_white.png" />
+    <AndroidResource Include="Resources\drawable\reach_across.png" />
+    <AndroidResource Include="Resources\drawable\Rectangle_2_Copy.png" />
+    <AndroidResource Include="Resources\drawable\Rectangle_2.png" />
+    <AndroidResource Include="Resources\drawable\RePlay_Logo.jpg" />
     <AndroidResource Include="Resources\drawable\save.png" />
-    <AndroidResource Include="Resources\drawable\stop-gray.png" />
+    <AndroidResource Include="Resources\drawable\stop_gray.png" />
     <AndroidResource Include="Resources\drawable\supination.jpg" />
-    <AndroidResource Include="Resources\drawable\txbdc-text.png" />
+    <AndroidResource Include="Resources\drawable\txbdc_text.png" />
     <AndroidResource Include="Resources\drawable\typing.jpg" />
-    <AndroidResource Include="Resources\drawable\wrist-flexion.jpg" />
+    <AndroidResource Include="Resources\drawable\wrist_flexion.jpg" />
     <AndroidResource Include="Resources\drawable\yes.png" />
   </ItemGroup>
   <ItemGroup>

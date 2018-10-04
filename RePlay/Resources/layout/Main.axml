@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout 
+<RelativeLayout 
     xmlns:android="http://schemas.android.com/apk/res/android" 
     android:orientation="vertical" 
     android:layout_width="match_parent" 
@@ -9,10 +9,15 @@
               android:id="@+id/navigation_fragment"
               android:layout_width="fill_parent"
               android:layout_height="wrap_content" />
-    
-    <Button 
-        android:id="@+id/myButton" 
-        android:layout_width="match_parent" 
-        android:layout_height="wrap_content" 
-        android:text="@string/hello" />
-</LinearLayout>
+    <ImageButton
+        android:id="@+id/playButton"
+        android:src="@drawable/playgreen"
+        android:layout_centerInParent="true"
+        android:layout_centerVertical="true"
+        android:layout_width="fill_parent"
+        android:background="@null"
+        android:layout_below="@id/navigation_fragment"
+        android:layout_alignParentBottom="true"
+        android:scaleType="fitCenter"
+        android:layout_height="400dp"/>
+</RelativeLayout>

@@ -79,6 +79,36 @@
     <AndroidResource Include="Resources\drawable\games.png" />
     <AndroidResource Include="Resources\drawable\settings.png" />
     <AndroidResource Include="Resources\drawable\pcmDisconnected.png" />
+    <AndroidResource Include="Resources\drawable\+.png" />
+    <AndroidResource Include="Resources\drawable\add-photo.png" />
+    <AndroidResource Include="Resources\drawable\back.png" />
+    <AndroidResource Include="Resources\drawable\cancel.png" />
+    <AndroidResource Include="Resources\drawable\curls.jpg" />
+    <AndroidResource Include="Resources\drawable\FitMi.png" />
+    <AndroidResource Include="Resources\drawable\green-bar.png" />
+    <AndroidResource Include="Resources\drawable\nate.png" />
+    <AndroidResource Include="Resources\drawable\next.png" />
+    <AndroidResource Include="Resources\drawable\no.png" />
+    <AndroidResource Include="Resources\drawable\pause-gray.png" />
+    <AndroidResource Include="Resources\drawable\pause-green.png" />
+    <AndroidResource Include="Resources\drawable\pause-red.png" />
+    <AndroidResource Include="Resources\drawable\pcm-connected.png" />
+    <AndroidResource Include="Resources\drawable\pcm-disconnected.png" />
+    <AndroidResource Include="Resources\drawable\pcm.png" />
+    <AndroidResource Include="Resources\drawable\play-gray.png" />
+    <AndroidResource Include="Resources\drawable\play-green.png" />
+    <AndroidResource Include="Resources\drawable\play-white.png" />
+    <AndroidResource Include="Resources\drawable\reach-across.png" />
+    <AndroidResource Include="Resources\drawable\Rectangle 2 Copy.png" />
+    <AndroidResource Include="Resources\drawable\Rectangle 2.png" />
+    <AndroidResource Include="Resources\drawable\RePlay Logo.jpg" />
+    <AndroidResource Include="Resources\drawable\save.png" />
+    <AndroidResource Include="Resources\drawable\stop-gray.png" />
+    <AndroidResource Include="Resources\drawable\supination.jpg" />
+    <AndroidResource Include="Resources\drawable\txbdc-text.png" />
+    <AndroidResource Include="Resources\drawable\typing.jpg" />
+    <AndroidResource Include="Resources\drawable\wrist-flexion.jpg" />
+    <AndroidResource Include="Resources\drawable\yes.png" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\drawable\" />

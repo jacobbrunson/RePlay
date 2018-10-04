@@ -55,6 +55,7 @@
     <Compile Include="Resources\Resource.designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="NavigationFragment.cs" />
+    <Compile Include="SettingsLoginActivity.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />
@@ -79,6 +80,9 @@
     <AndroidResource Include="Resources\drawable\games.png" />
     <AndroidResource Include="Resources\drawable\settings.png" />
     <AndroidResource Include="Resources\drawable\pcmDisconnected.png" />
+    <AndroidResource Include="Resources\layout\SettingsLogin.axml" />
+    <AndroidResource Include="Resources\drawable\next.png" />
+    <AndroidResource Include="Resources\drawable\back.png" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\drawable\" />

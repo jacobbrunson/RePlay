@@ -5,7 +5,7 @@ using Android.Content;
 
 namespace RePlay
 {
-    [Activity(Label = "RePlay", MainLauncher = true, Icon = "@mipmap/icon")]
+    [Activity(Label = "RePlay", MainLauncher = true, Icon = "@mipmap/icon", ScreenOrientation = Android.Content.PM.ScreenOrientation.Landscape)]
     public class MainActivity : Activity
     {
         protected override void OnCreate(Bundle savedInstanceState)
@@ -22,8 +22,8 @@ namespace RePlay
             button.Click += delegate
             {
                 //Hey look, we can access the DummyGame activity!
-                var gameActivity = new DummyGame.Android.Activity1();
-                Intent intent = new Intent(this, gameActivity.Class);
+                //var gameActivity = new DummyGame.Android.Activity1();
+                Intent intent = new Intent(this, typeof(WrapperActivities.GamesListActivity));
                 this.StartActivity(intent);
             };
         }

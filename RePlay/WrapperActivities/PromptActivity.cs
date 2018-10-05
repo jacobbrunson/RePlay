@@ -33,8 +33,18 @@ namespace RePlay.WrapperActivities
             View = FindViewById<GridView>(Resource.Id.grid_view);
             View.Adapter = adapter;
             View.ItemClick += (s, e) =>
-            {
+			{
                 Toast.MakeText(this, "GridView Item: " + GridViewStrings[e.Position], ToastLength.Short).Show();
+            };
+
+            this.FindViewById<Button>(Resource.Id.next_button).Click += delegate {
+                Intent intent = new Intent(this, typeof(WrapperActivities.PromptActivity));
+                StartActivity(intent);
+            };
+
+            this.FindViewById<Button>(Resource.Id.cancel_button).Click += delegate {
+                Intent intent = new Intent(this, typeof(MainActivity));
+                StartActivity(intent);
             };
         }
     }

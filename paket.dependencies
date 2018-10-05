@@ -1,10 +1,7 @@
 source https://www.nuget.org/api/v2
 framework: MonoAndroid7.1
 
-git https://github.com/jacobbrunson/RePlayDummyGame master build: "sh build.sh", Packages: /DummyGame/, OS: mono
-
 nuget MonoGame.Framework.Android
-nuget DummyGame.Android
 nuget Microsoft.AppCenter
 nuget Microsoft.AppCenter.Analytics
 nuget Microsoft.AppCenter.Crashes

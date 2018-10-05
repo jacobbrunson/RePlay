@@ -61,6 +61,7 @@
     <Compile Include="WrapperActivities\GamesListActivity.cs" />
     <Compile Include="WrapperActivities\CustomGameListView.cs" />
     <Compile Include="NavigationFragment.cs" />
+    <Compile Include="SettingsLoginActivity.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />
@@ -134,6 +135,7 @@
     <AndroidResource Include="Resources\drawable\spinner.xml" />
     <AndroidResource Include="Resources\drawable\wrist_flexion.jpg" />
     <AndroidResource Include="Resources\drawable\yes.png" />
+    <AndroidResource Include="Resources\layout\SettingsLogin.axml" />
     <AndroidResource Include="Resources\drawable\breakout_screenshot.png" />
   </ItemGroup>
   <ItemGroup>

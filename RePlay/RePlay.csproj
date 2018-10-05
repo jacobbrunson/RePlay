@@ -109,6 +109,7 @@
     <AndroidResource Include="Resources\drawable\typing.jpg" />
     <AndroidResource Include="Resources\drawable\wrist_flexion.jpg" />
     <AndroidResource Include="Resources\drawable\yes.png" />
+    <AndroidResource Include="Resources\layout\SettingsLogin.axml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\drawable\" />

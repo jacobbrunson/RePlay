@@ -23,7 +23,7 @@
         android:background="@null"/>
     <ImageButton
         android:id="@+id/connectionButton"
-        android:src="@drawable/pcmConnected"
+        android:src="@drawable/pcmconnected"
         android:layout_width="75dp"
         android:layout_height="75dp"
         android:layout_toLeftOf="@+id/settingsButton"
@@ -39,11 +39,10 @@
         android:background="@null"/>
     <ImageButton
         android:id="@+id/homeButton"
-        android:src="@drawable/HOME"
+        android:src="@drawable/home"
         android:layout_width="75dp"
         android:layout_height="75dp"
         android:layout_toLeftOf="@+id/gamesButton"
         android:scaleType="fitCenter"
         android:background="@null"/>
-   
 </RelativeLayout>

@@ -17,16 +17,14 @@ namespace RePlay
 
             // Get our button from the layout resource,
             // and attach an event to it
-            Button button = FindViewById<Button>(Resource.Id.myButton);
+            ImageButton button = FindViewById<ImageButton>(Resource.Id.playButton);
 
             button.Click += delegate
             {
-                //Hey look, we can access the DummyGame activity!
-                //var gameActivity = new DummyGame.Android.Activity1();
-                Intent intent = new Intent(this, typeof(WrapperActivities.GamesListActivity));
-                this.StartActivity(intent);
+                Intent intent = new Intent(this, typeof(DummyGame.Android.Activity1));
+                intent.PutExtra("CONTENT_DIR", "DummyGame");
+                StartActivity(intent);
             };
         }
     }
 }
-

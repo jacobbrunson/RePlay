@@ -20,26 +20,26 @@
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/textView1"
+            android:id="@+id/accessTextView"
             android:text="To access settings enter your password" />
         <EditText
             android:inputType="textPassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/editText1"
+            android:id="@+id/password"
             android:hint="Password"
-            android:layout_below="@id/textView1"/>
+            android:layout_below="@id/accessTextView"/>
         <View
             android:id="@+id/dummy"
             android:layout_height="0dp"
             android:layout_width="0dp"
             android:layout_centerInParent="true"
-            android:layout_below="@id/editText1"/>
+            android:layout_below="@id/password"/>
         <ImageButton
             android:src="@drawable/back"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/imageButton1"
+            android:id="@+id/settingsBack"
             android:layout_alignTop="@id/dummy"
             android:layout_alignRight="@id/dummy"
             android:layout_alignParentLeft="true"
@@ -52,7 +52,7 @@
             android:src="@drawable/next"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/imageButton2"
+            android:id="@+id/settingsNext"
             android:layout_alignTop="@id/dummy"
             android:layout_alignLeft="@id/dummy"
             android:layout_alignParentRight="true"

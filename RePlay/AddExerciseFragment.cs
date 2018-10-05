@@ -14,8 +14,51 @@ using Android.Widget;
 
 namespace RePlay
 {
-    public class AddExerciseFragment : Fragment
+    public class AddExerciseFragment : DialogFragment
     {
+        public static AddExerciseFragment NewInstance()
+        {
+            var dialogFragment = new AddExerciseFragment();
+            return dialogFragment;
+        }
+
+        public override Dialog OnCreateDialog(Bundle savedInstanceState)
+        {
+            base.OnCreate(savedInstanceState);
+            var builder = new AlertDialog.Builder(Activity);
+            var inflater = Activity.LayoutInflater;
+            var dialogView = inflater.Inflate(Resource.Layout.AddExercise, null);
+
+            if (dialogView != null)
+            {
+
+                builder.SetView(dialogView);
+                builder.SetPositiveButton("Cancel", CancelClicked);
+                builder.SetNegativeButton("Add", AddClicked);
+            }
+
+            var dialog = builder.Create();
+            return dialog;
+        }
+
+        private void CancelClicked(object sender, EventArgs e)
+        {
+            Toast.MakeText(GetActivity(), "Device Spinner clicked", ToastLength.Short);
+        }
+
+        private void AddClicked(object sender, EventArgs eventArgs)
+        {
+
+            Toast.MakeText(GetActivity(), "Device Spinner clicked", ToastLength.Short);
+        }
+
+        //        public override void OnCreate(Bundle savedInstanceState)
+        //        {
+        //            base.OnCreate(savedInstanceState);
+        //
+        //            // Create your fragment here
+        //        }
+
         private void homeClicked(object sender, EventArgs e)
         {
             ImageButton button = (ImageButton)sender;
@@ -23,31 +66,24 @@ namespace RePlay
             button.Context.StartActivity(intent);
         }
 
-        public override void OnCreate(Bundle savedInstanceState)
-        {
-            base.OnCreate(savedInstanceState);
-
-            // Create your fragment here
-        }
-
         private void exerciseSpinnerClicked(object sender, EventArgs e)
         {
-            Toast.MakeText(GetActivity(), "Exercise Spinner clicked", ToastLength.Short);
+            Toast.MakeText(Activity.ApplicationContext, "Exercise Spinner clicked", ToastLength.Short);
         }
 
         private void gameSpinnerClicked(object sender, EventArgs e)
         {
-            Toast.MakeText(GetActivity(), "Game Spinner clicked", ToastLength.Short);
+            Toast.MakeText(Activity.ApplicationContext, "Game Spinner clicked", ToastLength.Short);
         }
 
         private void deviceSpinnerClicked(object sender, EventArgs e)
         {
-            Toast.MakeText(GetActivity(), "Device Spinner clicked", ToastLength.Short);
+            Toast.MakeText(Activity.ApplicationContext, "Device Spinner clicked", ToastLength.Short);
         }
 
         private void timeSpinnerClicked(object sender, EventArgs e)
         {
-            Toast.MakeText(GetActivity(), "Time Spinner clicked", ToastLength.Short);
+            Toast.MakeText(Activity.ApplicationContext, "Time Spinner clicked", ToastLength.Short);
         }
 
         public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)

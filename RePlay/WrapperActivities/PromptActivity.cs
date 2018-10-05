@@ -38,7 +38,7 @@ namespace RePlay.WrapperActivities
             };
 
             this.FindViewById<Button>(Resource.Id.next_button).Click += delegate {
-                Intent intent = new Intent(this, typeof(WrapperActivities.PromptActivity));
+                Intent intent = new Intent(this, typeof(WrapperActivities.GamesListActivity));
                 StartActivity(intent);
             };
 

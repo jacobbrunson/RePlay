@@ -41,6 +41,10 @@ namespace RePlay.WrapperActivities
             View.ItemClick += (s, e) =>
             {
                 Toast.MakeText(this, "GridView Item: " + GamesList[e.Position], ToastLength.Short).Show();
+
+                Intent intent = new Intent(this, typeof(DummyGame.Android.Activity1));
+                intent.PutExtra("CONTENT_DIR", "DummyGame");
+                StartActivity(intent);
             };
         }
 

@@ -5,7 +5,7 @@ using Android.Content;
 
 namespace RePlay
 {
-    [Activity(Label = "RePlay", MainLauncher = true, Icon = "@mipmap/icon")]
+    [Activity(Label = "RePlay", MainLauncher = true, Icon = "@mipmap/icon", ScreenOrientation = Android.Content.PM.ScreenOrientation.Landscape)]
     public class MainActivity : Activity
     {
         protected override void OnCreate(Bundle savedInstanceState)

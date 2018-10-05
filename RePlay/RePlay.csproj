@@ -62,6 +62,7 @@
     <Compile Include="WrapperActivities\CustomGameListView.cs" />
     <Compile Include="NavigationFragment.cs" />
     <Compile Include="SettingsLoginActivity.cs" />
+    <Compile Include="FooterFragment.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />
@@ -137,6 +138,7 @@
     <AndroidResource Include="Resources\drawable\yes.png" />
     <AndroidResource Include="Resources\layout\SettingsLogin.axml" />
     <AndroidResource Include="Resources\drawable\breakout_screenshot.png" />
+    <AndroidResource Include="Resources\layout\Footer.axml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\drawable\" />

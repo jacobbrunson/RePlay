@@ -17,7 +17,15 @@
         android:layout_width="fill_parent"
         android:background="@null"
         android:layout_below="@id/navigation_fragment"
-        android:layout_alignParentBottom="true"
         android:scaleType="fitCenter"
-        android:layout_height="400dp"/>
+        android:layout_height="400dp"
+        android:layout_above="@id/footer_fragment" />
+    
+    <fragment
+        android:name="RePlay.FooterFragment"
+        android:id="@+id/footer_fragment"
+        android:layout_width="fill_parent"
+        android:layout_alignParentBottom="true"
+        android:layout_height="wrap_content" />
+    
 </RelativeLayout>

@@ -1,63 +1,64 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
+    android:orientation="horizontal"
     android:layout_width="match_parent"
-    android:layout_height="match_parent" >
+    android:layout_height="match_parent">
+    
     <fragment
-            android:name="RePlay.NavigationFragment"
-            android:id="@+id/navigation_fragment"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignParentTop="true" />
-    <RelativeLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        android:orientation="vertical"
-        android:layout_width="600dp"
-        android:layout_height="match_parent"
-        android:layout_gravity="center" >
-        <TextView
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/accessTextView"
-            android:text="To access settings enter your password" />
-        <EditText
-            android:inputType="textPassword"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/password"
-            android:hint="Password"
-            android:layout_below="@id/accessTextView"/>
-        <View
-            android:id="@+id/dummy"
-            android:layout_height="0dp"
-            android:layout_width="0dp"
-            android:layout_centerInParent="true"
-            android:layout_below="@id/password"/>
-        <ImageButton
-            android:src="@drawable/back"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/settingsBack"
-            android:layout_alignTop="@id/dummy"
-            android:layout_alignRight="@id/dummy"
-            android:layout_alignParentLeft="true"
-            android:background="@null"
-            android:scaleX="0.5"
-            android:scaleY="0.5"
-            android:paddingRight="0dp"
-            android:paddingLeft="0dp" />
-        <ImageButton
-            android:src="@drawable/next"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/settingsNext"
-            android:layout_alignTop="@id/dummy"
-            android:layout_alignLeft="@id/dummy"
-            android:layout_alignParentRight="true"
-            android:background="@null"
-            android:scaleX="0.5"
-            android:scaleY="0.5"  />
-    </RelativeLayout>
-</LinearLayout>
+        android:name="RePlay.NavigationFragment"
+        android:id="@+id/navigation_fragment"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true" />
+    <TextView
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/accessTextView"
+        android:text="To access settings enter your password"
+        android:layout_below="@id/navigation_fragment"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="50dp" />
+    <EditText
+        android:inputType="textPassword"
+        android:layout_width="400dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/password"
+        android:hint="Password"
+        android:layout_below="@id/accessTextView"
+        android:layout_marginTop="20dp"
+        android:layout_centerInParent="true" />
+    <ImageButton
+        android:src="@drawable/back"
+        android:layout_width="120dp"
+        android:layout_height="48dp"
+        android:id="@+id/settingsBack"
+        android:background="@null"
+        android:layout_below="@id/password"
+        android:layout_marginRight="10dp"
+        android:scaleType="centerInside"
+        android:layout_alignStart="@id/password"
+        android:layout_marginLeft="45dp"
+        android:layout_marginTop="20dp" />
+    <ImageButton
+        android:src="@drawable/next"
+        android:layout_width="120dp"
+        android:layout_height="48dp"
+        android:id="@+id/settingsNext"
+        android:background="@null"
+        android:layout_below="@id/password"
+        android:layout_toRightOf="@id/settingsBack"
+        android:layout_marginLeft="25dp"
+        android:scaleType="centerInside"
+        android:layout_alignEnd="@id/password"
+        android:layout_marginTop="20dp"/>
+    
+    <fragment
+        android:name="RePlay.FooterFragment"
+        android:id="@+id/footer_fragment"
+        android:layout_width="fill_parent"
+        android:layout_alignParentBottom="true"
+        android:layout_height="wrap_content" />
+    
+</RelativeLayout>

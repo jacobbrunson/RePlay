@@ -6,6 +6,12 @@
     android:layout_height="fill_parent"
     android:background="#ffffffff">
     
+    <fragment
+        android:name="RePlay.NavigationFragment"
+        android:id="@+id/navigation_fragment"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true" />
     <GridView
         android:id="@+id/grid_view"
         android:layout_width="fill_parent"
@@ -17,7 +23,8 @@
         android:clipToPadding="true"
         android:layout_marginTop="20dp"
         android:horizontalSpacing="1dp"
-        android:verticalSpacing="1dp"/>
+        android:verticalSpacing="1dp"
+        android:layout_below="@id/navigation_fragment" />
     
     <Button
         android:id="@+id/cancel_button"
@@ -40,5 +47,12 @@
         android:layout_toRightOf="@id/cancel_button"
         android:layout_marginLeft="10dp"
         android:layout_marginBottom="10dp" />
+    
+    <fragment
+        android:name="RePlay.FooterFragment"
+        android:id="@+id/footer_fragment"
+        android:layout_width="fill_parent"
+        android:layout_alignParentBottom="true"
+        android:layout_height="wrap_content" />
     
 </RelativeLayout>

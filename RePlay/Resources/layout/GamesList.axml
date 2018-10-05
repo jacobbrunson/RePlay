@@ -1,11 +1,19 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-
+    
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="horizontal"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#ffffffff">
+    
+    <fragment
+        android:name="RePlay.NavigationFragment"
+        android:id="@+id/navigation_fragment"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true" />
+    
     <TextView
         android:id="@+id/gameslist_sortby"
         android:text="Sort By: "
@@ -28,7 +36,7 @@
         android:id="@+id/gameslist_grid"
         android:layout_below="@id/gameslist_sortby"
         android:layout_width="800dp"
-        android:layout_height="fill_parent"
+        android:layout_height="wrap_content"
         android:layout_marginTop="12dp"
         android:horizontalSpacing="10dp"
         android:verticalSpacing="15dp"
@@ -60,5 +68,11 @@
         android:background="@android:color/transparent"
         android:layout_marginTop="12dp"
         android:layout_marginLeft="5dp" />
+    <fragment
+        android:name="RePlay.FooterFragment"
+        android:id="@+id/footer_fragment"
+        android:layout_width="fill_parent"
+        android:layout_alignParentBottom="true"
+        android:layout_height="wrap_content" />
     
 </RelativeLayout>

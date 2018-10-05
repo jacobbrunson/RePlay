@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+d/footer_layout"
+    android:layout_width="fill_parent"
+    android:layout_height="30dp"
+    android:background="@android:color/white">
+    <ImageView
+        android:id="@+id/texas_biomedical_footer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:src="@drawable/txbdc_text"
+        android:padding="2dp" />
+    
+</RelativeLayout>
+    

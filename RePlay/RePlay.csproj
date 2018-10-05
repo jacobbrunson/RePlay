@@ -134,6 +134,7 @@
     <AndroidResource Include="Resources\drawable\spinner.xml" />
     <AndroidResource Include="Resources\drawable\wrist_flexion.jpg" />
     <AndroidResource Include="Resources\drawable\yes.png" />
+    <AndroidResource Include="Resources\drawable\breakout_screenshot.png" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\drawable\" />

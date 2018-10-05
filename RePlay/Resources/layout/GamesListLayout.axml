@@ -8,11 +8,10 @@
     android:gravity="center_horizontal"
     android:orientation="horizontal"
     android:minWidth="25px"
-    android:minHeight="25px"
-    android:background="@android:color/holo_purple">
+    android:minHeight="25px">
     <ImageView
         android:id="@+id/gameslist_image"
-        android:src="@drawable/games"
+        android:src="@drawable/breakout_screenshot"
         android:scaleType="centerInside"
         android:layout_width="256dp"
         android:layout_height="144dp"

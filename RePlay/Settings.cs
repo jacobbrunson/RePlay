@@ -5,6 +5,7 @@ using System.Text;
 
 using Android.App;
 using Android.Content;
+using Android.Content.PM;
 using Android.OS;
 using Android.Runtime;
 using Android.Views;
@@ -12,6 +13,7 @@ using Android.Widget;
 
 namespace RePlay
 {
+    //, ScreenOrientation = ScreenOrientation.Landscape
     [Activity(Label = "Settings")]
     public class Settings : Activity
     {
@@ -55,8 +57,7 @@ namespace RePlay
                 NavigationFragment navBar = new NavigationFragment();
 
                 // The fragment will have the ID of Resource.Id.fragment_container.
-                int index = 0x25423245;
-                fragmentTx.Add(index, navBar);
+                fragmentTx.Add(Resource.Id.fragment_container, navBar);
 
                 // Commit the transaction.
                 fragmentTx.Commit();
@@ -86,3 +87,18 @@ namespace RePlay
         }
     }
 }
+
+/*
+ * <ScrollView
+		android:id="@+id/scrollviewed"
+		android:layout_width="match_parent"
+        android:layout_height="match_parent"
+		android:fillViewport="true">
+		<LinearLayout
+			android:id="@+id/contentviewed"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:fillViewport="true">
+		</LinearLayout>
+	</ScrollView>
+*/

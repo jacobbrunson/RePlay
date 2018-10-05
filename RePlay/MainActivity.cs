@@ -21,8 +21,7 @@ namespace RePlay
 
             button.Click += delegate
             {
-                Intent intent = new Intent(this, typeof(DummyGame.Android.Activity1));
-                intent.PutExtra("CONTENT_DIR", "DummyGame");
+                Intent intent = new Intent(this, typeof(WrapperActivities.PromptActivity));
                 StartActivity(intent);
             };
         }

@@ -45,5 +45,4 @@
         android:layout_toLeftOf="@+id/gamesButton"
         android:scaleType="fitCenter"
         android:background="@null"/>
-   
 </RelativeLayout>

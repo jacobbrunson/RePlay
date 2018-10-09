@@ -1,4 +1,5 @@
-﻿<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
@@ -28,7 +29,7 @@
     <AndroidLinkMode>None</AndroidLinkMode>
     <AndroidUseSharedRuntime>true</AndroidUseSharedRuntime>
     <AndroidSupportedAbis>arm64-v8a;armeabi;armeabi-v7a;x86;x86_64</AndroidSupportedAbis>
-</PropertyGroup>
+  </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
     <DebugType>pdbonly</DebugType>
@@ -39,26 +40,32 @@
     <AndroidManagedSymbols>true</AndroidManagedSymbols>
     <AndroidHttpClientHandlerType>Xamarin.Android.Net.AndroidClientHandler</AndroidHttpClientHandlerType>
     <EnableProguard>true</EnableProguard>
-</PropertyGroup>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Core" />
     <Reference Include="Mono.Android" />
-    <Reference Include="DummyGame.Android">
-      <HintPath>..\packages\DummyGame.Android\lib\net40\DummyGame.Android.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="MainActivity.cs" />
     <Compile Include="Resources\Resource.designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="WrapperActivities\PromptActivity.cs" />
+    <Compile Include="WrapperActivities\CustomGridView.cs" />
+    <Compile Include="WrapperActivities\GamesListActivity.cs" />
+    <Compile Include="WrapperActivities\CustomGameListView.cs" />
     <Compile Include="NavigationFragment.cs" />
+    <Compile Include="SettingsLoginActivity.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />
     <None Include="Properties\AndroidManifest.xml" />
     <None Include="packages.config" />
+    <None Include="Resources\drawable\icon\action\delete_24px.png" />
+    <None Include="Resources\drawable\icon\editor\mode_24px.png" />
+    <None Include="Resources\drawable\icon\navigation\cancel_24px.png" />
+    <None Include="Resources\drawable\icon\toggle\check_box_24px.png" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\layout\Main.axml" />
@@ -71,6 +78,12 @@
     <AndroidResource Include="Resources\drawable\Splash.png" />
     <AndroidResource Include="Resources\drawable\Icon.png" />
     <AndroidResource Include="Resources\values\Styles.xml" />
+    <AndroidResource Include="Resources\drawable\plus.png" />
+    <AndroidResource Include="Resources\drawable\FitMi.png" />
+    <AndroidResource Include="Resources\drawable\HOME.png" />
+    <AndroidResource Include="Resources\drawable\replay_logo.jpg" />
+    <AndroidResource Include="Resources\drawable\rectangle2copy.png" />
+    <AndroidResource Include="Resources\drawable\rectangle2.png" />
     <AndroidResource Include="Resources\layout\Navigation.axml" />
     <AndroidResource Include="Resources\drawable\logo.jpg" />
     <AndroidResource Include="Resources\drawable\HOME.png" />
@@ -78,12 +91,10 @@
     <AndroidResource Include="Resources\drawable\games.png" />
     <AndroidResource Include="Resources\drawable\settings.png" />
     <AndroidResource Include="Resources\drawable\pcmDisconnected.png" />
-    <AndroidResource Include="Resources\drawable\plus.png" />
     <AndroidResource Include="Resources\drawable\add_photo.png" />
     <AndroidResource Include="Resources\drawable\back.png" />
     <AndroidResource Include="Resources\drawable\cancel.png" />
     <AndroidResource Include="Resources\drawable\curls.jpg" />
-    <AndroidResource Include="Resources\drawable\FitMi.png" />
     <AndroidResource Include="Resources\drawable\green_bar.png" />
     <AndroidResource Include="Resources\drawable\nate.png" />
     <AndroidResource Include="Resources\drawable\next.png" />
@@ -98,6 +109,8 @@
     <AndroidResource Include="Resources\drawable\play_green.png" />
     <AndroidResource Include="Resources\drawable\play_white.png" />
     <AndroidResource Include="Resources\drawable\reach_across.png" />
+    <AndroidResource Include="Resources\drawable\save.png" />
+    <AndroidResource Include="Resources\drawable\settings.png" />
     <AndroidResource Include="Resources\drawable\Rectangle_2_Copy.png" />
     <AndroidResource Include="Resources\drawable\Rectangle_2.png" />
     <AndroidResource Include="Resources\drawable\RePlay_Logo.jpg" />
@@ -106,11 +119,26 @@
     <AndroidResource Include="Resources\drawable\supination.jpg" />
     <AndroidResource Include="Resources\drawable\txbdc_text.png" />
     <AndroidResource Include="Resources\drawable\typing.jpg" />
+    <AndroidResource Include="Resources\drawable\yes.png" />
+    <AndroidResource Include="Resources\layout\GridViewLayout.axml" />
+    <AndroidResource Include="Resources\layout\Prompt.axml" />
+    <AndroidResource Include="Resources\drawable\wrist_flexion_1.png" />
+    <AndroidResource Include="Resources\layout\GamesListLayout.axml" />
+    <AndroidResource Include="Resources\layout\GamesList.axml" />
+    <AndroidResource Include="Resources\drawable\keyboard_arrow_left.png" />
+    <AndroidResource Include="Resources\drawable\keyboard_arrow_right.png" />
+    <AndroidResource Include="Resources\drawable\spinner.xml" />
     <AndroidResource Include="Resources\drawable\wrist_flexion.jpg" />
     <AndroidResource Include="Resources\drawable\yes.png" />
+    <AndroidResource Include="Resources\layout\SettingsLogin.axml" />
+    <AndroidResource Include="Resources\drawable\breakout_screenshot.png" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\drawable\" />
+    <Folder Include="WrapperActivities\" />
+    <Folder Include="Resources\drawable\icon\keyboard_arrow_left\" />
+    <Folder Include="Resources\drawable\icon\Keyboard Arrow - Right\" />
+    <Folder Include="GameDLLs\**" />
   </ItemGroup>
   <ItemGroup>
     <AndroidAsset Include="Assets\**" />
@@ -124,7 +152,9 @@
           <Private>True</Private>
           <Paket>True</Paket>
         </Reference>
+        <Reference Include="GameDLLs\*.dll" />
       </ItemGroup>
     </When>
   </Choose>
+  <Import Project="..\packages\MonoGame.Framework.Android\build\MonoGame.Framework.Android.targets" Condition="Exists('..\packages\MonoGame.Framework.Android\build\MonoGame.Framework.Android.targets')" Label="Paket" />
 </Project>

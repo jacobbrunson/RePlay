@@ -1,0 +1,63 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+    <fragment
+            android:name="RePlay.NavigationFragment"
+            android:id="@+id/navigation_fragment"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true" />
+    <RelativeLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:orientation="vertical"
+        android:layout_width="600dp"
+        android:layout_height="match_parent"
+        android:layout_gravity="center" >
+        <TextView
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/accessTextView"
+            android:text="To access settings enter your password" />
+        <EditText
+            android:inputType="textPassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/password"
+            android:hint="Password"
+            android:layout_below="@id/accessTextView"/>
+        <View
+            android:id="@+id/dummy"
+            android:layout_height="0dp"
+            android:layout_width="0dp"
+            android:layout_centerInParent="true"
+            android:layout_below="@id/password"/>
+        <ImageButton
+            android:src="@drawable/back"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/settingsBack"
+            android:layout_alignTop="@id/dummy"
+            android:layout_alignRight="@id/dummy"
+            android:layout_alignParentLeft="true"
+            android:background="@null"
+            android:scaleX="0.5"
+            android:scaleY="0.5"
+            android:paddingRight="0dp"
+            android:paddingLeft="0dp" />
+        <ImageButton
+            android:src="@drawable/next"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/settingsNext"
+            android:layout_alignTop="@id/dummy"
+            android:layout_alignLeft="@id/dummy"
+            android:layout_alignParentRight="true"
+            android:background="@null"
+            android:scaleX="0.5"
+            android:scaleY="0.5"  />
+    </RelativeLayout>
+</LinearLayout>

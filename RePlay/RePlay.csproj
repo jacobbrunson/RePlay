@@ -57,8 +57,7 @@
     <Compile Include="WrapperActivities\CustomGameListView.cs" />
     <Compile Include="NavigationFragment.cs" />
     <Compile Include="SettingsLoginActivity.cs" />
-    <Compile Include="Prescription\Prescription.cs" />
-    <Compile Include="Prescription\RePlayGame.cs" />
+    <Compile Include="Prescription\PrescriptionManager.cs" />
     <Compile Include="Prescription\GameManager.cs" />
   </ItemGroup>
   <ItemGroup>

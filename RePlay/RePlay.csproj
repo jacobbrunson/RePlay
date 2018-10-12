@@ -57,6 +57,9 @@
     <Compile Include="WrapperActivities\CustomGameListView.cs" />
     <Compile Include="NavigationFragment.cs" />
     <Compile Include="SettingsLoginActivity.cs" />
+    <Compile Include="Prescription\Prescription.cs" />
+    <Compile Include="Prescription\RePlayGame.cs" />
+    <Compile Include="Prescription\GameManager.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />
@@ -139,9 +142,11 @@
     <Folder Include="Resources\drawable\icon\keyboard_arrow_left\" />
     <Folder Include="Resources\drawable\icon\Keyboard Arrow - Right\" />
     <Folder Include="GameDLLs\**" />
+    <Folder Include="Prescription\" />
   </ItemGroup>
   <ItemGroup>
     <AndroidAsset Include="Assets\**" />
+    <AndroidAsset Include="Assets\games.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <Choose>

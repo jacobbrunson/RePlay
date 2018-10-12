@@ -2,6 +2,7 @@
 using Android.Widget;
 using Android.OS;
 using Android.Content;
+using System.IO;
 
 namespace RePlay
 {
@@ -11,6 +12,9 @@ namespace RePlay
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
+
+            //Load games from games.txt
+            LoadGames();
 
             // Set our view from the "main" layout resource
             SetContentView(Resource.Layout.Main);
@@ -24,6 +28,10 @@ namespace RePlay
                 Intent intent = new Intent(this, typeof(WrapperActivities.PromptActivity));
                 StartActivity(intent);
             };
+        }
+
+        private void LoadGames() {
+            GameManager.Instance.LoadGames(Assets);
         }
     }
 }

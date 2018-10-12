@@ -47,7 +47,7 @@ namespace RePlay
 
             if (dialogView != null)
             {
-                var cancelButton = dialogView.FindViewById<Button>(Resource.Id.button1);
+                var cancelButton = dialogView.FindViewById<Button>(Resource.Id.cancelButton);
                 cancelButton.Click += (sender, args) =>
                 {
                     Dismiss();

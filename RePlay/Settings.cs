@@ -53,14 +53,22 @@ namespace RePlay
             addAssigned.Click += delegate
             {
                 // Create a new fragment and a transaction.
-                FragmentTransaction fragmentTx = this.FragmentManager.BeginTransaction();
-                NavigationFragment navBar = new NavigationFragment();
+                // FragmentTransaction fragmentTx = this.FragmentManager.BeginTransaction();
+                // NavigationFragment navBar = new NavigationFragment();
 
                 // The fragment will have the ID of Resource.Id.fragment_container.
-                fragmentTx.Add(Resource.Id.fragment_container, navBar);
+                // fragmentTx.Add(Resource.Id.fragment_container, navBar);
 
                 // Commit the transaction.
-                fragmentTx.Commit();
+                // fragmentTx.Commit();
+                FragmentManager.BeginTransaction();
+                Fragment prev = FragmentManager.FindFragmentByTag("dialog");
+                var prescriptionFragment = AddPrescriptionFragment.NewInstance();
+                prescriptionFragment.Show(FragmentManager, "dialog");
+//                FragmentManager.BeginTransaction()
+//                               .Add(Android.Resource.Id.Content, prescriptionFragment)
+//                               .Commit();
+
             };
 
             ImageButton saved1 = FindViewById<ImageButton>(Resource.Id.curlsPic);

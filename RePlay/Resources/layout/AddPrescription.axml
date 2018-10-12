@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:minHeight="150dp"
+    android:minWidth="100dp"
+    android:padding="10dp"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent">
+    <TextView
+        android:text="This is some Text."
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minWidth="70dp"
+        android:minHeight="25dp"
+        android:id="@+id/textView1"
+        android:textColor="#fff6e700" />
+    <TextView
+        android:text="This is some more Text."
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minWidth="70dp"
+        android:minHeight="25dp"
+        android:layout_marginTop="10dp"
+        android:layout_below="@+id/textView1"
+        android:id="@+id/textView2"/>
+    <Button
+        android:text="Button"
+        android:layout_below="@+id/textView2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:id="@+id/button1" />
+</LinearLayout>

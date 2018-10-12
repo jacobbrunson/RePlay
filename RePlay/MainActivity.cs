@@ -2,6 +2,7 @@
 using Android.Widget;
 using Android.OS;
 using Android.Content;
+using System.IO;
 
 namespace RePlay
 {
@@ -11,6 +12,10 @@ namespace RePlay
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
+
+            //Load games from Assets/games.txt and load prescriptions from internal storage
+            GameManager.Instance.LoadGames(Assets);
+            PrescriptionManager.Instance.LoadPrescription();
 
             // Set our view from the "main" layout resource
             SetContentView(Resource.Layout.Main);

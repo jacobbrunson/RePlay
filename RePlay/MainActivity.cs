@@ -13,8 +13,9 @@ namespace RePlay
         {
             base.OnCreate(savedInstanceState);
 
-            //Load games from games.txt
-            LoadGames();
+            //Load games from Assets/games.txt and load prescriptions from internal storage
+            GameManager.Instance.LoadGames(Assets);
+            PrescriptionManager.Instance.LoadPrescription();
 
             // Set our view from the "main" layout resource
             SetContentView(Resource.Layout.Main);
@@ -28,10 +29,6 @@ namespace RePlay
                 Intent intent = new Intent(this, typeof(WrapperActivities.PromptActivity));
                 StartActivity(intent);
             };
-        }
-
-        private void LoadGames() {
-            GameManager.Instance.LoadGames(Assets);
         }
     }
 }

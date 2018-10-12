@@ -24,7 +24,6 @@ namespace RePlay
         }
 
         public void LoadPrescription() {
-            Console.WriteLine("Loading prescription");
             if (!File.Exists(filePath)) {
                 SavePrescription();
             }

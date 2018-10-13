@@ -64,11 +64,18 @@ namespace RePlay
                 FragmentManager.BeginTransaction();
                 Fragment prev = FragmentManager.FindFragmentByTag("dialog");
                 var prescriptionFragment = AddPrescriptionFragment.NewInstance();
+                prescriptionFragment.Dismissed += (s, e) =>
+                {
+                    var args = (AddPrescriptionFragment.DialogEventArgs)e;
+                    Toast.MakeText(this, String.Format("The Game is {0}.", args.Game), ToastLength.Long).Show();
+                    Toast.MakeText(this, String.Format("The Exercise is {0}.", args.Exercise), ToastLength.Long).Show();
+                    Toast.MakeText(this, String.Format("The Device is {0}.", args.Device), ToastLength.Long).Show();
+                    Toast.MakeText(this, String.Format("The Time is {0}.", args.Time), ToastLength.Long).Show();
+                };
                 prescriptionFragment.Show(FragmentManager, "dialog");
 //                FragmentManager.BeginTransaction()
 //                               .Add(Android.Resource.Id.Content, prescriptionFragment)
 //                               .Commit();
-
             };
 
             ImageButton saved1 = FindViewById<ImageButton>(Resource.Id.curlsPic);

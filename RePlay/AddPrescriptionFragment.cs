@@ -2,11 +2,24 @@ using Android.App;
 using Android.OS;
 using Android.Content;
 using Android.Widget;
+using System.Collections.Generic;
+using System;
 
 namespace RePlay
 {
     public class AddPrescriptionFragment : DialogFragment
     {
+        public class DialogEventArgs : EventArgs
+        {
+            public string Exercise { get; set; }
+            public string Game { get; set; }
+            public string Device { get; set; }
+            public int Time { get; set; }
+        }
+
+        public delegate void DialogEventHandler(object sender, DialogEventArgs args);
+        public event DialogEventHandler Dismissed;
+
         //Create class properties
         protected EditText NameEditText;
         protected EditText DescriptionEditText;
@@ -47,11 +60,52 @@ namespace RePlay
 
             if (dialogView != null)
             {
+                var gamesList = new List<string>() { "Breakout", "Crossy Road", "Handwriting"};
+                var exerciseList = new List<string>() { "Wrist flexion", "Bicep curl", "Thumb press" };
+                var deviceList = new List<string>() { "FitMi", "Knob sensor"};
+                var timeList = new List<int>() { 1, 2, 3 };
+
+                var gameSpinner = dialogView.FindViewById<Spinner>(Resource.Id.gameSpinner);
+                var exerciseSpinner = dialogView.FindViewById<Spinner>(Resource.Id.exerciseSpinner);
+                var deviceSpinner = dialogView.FindViewById<Spinner>(Resource.Id.deviceSpinner);
+                var timeSpinner = dialogView.FindViewById<Spinner>(Resource.Id.timeSpinner);
+
+                var gameAdapter = new ArrayAdapter<string>(Context, Android.Resource.Layout.SimpleSpinnerItem, gamesList);
+                var exerciseAdapter = new ArrayAdapter<string>(Context, Android.Resource.Layout.SimpleSpinnerItem, exerciseList);
+                var deviceAdapter = new ArrayAdapter<string>(Context, Android.Resource.Layout.SimpleSpinnerItem, deviceList);
+                var timeAdapter = new ArrayAdapter<int>(Context, Android.Resource.Layout.SimpleSpinnerItem, timeList);
+
+                gameSpinner.Adapter = gameAdapter;
+                exerciseSpinner.Adapter = exerciseAdapter;
+                deviceSpinner.Adapter = deviceAdapter;
+                timeSpinner.Adapter = timeAdapter;
+
                 var cancelButton = dialogView.FindViewById<Button>(Resource.Id.cancelButton);
+                var addButton = dialogView.FindViewById<Button>(Resource.Id.addButton);
+
                 cancelButton.Click += (sender, args) =>
                 {
                     Dismiss();
                 };
+
+                addButton.Click += (sender, args) =>
+                {
+                    var _dialog = dialogView;
+                    var _exerciseSpinner = (Spinner)_dialog.FindViewById<Spinner>(Resource.Id.exerciseSpinner);
+                    var _gameSpinner = (Spinner)_dialog.FindViewById(Resource.Id.gameSpinner);
+                    var _deviceSpinner = (Spinner)_dialog.FindViewById<Spinner>(Resource.Id.deviceSpinner);
+                    var _timeSpinner = (Spinner)_dialog.FindViewById<Spinner>(Resource.Id.timeSpinner);
+
+                    Dismissed?.Invoke(this, new DialogEventArgs
+                    {
+                        Exercise = (string)exerciseSpinner.SelectedItem,
+                        Game = (string)gameSpinner.SelectedItem,
+                        Device = (string)deviceSpinner.SelectedItem,
+                        Time = (int)timeSpinner.SelectedItem
+                    });
+                    Dismiss();
+                };
+
                 //Initialize the properties
 //                NameEditText = dialogView.FindViewById<EditText>(Resource.Id.editTextName);
 //                DescriptionEditText = dialogView.FindViewById<EditText>(Resource.Id.editTextDescription);
@@ -112,12 +166,6 @@ namespace RePlay
 
             //Now return the constructed dialog to the calling activity
             return dialog;
-        }
-
-        private void HandlePositiveButtonClick(object sender, DialogClickEventArgs e)
-        {
-            var dialog = (AlertDialog)sender;
-            dialog.Dismiss();
         }
 
         private void HandleNegativeButtonClick(object sender, DialogClickEventArgs e)

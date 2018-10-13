@@ -102,18 +102,3 @@ namespace RePlay
         }
     }
 }
-
-/*
- * <ScrollView
-		android:id="@+id/scrollviewed"
-		android:layout_width="match_parent"
-        android:layout_height="match_parent"
-		android:fillViewport="true">
-		<LinearLayout
-			android:id="@+id/contentviewed"
-			android:layout_width="match_parent"
-			android:layout_height="wrap_content"
-			android:fillViewport="true">
-		</LinearLayout>
-	</ScrollView>
-*/

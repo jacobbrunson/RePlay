@@ -77,7 +77,9 @@ namespace RePlay.WrapperActivities
 
             View.ItemClick += (s, e) =>
             {
-                Toast.MakeText(this, "Game Selected!", ToastLength.Short).Show();
+                Intent intent = new Intent(this, typeof(DummyGame.Android.Activity1));
+                intent.PutExtra("CONTENT_DIR", "DummyGame");
+                StartActivity(intent);
             };
         }
 

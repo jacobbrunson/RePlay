@@ -2,6 +2,7 @@
 using Android.Widget;
 using Android.OS;
 using Android.Content;
+using System.IO;
 
 namespace RePlay
 {
@@ -12,6 +13,10 @@ namespace RePlay
         {
             base.OnCreate(savedInstanceState);
 
+            //Load games from Assets/games.txt and load prescriptions from internal storage
+            GameManager.Instance.LoadGames(Assets);
+            PrescriptionManager.Instance.LoadPrescription();
+
             // Set our view from the "main" layout resource
             SetContentView(Resource.Layout.Main);
 
@@ -21,8 +26,6 @@ namespace RePlay
 
             button.Click += delegate
             {
-                //Intent intent = new Intent(this, typeof(DummyGame.Android.Activity1));
-                //intent.PutExtra("CONTENT_DIR", "DummyGame");
                 Intent intent = new Intent(this, typeof(WrapperActivities.PromptActivity));
                 StartActivity(intent);
             };

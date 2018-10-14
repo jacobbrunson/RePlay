@@ -27,7 +27,7 @@ namespace RePlay
         {
             ImageButton button = (ImageButton)sender;
             Intent intent = new Intent(button.Context, typeof(WrapperActivities.GamesListActivity));
-            button.Context.StartActivity(intent);
+            StartActivity(intent);
         }
 
         private void connectionClicked(object sender, EventArgs e)
@@ -39,7 +39,7 @@ namespace RePlay
         {
             ImageButton button = (ImageButton)sender;
             Intent intent = new Intent(button.Context, typeof(SettingsLoginActivity));
-            button.Context.StartActivity(intent);
+            StartActivity(intent);
         }
 
         private bool isConnected = true;

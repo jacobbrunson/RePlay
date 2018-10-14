@@ -21,7 +21,18 @@ namespace RePlay.WrapperActivities
         {
             SetContentView(Resource.Layout.Prompt);
 
+
             base.OnCreate(savedInstanceState);
+            
+            this.FindViewById<Button>(Resource.Id.next).Click += delegate {
+                Intent intent = new Intent(this, typeof(WrapperActivities.GamesListActivity));
+                StartActivity(intent);
+            };
+
+            this.FindViewById<Button>(Resource.Id.cancel).Click += delegate {
+                Intent intent = new Intent(this, typeof(MainActivity));
+                StartActivity(intent);
+            };
         }
     }
 }

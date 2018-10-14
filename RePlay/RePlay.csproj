@@ -1,4 +1,5 @@
-﻿<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
@@ -28,7 +29,7 @@
     <AndroidLinkMode>None</AndroidLinkMode>
     <AndroidUseSharedRuntime>true</AndroidUseSharedRuntime>
     <AndroidSupportedAbis>arm64-v8a;armeabi;armeabi-v7a;x86;x86_64</AndroidSupportedAbis>
-</PropertyGroup>
+  </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
     <DebugType>pdbonly</DebugType>
@@ -39,18 +40,12 @@
     <AndroidManagedSymbols>true</AndroidManagedSymbols>
     <AndroidHttpClientHandlerType>Xamarin.Android.Net.AndroidClientHandler</AndroidHttpClientHandlerType>
     <EnableProguard>true</EnableProguard>
-</PropertyGroup>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Core" />
     <Reference Include="Mono.Android" />
-    <Reference Include="DummyGame.Android">
-      <HintPath>..\packages\DummyGame.Android\lib\net40\DummyGame.Android.dll</HintPath>
-    </Reference>
-    <Reference Include="MonoGame.Framework">
-      <HintPath>..\packages\MonoGame.Framework.Android.3.6.0.1625\lib\MonoAndroid\MonoGame.Framework.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="MainActivity.cs" />
@@ -63,6 +58,8 @@
     <Compile Include="FooterFragment.cs" />
     <Compile Include="Resources\Resource.designer.cs" />
     <Compile Include="WrapperActivities\Paginator.cs" />
+    <Compile Include="Prescription\PrescriptionManager.cs" />
+    <Compile Include="Prescription\GameManager.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />
@@ -148,15 +145,25 @@
     <Folder Include="WrapperActivities\" />
     <Folder Include="Resources\drawable\icon\keyboard_arrow_left\" />
     <Folder Include="Resources\drawable\icon\Keyboard Arrow - Right\" />
+    <Folder Include="GameDLLs\**" />
+    <Folder Include="Prescription\" />
   </ItemGroup>
   <ItemGroup>
     <AndroidAsset Include="Assets\**" />
+    <AndroidAsset Include="Assets\games.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <Choose>
     <When Condition="$(TargetFrameworkIdentifier) == 'MonoAndroid' And $(TargetFrameworkVersion) == 'v7.1'">
       <ItemGroup>
+        <Reference Include="MonoGame.Framework">
+          <HintPath>..\packages\MonoGame.Framework.Android\lib\MonoAndroid\MonoGame.Framework.dll</HintPath>
+          <Private>True</Private>
+          <Paket>True</Paket>
+        </Reference>
+        <Reference Include="GameDLLs\*.dll" />
       </ItemGroup>
     </When>
   </Choose>
+  <Import Project="..\packages\MonoGame.Framework.Android\build\MonoGame.Framework.Android.targets" Condition="Exists('..\packages\MonoGame.Framework.Android\build\MonoGame.Framework.Android.targets')" Label="Paket" />
 </Project>

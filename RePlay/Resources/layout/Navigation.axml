@@ -3,50 +3,55 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:id="@+id/relativeLayout1"
-    android:layout_height="70dp"
-    android:background="#ffffffff"
-    android:padding="10dp">
+    android:layout_height="75dp"
+    android:background="#f6f6f6"
+    android:padding="10dp"
+    android:elevation="5dp">
     <ImageView
         android:id="@+id/logo"
         android:layout_width="400dp"
-        android:layout_height="75dp"
+        android:layout_height="70dp"
         android:src="@drawable/logo"
         android:scaleType="fitStart"
-        android:layout_marginLeft="10dp" />
+        android:layout_marginLeft="12dp"/>
     <ImageButton
         android:id="@+id/settingsButton"
         android:src="@drawable/settings"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
         android:layout_alignParentRight="true"
         android:scaleType="fitCenter"
         android:background="@null"
-        android:layout_marginRight="28dp" />
+        android:layout_marginRight="28dp"
+        android:layout_marginTop="2dp" />
     <ImageButton
         android:id="@+id/connectionButton"
         android:src="@drawable/pcmconnected"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
         android:layout_toLeftOf="@+id/settingsButton"
         android:scaleType="fitCenter"
         android:background="@null"
-        android:layout_marginRight="15dp" />
+        android:layout_marginRight="15dp"
+        android:layout_marginTop="2dp" />
     <ImageButton
         android:id="@+id/gamesButton"
         android:src="@drawable/games"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
         android:layout_toLeftOf="@+id/connectionButton"
         android:scaleType="fitCenter"
         android:background="@null"
-        android:layout_marginRight="15dp" />
+        android:layout_marginRight="15dp"
+        android:layout_marginTop="2dp" />
     <ImageButton
         android:id="@+id/homeButton"
         android:src="@drawable/home"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
         android:layout_toLeftOf="@+id/gamesButton"
         android:scaleType="fitCenter"
         android:background="@null"
-        android:layout_marginRight="15dp" />
+        android:layout_marginRight="15dp"
+        android:layout_marginTop="2dp" />
 </RelativeLayout>

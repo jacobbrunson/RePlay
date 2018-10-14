@@ -25,7 +25,9 @@ namespace RePlay
 
         private void gamesClicked(object sender, EventArgs e)
         {
-            Console.WriteLine("navigate to games launcher");
+            ImageButton button = (ImageButton)sender;
+            Intent intent = new Intent(button.Context, typeof(WrapperActivities.GamesListActivity));
+            button.Context.StartActivity(intent);
         }
 
         private void connectionClicked(object sender, EventArgs e)
@@ -35,7 +37,9 @@ namespace RePlay
 
         private void settingsClicked(object sender, EventArgs e)
         {
-            Console.WriteLine("navigate to settings screen");
+            ImageButton button = (ImageButton)sender;
+            Intent intent = new Intent(button.Context, typeof(SettingsLoginActivity));
+            button.Context.StartActivity(intent);
         }
 
         private bool isConnected = true;

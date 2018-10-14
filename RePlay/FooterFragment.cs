@@ -23,7 +23,9 @@ namespace RePlay
 
         public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
         {
-            return base.OnCreateView(inflater, container, savedInstanceState);
+            View view = inflater.Inflate(Resource.Layout.Footer, container, false);
+
+            return view;
         }
     }
 }

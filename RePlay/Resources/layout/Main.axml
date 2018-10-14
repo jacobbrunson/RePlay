@@ -5,27 +5,48 @@
     android:layout_width="match_parent" 
     android:layout_height="match_parent">
     
-    <fragment android:name="RePlay.NavigationFragment"
-              android:id="@+id/navigation_fragment"
-              android:layout_width="fill_parent"
-              android:layout_height="wrap_content" />
-    <ImageButton
-        android:id="@+id/playButton"
-        android:src="@drawable/play_green"
-        android:layout_centerInParent="true"
-        android:layout_centerVertical="true"
+    <fragment
+        android:name="RePlay.NavigationFragment"
+        android:id="@+id/navigation_fragment"
+        android:layout_width="match_parent"
+        android:layout_height="75dp"
+        android:layout_alignParentTop="true" />
+    <RelativeLayout
         android:layout_width="fill_parent"
-        android:background="@null"
+        android:layout_height="fill_parent"
+        android:layout_centerInParent="true"
         android:layout_below="@id/navigation_fragment"
-        android:scaleType="fitCenter"
-        android:layout_height="400dp"
-        android:layout_above="@id/footer_fragment" />
+        android:layout_above="@id/footer_fragment"
+        android:background="@android:color/white">
+        <ImageButton
+            android:id="@+id/playButton"
+            android:src="@drawable/play_green"
+            android:layout_width="wrap_content"
+            android:background="@null"
+            android:layout_below="@id/navigation_fragment"
+            android:scaleType="centerInside"
+            android:layout_height="350dp"
+            android:layout_above="@id/footer_fragment"
+            android:layout_marginTop="100dp"
+            android:layout_centerHorizontal="true" />
+        <TextView
+            android:id="@+id/main_text"
+            android:text="Let's get started!"
+            android:textStyle="bold"
+            android:textColor="@android:color/black"
+            android:layout_below="@id/playButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:textSize="20dp"
+            android:layout_marginTop="10dp" />
+    </RelativeLayout>
     
     <fragment
         android:name="RePlay.FooterFragment"
         android:id="@+id/footer_fragment"
-        android:layout_width="fill_parent"
+        android:layout_width="match_parent"
         android:layout_alignParentBottom="true"
-        android:layout_height="wrap_content" />
-    
+        android:layout_height="35dp"/>
+            
 </RelativeLayout>

@@ -1,58 +1,74 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="horizontal"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
-    android:background="#ffffffff">
-    
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ffffff">
     <fragment
         android:name="RePlay.NavigationFragment"
         android:id="@+id/navigation_fragment"
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="75dp"
         android:layout_alignParentTop="true" />
-    <GridView
-        android:id="@+id/grid_view"
+    <RelativeLayout
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:columnWidth="250dp"
+        android:layout_below="@id/navigation_fragment"
+        android:layout_above="@id/footer_fragment"
+        android:minWidth="25px"
+        android:minHeight="25px"
         android:gravity="center_horizontal"
-        android:numColumns="2"
-        android:stretchMode="columnWidth"
-        android:clipToPadding="true"
-        android:layout_marginTop="20dp"
-        android:horizontalSpacing="1dp"
-        android:verticalSpacing="1dp"
-        android:layout_below="@id/navigation_fragment" />
-    
-    <Button
-        android:id="@+id/cancel_button"
-        android:layout_below="@id/grid_view"
-        android:layout_width="60dp"
-        android:layout_height="24dp"
-        android:background="@drawable/cancel"
-        android:layout_marginTop="30dp"
-        android:layout_marginRight="10dp"
-        android:layout_marginBottom="10dp"
-        android:layout_centerInParent="true" />
-    
-    <Button
-        android:id="@+id/next_button"
-        android:background="@drawable/next"
-        android:layout_width="60dp"
-        android:layout_height="24dp"
-        android:layout_below="@id/grid_view"
-        android:layout_marginTop="30dp"
-        android:layout_toRightOf="@id/cancel_button"
-        android:layout_marginLeft="10dp"
-        android:layout_marginBottom="10dp" />
-    
+        android:paddingTop="60dp"
+        android:background="#ffffff">
+        <ImageView
+            android:id="@+id/prompt_exercise"
+            android:src="@drawable/wrist_flexion_dialog"
+            android:layout_height="450dp"
+            android:scaleType="fitXY"
+            android:adjustViewBounds="true"
+            android:layout_width="415dp"
+            android:layout_marginRight="30dp" />
+        <ImageView
+            android:id="@+id/prompt_device"
+            android:src="@drawable/fitmi_dialog"
+            android:layout_width="415dp"
+            android:layout_height="450dp"
+            android:scaleType="centerInside"
+            android:layout_toRightOf="@id/prompt_exercise"
+            android:adjustViewBounds="true"
+            android:layout_marginLeft="30dp" />
+        <ImageButton
+            android:id="@+id/cancel"
+            android:layout_below="@id/prompt_device"
+            android:layout_width="90dp"
+            android:layout_height="wrap_content"
+            android:src="@drawable/cancel"
+            android:background="@android:color/background_light"
+            android:adjustViewBounds="true"
+            android:scaleType="centerInside"
+            android:layout_marginTop="25dp"
+            android:layout_toLeftOf="@+id/next"
+            android:layout_marginRight="20dp" />
+        <ImageButton
+            android:id="@id/next"
+            android:src="@drawable/next"
+            android:scaleType="centerInside"
+            android:layout_below="@id/prompt_device"
+            android:layout_width="90dp"
+            android:layout_height="wrap_content"
+            android:background="#ffffff"
+            android:adjustViewBounds="true"
+            android:layout_marginTop="25dp"
+            android:layout_alignParentStart="false"
+            android:layout_alignParentEnd="false"
+            android:layout_alignEnd="@id/prompt_device" />
+    </RelativeLayout>
     <fragment
         android:name="RePlay.FooterFragment"
         android:id="@+id/footer_fragment"
         android:layout_width="fill_parent"
         android:layout_alignParentBottom="true"
-        android:layout_height="wrap_content" />
-    
+        android:layout_height="35dp" />
+        
 </RelativeLayout>

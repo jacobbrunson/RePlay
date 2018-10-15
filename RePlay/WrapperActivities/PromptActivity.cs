@@ -24,12 +24,12 @@ namespace RePlay.WrapperActivities
 
             base.OnCreate(savedInstanceState);
             
-            this.FindViewById<Button>(Resource.Id.next).Click += delegate {
+            this.FindViewById<ImageButton>(Resource.Id.next).Click += delegate {
                 Intent intent = new Intent(this, typeof(WrapperActivities.GamesListActivity));
                 StartActivity(intent);
             };
 
-            this.FindViewById<Button>(Resource.Id.cancel).Click += delegate {
+            this.FindViewById<ImageButton>(Resource.Id.cancel).Click += delegate {
                 Intent intent = new Intent(this, typeof(MainActivity));
                 StartActivity(intent);
             };

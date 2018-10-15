@@ -1,0 +1,88 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:background="@android:color/background_light"
+    android:orientation="vertical"
+    android:minHeight="150dp"
+    android:minWidth="100dp"
+    android:padding="10dp"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent">
+    <TextView
+        android:text="ADD AN EXERCISE"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/addExerciseText"
+        android:textColor="@android:color/holo_green_light" />
+    <TextView
+        android:text="Exercise:"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/addExerciseText"
+        android:id="@+id/exerciseText"
+        android:textColor="@android:color/holo_green_light" />
+    <Spinner
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/addExerciseText"
+        android:layout_toRightOf="@id/exerciseText"
+        android:id="@+id/exerciseSpinner"
+        android:clipChildren="false" />
+    <TextView
+        android:text="Game:"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/exerciseText"
+        android:id="@+id/gameText"
+        android:textColor="@android:color/holo_green_light" />
+    <Spinner
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/exerciseText"
+        android:layout_toRightOf="@id/gameText"
+        android:id="@+id/gameSpinner" />
+    <TextView
+        android:text="Device:"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/gameText"
+        android:id="@+id/deviceText"
+        android:textColor="@android:color/holo_green_light" />
+    <Spinner
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/deviceText"
+        android:layout_below="@id/gameText"
+        android:id="@+id/deviceSpinner" />
+    <TextView
+        android:text="Time:"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/deviceText"
+        android:id="@+id/timeText"
+        android:textColor="@android:color/holo_green_light" />
+    <Spinner
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/timeText"
+        android:layout_below="@id/deviceText"
+        android:id="@+id/timeSpinner" />
+    <Button
+        android:text="Cancel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/timeText"
+        android:id="@+id/cancelButton" />
+    <Button
+        android:text="Add"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/timeText"
+        android:layout_toRightOf="@id/cancelButton"
+        android:id="@+id/addButton" />
+</RelativeLayout>

@@ -61,6 +61,7 @@
     <Compile Include="Prescription\PrescriptionManager.cs" />
     <Compile Include="Prescription\GameManager.cs" />
     <Compile Include="SettingsActivity.cs" />
+    <Compile Include="WrapperActivities\PrescriptionsPaginator.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />

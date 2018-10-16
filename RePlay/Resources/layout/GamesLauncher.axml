@@ -1,0 +1,93 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout 
+    xmlns:android="http://schemas.android.com/apk/res/android" 
+    android:orientation="vertical" 
+    android:layout_width="match_parent" 
+    android:layout_height="match_parent">
+    
+    <fragment
+        android:name="RePlay.NavigationFragment"
+        android:id="@+id/navigation_fragment"
+        android:layout_width="match_parent"
+        android:layout_height="75dp"
+        android:layout_alignParentTop="true" />
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_below="@id/navigation_fragment"
+        android:layout_above="@+id/footer_fragment"
+        android:background="#ffffff">
+        <TextView
+            android:id="@+id/gameslist_sortby"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Sort By: "
+            android:textColor="@android:color/black"
+            android:textStyle="bold"
+            android:textSize="18dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginLeft="150dp"
+            android:layout_alignBottom="@+id/gameslist_spinner" />
+        <Spinner
+            android:id="@id/gameslist_spinner"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/navigation_fragment"
+            android:layout_marginTop="30dp"
+            android:spinnerMode="dropdown"
+            android:transitionGroup="false"
+            android:entries="@array/sortby_options"
+            android:layout_marginLeft="10dp"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/customspinner"
+            android:layout_toRightOf="@id/gameslist_sortby"/>
+        <ImageButton
+            android:id="@+id/gameslist_left"
+            android:src="@drawable/keyboard_arrow_left"
+            android:scaleType="centerInside"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_alignParentLeft="true"
+            android:background="#ffffff"
+            android:padding="10dp"
+            android:layout_marginLeft="50dp"
+            android:layout_centerVertical="true" />
+        <ImageButton
+            android:id="@+id/gameslist_right"
+            android:src="@drawable/keyboard_arrow_right"
+            android:scaleType="centerInside"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_alignParentRight="true"
+            android:padding="10dp"
+            android:layout_marginRight="50dp"
+            android:layout_centerVertical="true"
+            android:background="#ffffff" />
+        <GridView
+            android:id="@+id/gameslist_grid"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_toLeftOf="@id/gameslist_right"
+            android:layout_toRightOf="@id/gameslist_left"
+            android:paddingTop="15dp"
+            android:horizontalSpacing="4dp"
+            android:verticalSpacing="2dp"
+            android:numColumns="3"
+            android:stretchMode="columnWidth"
+            android:background="#ffffff"
+            android:layout_marginBottom="10dp"
+            android:layout_below="@id/gameslist_spinner"
+            android:scrollbars="none"
+            android:gravity="center_horizontal"
+            android:layout_marginTop="10dp"/>
+    </RelativeLayout>
+    
+    <fragment
+        android:name="RePlay.FooterFragment"
+        android:id="@+id/footer_fragment"
+        android:layout_width="match_parent"
+        android:layout_alignParentBottom="true"
+        android:layout_height="35dp" />
+    
+</RelativeLayout>

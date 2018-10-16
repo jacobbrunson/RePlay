@@ -33,6 +33,9 @@
     <Reference Include="FitMi_Research_Puck">
       <HintPath>Libraries\FitMi_Research_Puck.dll</HintPath>
     </Reference>
+	<Reference Include="FitMiAndroid">
+      <HintPath>..\FitMiAndroid.dll</HintPath>
+    </Reference>
     <Reference Include="HidSharp">
       <HintPath>Libraries\HidSharp.dll</HintPath>
     </Reference>

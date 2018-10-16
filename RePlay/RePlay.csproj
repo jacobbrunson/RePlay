@@ -57,7 +57,6 @@
     <Compile Include="FooterFragment.cs" />
     <Compile Include="Resources\Resource.designer.cs" />
     <Compile Include="WrapperActivities\Paginator.cs" />
-    <Compile Include="Settings.cs" />
     <Compile Include="AddPrescriptionFragment.cs" />
     <Compile Include="Prescription\PrescriptionManager.cs" />
     <Compile Include="Prescription\GameManager.cs" />

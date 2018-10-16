@@ -61,7 +61,6 @@
     <Compile Include="Prescription\PrescriptionManager.cs" />
     <Compile Include="Prescription\GameManager.cs" />
     <Compile Include="SettingsActivity.cs" />
-    <Compile Include="WrapperActivities\PrescriptionsPaginator.cs" />
     <Compile Include="WrapperActivities\CustomPrescriptionsListView.cs" />
   </ItemGroup>
   <ItemGroup>

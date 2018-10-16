@@ -47,7 +47,7 @@ namespace RePlay.WrapperActivities
 
             if (view == null)
             {
-                view = LayoutInflater.From(Context).Inflate(Resource.Layout.GamesListLayout, null, false);
+                view = LayoutInflater.From(Context).Inflate(Resource.Layout.CustomGamesLauncher, null, false);
             }
 
             ImageView GameView = view.FindViewById<ImageView>(Resource.Id.gameslist_image);

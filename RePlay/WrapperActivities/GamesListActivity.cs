@@ -17,31 +17,66 @@ namespace RePlay.WrapperActivities
     public class GamesListActivity : Activity
     {
         GridView View;
-        List<Game> GamesList = new List<Game> { new Game(0, "Breakout"), new Game(1, "Traffic Racer"), 
-            new Game(2, "Fruit Archery"), new Game(3, "Temple Run"), new Game(4, "Crossy Road"),
-            new Game(5, "Typer Shark")};
+        ImageButton LeftButton, RightButton;
+        Paginator p = new Paginator(6);
+        int TotalPages = Paginator.TOTAL_NUM_ITEMS / Paginator.ITEMS_PER_PAGE;
+        int CurrentPage = 0;
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
 
-            SetContentView(Resource.Layout.GamesList);
+            SetContentView(Resource.Layout.GamesLauncher);
+            this.InitializeViews();
+            View.Adapter = new CustomGameListView(this, p.GeneratePage(CurrentPage));
+        }
 
-            Spinner spinner = FindViewById<Spinner>(Resource.Id.gameslist_sort_dropdown);
-            spinner.ItemSelected += new EventHandler<AdapterView.ItemSelectedEventArgs>(spinner_ItemSelected);
-            var adapter = ArrayAdapter.CreateFromResource(
-                this, Resource.Array.sortby_options, Android.Resource.Layout.SimpleSpinnerItem);
-
-            adapter.SetDropDownViewResource(Android.Resource.Layout.SimpleSpinnerDropDownItem);
-            spinner.Adapter = adapter;
-
-            CustomGameListView GameAdapter = new CustomGameListView(this, GamesList);
+        private void InitializeViews()
+        {
             View = FindViewById<GridView>(Resource.Id.gameslist_grid);
-            View.Adapter = GameAdapter;
+            LeftButton = FindViewById<ImageButton>(Resource.Id.gameslist_left);
+            RightButton = FindViewById<ImageButton>(Resource.Id.gameslist_right);
+            LeftButton.Enabled = false;
+
+            LeftButton.Click += LeftButton_Click;
+            RightButton.Click += RightButton_Click;
+
+        }
+
+        void LeftButton_Click(object sender, EventArgs e)
+        {
+            CurrentPage -= 1;
+            View.Adapter = new CustomGameListView(this, p.GeneratePage(CurrentPage));
+            ToggleButtons();
+        }
+
+        void RightButton_Click(object sender, EventArgs e)
+        {
+            CurrentPage += 1;
+            View.Adapter = new CustomGameListView(this, p.GeneratePage(CurrentPage));
+            ToggleButtons();
+        }
+
+        private void ToggleButtons()
+        {
+            if(CurrentPage == TotalPages)
+            {
+                LeftButton.Enabled = true;
+                RightButton.Enabled = false;
+            }
+            else if(CurrentPage == 0)
+            {
+                LeftButton.Enabled = false;
+                RightButton.Enabled = true;
+            }
+            else
+            {
+                LeftButton.Enabled = true;
+                RightButton.Enabled = true;
+            }
+
             View.ItemClick += (s, e) =>
             {
-                Toast.MakeText(this, "GridView Item: " + GamesList[e.Position], ToastLength.Short).Show();
-
                 Intent intent = new Intent(this, typeof(DummyGame.Android.Activity1));
                 intent.PutExtra("CONTENT_DIR", "DummyGame");
                 StartActivity(intent);

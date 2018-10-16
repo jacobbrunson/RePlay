@@ -1,63 +1,87 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent" >
+    android:layout_height="match_parent">
     <fragment
-            android:name="RePlay.NavigationFragment"
-            android:id="@+id/navigation_fragment"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignParentTop="true" />
+        android:name="RePlay.NavigationFragment"
+        android:id="@+id/navigation_fragment"
+        android:layout_width="match_parent"
+        android:layout_height="75dp"
+        android:layout_alignParentTop="true" />
     <RelativeLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        android:orientation="vertical"
-        android:layout_width="600dp"
-        android:layout_height="match_parent"
-        android:layout_gravity="center" >
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_below="@id/navigation_fragment"
+        android:layout_above="@+id/footer_fragment"
+        android:background="#ffffff">
         <TextView
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
             android:id="@+id/accessTextView"
-            android:text="To access settings enter your password" />
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textColor="@android:color/black"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="To access settings enter your password"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="100dp"
+            android:textStyle="bold" />
         <EditText
-            android:inputType="textPassword"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
             android:id="@+id/password"
-            android:hint="Password"
-            android:layout_below="@id/accessTextView"/>
-        <View
-            android:id="@+id/dummy"
-            android:layout_height="0dp"
-            android:layout_width="0dp"
+            android:inputType="textPassword"
+            android:background="@drawable/edittextborder"
+            android:password="true"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/accessTextView"
             android:layout_centerInParent="true"
-            android:layout_below="@id/password"/>
+            android:hint="Password"
+            android:layout_marginTop="50dp"
+            android:textColor="@android:color/black"
+            android:textColorHint="@android:color/darker_gray"/>
+        <TextView
+            android:id="@+id/enter_password"
+            android:textColor="#69BE28"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/password"
+            android:text="Enter your password"
+            android:textStyle="bold"
+            android:layout_marginTop="5dp"
+            android:textAppearance="@android:style/TextAppearance.Material.Caption"
+            android:layout_alignStart="@id/password"
+            android:layout_marginLeft="15dp" />
         <ImageButton
+            android:id="@+id/settings_back"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
             android:src="@drawable/back"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/settingsBack"
-            android:layout_alignTop="@id/dummy"
-            android:layout_alignRight="@id/dummy"
-            android:layout_alignParentLeft="true"
-            android:background="@null"
-            android:scaleX="0.5"
-            android:scaleY="0.5"
-            android:paddingRight="0dp"
-            android:paddingLeft="0dp" />
+            android:background="#ffffff"
+            android:layout_below="@id/enter_password"
+            android:layout_alignLeft="@id/password"
+            android:scaleType="centerInside"
+            android:adjustViewBounds="true"
+            android:layout_marginLeft="25dp"
+            android:layout_marginTop="35dp" />
         <ImageButton
-            android:src="@drawable/next"
-            android:layout_width="match_parent"
+            android:id="@+id/settings_next"
+            android:layout_width="100dp"
             android:layout_height="wrap_content"
-            android:id="@+id/settingsNext"
-            android:layout_alignTop="@id/dummy"
-            android:layout_alignLeft="@id/dummy"
-            android:layout_alignParentRight="true"
-            android:background="@null"
-            android:scaleX="0.5"
-            android:scaleY="0.5"  />
+            android:src="@drawable/next"
+            android:background="#ffffff"
+            android:layout_below="@id/enter_password"
+            android:scaleType="centerInside"
+            android:adjustViewBounds="true"
+            android:layout_alignRight="@id/password"
+            android:layout_marginRight="25dp"
+            android:layout_marginTop="35dp" />
     </RelativeLayout>
-</LinearLayout>
+    <fragment
+        android:name="RePlay.FooterFragment"
+        android:id="@+id/footer_fragment"
+        android:layout_width="match_parent"
+        android:layout_alignParentBottom="true"
+        android:layout_height="35dp" />
+    
+</RelativeLayout>

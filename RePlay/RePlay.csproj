@@ -48,14 +48,15 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="MainActivity.cs" />
-    <Compile Include="Resources\Resource.designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="WrapperActivities\PromptActivity.cs" />
-    <Compile Include="WrapperActivities\CustomGridView.cs" />
     <Compile Include="WrapperActivities\GamesListActivity.cs" />
     <Compile Include="WrapperActivities\CustomGameListView.cs" />
     <Compile Include="NavigationFragment.cs" />
     <Compile Include="SettingsLoginActivity.cs" />
+    <Compile Include="FooterFragment.cs" />
+    <Compile Include="Resources\Resource.designer.cs" />
+    <Compile Include="WrapperActivities\Paginator.cs" />
     <Compile Include="Settings.cs" />
     <Compile Include="AddPrescriptionFragment.cs" />
     <Compile Include="Prescription\PrescriptionManager.cs" />
@@ -123,18 +124,22 @@
     <AndroidResource Include="Resources\drawable\txbdc_text.png" />
     <AndroidResource Include="Resources\drawable\typing.jpg" />
     <AndroidResource Include="Resources\drawable\yes.png" />
-    <AndroidResource Include="Resources\layout\GridViewLayout.axml" />
     <AndroidResource Include="Resources\layout\Prompt.axml" />
     <AndroidResource Include="Resources\drawable\wrist_flexion_1.png" />
-    <AndroidResource Include="Resources\layout\GamesListLayout.axml" />
-    <AndroidResource Include="Resources\layout\GamesList.axml" />
+    <AndroidResource Include="Resources\layout\CustomGamesLauncher.axml" />
+    <AndroidResource Include="Resources\layout\GamesLauncher.axml" />
     <AndroidResource Include="Resources\drawable\keyboard_arrow_left.png" />
     <AndroidResource Include="Resources\drawable\keyboard_arrow_right.png" />
-    <AndroidResource Include="Resources\drawable\spinner.xml" />
     <AndroidResource Include="Resources\drawable\wrist_flexion.jpg" />
     <AndroidResource Include="Resources\drawable\yes.png" />
     <AndroidResource Include="Resources\layout\SettingsLogin.axml" />
     <AndroidResource Include="Resources\drawable\breakout_screenshot.png" />
+    <AndroidResource Include="Resources\layout\Footer.axml" />
+    <AndroidResource Include="Resources\drawable\EditTextBorder.xml" />
+    <AndroidResource Include="Resources\drawable\fitmi_dialog.png" />
+    <AndroidResource Include="Resources\drawable\wrist_flexion_dialog.png" />
+    <AndroidResource Include="Resources\drawable\CustomSpinner.xml" />
+    <AndroidResource Include="Resources\drawable\spinner_arrow.png" />
     <AndroidResource Include="Resources\layout\AddPrescription.axml" />
     <AndroidResource Include="Resources\layout\Settings.axml" />
   </ItemGroup>

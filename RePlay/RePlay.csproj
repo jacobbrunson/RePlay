@@ -60,6 +60,7 @@
     <Compile Include="AddPrescriptionFragment.cs" />
     <Compile Include="Prescription\PrescriptionManager.cs" />
     <Compile Include="Prescription\GameManager.cs" />
+    <Compile Include="SettingsActivity.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />

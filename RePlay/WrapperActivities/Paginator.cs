@@ -3,22 +3,20 @@ using System.Collections.Generic;
 
 namespace RePlay.WrapperActivities
 {
-    public class Paginator
+    public class Paginator<T>
     {
-        public List<Game> ItemsList;
+        public List<T> ItemsList;
         public static int TOTAL_NUM_ITEMS;
         public static int ITEMS_PER_PAGE;
         public static int ITEMS_REMAINING;
         public static int LAST_PAGE;
 
-        public Paginator(int items_per_page)
+        public Paginator(int items_per_page, List<T> list)
         {
 
             // InitializeItemsList(); // Not Implemented yet
 
-            ItemsList = new List<Game> { new Game(0, "Breakout"), new Game(1, "Traffic Racer"),
-            new Game(2, "Fruit Archery"), new Game(3, "Temple Run"), new Game(4, "Crossy Road"),
-            new Game(5, "Typer Shark"), new Game(6, "Handwriting"), new Game(7, "Rep Mode")};
+            ItemsList = list;
 
             TOTAL_NUM_ITEMS = ItemsList.Count;
             ITEMS_PER_PAGE = items_per_page;
@@ -26,11 +24,11 @@ namespace RePlay.WrapperActivities
             LAST_PAGE = TOTAL_NUM_ITEMS / ITEMS_PER_PAGE;
         }
 
-        public List<Game> GeneratePage(int curr)
+        public List<T> GeneratePage(int curr)
         {
             int start = curr * ITEMS_PER_PAGE;
 
-            List<Game> data = new List<Game>();
+            List<T> data = new List<T>();
 
             if (ITEMS_REMAINING > 0 && curr == LAST_PAGE)
             {

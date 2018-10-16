@@ -1,10 +1,11 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <ProjectGuid>{50E7966A-EE62-4A59-B5CE-5DA097568E49}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <TargetFrameworkVersion>v4.7</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <RootNamespace>Utilities</RootNamespace>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugType>full</DebugType>
@@ -19,6 +20,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <None Include="app.config" />
     <None Include="Libraries\FitMi_Research_Puck.dll">
       <IncludeInPackage>true</IncludeInPackage>
     </None>
@@ -26,9 +28,7 @@
       <IncludeInPackage>true</IncludeInPackage>
     </None>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Libraries\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Reference Include="FitMi_Research_Puck">
       <HintPath>Libraries\FitMi_Research_Puck.dll</HintPath>

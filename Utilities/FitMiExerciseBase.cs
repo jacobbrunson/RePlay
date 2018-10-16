@@ -100,6 +100,60 @@ namespace Exercises
             }
         }
 
+        public static FitMiExerciseBase GetExerciseClass(HIDPuckDongle puck_dongle, FitMiExerciseType type)
+        {
+            switch(type)
+            {
+
+                case FitMiExerciseType.Touches:
+                    return new FitMiExercise_PuckTouch(puck_dongle);
+                case FitMiExerciseType.ReachAcross:
+                    return new FitMiExercise_ReachAcross(puck_dongle);
+                case FitMiExerciseType.Clapping:
+                    return new FitMiExercise_Clapping(puck_dongle);
+                case FitMiExerciseType.ReachOut:
+                    return new FitMiExercise_ReachOut(puck_dongle);
+                case FitMiExerciseType.ReachDiagonal:
+                    return new FitMiExercise_ReachDiagonal(puck_dongle);
+                case FitMiExerciseType.Supination:
+                    return new FitMiExercise_Supination(puck_dongle);
+                case FitMiExerciseType.Curls:
+                    return new FitMiExercise_Curls(puck_dongle);
+                case FitMiExerciseType.ShoulderExtension:
+                    return new FitMiExercise_ShoulderExtension(puck_dongle);
+                case FitMiExerciseType.ShoulderAbduction:
+                    return new FitMiExercise_ShoulderAbduction(puck_dongle);
+                case FitMiExerciseType.Flyout:
+                    return new FitMiExercise_Flyout(puck_dongle);
+
+                //Hand exercises
+                case FitMiExerciseType.WristFlexion:
+                    return new FitMiExercise_WristFlexion(puck_dongle);
+                case FitMiExerciseType.WristDeviation:
+                    return new FitMiExercise_WristDeviation(puck_dongle);
+                case FitMiExerciseType.Grip:
+                    return new FitMiExercise_Grip(puck_dongle);
+                case FitMiExerciseType.Rotate:
+                    return new FitMiExercise_Rotate(puck_dongle);
+                case FitMiExerciseType.KeyPinch:
+                    return new FitMiExercise_KeyPinch(puck_dongle);
+                case FitMiExerciseType.FingerTap:
+                    return new FitMiExercise_FingerTap(puck_dongle);
+                case FitMiExerciseType.ThumbOpposition:
+                    return new FitMiExercise_ThumbOpposition(puck_dongle);
+                case FitMiExerciseType.FingerTwists:
+                    return new FitMiExercise_FingerTwists(puck_dongle);
+                case FitMiExerciseType.Rolling:
+                    return new FitMiExercise_Rolling(puck_dongle);
+                case FitMiExerciseType.Flipping:
+                    return new FitMiExercise_Flipping(puck_dongle);
+
+                //The unknown exercise
+                default:
+                    return new FitMiExercise_Unknown(puck_dongle);
+            }
+        }
+
         #endregion
     }
 }

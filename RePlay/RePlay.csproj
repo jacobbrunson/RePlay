@@ -1,4 +1,5 @@
-﻿<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
@@ -154,12 +155,18 @@
   <Choose>
     <When Condition="$(TargetFrameworkIdentifier) == 'MonoAndroid' And $(TargetFrameworkVersion) == 'v7.1'">
       <ItemGroup>
+        <Reference Include="GameDLLs\*.dll" />
+      </ItemGroup>
+    </When>
+  </Choose>
+  <Choose>
+    <When Condition="$(TargetFrameworkIdentifier) == 'MonoAndroid' And $(TargetFrameworkVersion) == 'v7.1'">
+      <ItemGroup>
         <Reference Include="MonoGame.Framework">
           <HintPath>..\packages\MonoGame.Framework.Android\lib\MonoAndroid\MonoGame.Framework.dll</HintPath>
           <Private>True</Private>
           <Paket>True</Paket>
         </Reference>
-        <Reference Include="GameDLLs\*.dll" />
       </ItemGroup>
     </When>
   </Choose>

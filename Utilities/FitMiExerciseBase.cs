@@ -143,8 +143,6 @@ namespace Exercises
                     return new FitMiExercise_ThumbOpposition(puck_dongle);
                 case FitMiExerciseType.FingerTwists:
                     return new FitMiExercise_FingerTwists(puck_dongle);
-                case FitMiExerciseType.Rolling:
-                    return new FitMiExercise_Rolling(puck_dongle);
                 case FitMiExerciseType.Flipping:
                     return new FitMiExercise_Flipping(puck_dongle);
 

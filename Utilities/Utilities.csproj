@@ -6,6 +6,7 @@
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <RootNamespace>Utilities</RootNamespace>
     <TargetFrameworkProfile />
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugType>full</DebugType>
@@ -28,21 +29,54 @@
       <IncludeInPackage>true</IncludeInPackage>
     </None>
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
+    <Compile Include="FitMiExerciseBase.cs" />
+    <Compile Include="FitMiExerciseType.cs" />
+    <Compile Include="FitMiExercise_Clapping.cs" />
+    <Compile Include="FitMiExercise_Curls.cs" />
+    <Compile Include="FitMiExercise_FingerTap.cs" />
+    <Compile Include="FitMiExercise_FingerTwists.cs" />
+    <Compile Include="FitMiExercise_Flipping.cs" />
+    <Compile Include="FitMiExercise_Flyout.cs" />
+    <Compile Include="FitMiExercise_Grip.cs" />
+    <Compile Include="FitMiExercise_KeyPinch.cs" />
+    <Compile Include="FitMiExercise_PuckRoll.cs" />
+    <Compile Include="FitMiExercise_PuckTouch.cs" />
+    <Compile Include="FitMiExercise_ReachAcross.cs" />
+    <Compile Include="FitMiExercise_ReachDiagonal.cs" />
+    <Compile Include="FitMiExercise_ReachOut.cs" />
+    <Compile Include="FitMiExercise_Rotate.cs" />
+    <Compile Include="FitMiExercise_ShoulderAbduction.cs" />
+    <Compile Include="FitMiExercise_ShoulderExtension.cs" />
+    <Compile Include="FitMiExercise_Supination.cs" />
+    <Compile Include="FitMiExercise_ThumbOpposition.cs" />
+    <Compile Include="FitMiExercise_Unknown.cs" />
+    <Compile Include="FitMiExercise_WristDeviation.cs" />
+    <Compile Include="FitMiExercise_WristFlexion.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Mono.Android" />
     <Reference Include="FitMi_Research_Puck">
       <HintPath>Libraries\FitMi_Research_Puck.dll</HintPath>
     </Reference>
-	<Reference Include="FitMiAndroid">
+    <Reference Include="FitMiAndroid">
       <HintPath>..\FitMiAndroid.dll</HintPath>
     </Reference>
     <Reference Include="HidSharp">
       <HintPath>Libraries\HidSharp.dll</HintPath>
     </Reference>
   </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Axes.cs" />
-    <Compile Include="FitMiiController.cs" />
-  </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Choose>
+    <When Condition="$(TargetFrameworkIdentifier) == 'MonoAndroid' And $(TargetFrameworkVersion) == 'v7.1'">
+      <ItemGroup>
+        <Reference Include="MonoGame.Framework">
+          <HintPath>..\packages\MonoGame.Framework.Android\lib\MonoAndroid\MonoGame.Framework.dll</HintPath>
+          <Private>True</Private>
+          <Paket>True</Paket>
+        </Reference>
+      </ItemGroup>
+    </When>
+  </Choose>
+  <Import Project="..\packages\MonoGame.Framework.Android\build\MonoGame.Framework.Android.targets" Condition="Exists('..\packages\MonoGame.Framework.Android\build\MonoGame.Framework.Android.targets')" Label="Paket" />
 </Project>

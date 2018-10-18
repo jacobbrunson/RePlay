@@ -35,9 +35,6 @@ namespace Exercises
             base.Update();
 
             //Grab the current force value on the loadcell of the puck
-            var current_force_value = FitMi_Controller.PuckPack0.Loadcell;
-
-
         }
 
         #endregion

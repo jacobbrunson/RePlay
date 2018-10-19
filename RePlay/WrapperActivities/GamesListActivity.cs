@@ -18,8 +18,8 @@ namespace RePlay.WrapperActivities
     {
         GridView View;
         ImageButton LeftButton, RightButton;
-        Paginator p = new Paginator(6);
-        int TotalPages = Paginator.TOTAL_NUM_ITEMS / Paginator.ITEMS_PER_PAGE;
+        Paginator<RePlayGame> p = new Paginator<RePlayGame>(6, new List<RePlayGame>());
+        int TotalPages = Paginator<RePlayGame>.TOTAL_NUM_ITEMS / Paginator<RePlayGame>.ITEMS_PER_PAGE;
         int CurrentPage = 0;
 
         protected override void OnCreate(Bundle savedInstanceState)

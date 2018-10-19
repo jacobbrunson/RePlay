@@ -78,14 +78,6 @@
                     android:layout_centerVertical="true"
                     android:layout_alignParentLeft="true"
                     android:layout_marginLeft="100dp" />
-                <GridView
-                    android:id="@+id/settings_gridview_1"
-                    android:layout_width="fill_parent"
-                    android:layout_height="fill_parent"
-                    android:layout_toLeftOf="@id/right_button_1"
-                    android:layout_toRightOf="@id/left_button_1"
-                    android:stretchMode="columnWidth"
-                    android:numColumns="3" />
                 <ImageButton
                     android:id="@+id/right_button_1"
                     android:background="#f6f6f6"
@@ -97,6 +89,14 @@
                     android:layout_centerVertical="true"
                     android:layout_alignParentRight="true"
                     android:layout_marginRight="100dp" />
+                <GridView
+                    android:id="@+id/settings_gridview_1"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:layout_toLeftOf="@id/right_button_1"
+                    android:layout_toRightOf="@id/left_button_1"
+                    android:stretchMode="columnWidth"
+                    android:numColumns="3" />
             </RelativeLayout>
             
             <RelativeLayout

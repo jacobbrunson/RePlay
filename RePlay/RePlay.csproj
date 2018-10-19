@@ -56,12 +56,12 @@
     <Compile Include="SettingsLoginActivity.cs" />
     <Compile Include="FooterFragment.cs" />
     <Compile Include="Resources\Resource.designer.cs" />
-    <Compile Include="WrapperActivities\Paginator.cs" />
     <Compile Include="AddPrescriptionFragment.cs" />
     <Compile Include="Prescription\PrescriptionManager.cs" />
     <Compile Include="Prescription\GameManager.cs" />
-    <Compile Include="SettingsActivity.cs" />
     <Compile Include="WrapperActivities\CustomPrescriptionsListView.cs" />
+    <Compile Include="WrapperActivities\SettingsActivity.cs" />
+    <Compile Include="Paginator.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />

@@ -153,8 +153,9 @@
     <Folder Include="Prescription\" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidAsset Include="Assets\**" />
     <AndroidAsset Include="Assets\games.txt" />
+    <AndroidAsset Include="Assets\AboutAssets.txt" />
+    <AndroidAsset Include="Assets\DummyGame\temoc.xnb" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <Choose>

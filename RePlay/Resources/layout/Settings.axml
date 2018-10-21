@@ -19,44 +19,44 @@
         android:layout_below="@id/navigation_fragment"
         android:layout_above="@+id/footer_fragment"
         android:background="#ffffff">
-        <FrameLayout
+        <RelativeLayout
             android:id="@+id/settings_frame"
             android:layout_width="fill_parent"
-            android:layout_height="170dp">
-            <RelativeLayout
+            android:layout_height="135dp">
+
+            <ImageView
+                android:id="@+id/green_banner"
+                android:src="@drawable/green_bar"
+                android:layout_alignParentTop="true"
                 android:layout_width="fill_parent"
-                android:layout_height="fill_parent">
-                <ImageView
-                    android:id="@+id/green_banner"
-                    android:src="@drawable/green_bar"
-                    android:layout_alignParentTop="true"
-                    android:layout_width="fill_parent"
-                    android:layout_height="90dp"
-                    android:scaleType="fitXY"
-                    android:adjustViewBounds="true" />
-                <TextView
-                    android:id="@+id/therapist_name"
-                    android:text="David Wilson"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textColor="@android:color/white"
-                    android:textSize="24dp"
-                    android:layout_centerVertical="true"
-                    android:paddingBottom="40dp"
-                    android:layout_marginLeft="200dp" />
-                <TextView
-                    android:id="@+id/assigned_exercise"
-                    android:layout_width="fill_parent"
-                    android:layout_height="80dp"
-                    android:textColor="@android:color/holo_green_light"
-                    android:text="Assigned Exercises"
-                    android:textSize="40dp"
-                    android:background="@android:color/background_light"
-                    android:gravity="center_vertical"
-                    android:paddingLeft="250dp"
-                    android:layout_below="@id/green_banner" />
-            </RelativeLayout>
-        </FrameLayout>
+                android:layout_height="75dp"
+                android:scaleType="fitXY"
+                android:adjustViewBounds="true"/>
+            
+            <TextView
+                android:id="@+id/therapist_name"
+                android:text="David Wilson"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@android:color/white"
+                android:textSize="24dp"
+                android:layout_centerVertical="true"
+                android:paddingBottom="40dp"
+                android:layout_marginLeft="120dp" />
+            
+            <TextView
+                android:id="@+id/assigned_exercise"
+                android:layout_width="fill_parent"
+                android:layout_height="60dp"
+                android:textColor="@android:color/holo_green_light"
+                android:text="Assigned Exercises"
+                android:textSize="30dp"
+                android:background="@android:color/background_light"
+                android:gravity="center_vertical"
+                android:layout_below="@id/green_banner"
+                android:paddingLeft="160dp" />
+            
+        </RelativeLayout>
         
         <RelativeLayout
             android:layout_width="match_parent"
@@ -64,7 +64,7 @@
             android:layout_below="@id/settings_frame" >
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="275dp"
+                android:layout_height="280dp"
                 android:id="@+id/assigned_layout"
                 android:background="#f6f6f6">
                 <ImageButton
@@ -82,12 +82,16 @@
                     android:id="@+id/settings_gridview_1"
                     android:layout_width="fill_parent"
                     android:layout_height="fill_parent"
-                    android:layout_toLeftOf="@id/right_button_1"
+                    android:layout_toLeftOf="@+id/right_button_1"
                     android:layout_toRightOf="@id/left_button_1"
                     android:stretchMode="columnWidth"
-                    android:numColumns="3" />
+                    android:numColumns="3"
+                    android:gravity="center"
+                    android:scrollbars="none"
+                    android:paddingTop="3dp"
+                    android:paddingBottom="3dp" />
                 <ImageButton
-                    android:id="@+id/right_button_1"
+                    android:id="@id/right_button_1"
                     android:background="#f6f6f6"
                     android:src="@drawable/keyboard_arrow_right"
                     android:scaleType="centerInside"
@@ -98,12 +102,53 @@
                     android:layout_alignParentRight="true"
                     android:layout_marginRight="100dp" />
             </RelativeLayout>
-            
+            <TextView
+                android:id="@+id/saved_exercises"
+                android:layout_width="fill_parent"
+                android:layout_height="50dp"
+                android:text="Saved Exercises"
+                android:textSize="30dp"
+                android:textColor="@android:color/holo_green_light"
+                android:layout_below="@id/assigned_layout"
+                android:layout_marginTop="5dp"
+                android:paddingLeft="160dp" />
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="fill_parent"
-                android:layout_below="@id/assigned_layout" 
+                android:layout_below="@id/saved_exercises"
                 >
+                <ImageButton
+                    android:id="@+id/left_button_2"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:padding="10dp"
+                    android:scaleType="centerInside"
+                    android:src="@drawable/keyboard_arrow_left"
+                    android:layout_centerVertical="true"
+                    android:layout_alignParentLeft="true"
+                    android:layout_marginLeft="100dp"
+                    android:background="#ffffff"/>
+                <GridView
+                    android:id="@+id/settings_gridview_2"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:layout_toRightOf="@id/left_button_2"
+                    android:layout_toLeftOf="@+id/right_button_2"
+                    android:stretchMode="columnWidth"
+                    android:numColumns="3"
+                    android:scrollbars="none"
+                    android:padding="5dp" />
+                <ImageButton
+                    android:id="@id/right_button_2"
+                    android:background="#ffffff"
+                    android:src="@drawable/keyboard_arrow_right"
+                    android:scaleType="centerInside"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:padding="10dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="100dp"
+                    android:layout_centerVertical="true" />
             </RelativeLayout>
         </RelativeLayout>
             

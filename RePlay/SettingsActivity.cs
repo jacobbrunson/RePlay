@@ -10,95 +10,161 @@ using Android.OS;
 using Android.Runtime;
 using Android.Views;
 using Android.Widget;
+using RePlay.WrapperActivities;
 
 namespace RePlay
 {
-    //, ScreenOrientation = ScreenOrientation.Landscape
     [Activity(Label = "Settings")]
     public class Settings : Activity
     {
+        GridView AssignedView, SavedView;
+        ImageButton ALeftButton, ARightButton, SLeftButton, SRightButton;
+
+        static List<SettingsPrescription> assigned = new List<SettingsPrescription> {
+            new SettingsPrescription(0, "Breakout", "Left-to-Right", "FitMi", 3), 
+            new SettingsPrescription(0, "Temple Run", "WristFlexion", "FitMi", 3),
+            new SettingsPrescription(0, "Crossy Road", "Bicep Curl", "FitMi", 3),
+            new SettingsPrescription(0, "Handwriting", "Thumb Press", "FitMi", 3)
+        };
+        static List<SettingsPrescription> saved = new List<SettingsPrescription> {
+            new SettingsPrescription(0, "Traffic Racer", "Bicep Curl", "FitMi", 3),
+            new SettingsPrescription(0, "Breakout", "Wrist Supination", "FitMi", 3),
+            new SettingsPrescription(0, "Typer Shark", "Typing", "FitMi", 3)
+        };
+
+        Paginator<SettingsPrescription> assigned_paginator = new Paginator<SettingsPrescription>(3, assigned);
+        Paginator<SettingsPrescription> saved_paginator = new Paginator<SettingsPrescription>(3, saved);
+
+        int ACurrentPage = 0;
+        int SCurrentPage = 0;
+
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
 
             SetContentView(Resource.Layout.Settings);
+            this.InitializeViews();
+            AssignedView.Adapter = new CustomPrescriptionsListView(this, assigned_paginator.GeneratePage(ACurrentPage), assigned_paginator.ContainsLast(ACurrentPage));
+            SavedView.Adapter = new CustomPrescriptionsListView(this, saved_paginator.GeneratePage(SCurrentPage));
 
-            /*
-             * Future: Create list of image buttons, programmatically displaying each
-             * 
-             * ImageButton assigned[] = new ImageButton[];
-             * 
-             * for(ImageButton button : assigned) {
-             *      addButtonToLayout(button)
-             * }
-             * 
-             */
-//            ImageButton assigned1 = FindViewById<ImageButton>(Resource.Id.reachPic);
-//            ImageButton assigned2 = FindViewById<ImageButton>(Resource.Id.flexPic);
-//            ImageButton addAssigned = FindViewById<ImageButton>(Resource.Id.plusPic);
+            //            addAssigned.Click += delegate
+            //            {
+            //                // Create a new fragment and a transaction.
+            //                // FragmentTransaction fragmentTx = this.FragmentManager.BeginTransaction();
+            //                // NavigationFragment navBar = new NavigationFragment();
 
-//            assigned1.Click += delegate
-//            {
-//                // toast reach pic
-//                Toast.MakeText(this, "Assigned Exercise 1: reach", ToastLength.Long).Show();
+            //                // The fragment will have the ID of Resource.Id.fragment_container.
+            //                // fragmentTx.Add(Resource.Id.fragment_container, navBar);
 
-//            };
+            //                // Commit the transaction.
+            //                // fragmentTx.Commit();
+            //                FragmentManager.BeginTransaction();
+            //                Fragment prev = FragmentManager.FindFragmentByTag("dialog");
+            //                var prescriptionFragment = AddPrescriptionFragment.NewInstance();
+            //                prescriptionFragment.Dismissed += (s, e) =>
+            //                {
+            //                    var args = (AddPrescriptionFragment.DialogEventArgs)e;
+            //                    Toast.MakeText(this, String.Format("The Game is {0}.", args.Game), ToastLength.Long).Show();
+            //                    Toast.MakeText(this, String.Format("The Exercise is {0}.", args.Exercise), ToastLength.Long).Show();
+            //                    Toast.MakeText(this, String.Format("The Device is {0}.", args.Device), ToastLength.Long).Show();
+            //                    Toast.MakeText(this, String.Format("The Time is {0}.", args.Time), ToastLength.Long).Show();
+            //                };
+            //                prescriptionFragment.Show(FragmentManager, "dialog");
+            ////                FragmentManager.BeginTransaction()
+            ////                               .Add(Android.Resource.Id.Content, prescriptionFragment)
+            ////                               .Commit();
+            //    };
 
-//            assigned2.Click += delegate
-//            {
-//                // toast wrist flexion pic
-//                Toast.MakeText(this, "Assigned Exercise 2: wrist flexion", ToastLength.Long).Show();
-//            };
+        }
 
-//            addAssigned.Click += delegate
-//            {
-//                // Create a new fragment and a transaction.
-//                // FragmentTransaction fragmentTx = this.FragmentManager.BeginTransaction();
-//                // NavigationFragment navBar = new NavigationFragment();
+        private void InitializeViews()
+        {   
+            // Initialize both grids
+            AssignedView = FindViewById<GridView>(Resource.Id.settings_gridview_1);
+            SavedView = FindViewById<GridView>(Resource.Id.settings_gridview_2);
 
-//                // The fragment will have the ID of Resource.Id.fragment_container.
-//                // fragmentTx.Add(Resource.Id.fragment_container, navBar);
+            // Initialize first pair of buttons
+            ALeftButton = FindViewById<ImageButton>(Resource.Id.left_button_1);
+            ARightButton = FindViewById<ImageButton>(Resource.Id.right_button_1);
+            ALeftButton.Enabled = false;
 
-//                // Commit the transaction.
-//                // fragmentTx.Commit();
-//                FragmentManager.BeginTransaction();
-//                Fragment prev = FragmentManager.FindFragmentByTag("dialog");
-//                var prescriptionFragment = AddPrescriptionFragment.NewInstance();
-//                prescriptionFragment.Dismissed += (s, e) =>
-//                {
-//                    var args = (AddPrescriptionFragment.DialogEventArgs)e;
-//                    Toast.MakeText(this, String.Format("The Game is {0}.", args.Game), ToastLength.Long).Show();
-//                    Toast.MakeText(this, String.Format("The Exercise is {0}.", args.Exercise), ToastLength.Long).Show();
-//                    Toast.MakeText(this, String.Format("The Device is {0}.", args.Device), ToastLength.Long).Show();
-//                    Toast.MakeText(this, String.Format("The Time is {0}.", args.Time), ToastLength.Long).Show();
-//                };
-//                prescriptionFragment.Show(FragmentManager, "dialog");
-////                FragmentManager.BeginTransaction()
-////                               .Add(Android.Resource.Id.Content, prescriptionFragment)
-////                               .Commit();
-        //    };
+            ALeftButton.Click += LeftButton_Click_Assigned;
+            ARightButton.Click += RightButton_Click_Assigned;
 
-        //    ImageButton saved1 = FindViewById<ImageButton>(Resource.Id.curlsPic);
-        //    ImageButton saved2 = FindViewById<ImageButton>(Resource.Id.supPic);
-        //    ImageButton saved3 = FindViewById<ImageButton>(Resource.Id.typePic);
+            // Initialize second pair of buttons
+            SLeftButton = FindViewById<ImageButton>(Resource.Id.left_button_2);
+            SRightButton = FindViewById<ImageButton>(Resource.Id.right_button_2);
+            SLeftButton.Enabled = false;
 
-        //    saved1.Click += delegate
-        //    {
-        //        // toast curls pic
-        //        Toast.MakeText(this, "Saved Exercise 1: bicep curls", ToastLength.Long).Show();
-        //    };
+            SLeftButton.Click += LeftButton_Click_Saved;
+            SRightButton.Click += RightButton_Click_Saved;
 
-        //    saved2.Click += delegate
-        //    {
-        //        // toast supination pic
-        //        Toast.MakeText(this, "Saved Exercise 2: wrist supination", ToastLength.Long).Show();
-        //    };
-            
-        //    saved3.Click += delegate
-        //    {
-        //        // toast type pic
-        //        Toast.MakeText(this, "Saved Exercise 3: typing", ToastLength.Long).Show();
-        //    };
+        }
+
+        void LeftButton_Click_Assigned(object sender, EventArgs e)
+        {
+            ACurrentPage -= 1;
+            AssignedView.Adapter = new CustomPrescriptionsListView(this, assigned_paginator.GeneratePage(ACurrentPage), assigned_paginator.ContainsLast(ACurrentPage));
+            ToggleAButtons();
+        }
+
+        void RightButton_Click_Assigned(object sender, EventArgs e)
+        {
+            ACurrentPage += 1;
+            AssignedView.Adapter = new CustomPrescriptionsListView(this, assigned_paginator.GeneratePage(ACurrentPage), assigned_paginator.ContainsLast(ACurrentPage));
+            ToggleAButtons();
+        }
+
+        void LeftButton_Click_Saved(object sender, EventArgs e)
+        {
+            SCurrentPage -= 1;
+            SavedView.Adapter = new CustomPrescriptionsListView(this, saved_paginator.GeneratePage(SCurrentPage));
+            ToggleSButtons();
+        }
+
+        void RightButton_Click_Saved(object sender, EventArgs e)
+        {
+            SCurrentPage += 1;
+            SavedView.Adapter = new CustomPrescriptionsListView(this, saved_paginator.GeneratePage(SCurrentPage));
+            ToggleSButtons();
+        }
+
+        private void ToggleAButtons()
+        {
+            if (ACurrentPage == assigned_paginator.LAST_PAGE)
+            {
+                ALeftButton.Enabled = true;
+                ARightButton.Enabled = false;
+            }
+            else if (ACurrentPage == 0)
+            {
+                ALeftButton.Enabled = false;
+                ARightButton.Enabled = true;
+            }
+            else
+            {
+                ALeftButton.Enabled = true;
+                ARightButton.Enabled = true;
+            }
+        }
+
+        private void ToggleSButtons()
+        {
+            if (SCurrentPage == saved_paginator.LAST_PAGE)
+            {
+                SLeftButton.Enabled = true;
+                SRightButton.Enabled = false;
+            }
+            else if (ACurrentPage == 0)
+            {
+                SLeftButton.Enabled = false;
+                SRightButton.Enabled = true;
+            }
+            else
+            {
+                SLeftButton.Enabled = true;
+                SRightButton.Enabled = true;
+            }
         }
     }
 }

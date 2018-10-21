@@ -17,12 +17,24 @@ namespace RePlay.WrapperActivities
     public class CustomPrescriptionsListView : BaseAdapter
     {
         private Context Context;
-        private List<Prescription> PrescriptionsList;
+        private List<SettingsPrescription> PrescriptionsList;
+        private bool ContainsLast;
+        private bool isAssigned;
 
-        public CustomPrescriptionsListView(Context mcontext, List<Prescription> prescriptions)
+        public CustomPrescriptionsListView(Context mcontext, List<SettingsPrescription> prescriptions, bool hasLastElement)
         {
             Context = mcontext;
             PrescriptionsList = prescriptions;
+            ContainsLast = hasLastElement;
+            isAssigned = true;
+        }
+
+        public CustomPrescriptionsListView(Context mcontext, List<SettingsPrescription> prescriptions)
+        {
+            Context = mcontext;
+            PrescriptionsList = prescriptions;
+            ContainsLast = false;
+            isAssigned = false;
         }
 
         public override int Count
@@ -46,20 +58,25 @@ namespace RePlay.WrapperActivities
 
             if (view == null)
             {
-                view = LayoutInflater.From(Context).Inflate(Resource.Layout.CustomGamesLauncher, null, false);
+                if(ContainsLast == true &&  position == PrescriptionsList.Count - 1)
+                {
+                    view = LayoutInflater.From(Context).Inflate(Resource.Layout.PrescriptionsGridPlus, null, false);
+                }
+                else if(isAssigned)
+                {
+                    view = LayoutInflater.From(Context).Inflate(Resource.Layout.PrescriptionsGrid, null, false);
+                }
+                else
+                {
+                    view = LayoutInflater.From(Context).Inflate(Resource.Layout.SavedPrescription, null, false);
+                }
             }
 
-//            ImageView GameView = view.FindViewById<ImageView>(Resource.Id.gameslist_image);
-            //GameView.SetImageResource(GamesList[position].Image);
-
-//            TextView GameText = view.FindViewById<TextView>(Resource.Id.gameslist_name);
-//            GameText.Text = GamesList[position].Name;
-//
             return view;
         }
     }
 
-    public class Prescription
+    public class SettingsPrescription
     {
 
         public int Image
@@ -92,7 +109,7 @@ namespace RePlay.WrapperActivities
             set;
         }
 
-        public Prescription(int img, string game, string exercise, string device, int time)
+        public SettingsPrescription(int img, string game, string exercise, string device, int time)
         {
             Image = img;
             Game = game;

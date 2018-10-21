@@ -6,18 +6,14 @@ namespace RePlay.WrapperActivities
     public class Paginator<T>
     {
         public List<T> ItemsList;
-        public static int TOTAL_NUM_ITEMS;
-        public static int ITEMS_PER_PAGE;
-        public static int ITEMS_REMAINING;
-        public static int LAST_PAGE;
+        public int TOTAL_NUM_ITEMS;
+        public int ITEMS_PER_PAGE;
+        public int ITEMS_REMAINING;
+        public int LAST_PAGE;
 
         public Paginator(int items_per_page, List<T> list)
         {
-
-            // InitializeItemsList(); // Not Implemented yet
-
             ItemsList = list;
-
             TOTAL_NUM_ITEMS = ItemsList.Count;
             ITEMS_PER_PAGE = items_per_page;
             ITEMS_REMAINING = TOTAL_NUM_ITEMS % ITEMS_PER_PAGE;
@@ -48,10 +44,8 @@ namespace RePlay.WrapperActivities
             return data;
         }
 
-        private void InitializeItemsList()
-        {
-            // This method should initialze ItemsList to either be a list of exercises or a list of games
-            throw new NotImplementedException();
+        public bool ContainsLast(int curr){
+            return curr == LAST_PAGE;
         }
     }
 }

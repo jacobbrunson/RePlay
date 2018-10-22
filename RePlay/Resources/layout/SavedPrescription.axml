@@ -6,14 +6,15 @@
     android:layout_height="match_parent"
     android:orientation="vertical" >
     <android.support.v7.widget.CardView
-        android:layout_width="250dp"
+        android:layout_width="280dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        cardview:cardElevation="8dp"
+        cardview:cardElevation="5dp"
         cardview:cardBackgroundColor="@android:color/background_light"
         cardview:contentPaddingBottom="10dp"
         cardview:contentPaddingLeft="5dp"
-        cardview:contentPaddingRight="5dp">
+        cardview:contentPaddingRight="5dp"
+        cardview:cardUseCompatPadding="true">
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
@@ -24,7 +25,8 @@
                 android:layout_alignParentRight="true"
                 android:scaleType="fitXY"
                 android:src="@drawable/curls_2"
-                android:layout_marginTop="25dp" />
+                android:layout_marginTop="25dp"
+                android:layout_marginRight="5dp" />
             <TextView
                 android:id="@+id/last_played"
                 android:text="Last played 2d ago"

@@ -9,9 +9,10 @@
         android:layout_width="250dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        cardview:cardElevation="8dp"
+        cardview:cardElevation="5dp"
         cardview:cardBackgroundColor="@android:color/background_light"
-        cardview:contentPaddingBottom="10dp">
+        cardview:contentPaddingBottom="10dp"
+        cardview:cardUseCompatPadding="true">
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
@@ -31,7 +32,8 @@
                 android:layout_marginTop="12dp"
                 android:layout_marginLeft="10dp"
                 android:textStyle="bold"
-                android:layout_below="@id/prescription_image" />
+                android:layout_below="@id/prescription_image"
+                android:textSize="12dp" />
             <ImageButton
                 android:id="@+id/delete_image"
                 android:src="@drawable/cancel_24px"

@@ -18,9 +18,9 @@ namespace RePlay.WrapperActivities
     public class CustomGameListView : BaseAdapter
     {
         private Context Context;
-        private List<RePlayGame> GamesList;
+        private List<Game> GamesList;
 
-        public CustomGameListView(Context mcontext, List<RePlayGame> games)
+        public CustomGameListView(Context mcontext, List<Game> games)
         {
             Context = mcontext;
             GamesList = games;

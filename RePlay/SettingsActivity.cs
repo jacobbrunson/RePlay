@@ -26,9 +26,11 @@ namespace RePlay
             new SettingsPrescription(0, "Crossy Road", "Bicep Curl", "FitMi", 3),
             new SettingsPrescription(0, "Handwriting", "Thumb Press", "FitMi", 3)
         };
+
         static List<SettingsPrescription> saved = new List<SettingsPrescription> {
             new SettingsPrescription(0, "Traffic Racer", "Bicep Curl", "FitMi", 3),
             new SettingsPrescription(0, "Breakout", "Wrist Supination", "FitMi", 3),
+            new SettingsPrescription(0, "Temple Run", "Left-to-Right", "FitMi", 3),
             new SettingsPrescription(0, "Typer Shark", "Typing", "FitMi", 3)
         };
 

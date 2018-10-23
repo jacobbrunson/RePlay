@@ -61,6 +61,8 @@ namespace RePlay.WrapperActivities
                 if(ContainsLast == true &&  position == PrescriptionsList.Count - 1)
                 {
                     view = LayoutInflater.From(Context).Inflate(Resource.Layout.PrescriptionsGridPlus, null, false);
+                    ImageView addPrescription = view.FindViewById<ImageButton>(Resource.Id.add_button);
+                    addPrescription.Click += Add_Prescription_Click;
                 }
                 else if(isAssigned)
                 {
@@ -74,6 +76,23 @@ namespace RePlay.WrapperActivities
 
             return view;
         }
+
+        private void Add_Prescription_Click(object sender, EventArgs e)
+        {
+
+            Activity settings = (Activity)Context;
+            Fragment prev = settings.FragmentManager.FindFragmentByTag("dialog");
+            var prescriptionFragment = AddPrescriptionFragment.NewInstance();
+            prescriptionFragment.Dismissed += (s, e2) =>
+            {
+                Toast.MakeText(Context, "Selected", ToastLength.Short).Show();
+            };
+            prescriptionFragment.Show(settings.FragmentManager, "dialog");
+            settings.FragmentManager.BeginTransaction()
+                    .Replace(Android.Resource.Id.Content, prescriptionFragment)
+                    .Commit();
+        }
+
     }
 
     public class SettingsPrescription

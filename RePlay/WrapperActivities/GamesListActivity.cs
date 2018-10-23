@@ -79,8 +79,8 @@ namespace RePlay.WrapperActivities
 
             View.ItemClick += (s, e) =>
             {
-                //Intent intent = new Intent(this, typeof(DummyGame.Android.Activity1));
-                //intent.PutExtra("CONTENT_DIR", "DummyGame");
+                //Intent intent = new Intent(this, typeof(Type.GetType()));
+                //intent.PutExtra("CONTENT_DIR", AssetNamespace);
                 //StartActivity(intent);
             };
         }

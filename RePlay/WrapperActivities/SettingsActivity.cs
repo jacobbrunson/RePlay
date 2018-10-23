@@ -53,7 +53,6 @@ namespace RePlay
             //            {
             //                // Create a new fragment and a transaction.
             //                // FragmentTransaction fragmentTx = this.FragmentManager.BeginTransaction();
-            //                // NavigationFragment navBar = new NavigationFragment();
 
             //                // The fragment will have the ID of Resource.Id.fragment_container.
             //                // fragmentTx.Add(Resource.Id.fragment_container, navBar);

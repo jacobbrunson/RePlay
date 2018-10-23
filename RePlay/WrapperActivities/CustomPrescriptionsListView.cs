@@ -26,7 +26,7 @@ namespace RePlay.WrapperActivities
         public CustomPrescriptionsListView(Context mcontext, List<SettingsPrescription> prescriptions, bool hasLastElement, AddEventsToCard eventAdder):
             this(mcontext, prescriptions, hasLastElement)
         {
-            this.EventAdder += eventAdder;
+            this.EventAdder += new AddEventsToCard(eventAdder);
         }
 
         public CustomPrescriptionsListView(Context mcontext, List<SettingsPrescription> prescriptions, bool hasLastElement)
@@ -79,7 +79,11 @@ namespace RePlay.WrapperActivities
                     view = LayoutInflater.From(Context).Inflate(Resource.Layout.SavedPrescription, null, false);
                 }
             }
-            EventAdder?.Invoke(view, "last");
+            {
+                System.Console.WriteLine("Doing something.");
+                EventAdder?.Invoke(view, "last");
+                System.Console.WriteLine("Doing something again.");
+            }
             return view;
         }
     }

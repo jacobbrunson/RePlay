@@ -50,8 +50,8 @@ namespace RePlay.WrapperActivities
                                                                    (view, str) => {
                 Console.WriteLine("Hello world");
                 if (string.Compare("last", str, StringComparison.CurrentCulture) == 0) {
-                    System.Console.WriteLine("I'm here world.");
-                    var button = view.FindViewById<ImageButton>(Resource.Id.add_button);
+                    System.Console.WriteLine(string.Format("{0}", view.GetType()));
+                    ImageButton button = view.FindViewById<ImageButton>(Resource.Id.add_button);
                     button.Click += (obj, args) =>
                     {
 

@@ -20,6 +20,14 @@ namespace RePlay.WrapperActivities
         private List<SettingsPrescription> PrescriptionsList;
         private bool ContainsLast;
         private bool isAssigned;
+        public delegate void AddEventsToCard(View view, string flag);
+        public event AddEventsToCard EventAdder;
+
+        public CustomPrescriptionsListView(Context mcontext, List<SettingsPrescription> prescriptions, bool hasLastElement, AddEventsToCard eventAdder):
+            this(mcontext, prescriptions, hasLastElement)
+        {
+            this.EventAdder += eventAdder;
+        }
 
         public CustomPrescriptionsListView(Context mcontext, List<SettingsPrescription> prescriptions, bool hasLastElement)
         {
@@ -58,11 +66,11 @@ namespace RePlay.WrapperActivities
 
             if (view == null)
             {
-                if(ContainsLast == true &&  position == PrescriptionsList.Count - 1)
+                if (ContainsLast == true &&  position == PrescriptionsList.Count - 1)
                 {
                     view = LayoutInflater.From(Context).Inflate(Resource.Layout.PrescriptionsGridPlus, null, false);
                 }
-                else if(isAssigned)
+                else if (isAssigned)
                 {
                     view = LayoutInflater.From(Context).Inflate(Resource.Layout.PrescriptionsGrid, null, false);
                 }
@@ -71,7 +79,7 @@ namespace RePlay.WrapperActivities
                     view = LayoutInflater.From(Context).Inflate(Resource.Layout.SavedPrescription, null, false);
                 }
             }
-
+            EventAdder?.Invoke(view, "last");
             return view;
         }
     }

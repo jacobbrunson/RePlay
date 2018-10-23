@@ -12,10 +12,10 @@ using Android.Views;
 using Android.Widget;
 using RePlay.WrapperActivities;
 
-namespace RePlay
+namespace RePlay.WrapperActivities
 {
     [Activity(Label = "Settings")]
-    public class Settings : Activity
+    public class SettingsActivity : Activity
     {
         GridView AssignedView, SavedView;
         ImageButton ALeftButton, ARightButton, SLeftButton, SRightButton;
@@ -46,7 +46,33 @@ namespace RePlay
 
             SetContentView(Resource.Layout.Settings);
             this.InitializeViews();
-            AssignedView.Adapter = new CustomPrescriptionsListView(this, assigned_paginator.GeneratePage(ACurrentPage), assigned_paginator.ContainsLast(ACurrentPage));
+            AssignedView.Adapter = new CustomPrescriptionsListView(this, assigned_paginator.GeneratePage(ACurrentPage), assigned_paginator.ContainsLast(ACurrentPage),
+                                                                   (view, str) => {
+                Console.WriteLine("Hello world");
+                if (string.Compare("last", str, StringComparison.CurrentCulture) == 0) {
+                    System.Console.WriteLine("I'm here world.");
+                    var button = view.FindViewById<ImageButton>(Resource.Id.add_button);
+                    button.Click += (obj, args) =>
+                    {
+
+                        FragmentManager.BeginTransaction();
+                        Fragment prev = FragmentManager.FindFragmentByTag("dialog");
+                        var prescriptionFragment = AddPrescriptionFragment.NewInstance();
+                        prescriptionFragment.Dismissed += (s, e) =>
+                        {
+                            var _args = (AddPrescriptionFragment.DialogEventArgs)e;
+                            Toast.MakeText(this, String.Format("The Game is {0}.", _args.Game), ToastLength.Long).Show();
+                            Toast.MakeText(this, String.Format("The Exercise is {0}.", _args.Exercise), ToastLength.Long).Show();
+                            Toast.MakeText(this, String.Format("The Device is {0}.", _args.Device), ToastLength.Long).Show();
+                            Toast.MakeText(this, String.Format("The Time is {0}.", _args.Time), ToastLength.Long).Show();
+                            };
+                            prescriptionFragment.Show(FragmentManager, "dialog");
+                            FragmentManager.BeginTransaction()
+                            .Add(Android.Resource.Id.Content, prescriptionFragment)
+                            .Commit();
+                        };
+                    }
+                });
             SavedView.Adapter = new CustomPrescriptionsListView(this, saved_paginator.GeneratePage(SCurrentPage));
 
             //            addAssigned.Click += delegate

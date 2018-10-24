@@ -73,7 +73,7 @@ namespace RePlay.WrapperActivities
                     TextView DeviceText = view.FindViewById<TextView>(Resource.Id.device_name);
                     ExerciseText.Text = card.Device;
                     TextView GameText = view.FindViewById<TextView>(Resource.Id.game_name);
-                    ExerciseText.Text = card.Game.Name;
+                    //ExerciseText.Text = card.Game.Name;
                 }
                 else
                 {

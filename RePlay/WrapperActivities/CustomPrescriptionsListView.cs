@@ -67,6 +67,13 @@ namespace RePlay.WrapperActivities
                 else if (isAssigned)
                 {
                     view = LayoutInflater.From(Context).Inflate(Resource.Layout.PrescriptionsGrid, null, false);
+                    Prescription card = PrescriptionsList[position];
+                    TextView ExerciseText = view.FindViewById<TextView>(Resource.Id.exercise_name);
+                    ExerciseText.Text = card.Exercise;
+                    TextView DeviceText = view.FindViewById<TextView>(Resource.Id.device_name);
+                    ExerciseText.Text = card.Device;
+                    TextView GameText = view.FindViewById<TextView>(Resource.Id.game_name);
+                    ExerciseText.Text = card.Game.Name;
                 }
                 else
                 {

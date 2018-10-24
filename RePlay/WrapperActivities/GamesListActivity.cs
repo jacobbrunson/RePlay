@@ -18,10 +18,8 @@ namespace RePlay.WrapperActivities
     {
         GridView View;
         ImageButton LeftButton, RightButton;
-        static List<Game> games = new List<Game> { new Game(0, "Breakout"), new Game(1, "Traffic Racer"),
-            new Game(2, "Fruit Archery"), new Game(3, "Temple Run"), new Game(4, "Crossy Road"),
-            new Game(5, "Typer Shark"), new Game(6, "Handwriting"), new Game(7, "Rep Mode")};
-        Paginator<Game> p = new Paginator<Game>(6, games);
+        static List<RePlayGame> games = GameManager.Instance;
+        Paginator<RePlayGame> p = new Paginator<RePlayGame>(6, games);
         int CurrentPage = 0;
 
         protected override void OnCreate(Bundle savedInstanceState)

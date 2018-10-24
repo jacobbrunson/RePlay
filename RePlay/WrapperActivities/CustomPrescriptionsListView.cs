@@ -17,19 +17,11 @@ namespace RePlay.WrapperActivities
     public class CustomPrescriptionsListView : BaseAdapter
     {
         private Context Context;
-        private List<SettingsPrescription> PrescriptionsList;
+        private List<Prescription> PrescriptionsList;
         private bool ContainsLast;
         private bool isAssigned;
-        public delegate void AddEventsToCard(View view, string flag);
-        public event AddEventsToCard EventAdder;
 
-        public CustomPrescriptionsListView(Context mcontext, List<SettingsPrescription> prescriptions, bool hasLastElement, AddEventsToCard eventAdder):
-            this(mcontext, prescriptions, hasLastElement)
-        {
-            this.EventAdder += new AddEventsToCard(eventAdder);
-        }
-
-        public CustomPrescriptionsListView(Context mcontext, List<SettingsPrescription> prescriptions, bool hasLastElement)
+        public CustomPrescriptionsListView(Context mcontext, List<Prescription> prescriptions, bool hasLastElement)
         {
             Context = mcontext;
             PrescriptionsList = prescriptions;
@@ -37,7 +29,7 @@ namespace RePlay.WrapperActivities
             isAssigned = true;
         }
 
-        public CustomPrescriptionsListView(Context mcontext, List<SettingsPrescription> prescriptions)
+        public CustomPrescriptionsListView(Context mcontext, List<Prescription> prescriptions)
         {
             Context = mcontext;
             PrescriptionsList = prescriptions;
@@ -81,11 +73,7 @@ namespace RePlay.WrapperActivities
                     view = LayoutInflater.From(Context).Inflate(Resource.Layout.SavedPrescription, null, false);
                 }
             }
-            {
-                System.Console.WriteLine("Doing something.");
-                EventAdder?.Invoke(view, "last");
-                System.Console.WriteLine("Doing something again.");
-            }
+
             return view;
         }
 
@@ -103,50 +91,6 @@ namespace RePlay.WrapperActivities
             settings.FragmentManager.BeginTransaction()
                     .Replace(Android.Resource.Id.Content, prescriptionFragment)
                     .Commit();
-        }
-
-    }
-
-    public class SettingsPrescription
-    {
-
-        public int Image
-        {
-            get;
-            set;
-        }
-
-        public string Exercise
-        {
-            get;
-            set;
-        }
-
-        public string Game
-        {
-            get;
-            set;
-        }
-
-        public string Device
-        {
-            get;
-            set;
-        }
-
-        public int Time
-        {
-            get;
-            set;
-        }
-
-        public SettingsPrescription(int img, string game, string exercise, string device, int time)
-        {
-            Image = img;
-            Game = game;
-            Exercise = exercise;
-            Device = device;
-            Time = time;
         }
     }
 }

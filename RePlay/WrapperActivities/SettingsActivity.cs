@@ -20,22 +20,22 @@ namespace RePlay.WrapperActivities
         GridView AssignedView, SavedView;
         ImageButton ALeftButton, ARightButton, SLeftButton, SRightButton;
 
-        static List<SettingsPrescription> assigned = new List<SettingsPrescription> {
-            new SettingsPrescription(0, "Breakout", "Left-to-Right", "FitMi", 3), 
-            new SettingsPrescription(0, "Temple Run", "WristFlexion", "FitMi", 3),
-            new SettingsPrescription(0, "Crossy Road", "Bicep Curl", "FitMi", 3),
-            new SettingsPrescription(0, "Handwriting", "Thumb Press", "FitMi", 3)
+        static List<Prescription> assigned = new List<Prescription> {
+            new Prescription("Left-to-Right", null, "FitMi", 3), 
+            new Prescription("WristFlexion", null, "FitMi", 3),
+            new Prescription("Bicep Curl", null, "FitMi", 3),
+            new Prescription("Thumb Press", null, "FitMi", 3)
         };
 
-        static List<SettingsPrescription> saved = new List<SettingsPrescription> {
-            new SettingsPrescription(0, "Traffic Racer", "Bicep Curl", "FitMi", 3),
-            new SettingsPrescription(0, "Breakout", "Wrist Supination", "FitMi", 3),
-            new SettingsPrescription(0, "Temple Run", "Left-to-Right", "FitMi", 3),
-            new SettingsPrescription(0, "Typer Shark", "Typing", "FitMi", 3)
+        static List<Prescription> saved = new List<Prescription> {
+            new Prescription("Bicep Curl", null, "FitMi", 3),
+            new Prescription("Wrist Supination", null, "FitMi", 3),
+            new Prescription("Left-to-Right", null, "FitMi", 3),
+            new Prescription("Typing", null, "FitMi", 3)
         };
 
-        Paginator<SettingsPrescription> assigned_paginator = new Paginator<SettingsPrescription>(3, assigned);
-        Paginator<SettingsPrescription> saved_paginator = new Paginator<SettingsPrescription>(3, saved);
+        Paginator<Prescription> assigned_paginator = new Paginator<Prescription>(3, assigned);
+        Paginator<Prescription> saved_paginator = new Paginator<Prescription>(3, saved);
 
         int ACurrentPage = 0;
         int SCurrentPage = 0;
@@ -46,62 +46,8 @@ namespace RePlay.WrapperActivities
 
             SetContentView(Resource.Layout.Settings);
             this.InitializeViews();
-            AssignedView.Adapter = new CustomPrescriptionsListView(this, assigned_paginator.GeneratePage(ACurrentPage), assigned_paginator.ContainsLast(ACurrentPage),
-                                                                   (view, str) => {
-                Console.WriteLine("Hello world");
-                if (string.Compare("last", str, StringComparison.CurrentCulture) == 0) {
-                    System.Console.WriteLine(string.Format("{0}", view.GetType()));
-                    ImageButton button = view.FindViewById<ImageButton>(Resource.Id.add_button);
-                    button.Click += (obj, args) =>
-                    {
-
-                        FragmentManager.BeginTransaction();
-                        Fragment prev = FragmentManager.FindFragmentByTag("dialog");
-                        var prescriptionFragment = AddPrescriptionFragment.NewInstance();
-                        prescriptionFragment.Dismissed += (s, e) =>
-                        {
-                            var _args = (AddPrescriptionFragment.DialogEventArgs)e;
-                            Toast.MakeText(this, String.Format("The Game is {0}.", _args.Game), ToastLength.Long).Show();
-                            Toast.MakeText(this, String.Format("The Exercise is {0}.", _args.Exercise), ToastLength.Long).Show();
-                            Toast.MakeText(this, String.Format("The Device is {0}.", _args.Device), ToastLength.Long).Show();
-                            Toast.MakeText(this, String.Format("The Time is {0}.", _args.Time), ToastLength.Long).Show();
-                            };
-                            prescriptionFragment.Show(FragmentManager, "dialog");
-                            FragmentManager.BeginTransaction()
-                            .Add(Android.Resource.Id.Content, prescriptionFragment)
-                            .Commit();
-                        };
-                    }
-                });
+            AssignedView.Adapter = new CustomPrescriptionsListView(this, assigned_paginator.GeneratePage(ACurrentPage), assigned_paginator.ContainsLast(ACurrentPage));
             SavedView.Adapter = new CustomPrescriptionsListView(this, saved_paginator.GeneratePage(SCurrentPage));
-
-            //            addAssigned.Click += delegate
-            //            {
-            //                // Create a new fragment and a transaction.
-            //                // FragmentTransaction fragmentTx = this.FragmentManager.BeginTransaction();
-
-            //                // The fragment will have the ID of Resource.Id.fragment_container.
-            //                // fragmentTx.Add(Resource.Id.fragment_container, navBar);
-
-            //                // Commit the transaction.
-            //                // fragmentTx.Commit();
-            //                FragmentManager.BeginTransaction();
-            //                Fragment prev = FragmentManager.FindFragmentByTag("dialog");
-            //                var prescriptionFragment = AddPrescriptionFragment.NewInstance();
-            //                prescriptionFragment.Dismissed += (s, e) =>
-            //                {
-            //                    var args = (AddPrescriptionFragment.DialogEventArgs)e;
-            //                    Toast.MakeText(this, String.Format("The Game is {0}.", args.Game), ToastLength.Long).Show();
-            //                    Toast.MakeText(this, String.Format("The Exercise is {0}.", args.Exercise), ToastLength.Long).Show();
-            //                    Toast.MakeText(this, String.Format("The Device is {0}.", args.Device), ToastLength.Long).Show();
-            //                    Toast.MakeText(this, String.Format("The Time is {0}.", args.Time), ToastLength.Long).Show();
-            //                };
-            //                prescriptionFragment.Show(FragmentManager, "dialog");
-            ////                FragmentManager.BeginTransaction()
-            ////                               .Add(Android.Resource.Id.Content, prescriptionFragment)
-            ////                               .Commit();
-            //    };
-
         }
 
         private void InitializeViews()
@@ -125,7 +71,6 @@ namespace RePlay.WrapperActivities
 
             SLeftButton.Click += LeftButton_Click_Saved;
             SRightButton.Click += RightButton_Click_Saved;
-
         }
 
         void LeftButton_Click_Assigned(object sender, EventArgs e)

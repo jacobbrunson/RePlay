@@ -1,3 +1,8 @@
 ﻿DummyGame,Dummy Game
 FitMiTraffic,Traffic Racer
 CrossyRoad,Crossy Road
+TempleRun,Temple Run
+FruitArchery,Fruit Archery
+TyperShark,Typer Shark
+FitMiHandwriting,Handwriting
+Breakout,Breakout

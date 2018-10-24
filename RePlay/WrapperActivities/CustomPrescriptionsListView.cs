@@ -79,18 +79,10 @@ namespace RePlay.WrapperActivities
 
         private void Add_Prescription_Click(object sender, EventArgs e)
         {
-
             Activity settings = (Activity)Context;
-            Fragment prev = settings.FragmentManager.FindFragmentByTag("dialog");
-            var prescriptionFragment = AddPrescriptionFragment.NewInstance();
-            prescriptionFragment.Dismissed += (s, e2) =>
-            {
-                Toast.MakeText(Context, "Selected", ToastLength.Short).Show();
-            };
-            prescriptionFragment.Show(settings.FragmentManager, "dialog");
-            settings.FragmentManager.BeginTransaction()
-                    .Replace(Android.Resource.Id.Content, prescriptionFragment)
-                    .Commit();
+            FragmentTransaction fm = settings.FragmentManager.BeginTransaction();
+            AddPrescriptionFragment dialog = AddPrescriptionFragment.NewInstance();
+            dialog.Show(fm, "dialog fragment");
         }
     }
 }

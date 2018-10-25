@@ -6,10 +6,10 @@ namespace RePlay
 {
     public class PrescriptionManager : List<Prescription>
     {
-        private static PrescriptionManager instance;
-        private const string fileName = "prescription.dat";
+        static PrescriptionManager instance;
+        const string fileName = "prescription.dat";
 
-        private PrescriptionManager() 
+        PrescriptionManager() 
         {
 
         }
@@ -54,7 +54,7 @@ namespace RePlay
             }
         }
 
-        private string filePath {
+        string filePath {
             get
             {
                 string path = System.Environment.GetFolderPath(System.Environment.SpecialFolder.Personal);

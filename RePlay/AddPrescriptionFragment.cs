@@ -19,23 +19,21 @@ namespace RePlay
 
         public delegate void DialogEventHandler(object sender, DialogEventArgs args);
         public event DialogEventHandler Dismissed;
-        private List<Prescription> prescriptions;
+        PrescriptionManager prescriptions;
+        GameManager games;
 
-        public AddPrescriptionFragment() {
-
-        }
-
-        public AddPrescriptionFragment(List<Prescription> prescriptions) {
+        public AddPrescriptionFragment(PrescriptionManager prescriptions, GameManager games) {
             this.prescriptions = prescriptions;
+            this.games = games;
         }
 
         /// <summary>
         /// Method that creates and returns and instance of this dialog
         /// </summary>
         /// <returns></returns>
-        public static AddPrescriptionFragment NewInstance()
+        public static AddPrescriptionFragment NewInstance(PrescriptionManager prescriptions, GameManager games)
         {
-            var dialogFragment = new AddPrescriptionFragment();
+            var dialogFragment = new AddPrescriptionFragment(prescriptions, games);
             return dialogFragment;
         }
 

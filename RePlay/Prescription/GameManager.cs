@@ -7,10 +7,10 @@ namespace RePlay
 {
     public class GameManager : List<RePlayGame>
     {
-        private static GameManager instance;
-        private const string assetName = "games.txt";
+        static GameManager instance;
+        const string assetName = "games.txt";
 
-        private GameManager()
+        GameManager()
         {
         }
 
@@ -26,6 +26,18 @@ namespace RePlay
         public RePlayGame FindByNamespace(string name) {
             foreach (RePlayGame game in this) {
                 if (game.AssetNamespace.Equals(name)) {
+                    return game;
+                }
+            }
+            return null;
+        }
+
+        public RePlayGame FindByName(string name)
+        {
+            foreach (RePlayGame game in this)
+            {
+                if (game.Name.Equals(name))
+                {
                     return game;
                 }
             }

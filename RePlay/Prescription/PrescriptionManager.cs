@@ -70,7 +70,6 @@ namespace RePlay
         public string Device;
         public int Duration;
 
-
         public Prescription(string exercise, RePlayGame game, string device, int duration) {
             Exercise = exercise;
             Game = game;

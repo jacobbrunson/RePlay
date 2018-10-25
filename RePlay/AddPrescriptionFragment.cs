@@ -20,20 +20,6 @@ namespace RePlay
         public delegate void DialogEventHandler(object sender, DialogEventArgs args);
         public event DialogEventHandler Dismissed;
 
-        //Create class properties
-        protected EditText NameEditText;
-        protected EditText DescriptionEditText;
-        protected EditText PriceEditText;
-        protected EditText AddCategoryEditText;
-        protected Spinner CategorySpinner;
-        protected LinearLayout CategoryLayout;
-        protected CheckBox CategoryCheckBox;
-        protected Button CategoryButton;
-
-        //Create the string that will hold the value
-        //Of the category drop down selected item
-        protected string SelectedCategory = "";
-
         /// <summary>
         /// Method that creates and returns and instance of this dialog
         /// </summary>
@@ -43,7 +29,6 @@ namespace RePlay
             var dialogFragment = new AddPrescriptionFragment();
             return dialogFragment;
         }
-
 
         public override Dialog OnCreateDialog(Bundle savedInstanceState)
         {

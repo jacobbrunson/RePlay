@@ -82,12 +82,5 @@ namespace RePlay.WrapperActivities
                 //StartActivity(intent);
             };
         }
-
-        private void spinner_ItemSelected(object sender, AdapterView.ItemSelectedEventArgs e)
-        {
-            Spinner spinner = (Spinner)sender;
-            string toast = string.Format("The sort option is {0}", spinner.GetItemAtPosition(e.Position));
-            Toast.MakeText(this, toast, ToastLength.Long).Show();
-        }
     }
 }

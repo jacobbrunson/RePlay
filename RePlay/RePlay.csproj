@@ -244,6 +244,7 @@
     <AndroidResource Include="Resources\drawable\check_box_24px.png" />
     <AndroidResource Include="Resources\drawable\curls_2.jpg" />
     <AndroidResource Include="Resources\layout\SavedPrescription.axml" />
+    <AndroidResource Include="Resources\drawable\EditTextBorderRed.xml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\drawable\" />

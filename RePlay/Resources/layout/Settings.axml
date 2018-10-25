@@ -84,7 +84,7 @@
                     android:numColumns="3"
                     android:gravity="center"
                     android:scrollbars="none"
-                    android:padding="5dp" />
+                    android:padding="2dp" />
                 <ImageButton
                     android:id="@id/right_button_1"
                     android:background="#f6f6f6"

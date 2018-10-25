@@ -19,6 +19,15 @@ namespace RePlay
 
         public delegate void DialogEventHandler(object sender, DialogEventArgs args);
         public event DialogEventHandler Dismissed;
+        private List<Prescription> prescriptions;
+
+        public AddPrescriptionFragment() {
+
+        }
+
+        public AddPrescriptionFragment(List<Prescription> prescriptions) {
+            this.prescriptions = prescriptions;
+        }
 
         /// <summary>
         /// Method that creates and returns and instance of this dialog
@@ -81,13 +90,6 @@ namespace RePlay
                     var _deviceSpinner = (Spinner)_dialog.FindViewById<Spinner>(Resource.Id.deviceSpinner);
                     var _timeSpinner = (Spinner)_dialog.FindViewById<Spinner>(Resource.Id.timeSpinner);
 
-                    Dismissed?.Invoke(this, new DialogEventArgs
-                    {
-                        Exercise = (string)exerciseSpinner.SelectedItem,
-                        Game = (string)gameSpinner.SelectedItem,
-                        Device = (string)deviceSpinner.SelectedItem,
-                        Time = (int)timeSpinner.SelectedItem
-                    });
                     Dismiss();
                 };
 

@@ -15,7 +15,7 @@ using RePlay.WrapperActivities;
 namespace RePlay.WrapperActivities
 {
     [Activity(Label = "Settings")]
-    public class SettingsActivity : Activity
+    public partial class SettingsActivity : Activity
     {
         GridView AssignedView, SavedView;
         ImageButton ALeftButton, ARightButton, SLeftButton, SRightButton;
@@ -101,7 +101,7 @@ namespace RePlay.WrapperActivities
             ToggleSButtons();
         }
 
-        private void ToggleAButtons()
+        void ToggleAButtons()
         {
             if (ACurrentPage == assigned_paginator.LAST_PAGE)
             {
@@ -120,7 +120,7 @@ namespace RePlay.WrapperActivities
             }
         }
 
-        private void ToggleSButtons()
+        void ToggleSButtons()
         {
             if (SCurrentPage == saved_paginator.LAST_PAGE)
             {

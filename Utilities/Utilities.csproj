@@ -31,6 +31,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="FitMiExerciseBase.cs" />
+    <Compile Include="FitMiExerciseGyroBase.cs" />
     <Compile Include="FitMiExerciseType.cs" />
     <Compile Include="FitMiExercise_Clapping.cs" />
     <Compile Include="FitMiExercise_Curls.cs" />

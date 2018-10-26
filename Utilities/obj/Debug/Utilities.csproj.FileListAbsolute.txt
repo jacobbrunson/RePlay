@@ -1,2 +1,4 @@
 C:\Users\Patrick\Programming\VSProjects\RePlay\Utilities\obj\Debug\Utilities.csprojAssemblyReference.cache
 C:\Users\Patrick\Programming\VSProjects\RePlay\Utilities\obj\Debug\Utilities.csproj.CoreCompileInputs.cache
+C:\Users\Patrick\Programming\SD\RePlay\Utilities\obj\Debug\Utilities.csprojAssemblyReference.cache
+C:\Users\Patrick\Programming\SD\RePlay\Utilities\obj\Debug\Utilities.csproj.CoreCompileInputs.cache

@@ -240,7 +240,6 @@
     <AndroidResource Include="Resources\drawable\cancel_24px.png" />
     <AndroidResource Include="Resources\drawable\mode_24px.png" />
     <AndroidResource Include="Resources\layout\PrescriptionsGridPlus.axml" />
-    <AndroidResource Include="Resources\layout\PrescriptionsSaved.axml" />
     <AndroidResource Include="Resources\drawable\check_box_24px.png" />
     <AndroidResource Include="Resources\drawable\curls_2.jpg" />
     <AndroidResource Include="Resources\layout\SavedPrescription.axml" />

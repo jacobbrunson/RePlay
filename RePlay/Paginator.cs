@@ -5,47 +5,38 @@ namespace RePlay.WrapperActivities
 {
     public class Paginator<T>
     {
-        public List<T> ItemsList;
-        public int TOTAL_NUM_ITEMS;
-        public int ITEMS_PER_PAGE;
-        public int ITEMS_REMAINING;
-        public int LAST_PAGE;
+        public readonly List<T> ItemsList;
 
-        public Paginator(int items_per_page, List<T> list)
+        public readonly int TotalNumItems;
+        public readonly int ItemsPerPage;
+        public readonly int ItemsRemaining;
+        public readonly int LastPage;
+
+        public Paginator(int itemsPerPage, List<T> itemsList)
         {
-            ItemsList = list;
-            TOTAL_NUM_ITEMS = ItemsList.Count;
-            ITEMS_PER_PAGE = items_per_page;
-            ITEMS_REMAINING = TOTAL_NUM_ITEMS % ITEMS_PER_PAGE;
-            LAST_PAGE = TOTAL_NUM_ITEMS / ITEMS_PER_PAGE;
+            ItemsList = itemsList;
+            TotalNumItems = ItemsList.Count;
+            ItemsPerPage = itemsPerPage;
+            ItemsRemaining = TotalNumItems % ItemsPerPage;
+            LastPage = TotalNumItems / ItemsPerPage;
         }
 
         public List<T> GeneratePage(int curr)
         {
-            int start = curr * ITEMS_PER_PAGE;
+            int start = curr * ItemsPerPage;
 
             List<T> data = new List<T>();
 
-            if (ITEMS_REMAINING > 0 && curr == LAST_PAGE)
+            for (int i = start; i < Math.Min(start + ItemsPerPage, ItemsList.Count); i++)
             {
-                for (int i = start; i < start + ITEMS_REMAINING; i++)
-                {
-                    data.Add(ItemsList[i]);
-                }
-            }
-            else
-            {
-                for (int i = start; i < start + ITEMS_PER_PAGE; i++)
-                {
-                    data.Add(ItemsList[i]);
-                }
+                data.Add(ItemsList[i]);
             }
 
             return data;
         }
 
         public bool ContainsLast(int curr){
-            return curr == LAST_PAGE;
+            return curr == LastPage;
         }
     }
 }

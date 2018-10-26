@@ -19,15 +19,22 @@ namespace RePlay.WrapperActivities
                 public int Time { get; set; }
             }
 
+            SettingsActivity settingsActivity;
+
+            public AddPrescriptionFragment(SettingsActivity settingsActivity)
+            {
+                this.settingsActivity = settingsActivity;
+            }
+
             public delegate void DialogEventHandler(object sender, DialogEventArgs args);
 
             /// <summary>
             /// Method that creates and returns and instance of this dialog
             /// </summary>
             /// <returns></returns>
-            public static AddPrescriptionFragment NewInstance()
+            public static AddPrescriptionFragment NewInstance(SettingsActivity settingsActivity)
             {
-                var dialogFragment = new AddPrescriptionFragment();
+                var dialogFragment = new AddPrescriptionFragment(settingsActivity);
                 return dialogFragment;
             }
 
@@ -77,10 +84,10 @@ namespace RePlay.WrapperActivities
                     addButton.Click += (sender, args) =>
                     {
                         var _dialog = dialogView;
-                        var _exerciseSpinner = (Spinner)_dialog.FindViewById<Spinner>(Resource.Id.exerciseSpinner);
-                        var _gameSpinner = (Spinner)_dialog.FindViewById(Resource.Id.gameSpinner);
-                        var _deviceSpinner = (Spinner)_dialog.FindViewById<Spinner>(Resource.Id.deviceSpinner);
-                        var _timeSpinner = (Spinner)_dialog.FindViewById<Spinner>(Resource.Id.timeSpinner);
+                        var _exerciseSpinner = _dialog.FindViewById<Spinner>(Resource.Id.exerciseSpinner);
+                        var _gameSpinner = _dialog.FindViewById<Spinner>(Resource.Id.gameSpinner);
+                        var _deviceSpinner = _dialog.FindViewById<Spinner>(Resource.Id.deviceSpinner);
+                        var _timeSpinner = _dialog.FindViewById<Spinner>(Resource.Id.timeSpinner);
 
                         var prescriptionManager = PrescriptionManager.Instance;
                         var gameManager = GameManager.Instance;
@@ -91,12 +98,23 @@ namespace RePlay.WrapperActivities
                         }
                         else
                         {
-                            prescriptionManager.Add(new Prescription(
+                            Prescription p = new Prescription(
                                 (string)_exerciseSpinner.SelectedItem,
                                 game,
                                 (string)_deviceSpinner.SelectedItem,
                                 (int)_timeSpinner.SelectedItem
-                            ));
+                            );
+                            prescriptionManager.Add(p);
+                            assigned.Insert(assigned.Count - 1, p);
+                            if (assigned.Count % ItemsPerPage == 1)
+                            {
+                                settingsActivity.ACurrentPage += 1;
+                            }
+                            settingsActivity.assigned_paginator = new Paginator<Prescription>(ItemsPerPage, assigned);
+                            settingsActivity.AssignedView.Adapter = new CustomPrescriptionsListView(
+                                settingsActivity,
+                                settingsActivity.assigned_paginator.GeneratePage(settingsActivity.ACurrentPage),
+                                settingsActivity.assigned_paginator.ContainsLast(settingsActivity.ACurrentPage));
                         }
 
                         Dismiss();

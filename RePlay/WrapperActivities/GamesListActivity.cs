@@ -59,7 +59,7 @@ namespace RePlay.WrapperActivities
 
         private void ToggleButtons()
         {
-            if(CurrentPage == p.LAST_PAGE)
+            if(CurrentPage == p.LastPage)
             {
                 LeftButton.Enabled = true;
                 RightButton.Enabled = false;

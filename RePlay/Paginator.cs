@@ -18,7 +18,7 @@ namespace RePlay.WrapperActivities
             TotalNumItems = ItemsList.Count;
             ItemsPerPage = itemsPerPage;
             ItemsRemaining = TotalNumItems % ItemsPerPage;
-            LastPage = TotalNumItems / ItemsPerPage;
+            LastPage = Math.Max((TotalNumItems - 1) / ItemsPerPage, 0);
         }
 
         public List<T> GeneratePage(int curr)

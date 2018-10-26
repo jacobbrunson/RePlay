@@ -10,7 +10,6 @@ using Android.OS;
 using Android.Runtime;
 using Android.Views;
 using Android.Widget;
-using RePlay.WrapperActivities;
 
 namespace RePlay.WrapperActivities
 {
@@ -34,8 +33,10 @@ namespace RePlay.WrapperActivities
             new Prescription("Typing", null, "FitMi", 3)
         };
 
-        Paginator<Prescription> assigned_paginator = new Paginator<Prescription>(3, assigned);
-        Paginator<Prescription> saved_paginator = new Paginator<Prescription>(3, saved);
+        const int ItemsPerPage = 3;
+
+        Paginator<Prescription> assigned_paginator = new Paginator<Prescription>(ItemsPerPage, assigned);
+        Paginator<Prescription> saved_paginator = new Paginator<Prescription>(ItemsPerPage, saved);
 
         int ACurrentPage = 0;
         int SCurrentPage = 0;
@@ -45,12 +46,12 @@ namespace RePlay.WrapperActivities
             base.OnCreate(savedInstanceState);
 
             SetContentView(Resource.Layout.Settings);
-            this.InitializeViews();
+            InitializeViews();
             AssignedView.Adapter = new CustomPrescriptionsListView(this, assigned_paginator.GeneratePage(ACurrentPage), assigned_paginator.ContainsLast(ACurrentPage));
             SavedView.Adapter = new CustomPrescriptionsListView(this, saved_paginator.GeneratePage(SCurrentPage));
         }
 
-        private void InitializeViews()
+        void InitializeViews()
         {   
             // Initialize both grids
             AssignedView = FindViewById<GridView>(Resource.Id.settings_gridview_1);
@@ -103,7 +104,7 @@ namespace RePlay.WrapperActivities
 
         void ToggleAButtons()
         {
-            if (ACurrentPage == assigned_paginator.LAST_PAGE)
+            if (ACurrentPage == assigned_paginator.LastPage)
             {
                 ALeftButton.Enabled = true;
                 ARightButton.Enabled = false;
@@ -122,7 +123,7 @@ namespace RePlay.WrapperActivities
 
         void ToggleSButtons()
         {
-            if (SCurrentPage == saved_paginator.LAST_PAGE)
+            if (SCurrentPage == saved_paginator.LastPage)
             {
                 SLeftButton.Enabled = true;
                 SRightButton.Enabled = false;

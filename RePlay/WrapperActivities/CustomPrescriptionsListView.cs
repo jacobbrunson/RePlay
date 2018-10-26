@@ -17,10 +17,11 @@ namespace RePlay.WrapperActivities
     {
         public class CustomPrescriptionsListView : BaseAdapter
         {
-            Context Context;
             List<Prescription> PrescriptionsList;
-            bool ContainsLast;
-            bool isAssigned;
+            readonly Context Context;
+            readonly bool ContainsLast;
+            readonly bool isAssigned;
+            readonly SettingsActivity settingsActivity;
 
             public CustomPrescriptionsListView(Context mcontext, List<Prescription> prescriptions, bool hasLastElement)
             {
@@ -28,6 +29,7 @@ namespace RePlay.WrapperActivities
                 PrescriptionsList = prescriptions;
                 ContainsLast = hasLastElement;
                 isAssigned = true;
+                settingsActivity = (SettingsActivity)mcontext;
             }
 
             public CustomPrescriptionsListView(Context mcontext, List<Prescription> prescriptions)
@@ -89,7 +91,7 @@ namespace RePlay.WrapperActivities
             {
                 Activity settings = (Activity)Context;
                 FragmentTransaction fm = settings.FragmentManager.BeginTransaction();
-                AddPrescriptionFragment dialog = AddPrescriptionFragment.NewInstance();
+                AddPrescriptionFragment dialog = AddPrescriptionFragment.NewInstance(settingsActivity);
                 dialog.Show(fm, "dialog fragment");
             }
         }

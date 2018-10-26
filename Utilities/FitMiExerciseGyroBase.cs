@@ -17,17 +17,6 @@ namespace Exercises
         protected List<double> theta_4evr = new List<double>();
 
         protected double latest_theta_4evr = 0.0;
-
-        private Dictionary<FitMiSensitivity, double> sensitivity_mapping = new Dictionary<FitMiSensitivity, double>()
-        {
-            { FitMiSensitivity.ExtremelyLow, 360.0 },
-            { FitMiSensitivity.Low, 180.0 },
-            { FitMiSensitivity.MediumLow, 90.0 },
-            { FitMiSensitivity.Medium, 60.0 },
-            { FitMiSensitivity.MediumHigh, 45.0 },
-            { FitMiSensitivity.High, 30.0 },
-            { FitMiSensitivity.ExtremelyHigh, 15.0 }
-        };
         #endregion
 
         #region Constructor
@@ -44,21 +33,6 @@ namespace Exercises
         #endregion
 
         #region Methods
-        public Dictionary<FitMiSensitivity, double> mapSensitivity(double []sensitivity)
-        {
-            return new Dictionary<FitMiSensitivity, double>()
-            {
-                { FitMiSensitivity.ExtremelyLow, sensitivity[0] },
-                { FitMiSensitivity.Low, sensitivity[1] },
-                { FitMiSensitivity.MediumLow, sensitivity[2] },
-                { FitMiSensitivity.Medium, sensitivity[3] },
-                { FitMiSensitivity.MediumHigh, sensitivity[4] },
-                { FitMiSensitivity.High, sensitivity[5] },
-                { FitMiSensitivity.ExtremelyHigh, sensitivity[6] }
-            };
-        }
-
-
         public void Update(int axis_x, int axis_y)
         {
             base.Update();

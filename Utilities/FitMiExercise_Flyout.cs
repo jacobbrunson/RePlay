@@ -28,7 +28,7 @@ namespace Exercises
         {
             base.Update(1, 0);
             Dictionary<FitMiSensitivity, double> sensitivity_mapping =
-                base.mapSensitivity(new double[] { 360.0, 180.0, 90.0, 60.0, 45.0, 30.0, 15.0 });
+                base.mapSensitivity(new double[] { 180.0, 150.0, 120.0, 90.0, 60.0, 30.0, 15.0 });
             CurrentNormalizedValue = latest_theta_4evr / sensitivity_mapping[Sensitivity];
         }
 

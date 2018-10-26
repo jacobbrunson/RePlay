@@ -78,6 +78,20 @@ namespace Exercises
             return result;
         }
 
+        public Dictionary<FitMiSensitivity, double> mapSensitivity(double[] sensitivity)
+        {
+            return new Dictionary<FitMiSensitivity, double>()
+            {
+                { FitMiSensitivity.ExtremelyLow, sensitivity[0] },
+                { FitMiSensitivity.Low, sensitivity[1] },
+                { FitMiSensitivity.MediumLow, sensitivity[2] },
+                { FitMiSensitivity.Medium, sensitivity[3] },
+                { FitMiSensitivity.MediumHigh, sensitivity[4] },
+                { FitMiSensitivity.High, sensitivity[5] },
+                { FitMiSensitivity.ExtremelyHigh, sensitivity[6] }
+            };
+        }
+
         #endregion
 
         #region Methods

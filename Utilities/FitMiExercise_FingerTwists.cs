@@ -7,7 +7,7 @@ using FitMiAndroid;
 
 namespace Exercises
 {
-    public class FitMiExercise_FingerTwists : FitMiExerciseBase
+    public class FitMiExercise_FingerTwists : FitMiExerciseGyroBase
     {
         #region Constructor
 
@@ -26,12 +26,10 @@ namespace Exercises
 
         public override void Update()
         {
-            base.Update();
-
-            //Grab the current force value on the loadcell of the puck
-            var current_force_value = FitMi_Controller.PuckPack0.Loadcell;
-
-
+            base.Update(1, 0);
+            Dictionary<FitMiSensitivity, double> sensitivity_mapping =
+                base.mapSensitivity(new double[] { 360.0, 180.0, 90.0, 60.0, 45.0, 30.0, 15.0 });
+            CurrentNormalizedValue = latest_theta_4evr / sensitivity_mapping[Sensitivity];
         }
 
         #endregion

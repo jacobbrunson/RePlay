@@ -19,20 +19,15 @@ namespace RePlay
 
         public delegate void DialogEventHandler(object sender, DialogEventArgs args);
         public event DialogEventHandler Dismissed;
+        private List<Prescription> prescriptions;
 
-        //Create class properties
-        protected EditText NameEditText;
-        protected EditText DescriptionEditText;
-        protected EditText PriceEditText;
-        protected EditText AddCategoryEditText;
-        protected Spinner CategorySpinner;
-        protected LinearLayout CategoryLayout;
-        protected CheckBox CategoryCheckBox;
-        protected Button CategoryButton;
+        public AddPrescriptionFragment() {
 
-        //Create the string that will hold the value
-        //Of the category drop down selected item
-        protected string SelectedCategory = "";
+        }
+
+        public AddPrescriptionFragment(List<Prescription> prescriptions) {
+            this.prescriptions = prescriptions;
+        }
 
         /// <summary>
         /// Method that creates and returns and instance of this dialog
@@ -43,7 +38,6 @@ namespace RePlay
             var dialogFragment = new AddPrescriptionFragment();
             return dialogFragment;
         }
-
 
         public override Dialog OnCreateDialog(Bundle savedInstanceState)
         {
@@ -96,13 +90,6 @@ namespace RePlay
                     var _deviceSpinner = (Spinner)_dialog.FindViewById<Spinner>(Resource.Id.deviceSpinner);
                     var _timeSpinner = (Spinner)_dialog.FindViewById<Spinner>(Resource.Id.timeSpinner);
 
-                    Dismissed?.Invoke(this, new DialogEventArgs
-                    {
-                        Exercise = (string)exerciseSpinner.SelectedItem,
-                        Game = (string)gameSpinner.SelectedItem,
-                        Device = (string)deviceSpinner.SelectedItem,
-                        Time = (int)timeSpinner.SelectedItem
-                    });
                     Dismiss();
                 };
 

@@ -47,7 +47,6 @@ namespace RePlay
 
     public class RePlayGame
     {
-
         public readonly string Name;
         public readonly string AssetNamespace;
 

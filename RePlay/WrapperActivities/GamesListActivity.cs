@@ -18,8 +18,8 @@ namespace RePlay.WrapperActivities
     {
         GridView View;
         ImageButton LeftButton, RightButton;
-        Paginator p = new Paginator(6);
-        int TotalPages = Paginator.TOTAL_NUM_ITEMS / Paginator.ITEMS_PER_PAGE;
+        static List<RePlayGame> games = GameManager.Instance;
+        Paginator<RePlayGame> p = new Paginator<RePlayGame>(6, games);
         int CurrentPage = 0;
 
         protected override void OnCreate(Bundle savedInstanceState)
@@ -59,7 +59,7 @@ namespace RePlay.WrapperActivities
 
         private void ToggleButtons()
         {
-            if(CurrentPage == TotalPages)
+            if(CurrentPage == p.LastPage)
             {
                 LeftButton.Enabled = true;
                 RightButton.Enabled = false;
@@ -77,17 +77,10 @@ namespace RePlay.WrapperActivities
 
             View.ItemClick += (s, e) =>
             {
-                Intent intent = new Intent(this, typeof(DummyGame.Android.Activity1));
-                intent.PutExtra("CONTENT_DIR", "DummyGame");
-                StartActivity(intent);
+                //Intent intent = new Intent(this, typeof(Type.GetType()));
+                //intent.PutExtra("CONTENT_DIR", AssetNamespace);
+                //StartActivity(intent);
             };
-        }
-
-        private void spinner_ItemSelected(object sender, AdapterView.ItemSelectedEventArgs e)
-        {
-            Spinner spinner = (Spinner)sender;
-            string toast = string.Format("The sort option is {0}", spinner.GetItemAtPosition(e.Position));
-            Toast.MakeText(this, toast, ToastLength.Long).Show();
         }
     }
 }

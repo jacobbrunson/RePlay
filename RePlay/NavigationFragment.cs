@@ -35,7 +35,7 @@ namespace RePlay
             }
         }
 
-        void connectionClicked(object sender, EventArgs e)
+        void ConnectionClicked(object sender, EventArgs e)
         {
             IsConnected = !IsConnected;
         }

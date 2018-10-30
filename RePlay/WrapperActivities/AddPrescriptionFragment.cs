@@ -53,7 +53,7 @@ namespace RePlay.WrapperActivities
 
                 if (dialogView != null)
                 {
-                    var gamesList = new List<string>() { "Breakout", "Crossy Road", "Handwriting" };
+                    var gamesList = GameManager.Instance.GetNames();
                     var exerciseList = new List<string>() { "Wrist flexion", "Bicep curl", "Thumb press" };
                     var deviceList = new List<string>() { "FitMi", "Knob sensor" };
                     var timeList = new List<int>() { 1, 2, 3 };

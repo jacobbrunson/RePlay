@@ -16,33 +16,36 @@ namespace RePlay
 {
     public class NavigationFragment : Fragment
     {
-        private void homeClicked(object sender, EventArgs e)
+        void HomeClicked(object sender, EventArgs e)
         {
             ImageButton button = (ImageButton)sender;
-            Intent intent = new Intent(button.Context, typeof(MainActivity));
-            button.Context.StartActivity(intent);
+            if (!button.Context.GetType().Equals(typeof(MainActivity)))
+            {
+                Intent intent = new Intent(button.Context, typeof(MainActivity));
+                button.Context.StartActivity(intent);
+            }
         }
 
-        private void gamesClicked(object sender, EventArgs e)
+        void GamesClicked(object sender, EventArgs e)
         {
             ImageButton button = (ImageButton)sender;
             Intent intent = new Intent(button.Context, typeof(WrapperActivities.GamesListActivity));
             StartActivity(intent);
         }
 
-        private void connectionClicked(object sender, EventArgs e)
+        void connectionClicked(object sender, EventArgs e)
         {
             IsConnected = !IsConnected;
         }
 
-        private void settingsClicked(object sender, EventArgs e)
+        void SettingsClicked(object sender, EventArgs e)
         {
             ImageButton button = (ImageButton)sender;
             Intent intent = new Intent(button.Context, typeof(SettingsLoginActivity));
             StartActivity(intent);
         }
 
-        private bool isConnected = true;
+        bool isConnected = true;
         public bool IsConnected {
             get { return isConnected; }
             set
@@ -56,7 +59,7 @@ namespace RePlay
             }
         }
 
-        private ImageButton connectionButton;
+        ImageButton connectionButton;
 
 
         public override void OnCreate(Bundle savedInstanceState)
@@ -68,13 +71,13 @@ namespace RePlay
         {
             View view = inflater.Inflate(Resource.Layout.Navigation, container, false);
 
-            view.FindViewById<ImageButton>(Resource.Id.homeButton).Click += homeClicked;
-            view.FindViewById<ImageButton>(Resource.Id.gamesButton).Click += gamesClicked;
+            view.FindViewById<ImageButton>(Resource.Id.homeButton).Click += HomeClicked;
+            view.FindViewById<ImageButton>(Resource.Id.gamesButton).Click += GamesClicked;
 
             connectionButton = view.FindViewById<ImageButton>(Resource.Id.connectionButton);
             connectionButton.Click += connectionClicked;
 
-            view.FindViewById<ImageButton>(Resource.Id.settingsButton).Click += settingsClicked;
+            view.FindViewById<ImageButton>(Resource.Id.settingsButton).Click += SettingsClicked;
 
             return view;
         }

@@ -35,7 +35,7 @@ namespace RePlay
             }
         }
 
-        void connectionClicked(object sender, EventArgs e)
+        void ConnectionClicked(object sender, EventArgs e)
         {
             IsConnected = !IsConnected;
         }
@@ -80,7 +80,7 @@ namespace RePlay
             view.FindViewById<ImageButton>(Resource.Id.gamesButton).Click += GamesClicked;
 
             connectionButton = view.FindViewById<ImageButton>(Resource.Id.connectionButton);
-            connectionButton.Click += connectionClicked;
+            connectionButton.Click += ConnectionClicked;
 
             view.FindViewById<ImageButton>(Resource.Id.settingsButton).Click += SettingsClicked;
 

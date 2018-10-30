@@ -6,10 +6,10 @@ namespace RePlay
 {
     public class PrescriptionManager : List<Prescription>
     {
-        private static PrescriptionManager instance;
-        private const string fileName = "prescription.dat";
+        static PrescriptionManager instance;
+        const string fileName = "prescription.dat";
 
-        private PrescriptionManager() 
+        PrescriptionManager() 
         {
 
         }
@@ -35,10 +35,13 @@ namespace RePlay
                 {
                     string[] data = line.Split(' ');
 
-                    RePlayGame game = GameManager.Instance.FindByNamespace(data[0]);
-                    int time = int.Parse(data[1]);
+                    string exercise = data[0];
+                    RePlayGame game = GameManager.Instance.FindByNamespace(data[1]);
+                    string device = data[2];
+                    int duration = int.Parse(data[3]);
 
-                    Add(new Prescription(game, time));
+
+                    Add(new Prescription(exercise, game, device, duration));
                 }
             }
         }
@@ -46,12 +49,12 @@ namespace RePlay
         public void SavePrescription() {
             using (var writer = new StreamWriter(filePath)) {
                 foreach (Prescription p in this) {
-                    writer.WriteLine(String.Format("{0} {1}", p.Game.AssetNamespace, p.Time));
+                    writer.WriteLine(String.Format("{0} {1}", p.Game.AssetNamespace, p.Duration));
                 }
             }
         }
 
-        private string filePath {
+        string filePath {
             get
             {
                 string path = System.Environment.GetFolderPath(System.Environment.SpecialFolder.Personal);
@@ -62,12 +65,16 @@ namespace RePlay
 
     public class Prescription {
 
+        public string Exercise;
         public RePlayGame Game;
-        public int Time;
+        public string Device;
+        public int Duration;
 
-        public Prescription(RePlayGame game, int time) {
+        public Prescription(string exercise, RePlayGame game, string device, int duration) {
+            Exercise = exercise;
             Game = game;
-            Time = time;
+            Device = device;
+            Duration = duration;
         }
     }
 }

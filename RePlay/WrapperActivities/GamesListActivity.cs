@@ -17,42 +17,70 @@ namespace RePlay.WrapperActivities
     public class GamesListActivity : Activity
     {
         GridView View;
-        List<Game> GamesList = new List<Game> { new Game(0, "Breakout"), new Game(1, "Traffic Racer"), 
-            new Game(2, "Fruit Archery"), new Game(3, "Temple Run"), new Game(4, "Crossy Road"),
-            new Game(5, "Typer Shark")};
+        ImageButton LeftButton, RightButton;
+        static List<RePlayGame> games = GameManager.Instance;
+        Paginator<RePlayGame> p = new Paginator<RePlayGame>(6, games);
+        int CurrentPage = 0;
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
 
-            SetContentView(Resource.Layout.GamesList);
-
-            Spinner spinner = FindViewById<Spinner>(Resource.Id.gameslist_sort_dropdown);
-            spinner.ItemSelected += new EventHandler<AdapterView.ItemSelectedEventArgs>(spinner_ItemSelected);
-            var adapter = ArrayAdapter.CreateFromResource(
-                this, Resource.Array.sortby_options, Android.Resource.Layout.SimpleSpinnerItem);
-
-            adapter.SetDropDownViewResource(Android.Resource.Layout.SimpleSpinnerDropDownItem);
-            spinner.Adapter = adapter;
-
-            CustomGameListView GameAdapter = new CustomGameListView(this, GamesList);
-            View = FindViewById<GridView>(Resource.Id.gameslist_grid);
-            View.Adapter = GameAdapter;
-            View.ItemClick += (s, e) =>
-            {
-                Toast.MakeText(this, "GridView Item: " + GamesList[e.Position], ToastLength.Short).Show();
-
-                Intent intent = new Intent(this, typeof(DummyGame.Android.Activity1));
-                intent.PutExtra("CONTENT_DIR", "DummyGame");
-                StartActivity(intent);
-            };
+            SetContentView(Resource.Layout.GamesLauncher);
+            this.InitializeViews();
+            View.Adapter = new CustomGameListView(this, p.GeneratePage(CurrentPage));
         }
 
-        private void spinner_ItemSelected(object sender, AdapterView.ItemSelectedEventArgs e)
+        private void InitializeViews()
         {
-            Spinner spinner = (Spinner)sender;
-            string toast = string.Format("The sort option is {0}", spinner.GetItemAtPosition(e.Position));
-            Toast.MakeText(this, toast, ToastLength.Long).Show();
+            View = FindViewById<GridView>(Resource.Id.gameslist_grid);
+            LeftButton = FindViewById<ImageButton>(Resource.Id.gameslist_left);
+            RightButton = FindViewById<ImageButton>(Resource.Id.gameslist_right);
+            LeftButton.Enabled = false;
+
+            LeftButton.Click += LeftButton_Click;
+            RightButton.Click += RightButton_Click;
+
+        }
+
+        void LeftButton_Click(object sender, EventArgs e)
+        {
+            CurrentPage -= 1;
+            View.Adapter = new CustomGameListView(this, p.GeneratePage(CurrentPage));
+            ToggleButtons();
+        }
+
+        void RightButton_Click(object sender, EventArgs e)
+        {
+            CurrentPage += 1;
+            View.Adapter = new CustomGameListView(this, p.GeneratePage(CurrentPage));
+            ToggleButtons();
+        }
+
+        private void ToggleButtons()
+        {
+            if(CurrentPage == p.LastPage)
+            {
+                LeftButton.Enabled = true;
+                RightButton.Enabled = false;
+            }
+            else if(CurrentPage == 0)
+            {
+                LeftButton.Enabled = false;
+                RightButton.Enabled = true;
+            }
+            else
+            {
+                LeftButton.Enabled = true;
+                RightButton.Enabled = true;
+            }
+
+            View.ItemClick += (s, e) =>
+            {
+                //Intent intent = new Intent(this, typeof(Type.GetType()));
+                //intent.PutExtra("CONTENT_DIR", AssetNamespace);
+                //StartActivity(intent);
+            };
         }
     }
 }

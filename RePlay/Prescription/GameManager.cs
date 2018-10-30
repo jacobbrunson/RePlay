@@ -7,10 +7,10 @@ namespace RePlay
 {
     public class GameManager : List<RePlayGame>
     {
-        private static GameManager instance;
-        private const string assetName = "games.txt";
+        static GameManager instance;
+        const string assetName = "games.txt";
 
-        private GameManager()
+        GameManager()
         {
         }
 
@@ -32,6 +32,18 @@ namespace RePlay
             return null;
         }
 
+        public RePlayGame FindByName(string name)
+        {
+            foreach (RePlayGame game in this)
+            {
+                if (game.Name.Equals(name))
+                {
+                    return game;
+                }
+            }
+            return null;
+        }
+
         public void LoadGames(AssetManager assets) {
             using (var reader = new StreamReader(assets.Open("games.txt")))
             {
@@ -47,7 +59,6 @@ namespace RePlay
 
     public class RePlayGame
     {
-
         public readonly string Name;
         public readonly string AssetNamespace;
 

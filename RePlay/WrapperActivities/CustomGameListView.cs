@@ -18,9 +18,9 @@ namespace RePlay.WrapperActivities
     public class CustomGameListView : BaseAdapter
     {
         private Context Context;
-        private List<Game> GamesList;
+        private List<RePlayGame> GamesList;
 
-        public CustomGameListView(Context mcontext, List<Game> games)
+        public CustomGameListView(Context mcontext, List<RePlayGame> games)
         {
             Context = mcontext;
             GamesList = games;
@@ -47,7 +47,7 @@ namespace RePlay.WrapperActivities
 
             if (view == null)
             {
-                view = LayoutInflater.From(Context).Inflate(Resource.Layout.GamesListLayout, null, false);
+                view = LayoutInflater.From(Context).Inflate(Resource.Layout.CustomGamesLauncher, null, false);
             }
 
             ImageView GameView = view.FindViewById<ImageView>(Resource.Id.gameslist_image);
@@ -57,24 +57,6 @@ namespace RePlay.WrapperActivities
             GameText.Text = GamesList[position].Name;
 
             return view;
-        }
-    }
-
-    public class Game{
-
-        public int Image{
-            get;
-            set;
-        }
-
-        public string Name{
-            get;
-            set;
-        }
-
-        public Game(int img, string n){
-            Image = img;
-            Name = n;
         }
     }
 }

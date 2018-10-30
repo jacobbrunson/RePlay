@@ -1,5 +1,5 @@
 source https://www.nuget.org/api/v2
-framework: MonoAndroid7.1
+framework: MonoAndroid8.0
 
 git https://github.com/jacobbrunson/RePlayDummyGame master build: "sh build.sh", Packages: /DummyGame/, OS: mono
 

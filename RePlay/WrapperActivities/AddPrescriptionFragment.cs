@@ -105,16 +105,16 @@ namespace RePlay.WrapperActivities
                                 (int)_timeSpinner.SelectedItem
                             );
                             prescriptionManager.Add(p);
-                            assigned.Insert(assigned.Count - 1, p);
-                            if (assigned.Count % ItemsPerPage == 1)
+                            if (prescriptionManager.Count % ItemsPerPage == 1)
                             {
                                 settingsActivity.ACurrentPage += 1;
                             }
-                            settingsActivity.assigned_paginator = new Paginator<Prescription>(ItemsPerPage, assigned);
+                            settingsActivity.assigned_paginator = new Paginator<Prescription>(ItemsPerPage, prescriptionManager);
                             settingsActivity.AssignedView.Adapter = new CustomPrescriptionsListView(
                                 settingsActivity,
                                 settingsActivity.assigned_paginator.GeneratePage(settingsActivity.ACurrentPage),
                                 settingsActivity.assigned_paginator.ContainsLast(settingsActivity.ACurrentPage));
+                            prescriptionManager.SavePrescription();
                         }
 
                         Dismiss();

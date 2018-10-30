@@ -33,9 +33,7 @@ namespace RePlay
                 string line;
                 while ((line = reader.ReadLine()) != null)
                 {
-                    Console.WriteLine(line);
                     string[] data = line.Split(',');
-                    Console.WriteLine(data);
                     string exercise = data[0];
                     RePlayGame game = GameManager.Instance.FindByNamespace(data[1]);
                     string device = data[2];

@@ -29,11 +29,13 @@ namespace RePlay
         void GamesClicked(object sender, EventArgs e)
         {
             ImageButton button = (ImageButton)sender;
-            Intent intent = new Intent(button.Context, typeof(WrapperActivities.GamesListActivity));
-            StartActivity(intent);
+            if (!button.Context.GetType().Equals(typeof(WrapperActivities.GamesListActivity))) {
+                Intent intent = new Intent(button.Context, typeof(WrapperActivities.GamesListActivity));
+                StartActivity(intent);
+            }
         }
 
-        void connectionClicked(object sender, EventArgs e)
+        void ConnectionClicked(object sender, EventArgs e)
         {
             IsConnected = !IsConnected;
         }
@@ -41,8 +43,11 @@ namespace RePlay
         void SettingsClicked(object sender, EventArgs e)
         {
             ImageButton button = (ImageButton)sender;
-            Intent intent = new Intent(button.Context, typeof(SettingsLoginActivity));
-            StartActivity(intent);
+            if (!button.Context.GetType().Equals(typeof(SettingsLoginActivity)) && !button.Context.GetType().Equals(typeof(WrapperActivities.SettingsActivity)))
+            {
+                Intent intent = new Intent(button.Context, typeof(SettingsLoginActivity));
+                StartActivity(intent);
+            }
         }
 
         bool isConnected = true;
@@ -75,7 +80,7 @@ namespace RePlay
             view.FindViewById<ImageButton>(Resource.Id.gamesButton).Click += GamesClicked;
 
             connectionButton = view.FindViewById<ImageButton>(Resource.Id.connectionButton);
-            connectionButton.Click += connectionClicked;
+            connectionButton.Click += ConnectionClicked;
 
             view.FindViewById<ImageButton>(Resource.Id.settingsButton).Click += SettingsClicked;
 

@@ -105,7 +105,7 @@ namespace RePlay.WrapperActivities
                                 (int)_timeSpinner.SelectedItem
                             );
                             prescriptionManager.Add(p);
-                            if (prescriptionManager.Count % ItemsPerPage == 1)
+                            if ((prescriptionManager.Count+1) % ItemsPerPage == 1) //+1 to account for last dummy element
                             {
                                 settingsActivity.ACurrentPage += 1;
                             }

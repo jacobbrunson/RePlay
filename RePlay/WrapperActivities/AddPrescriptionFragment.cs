@@ -53,7 +53,7 @@ namespace RePlay.WrapperActivities
 
                 if (dialogView != null)
                 {
-                    var gamesList = new List<string>() { "Breakout", "Crossy Road", "Handwriting" };
+                    var gamesList = GameManager.Instance.GetNames();
                     var exerciseList = new List<string>() { "Wrist flexion", "Bicep curl", "Thumb press" };
                     var deviceList = new List<string>() { "FitMi", "Knob sensor" };
                     var timeList = new List<int>() { 1, 2, 3 };
@@ -105,16 +105,16 @@ namespace RePlay.WrapperActivities
                                 (int)_timeSpinner.SelectedItem
                             );
                             prescriptionManager.Add(p);
-                            assigned.Insert(assigned.Count - 1, p);
-                            if (assigned.Count % ItemsPerPage == 1)
+                            if ((prescriptionManager.Count+1) % ItemsPerPage == 1) //+1 to account for last dummy element
                             {
                                 settingsActivity.ACurrentPage += 1;
                             }
-                            settingsActivity.assigned_paginator = new Paginator<Prescription>(ItemsPerPage, assigned);
+                            settingsActivity.assigned_paginator = new Paginator<Prescription>(ItemsPerPage, prescriptionManager);
                             settingsActivity.AssignedView.Adapter = new CustomPrescriptionsListView(
                                 settingsActivity,
                                 settingsActivity.assigned_paginator.GeneratePage(settingsActivity.ACurrentPage),
                                 settingsActivity.assigned_paginator.ContainsLast(settingsActivity.ACurrentPage));
+                            prescriptionManager.SavePrescription();
                         }
 
                         Dismiss();

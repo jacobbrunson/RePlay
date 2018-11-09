@@ -33,8 +33,7 @@ namespace RePlay
                 string line;
                 while ((line = reader.ReadLine()) != null)
                 {
-                    string[] data = line.Split(' ');
-
+                    string[] data = line.Split(',');
                     string exercise = data[0];
                     RePlayGame game = GameManager.Instance.FindByNamespace(data[1]);
                     string device = data[2];
@@ -49,7 +48,7 @@ namespace RePlay
         public void SavePrescription() {
             using (var writer = new StreamWriter(filePath)) {
                 foreach (Prescription p in this) {
-                    writer.WriteLine(String.Format("{0} {1}", p.Game.AssetNamespace, p.Duration));
+                    writer.WriteLine(String.Format("{0},{1},{2},{3}", p.Exercise, p.Game.AssetNamespace, p.Device, p.Duration));
                 }
             }
         }

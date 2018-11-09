@@ -44,6 +44,14 @@ namespace RePlay
             return null;
         }
 
+        public string[] GetNames() {
+            string[] names = new string[this.Count];
+            for (int i = 0; i < this.Count; i++) {
+                names[i] = this[i].Name;
+            }
+            return names;
+        }
+
         public void LoadGames(AssetManager assets) {
             using (var reader = new StreamReader(assets.Open("games.txt")))
             {

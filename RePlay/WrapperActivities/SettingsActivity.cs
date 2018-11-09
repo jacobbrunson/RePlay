@@ -19,13 +19,6 @@ namespace RePlay.WrapperActivities
         GridView AssignedView, SavedView;
         ImageButton ALeftButton, ARightButton, SLeftButton, SRightButton;
 
-        static List<Prescription> assigned = new List<Prescription> {
-            new Prescription("Left-to-Right", null, "FitMi", 3), 
-            new Prescription("WristFlexion", null, "FitMi", 3),
-            new Prescription("Bicep Curl", null, "FitMi", 3),
-            new Prescription("Thumb Press", null, "FitMi", 3)
-        };
-
         static List<Prescription> saved = new List<Prescription> {
             new Prescription("Bicep Curl", null, "FitMi", 3),
             new Prescription("Wrist Supination", null, "FitMi", 3),
@@ -35,7 +28,7 @@ namespace RePlay.WrapperActivities
 
         const int ItemsPerPage = 3;
 
-        Paginator<Prescription> assigned_paginator = new Paginator<Prescription>(ItemsPerPage, assigned);
+        Paginator<Prescription> assigned_paginator = new Paginator<Prescription>(ItemsPerPage, PrescriptionManager.Instance);
         Paginator<Prescription> saved_paginator = new Paginator<Prescription>(ItemsPerPage, saved);
 
         int ACurrentPage = 0;

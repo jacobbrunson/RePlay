@@ -2,3 +2,12 @@ C:\Users\Patrick\Programming\VSProjects\RePlay\Utilities\obj\Debug\Utilities.csp
 C:\Users\Patrick\Programming\VSProjects\RePlay\Utilities\obj\Debug\Utilities.csproj.CoreCompileInputs.cache
 C:\Users\Patrick\Programming\SD\RePlay\Utilities\obj\Debug\Utilities.csprojAssemblyReference.cache
 C:\Users\Patrick\Programming\SD\RePlay\Utilities\obj\Debug\Utilities.csproj.CoreCompileInputs.cache
+C:\Users\Patrick\Programming\SD\RePlay\Utilities\bin\Debug\Utilities.dll.config
+C:\Users\Patrick\Programming\SD\RePlay\Utilities\bin\Debug\Utilities.dll
+C:\Users\Patrick\Programming\SD\RePlay\Utilities\bin\Debug\Utilities.pdb
+C:\Users\Patrick\Programming\SD\RePlay\Utilities\bin\Debug\FitMiAndroid.dll
+C:\Users\Patrick\Programming\SD\RePlay\Utilities\bin\Debug\FitMi_Research_Puck.dll
+C:\Users\Patrick\Programming\SD\RePlay\Utilities\bin\Debug\HidSharp.dll
+C:\Users\Patrick\Programming\SD\RePlay\Utilities\obj\Debug\Utilities.csproj.CopyComplete
+C:\Users\Patrick\Programming\SD\RePlay\Utilities\obj\Debug\Utilities.dll
+C:\Users\Patrick\Programming\SD\RePlay\Utilities\obj\Debug\Utilities.pdb

@@ -2,7 +2,7 @@
 <Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <ProjectGuid>{50E7966A-EE62-4A59-B5CE-5DA097568E49}</ProjectGuid>
-    <OutputType>Exe</OutputType>
+    <OutputType>Library</OutputType>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <RootNamespace>Utilities</RootNamespace>
     <TargetFrameworkProfile />
@@ -20,6 +20,9 @@
     <OutputPath>bin\Release</OutputPath>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
   <ItemGroup>
     <None Include="app.config" />
     <None Include="Libraries\FitMi_Research_Puck.dll">
@@ -32,6 +35,7 @@
   <ItemGroup>
     <Compile Include="FitMiExerciseBase.cs" />
     <Compile Include="FitMiExerciseGyroBase.cs" />
+    <Compile Include="FitMiExerciseReachBase.cs" />
     <Compile Include="FitMiExerciseType.cs" />
     <Compile Include="FitMiExercise_Clapping.cs" />
     <Compile Include="FitMiExercise_Curls.cs" />

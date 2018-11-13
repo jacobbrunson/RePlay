@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-
+using Android;
 using Android.App;
 using Android.Content;
 using Android.OS;
@@ -22,6 +22,7 @@ namespace RePlay.WrapperActivities
 
         // ui
         ImageButton next;
+        ImageView exercisePic, devicePic; 
 
         const int REQUEST_CODE = 5432;
 
@@ -33,6 +34,8 @@ namespace RePlay.WrapperActivities
             base.OnCreate(savedInstanceState);
 
             next = this.FindViewById<ImageButton>(Resource.Id.next);
+            exercisePic = this.FindViewById<ImageView>(Resource.Id.prompt_exercise);
+            devicePic = this.FindViewById<ImageView>(Resource.Id.prompt_device);
 
             this.FindViewById<ImageButton>(Resource.Id.cancel).Click += delegate {
                 Intent intent = new Intent(this, typeof(MainActivity));
@@ -40,7 +43,8 @@ namespace RePlay.WrapperActivities
             };
 
             prescription = PrescriptionManager.Instance;
-            index = StateManager.Instance.Index;            
+            index = StateManager.Instance.Index;
+            UpdateView();
         }
 
         protected override void OnActivityResult(int requestCode, Result resultCode, Intent data)
@@ -65,6 +69,7 @@ namespace RePlay.WrapperActivities
                 }
                 else
                 {
+                    // located in patrick/exercises
                     //Intent intent = new Intent(this, typeof(PrescriptionDoneActivity));
                     //StartActivity(intent);
                 }
@@ -74,7 +79,18 @@ namespace RePlay.WrapperActivities
         // update the views pictures based on prescription[index]
         public void UpdateView()
         {
+            exercisePic.SetImageDrawable(mapNameToPic(prescription[index].Exercise));
+        }
 
+        private Android.Graphics.Drawables.Drawable mapNameToPic(string exercise)
+        {
+            switch(exercise)
+            {
+                case "wrist flexion":
+                    return Resource.Id.wrist_flexion_dialog;
+                default:
+                    return Resource.Id.wrist_flexion_dialog;
+            }
         }
     }
 }

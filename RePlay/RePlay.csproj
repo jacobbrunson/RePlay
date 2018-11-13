@@ -157,6 +157,7 @@
     <Compile Include="Paginator.cs" />
     <Compile Include="WrapperActivities\AddPrescriptionFragment.cs" />
     <Compile Include="Prescription\ExerciseManager.cs" />
+    <Compile Include="WrapperActivities\PatientFragment.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />

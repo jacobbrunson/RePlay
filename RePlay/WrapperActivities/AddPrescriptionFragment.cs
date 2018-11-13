@@ -55,12 +55,10 @@ namespace RePlay.WrapperActivities
                 {
                     var gamesList = GameManager.Instance.GetNames();
                     var exerciseList = new List<string>() { "Wrist flexion", "Bicep curl", "Thumb press" };
-                    var deviceList = new List<string>() { "FitMi", "Knob sensor" };
                     var timeList = new List<int>() { 1, 2, 3 };
 
                     var gameSpinner = dialogView.FindViewById<Spinner>(Resource.Id.gameSpinner);
                     var exerciseSpinner = dialogView.FindViewById<Spinner>(Resource.Id.exerciseSpinner);
-                    var deviceSpinner = dialogView.FindViewById<Spinner>(Resource.Id.deviceSpinner);
                     var timeNumberPicker = dialogView.FindViewById<NumberPicker>(Resource.Id.timeNumberPicker);
 
                     timeNumberPicker.MinValue = 1;
@@ -70,11 +68,9 @@ namespace RePlay.WrapperActivities
 
                     var gameAdapter = new ArrayAdapter<string>(Context, Android.Resource.Layout.SimpleSpinnerItem, gamesList);
                     var exerciseAdapter = new ArrayAdapter<string>(Context, Android.Resource.Layout.SimpleSpinnerItem, exerciseList);
-                    var deviceAdapter = new ArrayAdapter<string>(Context, Android.Resource.Layout.SimpleSpinnerItem, deviceList);
 
                     gameSpinner.Adapter = gameAdapter;
                     exerciseSpinner.Adapter = exerciseAdapter;
-                    deviceSpinner.Adapter = deviceAdapter;
 
                     var cancelButton = dialogView.FindViewById<Button>(Resource.Id.cancelButton);
                     var addButton = dialogView.FindViewById<Button>(Resource.Id.addButton);
@@ -89,7 +85,6 @@ namespace RePlay.WrapperActivities
                         var _dialog = dialogView;
                         var _exerciseSpinner = _dialog.FindViewById<Spinner>(Resource.Id.exerciseSpinner);
                         var _gameSpinner = _dialog.FindViewById<Spinner>(Resource.Id.gameSpinner);
-                        var _deviceSpinner = _dialog.FindViewById<Spinner>(Resource.Id.deviceSpinner);
                         var _timeNumberPicker = _dialog.FindViewById<NumberPicker>(Resource.Id.timeNumberPicker);
 
                         var prescriptionManager = PrescriptionManager.Instance;
@@ -104,7 +99,7 @@ namespace RePlay.WrapperActivities
                             Prescription p = new Prescription(
                                 (string)_exerciseSpinner.SelectedItem,
                                 game,
-                                (string)_deviceSpinner.SelectedItem,
+                                null,
                                 _timeNumberPicker.Value
                             );
                             prescriptionManager.Add(p);

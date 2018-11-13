@@ -57,32 +57,12 @@
         android:layout_alignLeft="@id/exerciseSpinner"
         android:spinnerMode="dropdown"
         android:padding="5dp" />
-    <TextView
-        android:text="Device:"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/gameText"
-        android:id="@+id/deviceText"
-        android:textStyle="bold"
-        android:layout_marginBottom="15dp"
-        android:layout_alignLeft="@id/exerciseText" />
-    <Spinner
-        android:layout_width="250dp"
-        android:layout_height="wrap_content"
-        android:layout_toRightOf="@id/deviceText"
-        android:layout_below="@id/gameText"
-        android:id="@+id/deviceSpinner"
-        android:background="@drawable/customspinner"
-        android:layout_alignLeft="@id/exerciseSpinner"
-        android:spinnerMode="dropdown"
-        android:padding="5dp" />
-    <TextView
+   <TextView
         android:text="Time:"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/deviceText"
+        android:layout_below="@id/gameText"
         android:id="@+id/timeText"
         android:textStyle="bold"
         android:layout_marginBottom="15dp"
@@ -114,7 +94,7 @@
      <NumberPicker
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/deviceText"
+        android:layout_below="@id/gameText"
         android:layout_above="@id/addButton"
         android:layout_toRightOf="@id/timeText"
         android:id="@+id/timeNumberPicker"

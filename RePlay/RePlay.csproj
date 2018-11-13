@@ -156,6 +156,7 @@
     <Compile Include="WrapperActivities\SettingsActivity.cs" />
     <Compile Include="Paginator.cs" />
     <Compile Include="WrapperActivities\AddPrescriptionFragment.cs" />
+    <Compile Include="Prescription\ExerciseManager.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />
@@ -244,6 +245,8 @@
     <AndroidResource Include="Resources\drawable\curls_2.jpg" />
     <AndroidResource Include="Resources\layout\SavedPrescription.axml" />
     <AndroidResource Include="Resources\drawable\EditTextBorderRed.xml" />
+    <AndroidResource Include="Resources\drawable\CircularImage.xml" />
+    <AndroidResource Include="Resources\drawable\CircularBackground.xml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\drawable\" />
@@ -259,6 +262,7 @@
     <AndroidAsset Include="Assets\games.txt" />
     <AndroidAsset Include="Assets\AboutAssets.txt" />
     <AndroidAsset Include="Assets\DummyGame\temoc.xnb" />
+    <AndroidAsset Include="Assets\exercises.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <Choose>

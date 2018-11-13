@@ -1,0 +1,20 @@
+﻿Clapping,clapping
+Bicep Curls,curls
+Finger Tap,fingertap
+Finger Twists,fingertwists
+Flipping,flipping
+Flyout,flyout
+Grip,grip
+Key Pinch,keypinch
+Reach Across,reachacross
+Reach Diagonal,reachdiagonal
+Reach Out,reachout
+Rolling,rolling
+Rotate,rotate
+Shoulder Abduction,shoulderabd
+Shoulder Extension,shoulderext
+Supination,supination
+Thumb Press,thumbopp
+Touches,touches
+Wrist Deviation,wristdev
+Wrist Flexion,wristflex

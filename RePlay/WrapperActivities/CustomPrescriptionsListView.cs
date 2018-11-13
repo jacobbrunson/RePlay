@@ -76,7 +76,10 @@ namespace RePlay.WrapperActivities
                         TextView DeviceText = view.FindViewById<TextView>(Resource.Id.device_name);
                         DeviceText.Text = card.Device;
                         TextView GameText = view.FindViewById<TextView>(Resource.Id.game_name);
-                        //GameText.Text = card.Game.Name;
+                        GameText.Text = card.Game.Name;
+                        ImageView PrescriptionImage = view.FindViewById<ImageButton>(Resource.Id.prescription_image);
+                        string imgName = ExerciseManager.Instance[card.Exercise] + "0";
+                        PrescriptionImage.SetImageResource(settingsActivity.Resources.GetIdentifier(imgName, "drawable", null));
                     }
                     else
                     {

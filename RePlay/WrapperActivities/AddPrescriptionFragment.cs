@@ -11,22 +11,12 @@ namespace RePlay.WrapperActivities
     {
         public class AddPrescriptionFragment : DialogFragment
         {
-            public class DialogEventArgs : EventArgs
-            {
-                public string Exercise { get; set; }
-                public string Game { get; set; }
-                public string Device { get; set; }
-                public int Time { get; set; }
-            }
-
             SettingsActivity settingsActivity;
 
             public AddPrescriptionFragment(SettingsActivity settingsActivity)
             {
                 this.settingsActivity = settingsActivity;
             }
-
-            public delegate void DialogEventHandler(object sender, DialogEventArgs args);
 
             /// <summary>
             /// Method that creates and returns and instance of this dialog

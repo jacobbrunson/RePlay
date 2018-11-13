@@ -73,8 +73,9 @@ namespace RePlay.WrapperActivities
                         Prescription card = PrescriptionsList[position];
                         TextView ExerciseText = view.FindViewById<TextView>(Resource.Id.exercise_name);
                         ExerciseText.Text = card.Exercise;
+                        TextView DeviceText = view.FindViewById<TextView>(Resource.Id.device_name);
+                        DeviceText.Text = card.Device;
                         TextView GameText = view.FindViewById<TextView>(Resource.Id.game_name);
-                        var deletePrescriptionButton = view.FindViewById<ImageButton>(Resource.Id.delete_prescription);
                         //GameText.Text = card.Game.Name;
                     }
                     else

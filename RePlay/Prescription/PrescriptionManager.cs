@@ -9,27 +9,22 @@ namespace RePlay
         static PrescriptionManager instance;
         const string fileName = "prescription.dat";
 
-        PrescriptionManager()
+        PrescriptionManager() 
         {
 
         }
 
-        public static PrescriptionManager Instance
-        {
-            get
-            {
-                if (instance == null)
-                {
+        public static PrescriptionManager Instance {
+            get {
+                if (instance == null) {
                     instance = new PrescriptionManager();
                 }
                 return instance;
             }
         }
 
-        public void LoadPrescription()
-        {
-            if (!File.Exists(filePath))
-            {
+        public void LoadPrescription() {
+            if (!File.Exists(filePath)) {
                 SavePrescription();
             }
 
@@ -50,19 +45,15 @@ namespace RePlay
             }
         }
 
-        public void SavePrescription()
-        {
-            using (var writer = new StreamWriter(filePath))
-            {
-                foreach (Prescription p in this)
-                {
+        public void SavePrescription() {
+            using (var writer = new StreamWriter(filePath)) {
+                foreach (Prescription p in this) {
                     writer.WriteLine(String.Format("{0},{1},{2},{3}", p.Exercise, p.Game.AssetNamespace, p.Device, p.Duration));
                 }
             }
         }
 
-        string filePath
-        {
+        string filePath {
             get
             {
                 string path = System.Environment.GetFolderPath(System.Environment.SpecialFolder.Personal);
@@ -71,17 +62,17 @@ namespace RePlay
         }
     }
 
-    public class Prescription
-    {
+    public class Prescription {
 
         public string Exercise;
         public RePlayGame Game;
+        public string Device;
         public int Duration;
 
-        public Prescription(string exercise, RePlayGame game, int duration)
-        {
+        public Prescription(string exercise, RePlayGame game, string device, int duration) {
             Exercise = exercise;
             Game = game;
+            Device = device;
             Duration = duration;
         }
     }

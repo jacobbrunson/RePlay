@@ -20,10 +20,10 @@ namespace RePlay.WrapperActivities
         ImageButton ALeftButton, ARightButton, SLeftButton, SRightButton;
 
         static List<Prescription> saved = new List<Prescription> {
-            new Prescription("Bicep Curl", null, 3),
-            new Prescription("Wrist Supination", null, 3),
-            new Prescription("Left-to-Right", null, 3),
-            new Prescription("Typing", null, 3)
+            new Prescription("Bicep Curl", null, "FitMi", 3),
+            new Prescription("Wrist Supination", null, "FitMi", 3),
+            new Prescription("Left-to-Right", null, "FitMi", 3),
+            new Prescription("Typing", null, "FitMi", 3)
         };
 
         const int ItemsPerPage = 3;
@@ -45,7 +45,7 @@ namespace RePlay.WrapperActivities
         }
 
         void InitializeViews()
-        {
+        {   
             // Initialize both grids
             AssignedView = FindViewById<GridView>(Resource.Id.settings_gridview_1);
             SavedView = FindViewById<GridView>(Resource.Id.settings_gridview_2);

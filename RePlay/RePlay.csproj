@@ -117,6 +117,8 @@
     <Compile Include="WrapperActivities\SettingsActivity.cs" />
     <Compile Include="Paginator.cs" />
     <Compile Include="WrapperActivities\AddPrescriptionFragment.cs" />
+    <Compile Include="Prescription\Prescription.cs" />
+    <Compile Include="Prescription\RePlayGame.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />

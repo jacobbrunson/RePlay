@@ -18,7 +18,7 @@ namespace RePlay.WrapperActivities
     {
         GridView AssignedView, SavedView;
         ImageButton ALeftButton, ARightButton, SLeftButton, SRightButton;
-        ImageButton Selfie;
+        ImageButton PatientPicture;
 
         static List<Prescription> saved = new List<Prescription> {
             new Prescription("Bicep Curl", null, "FitMi", 3),
@@ -43,8 +43,8 @@ namespace RePlay.WrapperActivities
             InitializeViews();
             AssignedView.Adapter = new CustomPrescriptionsListView(this, assigned_paginator.GeneratePage(ACurrentPage), assigned_paginator.ContainsLast(ACurrentPage));
             SavedView.Adapter = new CustomPrescriptionsListView(this, saved_paginator.GeneratePage(SCurrentPage));
-            Selfie = FindViewById<ImageButton>(Resource.Id.settings_picture);
-            Selfie.Click += Selfie_Click;
+            PatientPicture = FindViewById<ImageButton>(Resource.Id.settings_picture);
+            PatientPicture.Click += PatientPicture_Click;
         }
 
         void InitializeViews()
@@ -136,7 +136,7 @@ namespace RePlay.WrapperActivities
             }
         }
 
-        void Selfie_Click(object sender, EventArgs e)
+        void PatientPicture_Click(object sender, EventArgs e)
         {
             Activity settings = this;
             FragmentTransaction fm = settings.FragmentManager.BeginTransaction();

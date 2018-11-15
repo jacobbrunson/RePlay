@@ -57,6 +57,7 @@ namespace RePlay.WrapperActivities
 
             public override View GetView(int position, View convertView, ViewGroup parent)
             {
+                var settingsActivity = (SettingsActivity)Context;
                 View view = convertView;
 
                 if (view == null)
@@ -76,6 +77,17 @@ namespace RePlay.WrapperActivities
                         TextView DeviceText = view.FindViewById<TextView>(Resource.Id.device_name);
                         DeviceText.Text = card.Device;
                         TextView GameText = view.FindViewById<TextView>(Resource.Id.game_name);
+                        var deletePrescriptionButton = view.FindViewById<ImageButton>(Resource.Id.delete_prescription);
+                        deletePrescriptionButton.Click += (sender, args) =>
+                        {
+                            var prescriptionsPosition = position + SettingsActivity.ItemsPerPage * settingsActivity.ACurrentPage;
+                            settingsActivity.assigned_paginator.RemoveAt(prescriptionsPosition);
+                            PrescriptionManager.Instance.SavePrescription();
+                            settingsActivity.AssignedView.Adapter = new CustomPrescriptionsListView(
+                                settingsActivity,
+                                settingsActivity.assigned_paginator.GeneratePage(settingsActivity.ACurrentPage),
+                                settingsActivity.assigned_paginator.ContainsLast(settingsActivity.ACurrentPage));
+                        };
                         //GameText.Text = card.Game.Name;
                     }
                     else

@@ -7,10 +7,10 @@ namespace RePlay.WrapperActivities
     {
         public readonly List<T> ItemsList;
 
-        public readonly int TotalNumItems;
+        public int TotalNumItems;
         public readonly int ItemsPerPage;
-        public readonly int ItemsRemaining;
-        public readonly int LastPage;
+        public int ItemsRemaining;
+        public int LastPage;
 
         public Paginator(int itemsPerPage, List<T> itemsList)
         {
@@ -33,14 +33,26 @@ namespace RePlay.WrapperActivities
             }
 
             //If this is the last page, add a dummy element for plus button
-            if (ContainsLast(curr)) {
+            if (ContainsLast(curr))
+            {
                 data.Add(default(T));
             }
 
             return data;
         }
 
-        public bool ContainsLast(int curr){
+        public T RemoveAt(int position)
+        {
+            var item = ItemsList[position];
+            ItemsList.RemoveAt(position);
+            TotalNumItems = ItemsList.Count + 1; //+1 to account for plus button
+            ItemsRemaining = TotalNumItems % ItemsPerPage;
+            LastPage = Math.Max((TotalNumItems - 1) / ItemsPerPage, 0);
+            return item;
+        }
+
+        public bool ContainsLast(int curr)
+        {
             return curr == LastPage;
         }
     }

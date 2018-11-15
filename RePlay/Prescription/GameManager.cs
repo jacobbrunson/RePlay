@@ -14,18 +14,24 @@ namespace RePlay
         {
         }
 
-        public static GameManager Instance {
-            get {
-                if (instance == null) {
+        public static GameManager Instance
+        {
+            get
+            {
+                if (instance == null)
+                {
                     instance = new GameManager();
                 }
                 return instance;
             }
         }
 
-        public RePlayGame FindByNamespace(string name) {
-            foreach (RePlayGame game in this) {
-                if (game.AssetNamespace.Equals(name)) {
+        public RePlayGame FindByNamespace(string name)
+        {
+            foreach (RePlayGame game in this)
+            {
+                if (game.AssetNamespace.Equals(name))
+                {
                     return game;
                 }
             }
@@ -44,22 +50,23 @@ namespace RePlay
             return null;
         }
 
-        public string[] GetNames() {
-            string[] names = new string[this.Count];
-            for (int i = 0; i < this.Count; i++) {
-                names[i] = this[i].Name;
-            }
-            return names;
-        }
-
-        public void LoadGames(AssetManager assets) {
+        public void LoadGames(AssetManager assets)
+        {
             using (var reader = new StreamReader(assets.Open("games.txt")))
             {
                 string line;
                 while ((line = reader.ReadLine()) != null)
                 {
                     string[] data = line.Split(',');
-                    Add(new RePlayGame(data[1], data[0]));
+
+                    try
+                    {
+                        Add(new RePlayGame(data[1].Trim(), data[0].Trim(), data[2].Trim(), bool.Parse(data[3].Trim())));
+                    }
+                    catch (Exception)
+                    {
+                        //empty
+                    }
                 }
             }
         }
@@ -69,11 +76,15 @@ namespace RePlay
     {
         public readonly string Name;
         public readonly string AssetNamespace;
+        public readonly string ImageAssetName;
+        public readonly bool IsGameAvailable;
 
-        public RePlayGame(string name, string assetNamespace)
+        public RePlayGame(string name, string assetNamespace, string image_asset_name, bool available)
         {
             Name = name;
             AssetNamespace = assetNamespace;
+            ImageAssetName = image_asset_name;
+            IsGameAvailable = available;
         }
     }
 }

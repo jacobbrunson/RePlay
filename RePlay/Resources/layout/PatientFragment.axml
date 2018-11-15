@@ -9,58 +9,107 @@
     android:layout_height="fill_parent">
     <ImageView
         android:id="@+id/green_banner_frag"
-        android:layout_width="wrap_content"
+        android:layout_width="800dp"
         android:layout_height="140dp"
         android:scaleType="fitXY"
         android:src="@drawable/green_bar" />
     <ImageButton
-        android:id="@+id/settings_picture_frag"
-        android:background="@drawable/circularbackground"
+        android:id="@+id/patient_image"
+        android:src="@drawable/nate"
+        android:scaleType="fitXY"
         android:layout_width="110dp"
         android:layout_height="110dp"
-        android:scaleType="fitXY"
-        android:src="@drawable/nate"
+        android:background="@drawable/circularbackground"
         android:layout_alignLeft="@id/green_banner_frag"
         android:layout_marginTop="10dp"
         android:layout_marginLeft="40dp" />
+    <ImageButton
+        android:id="@+id/patient_camera"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:background="@android:color/transparent"
+        android:src="@drawable/add_photo"
+        android:scaleType="fitXY"
+        android:layout_marginLeft="120dp" />
     <TextView
         android:id="@+id/patient_information"
         android:text="Patient Information"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textColor="#474747"
+        android:textStyle="bold"
         android:textSize="22dp"
-        android:layout_toRightOf="@id/settings_picture_frag"
-        android:layout_marginTop="80dp"
+        android:layout_toRightOf="@id/patient_image"
         android:layout_marginLeft="10dp"
-        android:textStyle="bold" />
+        android:layout_marginTop="80dp" />
     <TextView
         android:id="@+id/patient_fname_text"
         android:text="First Name"
         android:textColor="#474747"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/green_banner_frag"
+        android:layout_alignLeft="@id/patient_image"
+        android:layout_marginLeft="15dp"
         android:textSize="16dp"
-        android:layout_below="@id/patient_information" />
-        
-        
+        android:textStyle="bold"
+        android:layout_marginTop="20dp" />
+    <TextView
+        android:id="@+id/patient_lname_text"
+        android:text="Last Name"
+        android:textColor="#474747"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/green_banner_frag"
+        android:layout_toRightOf="@id/patient_fname_text"
+        android:textSize="16dp"
+        android:layout_marginLeft="300dp"
+        android:textStyle="bold"
+        android:layout_marginTop="20dp" />
+    <EditText
+        android:id="@+id/patient_fname"
+        android:layout_width="300dp"
+        android:layout_height="40dp"
+        android:layout_below="@id/patient_fname_text"
+        android:layout_alignLeft="@id/patient_fname_text"
+        android:text="David"
+        android:background="@drawable/edittextborder"
+        android:textColor="#474747"
+        android:textSize="15dp"
+        android:layout_marginTop="10dp" />
+    <EditText
+        android:id="@+id/patient_lname"
+        android:layout_width="300dp"
+        android:layout_height="40dp"
+        android:layout_below="@id/patient_lname_text"
+        android:layout_alignLeft="@id/patient_lname_text"
+        android:text="Wilson"
+        android:background="@drawable/edittextborder"
+        android:textColor="#474747"
+        android:textSize="15dp"
+        android:layout_marginTop="10dp" />
     <ImageButton
         android:id="@+id/patient_cancel"
         android:layout_width="90dp"
         android:layout_height="wrap_content"
         android:src="@drawable/cancel"
-        android:background="@android:color/background_light"
-        android:adjustViewBounds="true"
         android:scaleType="centerInside"
-        android:layout_marginTop="25dp"
+        android:adjustViewBounds="true"
+        android:background="#ffffff"
+        android:layout_below="@id/patient_lname"
+        android:layout_marginTop="60dp"
         android:layout_toLeftOf="@+id/patient_save"
-        android:layout_marginRight="20dp" />
+        android:layout_marginRight="40dp" />
     <ImageButton
         android:id="@id/patient_save"
-        android:src="@drawable/save"
-        android:scaleType="centerInside"
         android:layout_width="90dp"
         android:layout_height="wrap_content"
-        android:background="#ffffff"
+        android:src="@drawable/save"
+        android:scaleType="centerInside"
         android:adjustViewBounds="true"
-        android:layout_marginTop="25dp" />
-    
+        android:background="#ffffff"
+        android:layout_marginTop="60dp"
+        android:layout_below="@id/patient_lname"
+        android:layout_alignRight="@id/patient_lname" />
+  
 </RelativeLayout>

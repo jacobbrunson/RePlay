@@ -249,6 +249,7 @@
     <AndroidResource Include="Resources\drawable\CircularImage.xml" />
     <AndroidResource Include="Resources\drawable\CircularBackground.xml" />
     <AndroidResource Include="Resources\layout\PatientFragment.axml" />
+    <AndroidResource Include="Resources\drawable\EditTextBorderBlack.xml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\drawable\" />

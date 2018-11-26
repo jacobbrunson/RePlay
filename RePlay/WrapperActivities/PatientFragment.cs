@@ -18,7 +18,8 @@ namespace RePlay.WrapperActivities
     {
         static string PFirst;
         static string PLast;
-        
+        public static event EventHandler<string> DialogClosed;
+
         public static PatientFragment NewInstance(string name)
         {
             PatientFragment PatientFragmentInstance = new PatientFragment();
@@ -47,13 +48,36 @@ namespace RePlay.WrapperActivities
             // Use this to return your custom view for this Fragment
             // return inflater.Inflate(Resource.Layout.YourFragment, container, false);
             Dialog.Window.RequestFeature(WindowFeatures.NoTitle);
+            Dialog.SetCanceledOnTouchOutside(false);
             View rootView = inflater.Inflate(Resource.Layout.PatientFragment, container, false);
             EditText First = rootView.FindViewById<EditText>(Resource.Id.patient_fname);
             EditText Last = rootView.FindViewById<EditText>(Resource.Id.patient_lname);
             First.Text = PFirst;
             Last.Text = PLast;
 
+            ImageButton Cancel = rootView.FindViewById<ImageButton>(Resource.Id.patient_cancel);
+            ImageButton Save = rootView.FindViewById<ImageButton>(Resource.Id.patient_save);
+
+            Cancel.Click += (sender, args) =>
+            {
+                Dismiss();
+            };
+
+            Save.Click += (sender, args) =>
+            {
+                PFirst = First.Text;
+                PLast = Last.Text;
+                Dismiss();
+            };
+
             return rootView;
+        }
+
+        public override void OnDismiss(IDialogInterface dialog)
+        {
+            base.OnDismiss(dialog);
+            string name = PFirst + " " + PLast;
+            DialogClosed?.Invoke(this, name);
         }
     }
 }

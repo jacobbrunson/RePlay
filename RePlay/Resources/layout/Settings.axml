@@ -37,14 +37,15 @@
             android:layout_marginLeft="40dp" />
         <TextView
             android:id="@+id/therapist_name"
-            android:text="David Wilson"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@android:color/white"
             android:textSize="22dp"
             android:layout_toRightOf="@id/settings_picture"
             android:layout_marginTop="30dp"
-            android:layout_marginLeft="10dp" />
+            android:layout_marginLeft="10dp"
+            android:hint="Patient Name"
+            android:text="Patient Name" />
         <TextView
             android:id="@+id/assigned_exercises"
             android:text="Assigned Exercises"

@@ -19,6 +19,7 @@ namespace RePlay.WrapperActivities
         GridView AssignedView, SavedView;
         ImageButton ALeftButton, ARightButton, SLeftButton, SRightButton;
         ImageView PatientPicture;
+        TextView PatientName;
 
         static List<Prescription> saved = new List<Prescription> {
             new Prescription("Bicep Curl", null, "FitMi", 3),
@@ -45,6 +46,7 @@ namespace RePlay.WrapperActivities
             SavedView.Adapter = new CustomPrescriptionsListView(this, saved_paginator.GeneratePage(SCurrentPage));
             PatientPicture = FindViewById<ImageView>(Resource.Id.settings_picture);
             PatientPicture.Click += PatientPicture_Click;
+            PatientName = FindViewById<TextView>(Resource.Id.therapist_name);
         }
 
         void InitializeViews()
@@ -138,11 +140,17 @@ namespace RePlay.WrapperActivities
 
         void PatientPicture_Click(object sender, EventArgs e)
         {
-            string name = FindViewById<TextView>(Resource.Id.therapist_name).Text;
+            string name = PatientName.Text;
             Activity settings = this;
             FragmentTransaction fm = settings.FragmentManager.BeginTransaction();
             PatientFragment dialog = PatientFragment.NewInstance(name);
+            PatientFragment.DialogClosed += OnDialogClosed;
             dialog.Show(fm, "dialog fragment");
+        }
+
+        void OnDialogClosed(object sender, string e)
+        {
+            PatientName.Text = e;
         }
     }
 }

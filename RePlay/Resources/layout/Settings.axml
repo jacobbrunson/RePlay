@@ -28,7 +28,6 @@
             android:adjustViewBounds="true"
             android:src="@drawable/green_bar" />
         <refractored.controls.CircleImageView
-            xmlns:app="http://schemas.android.com/apk/res-auto"
             android:id="@+id/settings_picture"
             android:layout_width="110dp"
             android:layout_height="110dp"

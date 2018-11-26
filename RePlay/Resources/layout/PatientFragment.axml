@@ -3,10 +3,10 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:background="#ffffff"
     android:orientation="vertical"
-    android:minHeight="150dp"
-    android:minWidth="100dp"
     android:layout_width="fill_parent"
-    android:layout_height="fill_parent">
+    android:layout_height="fill_parent"
+    android:minWidth="800dp"
+    android:minHeight="400dp">
     <ImageView
         android:id="@+id/green_banner_frag"
         android:layout_width="800dp"
@@ -14,16 +14,13 @@
         android:scaleType="fitXY"
         android:src="@drawable/green_bar" />
     <refractored.controls.CircleImageView
-        xmlns:app="http://schemas.android.com/apk/res-auto"
         android:id="@+id/patient_image"
         android:layout_width="110dp"
         android:layout_height="110dp"
         android:src="@drawable/nate"
         android:layout_alignLeft="@id/green_banner_frag"
         android:layout_marginTop="10dp"
-        android:layout_marginLeft="40dp"
-        app:civ_border_width="2dp"
-        app:civ_border_color="#FF000000" />
+        android:layout_marginLeft="40dp" />
     <ImageButton
         android:id="@+id/patient_camera"
         android:layout_width="60dp"

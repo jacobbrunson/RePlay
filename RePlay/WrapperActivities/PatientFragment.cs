@@ -36,8 +36,9 @@ namespace RePlay.WrapperActivities
         {
             // Use this to return your custom view for this Fragment
             // return inflater.Inflate(Resource.Layout.YourFragment, container, false);
+            View rootView = inflater.Inflate(Resource.Layout.PatientFragment, container, false);
 
-            return base.OnCreateView(inflater, container, savedInstanceState);
+            return rootView;
         }
     }
 }

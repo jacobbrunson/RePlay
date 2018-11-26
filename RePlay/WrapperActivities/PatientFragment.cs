@@ -16,11 +16,21 @@ namespace RePlay.WrapperActivities
 {
     public class PatientFragment : DialogFragment
     {
-        string PatientName;
+        static string PFirst;
+        static string PLast;
         
-        public static PatientFragment NewInstance()
+        public static PatientFragment NewInstance(string name)
         {
             PatientFragment PatientFragmentInstance = new PatientFragment();
+            if(name.Contains(' ')){
+                string[] splitted = name.Split(' ');
+                PFirst = splitted[0];
+                PLast = splitted[1];
+            }
+            else{
+                PFirst = name;
+                PLast = "";
+            }
             return PatientFragmentInstance;
         }
 
@@ -36,7 +46,12 @@ namespace RePlay.WrapperActivities
         {
             // Use this to return your custom view for this Fragment
             // return inflater.Inflate(Resource.Layout.YourFragment, container, false);
+            Dialog.Window.RequestFeature(WindowFeatures.NoTitle);
             View rootView = inflater.Inflate(Resource.Layout.PatientFragment, container, false);
+            EditText First = rootView.FindViewById<EditText>(Resource.Id.patient_fname);
+            EditText Last = rootView.FindViewById<EditText>(Resource.Id.patient_lname);
+            First.Text = PFirst;
+            Last.Text = PLast;
 
             return rootView;
         }

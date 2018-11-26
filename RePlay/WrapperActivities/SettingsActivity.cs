@@ -138,9 +138,10 @@ namespace RePlay.WrapperActivities
 
         void PatientPicture_Click(object sender, EventArgs e)
         {
+            string name = FindViewById<TextView>(Resource.Id.therapist_name).Text;
             Activity settings = this;
             FragmentTransaction fm = settings.FragmentManager.BeginTransaction();
-            PatientFragment dialog = PatientFragment.NewInstance();
+            PatientFragment dialog = PatientFragment.NewInstance(name);
             dialog.Show(fm, "dialog fragment");
         }
     }

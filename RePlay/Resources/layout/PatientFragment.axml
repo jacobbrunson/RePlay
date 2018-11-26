@@ -13,16 +13,17 @@
         android:layout_height="140dp"
         android:scaleType="fitXY"
         android:src="@drawable/green_bar" />
-    <ImageButton
+    <refractored.controls.CircleImageView
+        xmlns:app="http://schemas.android.com/apk/res-auto"
         android:id="@+id/patient_image"
-        android:src="@drawable/nate"
-        android:scaleType="fitXY"
         android:layout_width="110dp"
         android:layout_height="110dp"
-        android:background="@drawable/circularbackground"
+        android:src="@drawable/nate"
         android:layout_alignLeft="@id/green_banner_frag"
         android:layout_marginTop="10dp"
-        android:layout_marginLeft="40dp" />
+        android:layout_marginLeft="40dp"
+        app:civ_border_width="2dp"
+        app:civ_border_color="#FF000000" />
     <ImageButton
         android:id="@+id/patient_camera"
         android:layout_width="60dp"

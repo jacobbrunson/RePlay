@@ -27,12 +27,11 @@
             android:scaleType="fitXY"
             android:adjustViewBounds="true"
             android:src="@drawable/green_bar" />
-        <ImageButton
+        <refractored.controls.CircleImageView
+            xmlns:app="http://schemas.android.com/apk/res-auto"
             android:id="@+id/settings_picture"
-            android:background="@drawable/circularbackground"
             android:layout_width="110dp"
             android:layout_height="110dp"
-            android:scaleType="fitXY"
             android:src="@drawable/nate"
             android:layout_alignLeft="@id/green_banner"
             android:layout_marginTop="10dp"
@@ -56,7 +55,6 @@
             android:textSize="28dp"
             android:background="@android:color/background_light"
             android:gravity="center_vertical"
-            android:marginLeft="160dp"
             android:layout_alignBottom="@id/green_banner"
             android:layout_marginLeft="190dp" />
         

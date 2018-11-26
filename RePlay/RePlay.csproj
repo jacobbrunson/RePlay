@@ -139,6 +139,9 @@
     <Reference Include="Microsoft.AppCenter.Push">
       <HintPath>..\packages\Microsoft.AppCenter.Push.1.9.0\lib\MonoAndroid403\Microsoft.AppCenter.Push.dll</HintPath>
     </Reference>
+    <Reference Include="Refractored.Controls.CircleImageView">
+      <HintPath>..\packages\Refractored.Controls.CircleImageView.1.0.1\lib\MonoAndroid10\Refractored.Controls.CircleImageView.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="MainActivity.cs" />
@@ -149,7 +152,6 @@
     <Compile Include="NavigationFragment.cs" />
     <Compile Include="SettingsLoginActivity.cs" />
     <Compile Include="FooterFragment.cs" />
-    <Compile Include="Resources\Resource.designer.cs" />
     <Compile Include="Prescription\PrescriptionManager.cs" />
     <Compile Include="Prescription\GameManager.cs" />
     <Compile Include="WrapperActivities\CustomPrescriptionsListView.cs" />
@@ -158,6 +160,7 @@
     <Compile Include="WrapperActivities\AddPrescriptionFragment.cs" />
     <Compile Include="Prescription\ExerciseManager.cs" />
     <Compile Include="WrapperActivities\PatientFragment.cs" />
+    <Compile Include="Resources\Resource.designer.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />
@@ -247,7 +250,6 @@
     <AndroidResource Include="Resources\layout\SavedPrescription.axml" />
     <AndroidResource Include="Resources\drawable\EditTextBorderRed.xml" />
     <AndroidResource Include="Resources\drawable\CircularImage.xml" />
-    <AndroidResource Include="Resources\drawable\CircularBackground.xml" />
     <AndroidResource Include="Resources\layout\PatientFragment.axml" />
     <AndroidResource Include="Resources\drawable\EditTextBorderBlack.xml" />
   </ItemGroup>

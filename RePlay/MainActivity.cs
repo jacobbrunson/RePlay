@@ -3,6 +3,7 @@ using Android.Widget;
 using Android.OS;
 using Android.Content;
 using System.IO;
+using System;
 
 namespace RePlay
 {
@@ -32,10 +33,15 @@ namespace RePlay
         }
 
         private void LaunchPrescription() {
-            //TODO: this needs to launch the correct game based on PrescriptionStateManager.Instance.CurrentGameIndex
-            System.Console.WriteLine("STARTING PRESCRIPTION ITEM " + PrescriptionStateManager.Instance.CurrentGameIndex);
-            Intent intent = new Intent(this, typeof(DummyGame.Android.Activity1));
-            intent.PutExtra("CONTENT_DIR", "DummyGame");
+
+            int gameIndex = PrescriptionStateManager.Instance.CurrentGameIndex;
+            Prescription prescription = PrescriptionManager.Instance[gameIndex];
+            RePlayGame game = prescription.Game;
+            Type t = Type.GetType(game.AssemblyQualifiedName); //This is what gets the correct name
+
+            Intent intent = new Intent(this, t);
+            intent.PutExtra("CONTENT_DIR", game.AssetNamespace); //Correct asset namespace
+            //We need to also pass in prescription time
             StartActivityForResult(intent, 0);
         }
 

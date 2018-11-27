@@ -89,6 +89,10 @@ namespace RePlay.WrapperActivities
                                 settingsActivity.assigned_paginator.ContainsLast(settingsActivity.ACurrentPage));
                         };
                         //GameText.Text = card.Game.Name;
+                        GameText.Text = card.Game.Name;
+                        ImageView PrescriptionImage = view.FindViewById<ImageView>(Resource.Id.prescription_image);
+                        //string imgName = ExerciseManager.Instance[card.Exercise] + "0";
+                        //PrescriptionImage.SetImageResource(settingsActivity.Resources.GetIdentifier(imgName, "drawable", null));
                     }
                     else
                     {
@@ -98,7 +102,7 @@ namespace RePlay.WrapperActivities
 
                 return view;
             }
-
+                
             void Add_Prescription_Click(object sender, EventArgs e)
             {
                 Activity settings = (Activity)Context;

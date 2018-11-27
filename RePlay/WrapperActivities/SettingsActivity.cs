@@ -22,10 +22,10 @@ namespace RePlay.WrapperActivities
         TextView PatientName;
 
         static List<Prescription> saved = new List<Prescription> {
-            new Prescription("Bicep Curl", null, "FitMi", 3),
-            new Prescription("Wrist Supination", null, "FitMi", 3),
-            new Prescription("Left-to-Right", null, "FitMi", 3),
-            new Prescription("Typing", null, "FitMi", 3)
+            //new Prescription("Bicep Curl", null, "FitMi", 3),
+            //new Prescription("Wrist Supination", null, "FitMi", 3),
+            //new Prescription("Left-to-Right", null, "FitMi", 3),
+            //new Prescription("Typing", null, "FitMi", 3)
         };
 
         const int ItemsPerPage = 3;

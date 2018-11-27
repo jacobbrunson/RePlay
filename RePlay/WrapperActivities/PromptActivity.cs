@@ -34,7 +34,7 @@ namespace RePlay.WrapperActivities
             base.OnCreate(savedInstanceState);
 
             next = this.FindViewById<ImageButton>(Resource.Id.next);
-            exercisePic = this.FindViewById<ImageView>(Resource.Id.prompt_exercise);
+            exercisePic = this.FindViewById<ImageView>(Resource.Id.prompt_exercise_image);
             devicePic = this.FindViewById<ImageView>(Resource.Id.prompt_device);
 
             this.FindViewById<ImageButton>(Resource.Id.cancel).Click += delegate {
@@ -44,52 +44,61 @@ namespace RePlay.WrapperActivities
 
             prescription = PrescriptionManager.Instance;
             index = StateManager.Instance.Index;
-            UpdateView();
+            UpdateState();
         }
 
+        // loads when a game returns a result (after a StartActivityForResult)
         protected override void OnActivityResult(int requestCode, Result resultCode, Intent data)
         {
             if(requestCode == REQUEST_CODE && resultCode == Result.Ok)
             {
                 index++;
+                UpdateState();
+            }
+        }
 
-                if (index < prescription.Count)
+        public void UpdateState()
+        {
+            if (index < prescription.Count)
+            {
+                UpdateView();
+                StateManager.Instance.UpdateState(DateTimeOffset.Now.ToUnixTimeMilliseconds(), index);
+                
+                // load prescription[i].view
+                next.Click += delegate
                 {
-                    UpdateView();
-                    StateManager.Instance.UpdateState(DateTimeOffset.Now.ToUnixTimeMilliseconds(), index);
-                    // load prescription[i].view
-                    next.Click += delegate
-                    {
-                        // Intent intent = new Intent(this, typeof(prescription[i].Game));
-                        Intent intent = new Intent(this, typeof(WrapperActivities.GamesListActivity));
-                        intent.PutExtra("exercise", prescription[index].Exercise);
-                        intent.PutExtra("duration", prescription[index].Duration);
-                        StartActivityForResult(intent, REQUEST_CODE);
-                    };
-                }
-                else
-                {
-                    // located in patrick/exercises
-                    //Intent intent = new Intent(this, typeof(PrescriptionDoneActivity));
-                    //StartActivity(intent);
-                }
+                    // Intent intent = new Intent(this, typeof(prescription[i].Game));
+                    Intent intent = new Intent(this, typeof(WrapperActivities.GamesListActivity));
+                    intent.PutExtra("exercise", prescription[index].Exercise);
+                    intent.PutExtra("duration", prescription[index].Duration);
+                    StartActivityForResult(intent, REQUEST_CODE);
+                };
+            }
+            else
+            {
+                // set index to 0 so patient can run through prescription again
+                index = 0;
+
+                // go to prescriptions finished page - located in branch patrick/exercises
+                //Intent intent = new Intent(this, typeof(PrescriptionDoneActivity));
+                //StartActivity(intent);
             }
         }
 
         // update the views pictures based on prescription[index]
-        public void UpdateView()
+        private void UpdateView()
         {
-            exercisePic.SetImageDrawable(mapNameToPic(prescription[index].Exercise));
+            exercisePic.SetImageResource(MapNameToPic(prescription[index].Exercise));
         }
 
-        private Android.Graphics.Drawables.Drawable mapNameToPic(string exercise)
+        private int MapNameToPic(string exercise)
         {
             switch(exercise)
             {
                 case "wrist flexion":
-                    return Resource.Id.wrist_flexion_dialog;
+                    return Resource.Drawable.wristflex0;
                 default:
-                    return Resource.Id.wrist_flexion_dialog;
+                    return Resource.Drawable.curls0;
             }
         }
     }

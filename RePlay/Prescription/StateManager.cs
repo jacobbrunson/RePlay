@@ -19,14 +19,11 @@ namespace RePlay
                 LoadState();
                 long milliseconds = DateTimeOffset.Now.ToUnixTimeMilliseconds();
 
-                if (milliseconds - timestamp > (8 * 60 * 60 * 1000))
+                if (milliseconds - timestamp > (8 * 60 * 60 * 1000))        // After 8 hours, go to beginning of prescription
                 {
-                    return 0;
+                    index = 0;
                 }
-                else
-                {
-                    return index;
-                }
+                return index;
             }
         }
 
@@ -49,12 +46,12 @@ namespace RePlay
 
         public void LoadState()
         {
-            if (!File.Exists(filePath))
+            if (!File.Exists(FilePath))
             {
                 SaveState();
             }
 
-            using (var reader = new StreamReader(filePath))
+            using (var reader = new StreamReader(FilePath))
             {
                 string line = reader.ReadLine();
 
@@ -68,7 +65,7 @@ namespace RePlay
 
         public void SaveState()
         {
-            using (var writer = new StreamWriter(filePath))
+            using (var writer = new StreamWriter(FilePath))
             {
                 if (timestamp != 0)
                 {
@@ -85,7 +82,7 @@ namespace RePlay
             SaveState();
         }
 
-        string filePath
+        string FilePath
         {
             get
             {

@@ -61,7 +61,8 @@ namespace RePlay
 
                     try
                     {
-                        Add(new RePlayGame(data[1].Trim(), data[0].Trim(), data[2].Trim(), bool.Parse(data[3].Trim())));
+                        string assemblyQualifiedName = data[4].Replace(";", ",");
+                        Add(new RePlayGame(data[1].Trim(), data[0].Trim(), data[2].Trim(), bool.Parse(data[3].Trim()), assemblyQualifiedName));
                     }
                     catch (Exception)
                     {
@@ -78,13 +79,15 @@ namespace RePlay
         public readonly string AssetNamespace;
         public readonly string ImageAssetName;
         public readonly bool IsGameAvailable;
+        public readonly string AssemblyQualifiedName;
 
-        public RePlayGame(string name, string assetNamespace, string image_asset_name, bool available)
+        public RePlayGame(string name, string assetNamespace, string image_asset_name, bool available, string assemblyQualifiedName)
         {
             Name = name;
             AssetNamespace = assetNamespace;
             ImageAssetName = image_asset_name;
             IsGameAvailable = available;
+            AssemblyQualifiedName = assemblyQualifiedName;
         }
     }
 }

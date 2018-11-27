@@ -1,8 +1,8 @@
-﻿Repetitions,Rep it out!,game1,True
-FitMiTraffic,Traffic Racer,game2,True
-Breakout,Breakout,game3,True
-SpaceRunner,Space Runner,game4,False
-FruitArchery,Fruit Archery,game5,False
-Jumper,Jumper,game6,False
-TyperShark,Typer Shark,game7,False
-FitMiHandwriting,Handwriting,game8,False
+﻿Repetitions,Rep it out!,game1,True,DummyGame.Android.Activity1; DummyGame.Android
+FitMiTraffic,Traffic Racer,game2,True,DummyGame.Android.Activity1; DummyGame.Android
+Breakout,Breakout,game3,True,DummyGame.Android.Activity1; DummyGame.Android
+SpaceRunner,Space Runner,game4,False,DummyGame.Android.Activity1; DummyGame.Android
+FruitArchery,Fruit Archery,game5,False,DummyGame.Android.Activity1; DummyGame.Android
+Jumper,Jumper,game6,False,DummyGame.Android.Activity1; DummyGame.Android
+TyperShark,Typer Shark,game7,False,DummyGame.Android.Activity1; DummyGame.Android
+FitMiHandwriting,Handwriting,game8,False,DummyGame.Android.Activity1; DummyGame.Android

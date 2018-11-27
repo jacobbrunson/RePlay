@@ -5,3 +5,5 @@ paket-files/
 packages/
 paket.lock
 RePlay/Resources/Resource.designer.cs
+.DS_Store
+Utilities/obj

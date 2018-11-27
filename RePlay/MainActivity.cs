@@ -15,6 +15,7 @@ namespace RePlay
 
             //Load games from Assets/games.txt and load prescriptions from internal storage
             GameManager.Instance.LoadGames(Assets);
+            ExerciseManager.Instance.LoadExercises(Assets);
             PrescriptionManager.Instance.LoadPrescription();
 
             // Set our view from the "main" layout resource

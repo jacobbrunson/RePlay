@@ -10,8 +10,6 @@ using Android.OS;
 using Android.Runtime;
 using Android.Views;
 using Android.Widget;
-using Exercises;
-using FitMiAndroid;
 
 namespace RePlay.WrapperActivities
 {

@@ -101,6 +101,9 @@
     <Reference Include="Xamarin.Android.Support.v7.RecyclerView, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Xamarin.Android.Support.v7.RecyclerView.26.0.2\lib\MonoAndroid80\Xamarin.Android.Support.v7.RecyclerView.dll</HintPath>
     </Reference>
+    <Reference Include="Refractored.Controls.CircleImageView">
+      <HintPath>..\packages\Refractored.Controls.CircleImageView.1.0.1\lib\MonoAndroid10\Refractored.Controls.CircleImageView.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="MainActivity.cs" />
@@ -112,13 +115,15 @@
     <Compile Include="NavigationFragment.cs" />
     <Compile Include="SettingsLoginActivity.cs" />
     <Compile Include="FooterFragment.cs" />
-    <Compile Include="Resources\Resource.designer.cs" />
     <Compile Include="Prescription\PrescriptionManager.cs" />
     <Compile Include="Prescription\GameManager.cs" />
     <Compile Include="WrapperActivities\CustomPrescriptionsListView.cs" />
     <Compile Include="WrapperActivities\SettingsActivity.cs" />
     <Compile Include="Paginator.cs" />
     <Compile Include="WrapperActivities\AddPrescriptionFragment.cs" />
+    <Compile Include="Prescription\ExerciseManager.cs" />
+    <Compile Include="WrapperActivities\PatientFragment.cs" />
+    <Compile Include="Resources\Resource.designer.cs" />
     <Compile Include="Prescription\Prescription.cs" />
     <Compile Include="Prescription\RePlayGame.cs" />
   </ItemGroup>
@@ -209,6 +214,9 @@
     <AndroidResource Include="Resources\drawable\curls_2.jpg" />
     <AndroidResource Include="Resources\layout\SavedPrescription.axml" />
     <AndroidResource Include="Resources\drawable\EditTextBorderRed.xml" />
+    <AndroidResource Include="Resources\drawable\CircularImage.xml" />
+    <AndroidResource Include="Resources\layout\PatientFragment.axml" />
+    <AndroidResource Include="Resources\drawable\EditTextBorderBlack.xml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\drawable\icon\action\" />
@@ -220,6 +228,7 @@
     <AndroidAsset Include="Assets\games.txt" />
     <AndroidAsset Include="Assets\AboutAssets.txt" />
     <AndroidAsset Include="Assets\DummyGame\temoc.xnb" />
+    <AndroidAsset Include="Assets\exercises.txt" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\layout\PrescriptionDone.axml">

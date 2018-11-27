@@ -1,8 +1,8 @@
-﻿DummyGame,Dummy Game
-FitMiTraffic,Traffic Racer
-CrossyRoad,Crossy Road
-TempleRun,Temple Run
-FruitArchery,Fruit Archery
-TyperShark,Typer Shark
-FitMiHandwriting,Handwriting
-Breakout,Breakout
+﻿Repetitions,Rep it out!,game1,True,DummyGame.Android.Activity1; DummyGame.Android
+FitMiTraffic,Traffic Racer,game2,True,DummyGame.Android.Activity1; DummyGame.Android
+Breakout,Breakout,game3,True,DummyGame.Android.Activity1; DummyGame.Android
+SpaceRunner,Space Runner,game4,False,DummyGame.Android.Activity1; DummyGame.Android
+FruitArchery,Fruit Archery,game5,False,DummyGame.Android.Activity1; DummyGame.Android
+Jumper,Jumper,game6,False,DummyGame.Android.Activity1; DummyGame.Android
+TyperShark,Typer Shark,game7,False,DummyGame.Android.Activity1; DummyGame.Android
+FitMiHandwriting,Handwriting,game8,False,DummyGame.Android.Activity1; DummyGame.Android

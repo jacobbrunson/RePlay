@@ -29,6 +29,7 @@ namespace RePlay
 
         public void LoadExercises(AssetManager assets)
         {
+            Clear();
             using (var reader = new StreamReader(assets.Open("exercises.txt")))
             {
                 string line;

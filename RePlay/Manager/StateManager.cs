@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 
-namespace RePlay
+namespace RePlay.Manager
 {
     public class StateManager
     {

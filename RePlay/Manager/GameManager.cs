@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using Android.Content.Res;
 
-namespace RePlay
+namespace RePlay.Manager
 {
     public class GameManager : List<RePlayGame>
     {

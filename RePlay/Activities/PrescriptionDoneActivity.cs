@@ -10,7 +10,7 @@ using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 
-namespace RePlay.WrapperActivities
+namespace RePlay.Activities
 {
     [Activity(Label = "PrescriptionDoneActivity")]
     public class PrescriptionDoneActivity : Activity

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace RePlay.WrapperActivities
+namespace RePlay.Manager
 {
     public class Paginator<T>
     {

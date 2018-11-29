@@ -10,7 +10,7 @@ using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 
-namespace RePlay.WrapperActivities
+namespace RePlay.Activities
 {
     [Activity(Label = "GamesListActivity", ScreenOrientation = Android.Content.PM.ScreenOrientation.Landscape)]
     public class GamesListActivity : Activity

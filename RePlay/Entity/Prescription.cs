@@ -1,4 +1,5 @@
-namespace RePlay {
+namespace RePlay.Entity
+{
     public class Prescription
     {
 

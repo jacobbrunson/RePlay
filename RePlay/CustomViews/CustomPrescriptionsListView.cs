@@ -11,7 +11,7 @@ using Android.Views;
 using Android.Widget;
 using Java.Lang;
 
-namespace RePlay.WrapperActivities
+namespace RePlay.CustomViews
 {
     public partial class SettingsActivity : Activity
     {

@@ -1,24 +1,21 @@
 using System.Collections.Generic;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using Android;
 using Android.App;
 using Android.Content;
 using Android.Views;
 using Android.Widget;
+using RePlay.Activities;
 
-namespace RePlay.WrapperActivities
+// 
+namespace RePlay.CustomViews
 {
-    [Activity(Label = "CustomGameListView")]
-    public class CustomGameListView : BaseAdapter
+    [Activity(Label = "CustomGameCardView")]
+    public class CustomGameCardView : BaseAdapter
     {
-        private Context Context;
-        private List<RePlayGame> GamesList;
-        private Activity CallerActivity;
+        Context Context;
+        List<RePlayGame> GamesList;
+        Activity CallerActivity;
 
-        public CustomGameListView(Context mcontext, List<RePlayGame> games)
+        public CustomGameCardView(Context mcontext, List<RePlayGame> games)
         {
             Context = mcontext;
             GamesList = games;

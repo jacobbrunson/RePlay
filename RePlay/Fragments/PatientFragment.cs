@@ -12,7 +12,7 @@ using Android.Util;
 using Android.Views;
 using Android.Widget;
 
-namespace RePlay.WrapperActivities
+namespace RePlay.Fragments
 {
     public class PatientFragment : DialogFragment
     {

@@ -13,7 +13,7 @@ using Android.Text;
 using Android.Views;
 using Android.Widget;
 
-namespace RePlay
+namespace RePlay.Activities
 {
     [Activity(Label = "SettingsLoginActivity")]
     public class SettingsLoginActivity : Activity

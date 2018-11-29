@@ -12,7 +12,7 @@ using Android.Util;
 using Android.Views;
 using Android.Widget;
 
-namespace RePlay
+namespace RePlay.Fragments
 {
     public class NavigationFragment : Fragment
     {

@@ -5,7 +5,7 @@ using Android.Widget;
 using System.Collections.Generic;
 using System;
 
-namespace RePlay.WrapperActivities
+namespace RePlay.Fragments
 {
     public partial class SettingsActivity : Activity
     {

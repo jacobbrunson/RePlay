@@ -11,7 +11,7 @@ using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 
-namespace RePlay.WrapperActivities
+namespace RePlay.Activities
 {
     [Activity(Label = "PromptActivity", ScreenOrientation = Android.Content.PM.ScreenOrientation.Landscape)]
     public class PromptActivity : Activity

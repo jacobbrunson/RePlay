@@ -46,7 +46,7 @@ namespace RePlay.CustomViews
             // Get the view object for this game
             if (view == null)
             {
-                view = LayoutInflater.From(Context).Inflate(Resource.Layout.CustomGamesLauncher, null, false);
+                view = LayoutInflater.From(Context).Inflate(Resource.Layout.GameCard, null, false);
             }
 
             // Set the image/icon that is part of the game view

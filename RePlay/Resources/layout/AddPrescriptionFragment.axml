@@ -91,12 +91,12 @@
         android:textSize="14dp"
         android:layout_alignEnd="@id/exerciseSpinner"
         android:layout_marginRight="75dp" />
-     <NumberPicker
+    <NumberPicker
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/gameText"
         android:layout_above="@id/addButton"
         android:layout_toRightOf="@id/timeText"
         android:id="@+id/timeNumberPicker"
-        android:translationX="54dp" />
+        android:layout_alignLeft="@id/exerciseSpinner" />
 </RelativeLayout>

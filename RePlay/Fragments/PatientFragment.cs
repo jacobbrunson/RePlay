@@ -46,7 +46,6 @@ namespace RePlay.Fragments
         public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
         {
             // Use this to return your custom view for this Fragment
-            // return inflater.Inflate(Resource.Layout.YourFragment, container, false);
             Dialog.Window.RequestFeature(WindowFeatures.NoTitle);
             Dialog.SetCanceledOnTouchOutside(false);
             View rootView = inflater.Inflate(Resource.Layout.PatientFragment, container, false);

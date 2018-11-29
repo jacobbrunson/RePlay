@@ -24,7 +24,7 @@ namespace RePlay.Activities
         {
             base.OnCreate(savedInstanceState);
 
-            SetContentView(Resource.Layout.GamesLauncher);
+            SetContentView(Resource.Layout.GameList);
             InitializeViews();
             View.Adapter = new CustomGameCardView(this, p.GeneratePage(CurrentPage));
         }

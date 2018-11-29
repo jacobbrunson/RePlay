@@ -63,7 +63,7 @@ namespace RePlay.CustomViews
                 // Use PrescriptionsGridPlus since this is the 
                 if (ContainsLast == true && position == PrescriptionsList.Count - 1)
                 {
-                    view = LayoutInflater.From(Context).Inflate(Resource.Layout.PrescriptionsGridPlus, null, false);
+                    view = LayoutInflater.From(Context).Inflate(Resource.Layout.AddPrescriptionCard, null, false);
 
                     ImageView addPrescription = view.FindViewById<ImageButton>(Resource.Id.add_button);
                     addPrescription.Click += Add_Prescription_Click;
@@ -71,7 +71,7 @@ namespace RePlay.CustomViews
                 // Use PrescriptionsGrid layout since this is an assigned prescription
                 else if (isAssigned)
                 {
-                    view = LayoutInflater.From(Context).Inflate(Resource.Layout.PrescriptionsGrid, null, false);
+                    view = LayoutInflater.From(Context).Inflate(Resource.Layout.AssignedPrescriptionCard, null, false);
                     Prescription currentPrescription = PrescriptionsList[position];
 
                     // Update TextViews on card
@@ -93,7 +93,7 @@ namespace RePlay.CustomViews
                 // Used SavePrescription layout
                 else
                 {
-                    view = LayoutInflater.From(Context).Inflate(Resource.Layout.SavedPrescription, null, false);
+                    view = LayoutInflater.From(Context).Inflate(Resource.Layout.SavedPrescriptionCard, null, false);
                 }
             }
 

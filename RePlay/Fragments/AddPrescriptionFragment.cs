@@ -39,7 +39,7 @@ namespace RePlay.Fragments
                 var inflater = Activity.LayoutInflater;
 
                 //Inflate the layout for this dialog
-                var dialogView = inflater.Inflate(Resource.Layout.AddPrescription, null);
+                var dialogView = inflater.Inflate(Resource.Layout.AddPrescriptionFragment, null);
 
                 if (dialogView != null)
                 {

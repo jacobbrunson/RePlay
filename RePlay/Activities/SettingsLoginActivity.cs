@@ -1,16 +1,9 @@
-﻿
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
+﻿using System;
 using Android.App;
 using Android.Content;
 using Android.OS;
 using Android.Graphics;
-using Android.Runtime;
 using Android.Text;
-using Android.Views;
 using Android.Widget;
 
 namespace RePlay.Activities
@@ -18,16 +11,16 @@ namespace RePlay.Activities
     [Activity(Label = "SettingsLoginActivity")]
     public class SettingsLoginActivity : Activity
     {
-        private const string PASSWORD = "replay";
-        private const string PASSWORD_ERR = "Incorrect password";
-        private const string PASSWORD_EMPTY = "Please enter your password";
-        private const string PASSWORD_CLEAN = "Enter your password";
-        private const string GREEN = "#69BE28";
-        private const string RED = "#D61926";
-        private ImageButton NextButton;
-        private ImageButton BackButton;
-        private EditText PasswordText;
-        private TextView PasswordPrompt;
+        const string PASSWORD = "replay";
+        const string PASSWORD_ERR = "Incorrect password";
+        const string PASSWORD_EMPTY = "Please enter your password";
+        const string PASSWORD_CLEAN = "Enter your password";
+        const string GREEN = "#69BE28";
+        const string RED = "#D61926";
+        ImageButton NextButton;
+        ImageButton BackButton;
+        EditText PasswordText;
+        TextView PasswordPrompt;
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
@@ -35,27 +28,27 @@ namespace RePlay.Activities
 
             SetContentView(Resource.Layout.SettingsLogin);
 
-            NextButton = this.FindViewById<ImageButton>(Resource.Id.settings_next);
+            NextButton = FindViewById<ImageButton>(Resource.Id.settings_next);
             NextButton.Click += Settings_Next_Click;
 
-            BackButton = this.FindViewById<ImageButton>(Resource.Id.settings_back);
+            BackButton = FindViewById<ImageButton>(Resource.Id.settings_back);
             BackButton.Click += Settings_Back_Click;
 
-            PasswordText = this.FindViewById<EditText>(Resource.Id.password);
+            PasswordText = FindViewById<EditText>(Resource.Id.password);
             PasswordText.TextChanged += User_Input_Changed;
 
-            PasswordPrompt = this.FindViewById<TextView>(Resource.Id.enter_password);
+            PasswordPrompt = FindViewById<TextView>(Resource.Id.enter_password);
         }
 
-        private void Settings_Back_Click(object sender, EventArgs e)
+        void Settings_Back_Click(object sender, EventArgs e)
         {
             Intent intent = new Intent(this, typeof(MainActivity));
             StartActivity(intent);
         }
 
-        private void User_Input_Changed(object sender, TextChangedEventArgs e)
+        void User_Input_Changed(object sender, TextChangedEventArgs e)
         {
-            if(PasswordPrompt.Text.Equals(PASSWORD_ERR))
+            if (PasswordPrompt.Text.Equals(PASSWORD_ERR))
             {
                 PasswordText.SetBackgroundResource(Resource.Drawable.EditTextBorder);
                 PasswordPrompt.Text = PASSWORD_CLEAN;
@@ -63,17 +56,17 @@ namespace RePlay.Activities
             }
         }
 
-        private void Settings_Next_Click(object sender, EventArgs e)
+        void Settings_Next_Click(object sender, EventArgs e)
         {
             string EnteredString = PasswordText.Text;
 
-            if(string.IsNullOrEmpty(EnteredString))
+            if (string.IsNullOrEmpty(EnteredString))
             {
                 PasswordPrompt.Text = PASSWORD_EMPTY;
             }
-            else if(EnteredString.Equals(PASSWORD))
+            else if (EnteredString.Equals(PASSWORD))
             {
-                Intent intent = new Intent(this, typeof(WrapperActivities.SettingsActivity));
+                Intent intent = new Intent(this, typeof(SettingsActivity));
                 StartActivity(intent);
             }
             else

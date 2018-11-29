@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using Android.Content.Res;
+using RePlay.Entity;
 
 namespace RePlay.Manager
 {

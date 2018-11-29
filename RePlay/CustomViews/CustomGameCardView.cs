@@ -38,7 +38,7 @@ namespace RePlay.CustomViews
             return 0;
         }
 
-        // Return GetView for a custom card
+        // Return view for a custom card
         public override View GetView(int position, View convertView, ViewGroup parent)
         {
             View view = convertView;

@@ -26,7 +26,7 @@ namespace RePlay.Activities
 
             button.Click += delegate
             {
-                Intent intent = new Intent(this, typeof(WrapperActivities.GamesListActivity));
+                Intent intent = new Intent(this, typeof(GamesListActivity));
                 StartActivity(intent);
             };
         }

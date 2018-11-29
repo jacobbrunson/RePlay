@@ -119,7 +119,7 @@
     <Compile Include="Activities\SettingsActivity.cs" />
     <Compile Include="Activities\SettingsLoginActivity.cs" />
     <Compile Include="CustomViews\CustomGameCardView.cs" />
-    <Compile Include="CustomViews\CustomPrescriptionsListView.cs" />
+    <Compile Include="CustomViews\CustomPrescriptionsCardView.cs" />
     <Compile Include="Entity\Prescription.cs" />
     <Compile Include="Entity\RePlayGame.cs" />
     <Compile Include="Fragments\AddPrescriptionFragment.cs" />

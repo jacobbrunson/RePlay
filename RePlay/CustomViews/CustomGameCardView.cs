@@ -4,8 +4,9 @@ using Android.Content;
 using Android.Views;
 using Android.Widget;
 using RePlay.Activities;
+using RePlay.Entity;
 
-// 
+// CustomGameCardView: Create game card views
 namespace RePlay.CustomViews
 {
     [Activity(Label = "CustomGameCardView")]
@@ -37,17 +38,18 @@ namespace RePlay.CustomViews
             return 0;
         }
 
+        // Return GetView for a custom card
         public override View GetView(int position, View convertView, ViewGroup parent)
         {
             View view = convertView;
 
-            //Get the view object for this game
+            // Get the view object for this game
             if (view == null)
             {
                 view = LayoutInflater.From(Context).Inflate(Resource.Layout.CustomGamesLauncher, null, false);
             }
 
-            //Set the image/icon that is part of the game view
+            // Set the image/icon that is part of the game view
             ImageView GameView = view.FindViewById<ImageView>(Resource.Id.gameslist_image);
             System.Console.WriteLine(position);
             string drawable_name = GamesList[position].ImageAssetName;
@@ -59,10 +61,10 @@ namespace RePlay.CustomViews
             }
             catch (System.Exception)
             {
-                //empty
+                // empty
             }
 
-            //Set the text that shows up as part of the game view
+            // Set the text that shows up as part of the game view
             TextView GameText = view.FindViewById<TextView>(Resource.Id.gameslist_name);
             GameText.Text = GamesList[position].Name;
             if (!GamesList[position].IsGameAvailable)
@@ -70,19 +72,19 @@ namespace RePlay.CustomViews
                 GameText.Text += " (Coming soon!)";
             }
 
-            //Define the click behavior for this game view button
+            // Define the click behavior for this game view button
             view.Click += (s, e) =>
             {
                 if (GamesList[position].AssetNamespace.Equals("Repetitions"))
                 {
-                    //Create an intent to start the "repetitions mode" activity
+                    // Create an intent to start the "repetitions mode" activity
                     Intent intent = new Intent(CallerActivity, typeof(DummyGame.Android.Activity1));
 
-                    //Tell the repetitions mode that we want to do 15 reps
+                    // Tell the repetitions mode that we want to do 15 reps
                     intent.PutExtra("Repetitions", 2);
                     intent.AddFlags(ActivityFlags.ClearTop | ActivityFlags.NewTask);
 
-                    //Start the activity and expect a result to come back
+                    // Start the activity and expect a result to come back
                     CallerActivity.StartActivityForResult(intent, 0);
 
                 }
@@ -92,19 +94,19 @@ namespace RePlay.CustomViews
                 }
                 else if (GamesList[position].AssetNamespace.Equals("Breakout"))
                 {
-                    //Creat an intent to start the "breakout" game
+                    // Create an intent to start the "breakout" game
                     Intent intent = new Intent(CallerActivity, typeof(DummyGame.Android.Activity1));
 
-                    //Tell the game to run for 2 minutes
+                    // Tell the game to run for 2 minutes
                     intent.PutExtra("Duration", 15);
                     intent.PutExtra("CONTENT_DIR", "blockBreakerAndroid");
 
-                    //Start the activity and expect a result to come back
+                    // Start the activity and expect a result to come back
                     Context.StartActivity(intent);
                 }
             };
 
-            //Return the game view to the caller
+            // Return the game view to the caller
             return view;
         }
     }

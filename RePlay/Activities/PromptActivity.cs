@@ -10,9 +10,11 @@ using Android.OS;
 using Android.Runtime;
 using Android.Views;
 using Android.Widget;
+using RePlay.Manager;
 
 namespace RePlay.Activities
 {
+    // an activity designed to describe the current exercise and game a patient needs to complete for his/her prescription
     [Activity(Label = "PromptActivity", ScreenOrientation = Android.Content.PM.ScreenOrientation.Landscape)]
     public class PromptActivity : Activity
     {
@@ -27,6 +29,8 @@ namespace RePlay.Activities
 
         const int REQUEST_CODE = 5432;
 
+        // sets up the UI and gets the current prescription and patient progress (state) from the
+        // relevant manager classes
         protected override void OnCreate(Bundle savedInstanceState)
         {
             SetContentView(Resource.Layout.Prompt);
@@ -58,7 +62,10 @@ namespace RePlay.Activities
                 UpdateState();
             }
         }
-
+        
+        // update the ui and onClick bindings to allow the next exercise in the patient's
+        // prescription to be run; also responsible for letting the patient know when
+        // they have completed their prescription in its entirety
         public void UpdateState()
         {
             if (index < prescription.Count)
@@ -92,18 +99,20 @@ namespace RePlay.Activities
             }
         }
 
-        // update the views pictures based on prescription[index]
+        // update the exercise image, exercise name, and game description based on the current index
         private void UpdateView()
         {
             exerciseText.Text = CapitalizeFirst(prescription[index].Exercise);
             exercisePic.SetImageResource(MapNameToPic(prescription[index].Exercise));
         }
 
+        // utility method to return the input argument with the first letter in every word capitalized
         public string CapitalizeFirst(String text)
         {
             return string.Join(" ", text.Split().Select(x => x.Substring(0, 1).ToUpper() + x.Substring(1)));
         }
 
+        // utility method to map the exercise name (as a string) into a resource drawable identifier
         private int MapNameToPic(string exercise)
         {
             switch(exercise)

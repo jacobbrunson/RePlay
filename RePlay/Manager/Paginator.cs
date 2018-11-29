@@ -3,6 +3,7 @@ using System.Collections.Generic;
 
 namespace RePlay.Manager
 {
+    // a generic class for returning a list of items to display on the current page
     public class Paginator<T>
     {
         public readonly List<T> ItemsList;
@@ -12,6 +13,8 @@ namespace RePlay.Manager
         public int ItemsRemaining;
         public int LastPage;
 
+        // create a paginator from a specified list of items and a number of items
+        // to show on each page
         public Paginator(int itemsPerPage, List<T> itemsList)
         {
             ItemsList = itemsList;
@@ -21,6 +24,7 @@ namespace RePlay.Manager
             LastPage = Math.Max((TotalNumItems - 1) / ItemsPerPage, 0);
         }
 
+        // Generate the current page of items with ItemsPerPage items per page
         public List<T> GeneratePage(int curr)
         {
             int start = curr * ItemsPerPage;
@@ -41,6 +45,7 @@ namespace RePlay.Manager
             return data;
         }
 
+        // remove the item at the specified position from the list
         public T RemoveAt(int position)
         {
             var item = ItemsList[position];
@@ -51,6 +56,7 @@ namespace RePlay.Manager
             return item;
         }
 
+        // return whether this is the last page
         public bool ContainsLast(int curr)
         {
             return curr == LastPage;

@@ -1,19 +1,24 @@
 ﻿using System;
+using System.Linq;
 using System.Collections.Generic;
 using System.IO;
 using Android.Content.Res;
+using RePlay.Entity
 
 namespace RePlay.Manager
 {
+    // Provides a single instance of the list of available games
     public class GameManager : List<RePlayGame>
     {
         static GameManager instance;
         const string assetName = "games.txt";
 
+        // private constructor
         GameManager()
         {
         }
 
+        // return the singleton instance of this list
         public static GameManager Instance
         {
             get
@@ -26,6 +31,7 @@ namespace RePlay.Manager
             }
         }
 
+        // return the game's data based on its namespace
         public RePlayGame FindByNamespace(string name)
         {
             foreach (RePlayGame game in this)
@@ -38,11 +44,13 @@ namespace RePlay.Manager
             return null;
         }
 
+        // return the names of every game
         public List<String> GetNames()
         {
-            return new List<String>();
+            return this.Select(game => game.Name());
         }
 
+        // return a game's data based on its name
         public RePlayGame FindByName(string name)
         {
             foreach (RePlayGame game in this)
@@ -55,6 +63,7 @@ namespace RePlay.Manager
             return null;
         }
 
+        // pull, parse, and append game data from its file format
         public void LoadGames(AssetManager assets) {
             Clear();
             using (var reader = new StreamReader(assets.Open("games.txt")))

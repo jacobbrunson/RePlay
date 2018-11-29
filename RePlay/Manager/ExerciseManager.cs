@@ -5,16 +5,19 @@ using Android.Content.Res;
 
 namespace RePlay.Manager
 {
+    // Exercise Manager - singleton class used to load exercises from file
     public class ExerciseManager : Dictionary<String, String>
     {
         static ExerciseManager instance;
         const string exerciseFile = "exercises.txt";
 
-        public ExerciseManager()
+        // private constructor
+        ExerciseManager()
         {
 
         }
 
+        // returns the singleton instance of the exercise manager, creating one if needed
         public static ExerciseManager Instance
         {
             get
@@ -27,6 +30,7 @@ namespace RePlay.Manager
             }
         }
 
+        // used to load exercises from a the text file exercises.txt
         public void LoadExercises(AssetManager assets)
         {
             Clear();
@@ -36,7 +40,7 @@ namespace RePlay.Manager
                 while ((line = reader.ReadLine()) != null)
                 {
                     string[] data = line.Split(',');
-                    Add(data[0],data[1]);
+                    Add(data[0], data[1]);
                 }
             }
         }

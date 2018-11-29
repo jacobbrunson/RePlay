@@ -103,6 +103,7 @@ namespace RePlay.CustomViews
         // Handle the event that the delete button is clicked
         void DeletePrescriptionButton_Click(object sender, EventArgs e)
         {
+            /*
             var prescriptionsPosition = position + SettingsActivity.ItemsPerPage * settingsActivity.ACurrentPage;
             settingsActivity.assigned_paginator.RemoveAt(prescriptionsPosition);
             PrescriptionManager.Instance.SavePrescription();
@@ -110,16 +111,19 @@ namespace RePlay.CustomViews
                 settingsActivity,
                 settingsActivity.assigned_paginator.GeneratePage(settingsActivity.ACurrentPage),
                 settingsActivity.assigned_paginator.ContainsLast(settingsActivity.ACurrentPage));
+            */
         }
 
         // Handle the event that the add button is clicked
         void Add_Prescription_Click(object sender, EventArgs e)
         {
+            /*
             // Get a new instance of the AddPrescriptionFragment
             Activity settings = (SettingsActivity)Context;
             FragmentTransaction fm = settings.FragmentManager.BeginTransaction();
             AddPrescriptionFragment dialog = AddPrescriptionFragment.NewInstance(settingsActivity);
             dialog.Show(fm, "dialog fragment");
+            */
         }
     }
 }

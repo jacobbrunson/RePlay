@@ -11,6 +11,7 @@ using Android.Runtime;
 using Android.Util;
 using Android.Views;
 using Android.Widget;
+using RePlay.Activities;
 
 namespace RePlay.Fragments
 {
@@ -29,8 +30,8 @@ namespace RePlay.Fragments
         void GamesClicked(object sender, EventArgs e)
         {
             ImageButton button = (ImageButton)sender;
-            if (!button.Context.GetType().Equals(typeof(WrapperActivities.GamesListActivity))) {
-                Intent intent = new Intent(button.Context, typeof(WrapperActivities.GamesListActivity));
+            if (!button.Context.GetType().Equals(typeof(GamesListActivity))) {
+                Intent intent = new Intent(button.Context, typeof(GamesListActivity));
                 StartActivity(intent);
             }
         }
@@ -43,7 +44,7 @@ namespace RePlay.Fragments
         void SettingsClicked(object sender, EventArgs e)
         {
             ImageButton button = (ImageButton)sender;
-            if (!button.Context.GetType().Equals(typeof(SettingsLoginActivity)) && !button.Context.GetType().Equals(typeof(WrapperActivities.SettingsActivity)))
+            if (!button.Context.GetType().Equals(typeof(SettingsLoginActivity)) && !button.Context.GetType().Equals(typeof(SettingsActivity)))
             {
                 Intent intent = new Intent(button.Context, typeof(SettingsLoginActivity));
                 StartActivity(intent);

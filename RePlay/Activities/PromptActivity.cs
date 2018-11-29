@@ -10,6 +10,7 @@ using Android.OS;
 using Android.Runtime;
 using Android.Views;
 using Android.Widget;
+using RePlay.Entity;
 using RePlay.Manager;
 
 namespace RePlay.Activities
@@ -81,7 +82,7 @@ namespace RePlay.Activities
                     //Intent intent = new Intent(this, t);
 
 
-                    Intent intent = new Intent(this, typeof(WrapperActivities.GamesListActivity));
+                    Intent intent = new Intent(this, typeof(GamesListActivity));
                     intent.PutExtra("CONTENT_DIR", game.AssetNamespace); //Correct asset namespace
                     intent.PutExtra("exercise", prescription[index].Exercise);
                     intent.PutExtra("duration", prescription[index].Duration);

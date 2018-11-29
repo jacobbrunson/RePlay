@@ -3,7 +3,8 @@ using Android.OS;
 using Android.Content;
 using Android.Widget;
 using System.Collections.Generic;
-using System;
+using RePlay.Manager;
+using RePlay.Entity;
 
 namespace RePlay.Fragments
 {
@@ -18,10 +19,6 @@ namespace RePlay.Fragments
                 this.settingsActivity = settingsActivity;
             }
 
-            /// <summary>
-            /// Method that creates and returns and instance of this dialog
-            /// </summary>
-            /// <returns></returns>
             public static AddPrescriptionFragment NewInstance(SettingsActivity settingsActivity)
             {
                 var dialogFragment = new AddPrescriptionFragment(settingsActivity);
@@ -94,6 +91,7 @@ namespace RePlay.Fragments
                                 _timeNumberPicker.Value
                             );
                             prescriptionManager.Add(p);
+                            /*
                             if ((prescriptionManager.Count + 1) % ItemsPerPage == 1) //+1 to account for last dummy element
                             {
                                 settingsActivity.ACurrentPage += 1;
@@ -104,6 +102,7 @@ namespace RePlay.Fragments
                                 settingsActivity.assigned_paginator.GeneratePage(settingsActivity.ACurrentPage),
                                 settingsActivity.assigned_paginator.ContainsLast(settingsActivity.ACurrentPage));
                             prescriptionManager.SavePrescription();
+                            */
                         }
 
                         Dismiss();

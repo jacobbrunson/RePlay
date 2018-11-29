@@ -4,6 +4,8 @@ using Android.OS;
 using Android.Content;
 using System.IO;
 using System;
+using RePlay.Manager;
+using RePlay.Activities;
 
 namespace RePlay
 {
@@ -28,7 +30,7 @@ namespace RePlay
 
             button.Click += delegate
             {
-                Intent intent = new Intent(this, typeof(WrapperActivities.PromptActivity));
+                Intent intent = new Intent(this, typeof(PromptActivity));
                 StartActivity(intent);
             };
         }

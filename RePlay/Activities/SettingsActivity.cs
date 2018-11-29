@@ -10,6 +10,10 @@ using Android.OS;
 using Android.Runtime;
 using Android.Views;
 using Android.Widget;
+using RePlay.CustomViews;
+using RePlay.Entity;
+using RePlay.Fragments;
+using RePlay.Manager;
 
 namespace RePlay.Activities
 {
@@ -42,8 +46,8 @@ namespace RePlay.Activities
 
             SetContentView(Resource.Layout.Settings);
             InitializeViews();
-            AssignedView.Adapter = new CustomPrescriptionsListView(this, assigned_paginator.GeneratePage(ACurrentPage), assigned_paginator.ContainsLast(ACurrentPage));
-            SavedView.Adapter = new CustomPrescriptionsListView(this, saved_paginator.GeneratePage(SCurrentPage));
+            AssignedView.Adapter = new CustomPrescriptionsCardView(this, assigned_paginator.GeneratePage(ACurrentPage), assigned_paginator.ContainsLast(ACurrentPage));
+            SavedView.Adapter = new CustomPrescriptionsCardView(this, saved_paginator.GeneratePage(SCurrentPage));
             PatientPicture = FindViewById<ImageView>(Resource.Id.settings_picture);
             PatientPicture.Click += PatientPicture_Click;
             PatientName = FindViewById<TextView>(Resource.Id.therapist_name);
@@ -75,28 +79,28 @@ namespace RePlay.Activities
         void LeftButton_Click_Assigned(object sender, EventArgs e)
         {
             ACurrentPage -= 1;
-            AssignedView.Adapter = new CustomPrescriptionsListView(this, assigned_paginator.GeneratePage(ACurrentPage), assigned_paginator.ContainsLast(ACurrentPage));
+            AssignedView.Adapter = new CustomPrescriptionsCardView(this, assigned_paginator.GeneratePage(ACurrentPage), assigned_paginator.ContainsLast(ACurrentPage));
             ToggleAButtons();
         }
 
         void RightButton_Click_Assigned(object sender, EventArgs e)
         {
             ACurrentPage += 1;
-            AssignedView.Adapter = new CustomPrescriptionsListView(this, assigned_paginator.GeneratePage(ACurrentPage), assigned_paginator.ContainsLast(ACurrentPage));
+            AssignedView.Adapter = new CustomPrescriptionsCardView(this, assigned_paginator.GeneratePage(ACurrentPage), assigned_paginator.ContainsLast(ACurrentPage));
             ToggleAButtons();
         }
 
         void LeftButton_Click_Saved(object sender, EventArgs e)
         {
             SCurrentPage -= 1;
-            SavedView.Adapter = new CustomPrescriptionsListView(this, saved_paginator.GeneratePage(SCurrentPage));
+            SavedView.Adapter = new CustomPrescriptionsCardView(this, saved_paginator.GeneratePage(SCurrentPage));
             ToggleSButtons();
         }
 
         void RightButton_Click_Saved(object sender, EventArgs e)
         {
             SCurrentPage += 1;
-            SavedView.Adapter = new CustomPrescriptionsListView(this, saved_paginator.GeneratePage(SCurrentPage));
+            SavedView.Adapter = new CustomPrescriptionsCardView(this, saved_paginator.GeneratePage(SCurrentPage));
             ToggleSButtons();
         }
 

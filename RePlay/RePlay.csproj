@@ -136,9 +136,6 @@
     <None Include="Resources\AboutResources.txt" />
     <None Include="Properties\AndroidManifest.xml" />
     <None Include="packages.config" />
-    <AndroidResource Include="Resources\drawable\.DS_Store" />
-    <None Include="Resources\drawable\icon\editor\mode_24px.png" />
-    <None Include="Resources\drawable\icon\navigation\cancel_24px.png" />
     <None Include="GameDLLs\DummyGame.Android.dll" />
   </ItemGroup>
   <ItemGroup>
@@ -224,12 +221,7 @@
     <AndroidResource Include="Resources\drawable\CircularImage.xml" />
     <AndroidResource Include="Resources\layout\PatientFragment.axml" />
     <AndroidResource Include="Resources\drawable\EditTextBorderBlack.xml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Resources\drawable\icon\action\" />
-    <Folder Include="Resources\drawable\icon\Keyboard Arrow - Right\" />
-    <Folder Include="Resources\drawable\icon\keyboard_arrow_left\" />
-    <Folder Include="Resources\drawable\icon\toggle\" />
+    <AndroidResource Include="Resources\values\Colors.xml" />
   </ItemGroup>
   <ItemGroup>
     <AndroidAsset Include="Assets\games.txt" />

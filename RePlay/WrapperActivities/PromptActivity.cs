@@ -22,7 +22,8 @@ namespace RePlay.WrapperActivities
 
         // ui
         ImageButton next;
-        ImageView exercisePic, devicePic; 
+        ImageView exercisePic, devicePic;
+        TextView exerciseText;
 
         const int REQUEST_CODE = 5432;
 
@@ -35,6 +36,7 @@ namespace RePlay.WrapperActivities
 
             next = this.FindViewById<ImageButton>(Resource.Id.next);
             exercisePic = this.FindViewById<ImageView>(Resource.Id.prompt_exercise_image);
+            exerciseText = this.FindViewById<TextView>(Resource.Id.prompt_exercise_text);
             devicePic = this.FindViewById<ImageView>(Resource.Id.prompt_device);
 
             this.FindViewById<ImageButton>(Resource.Id.cancel).Click += delegate {
@@ -67,8 +69,13 @@ namespace RePlay.WrapperActivities
                 // load prescription[i].view
                 next.Click += delegate
                 {
-                    // Intent intent = new Intent(this, typeof(prescription[i].Game));
+                    RePlayGame game = prescription[index].Game;
+                    Type t = Type.GetType(game.AssemblyQualifiedName); //This is what gets the correct name
+                    //Intent intent = new Intent(this, t);
+
+
                     Intent intent = new Intent(this, typeof(WrapperActivities.GamesListActivity));
+                    intent.PutExtra("CONTENT_DIR", game.AssetNamespace); //Correct asset namespace
                     intent.PutExtra("exercise", prescription[index].Exercise);
                     intent.PutExtra("duration", prescription[index].Duration);
                     StartActivityForResult(intent, REQUEST_CODE);
@@ -88,7 +95,13 @@ namespace RePlay.WrapperActivities
         // update the views pictures based on prescription[index]
         private void UpdateView()
         {
+            exerciseText.Text = CapitalizeFirst(prescription[index].Exercise);
             exercisePic.SetImageResource(MapNameToPic(prescription[index].Exercise));
+        }
+
+        public string CapitalizeFirst(String text)
+        {
+            return string.Join(" ", text.Split().Select(x => x.Substring(0, 1).ToUpper() + x.Substring(1)));
         }
 
         private int MapNameToPic(string exercise)

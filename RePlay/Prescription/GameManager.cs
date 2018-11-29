@@ -38,6 +38,11 @@ namespace RePlay
             return null;
         }
 
+        public List<String> GetNames()
+        {
+            return new List<String>();
+        }
+
         public RePlayGame FindByName(string name)
         {
             foreach (RePlayGame game in this)

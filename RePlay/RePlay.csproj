@@ -43,6 +43,9 @@
     <EnableProguard>true</EnableProguard>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="DummyGame.Android">
+      <HintPath>GameDLLs\DummyGame.Android.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Core" />
@@ -121,7 +124,6 @@
     <Compile Include="WrapperActivities\AddPrescriptionFragment.cs" />
     <Compile Include="Prescription\Prescription.cs" />
     <Compile Include="Prescription\RePlayGame.cs" />
-    <Compile Include="Prescription\PrescriptionStateManager.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />

@@ -98,8 +98,8 @@ namespace RePlay.Manager
         {
             get
             {
-                string path = System.Environment.GetFolderPath(System.Environment.SpecialFolder.Personal);
-                return System.IO.Path.Combine(path, fileName);
+                string path = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
+                return Path.Combine(path, fileName);
             }
         }
     }

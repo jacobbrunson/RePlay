@@ -31,11 +31,11 @@ namespace RePlay.Manager
         public void LoadPrescription() {
             Clear();
 
-            if (!File.Exists(filePath)) {
+            if (!File.Exists(FilePath)) {
                 SavePrescription();
             }
 
-            using (var reader = new StreamReader(filePath))
+            using (var reader = new StreamReader(FilePath))
             {
                 string line;
                 while ((line = reader.ReadLine()) != null)
@@ -54,7 +54,7 @@ namespace RePlay.Manager
 
         // save the prescription list to a file for persistence
         public void SavePrescription() {
-            using (var writer = new StreamWriter(filePath)) {
+            using (var writer = new StreamWriter(FilePath)) {
                 foreach (Prescription p in this) {
                     writer.WriteLine(String.Format("{0},{1},{2},{3}", p.Exercise, p.Game.AssetNamespace, p.Device, p.Duration));
                 }
@@ -62,11 +62,11 @@ namespace RePlay.Manager
         }
 
         // return the path of the prescription file
-        string filePath {
+        string FilePath {
             get
             {
-                string path = System.Environment.GetFolderPath(System.Environment.SpecialFolder.Personal);
-                return System.IO.Path.Combine(path, fileName);
+                string path = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
+                return Path.Combine(path, fileName);
             }
         }
     }

@@ -47,7 +47,7 @@ namespace RePlay.Manager
         // return the names of every game
         public List<String> GetNames()
         {
-            return this.Select(game => game.Name());
+            return this.Select(game => game.Name).ToList();
         }
 
         // return a game's data based on its name

@@ -4,14 +4,19 @@ using System.IO;
 
 namespace RePlay.Manager
 {
+    // provide a singleton instance of the patient's progress through their prescription
     public class StateManager
     {
+        // in charge of saving state
         static StateManager instance;
         const string fileName = "state.dat";
 
-        private long timestamp = 0;
-        private int index = 0;
+        // saved data (which exercise they are on and at what time)
+        long timestamp = 0;
+        int index = 0;
 
+        // returns the index, accounting for the user's 8hr time period to finish
+        // the prescription expiring
         public int Index
         {
             get
@@ -27,11 +32,13 @@ namespace RePlay.Manager
             }
         }
 
+        // private constructor
         StateManager()
         {
 
         }
 
+        // returns the singleton instance of this class
         public static StateManager Instance
         {
             get
@@ -44,6 +51,7 @@ namespace RePlay.Manager
             }
         }
 
+        // loads the current state from the state file
         public void LoadState()
         {
             if (!File.Exists(FilePath))
@@ -63,7 +71,8 @@ namespace RePlay.Manager
             }
         }
 
-        public void SaveState()
+        // writes state out to the save file
+        void SaveState()
         {
             using (var writer = new StreamWriter(FilePath))
             {
@@ -75,6 +84,8 @@ namespace RePlay.Manager
             }
         }
 
+        // updates class properties with the new timestamp and index;
+        // saves state to file
         public void UpdateState(long t, int i)
         {
             timestamp = t;
@@ -82,6 +93,7 @@ namespace RePlay.Manager
             SaveState();
         }
 
+        // returns the file path of the state file
         string FilePath
         {
             get

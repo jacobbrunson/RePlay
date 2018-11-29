@@ -1,19 +1,23 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using RePlay.Entity;
 
 namespace RePlay.Manager
 {
+    // Provides a singleton instance of the patient's current prescription
     public class PrescriptionManager : List<Prescription>
     {
         static PrescriptionManager instance;
         const string fileName = "prescription.dat";
 
+        // private constructor
         PrescriptionManager() 
         {
 
         }
 
+        // return the singleton instance
         public static PrescriptionManager Instance {
             get {
                 if (instance == null) {
@@ -23,6 +27,7 @@ namespace RePlay.Manager
             }
         }
 
+        // load, parse, and add each prescribed exercise to the list
         public void LoadPrescription() {
             Clear();
 
@@ -47,6 +52,7 @@ namespace RePlay.Manager
             }
         }
 
+        // save the prescription list to a file for persistence
         public void SavePrescription() {
             using (var writer = new StreamWriter(filePath)) {
                 foreach (Prescription p in this) {
@@ -55,6 +61,7 @@ namespace RePlay.Manager
             }
         }
 
+        // return the path of the prescription file
         string filePath {
             get
             {

@@ -1,14 +1,9 @@
-﻿
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using Android;
 using Android.App;
 using Android.Content;
 using Android.OS;
-using Android.Runtime;
-using Android.Views;
 using Android.Widget;
 using RePlay.Entity;
 using RePlay.Manager;
@@ -39,12 +34,12 @@ namespace RePlay.Activities
 
             base.OnCreate(savedInstanceState);
 
-            next = this.FindViewById<ImageButton>(Resource.Id.next);
-            exercisePic = this.FindViewById<ImageView>(Resource.Id.prompt_exercise_image);
-            exerciseText = this.FindViewById<TextView>(Resource.Id.prompt_exercise_text);
-            devicePic = this.FindViewById<ImageView>(Resource.Id.prompt_device);
+            next = FindViewById<ImageButton>(Resource.Id.next);
+            exercisePic = FindViewById<ImageView>(Resource.Id.prompt_exercise_image);
+            exerciseText = FindViewById<TextView>(Resource.Id.prompt_exercise_text);
+            devicePic = FindViewById<ImageView>(Resource.Id.prompt_device);
 
-            this.FindViewById<ImageButton>(Resource.Id.cancel).Click += delegate {
+            FindViewById<ImageButton>(Resource.Id.cancel).Click += delegate {
                 Intent intent = new Intent(this, typeof(MainActivity));
                 StartActivity(intent);
             };
@@ -101,7 +96,7 @@ namespace RePlay.Activities
         }
 
         // update the exercise image, exercise name, and game description based on the current index
-        private void UpdateView()
+        void UpdateView()
         {
             exerciseText.Text = CapitalizeFirst(prescription[index].Exercise);
             exercisePic.SetImageResource(MapNameToPic(prescription[index].Exercise));
@@ -114,9 +109,9 @@ namespace RePlay.Activities
         }
 
         // utility method to map the exercise name (as a string) into a resource drawable identifier
-        private int MapNameToPic(string exercise)
+        int MapNameToPic(string exercise)
         {
-            switch(exercise)
+            switch (exercise)
             {
                 case "wrist flexion":
                     return Resource.Drawable.wristflex0;

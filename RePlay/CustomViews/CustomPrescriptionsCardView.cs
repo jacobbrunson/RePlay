@@ -1,12 +1,10 @@
 using System;
 using System.Collections.Generic;
-using Android.App;
 using Android.Content;
 using Android.Views;
 using Android.Widget;
 using RePlay.Activities;
 using RePlay.Entity;
-using RePlay.Manager;
 
 namespace RePlay.CustomViews
 {

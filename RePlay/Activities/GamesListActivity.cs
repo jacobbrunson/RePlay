@@ -8,7 +8,7 @@ using RePlay.CustomViews;
 using RePlay.Entity;
 using RePlay.Manager;
 
-// GamesListActivity: 
+// GamesListActivity: Select a game from a grid of all available games
 namespace RePlay.Activities
 {
     [Activity(Label = "GamesListActivity", ScreenOrientation = Android.Content.PM.ScreenOrientation.Landscape)]
@@ -16,7 +16,7 @@ namespace RePlay.Activities
     {
         GridView View;
         ImageButton LeftButton, RightButton;
-        static List<RePlayGame> games = GameManager.Instance;
+        static readonly List<RePlayGame> games = GameManager.Instance;
         Paginator<RePlayGame> p = new Paginator<RePlayGame>(6, games);
         int CurrentPage = 0;
 
@@ -25,10 +25,11 @@ namespace RePlay.Activities
             base.OnCreate(savedInstanceState);
 
             SetContentView(Resource.Layout.GamesLauncher);
-            this.InitializeViews();
+            InitializeViews();
             View.Adapter = new CustomGameCardView(this, p.GeneratePage(CurrentPage));
         }
 
+        // Instantiate the left and right buttons
         void InitializeViews()
         {
             View = FindViewById<GridView>(Resource.Id.gameslist_grid);
@@ -41,6 +42,7 @@ namespace RePlay.Activities
 
         }
 
+        // Handle a left button click; go back a page
         void LeftButton_Click(object sender, EventArgs e)
         {
             CurrentPage -= 1;
@@ -48,6 +50,7 @@ namespace RePlay.Activities
             ToggleButtons();
         }
 
+        // Handle a right button click; go to next page
         void RightButton_Click(object sender, EventArgs e)
         {
             CurrentPage += 1;
@@ -55,13 +58,16 @@ namespace RePlay.Activities
             ToggleButtons();
         }
 
+        // Disable buttons according to current page number
         void ToggleButtons()
         {
+            // Disable right button on last page
             if (CurrentPage == p.LastPage)
             {
                 LeftButton.Enabled = true;
                 RightButton.Enabled = false;
             }
+            // Disable left button on first page
             else if (CurrentPage == 0)
             {
                 LeftButton.Enabled = false;
@@ -97,7 +103,7 @@ namespace RePlay.Activities
 
         protected override void OnActivityResult(int requestCode, Result resultCode, Intent data)
         {
-            System.Console.WriteLine("game finished!!!");
+            Console.WriteLine("game finished!!!");
         }
     }
 }

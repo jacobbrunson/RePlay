@@ -1,9 +1,13 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using Android;
 using Android.App;
 using Android.Content;
 using Android.Views;
 using Android.Widget;
-using Android;
 
 namespace RePlay.WrapperActivities
 {

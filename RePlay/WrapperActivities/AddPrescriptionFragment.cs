@@ -11,22 +11,12 @@ namespace RePlay.WrapperActivities
     {
         public class AddPrescriptionFragment : DialogFragment
         {
-            public class DialogEventArgs : EventArgs
-            {
-                public string Exercise { get; set; }
-                public string Game { get; set; }
-                public string Device { get; set; }
-                public int Time { get; set; }
-            }
-
             SettingsActivity settingsActivity;
 
             public AddPrescriptionFragment(SettingsActivity settingsActivity)
             {
                 this.settingsActivity = settingsActivity;
             }
-
-            public delegate void DialogEventHandler(object sender, DialogEventArgs args);
 
             /// <summary>
             /// Method that creates and returns and instance of this dialog
@@ -54,24 +44,24 @@ namespace RePlay.WrapperActivities
                 if (dialogView != null)
                 {
                     var gamesList = GameManager.Instance.GetNames();
-                    var exerciseList = new List<string>() { "Wrist flexion", "Bicep curl", "Thumb press" };
+                    var exerciseList = new List<string>(ExerciseManager.Instance.Keys);
                     var deviceList = new List<string>() { "FitMi", "Knob sensor" };
                     var timeList = new List<int>() { 1, 2, 3 };
 
                     var gameSpinner = dialogView.FindViewById<Spinner>(Resource.Id.gameSpinner);
                     var exerciseSpinner = dialogView.FindViewById<Spinner>(Resource.Id.exerciseSpinner);
-                    var deviceSpinner = dialogView.FindViewById<Spinner>(Resource.Id.deviceSpinner);
-                    var timeSpinner = dialogView.FindViewById<Spinner>(Resource.Id.timeSpinner);
+                    var timeNumberPicker = dialogView.FindViewById<NumberPicker>(Resource.Id.timeNumberPicker);
+
+                    timeNumberPicker.MinValue = 1;
+                    timeNumberPicker.MaxValue = 15;
+                    timeNumberPicker.Value = 1;
+                    timeNumberPicker.WrapSelectorWheel = false;
 
                     var gameAdapter = new ArrayAdapter<string>(Context, Android.Resource.Layout.SimpleSpinnerItem, gamesList);
                     var exerciseAdapter = new ArrayAdapter<string>(Context, Android.Resource.Layout.SimpleSpinnerItem, exerciseList);
-                    var deviceAdapter = new ArrayAdapter<string>(Context, Android.Resource.Layout.SimpleSpinnerItem, deviceList);
-                    var timeAdapter = new ArrayAdapter<int>(Context, Android.Resource.Layout.SimpleSpinnerItem, timeList);
 
                     gameSpinner.Adapter = gameAdapter;
                     exerciseSpinner.Adapter = exerciseAdapter;
-                    deviceSpinner.Adapter = deviceAdapter;
-                    timeSpinner.Adapter = timeAdapter;
 
                     var cancelButton = dialogView.FindViewById<Button>(Resource.Id.cancelButton);
                     var addButton = dialogView.FindViewById<Button>(Resource.Id.addButton);
@@ -86,8 +76,7 @@ namespace RePlay.WrapperActivities
                         var _dialog = dialogView;
                         var _exerciseSpinner = _dialog.FindViewById<Spinner>(Resource.Id.exerciseSpinner);
                         var _gameSpinner = _dialog.FindViewById<Spinner>(Resource.Id.gameSpinner);
-                        var _deviceSpinner = _dialog.FindViewById<Spinner>(Resource.Id.deviceSpinner);
-                        var _timeSpinner = _dialog.FindViewById<Spinner>(Resource.Id.timeSpinner);
+                        var _timeNumberPicker = _dialog.FindViewById<NumberPicker>(Resource.Id.timeNumberPicker);
 
                         var prescriptionManager = PrescriptionManager.Instance;
                         var gameManager = GameManager.Instance;
@@ -101,11 +90,11 @@ namespace RePlay.WrapperActivities
                             Prescription p = new Prescription(
                                 (string)_exerciseSpinner.SelectedItem,
                                 game,
-                                (string)_deviceSpinner.SelectedItem,
-                                (int)_timeSpinner.SelectedItem
+                                null,
+                                _timeNumberPicker.Value
                             );
                             prescriptionManager.Add(p);
-                            if ((prescriptionManager.Count+1) % ItemsPerPage == 1) //+1 to account for last dummy element
+                            if ((prescriptionManager.Count + 1) % ItemsPerPage == 1) //+1 to account for last dummy element
                             {
                                 settingsActivity.ACurrentPage += 1;
                             }

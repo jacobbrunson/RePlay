@@ -55,8 +55,8 @@ namespace RePlay
             return null;
         }
 
-        public void LoadGames(AssetManager assets)
-        {
+        public void LoadGames(AssetManager assets) {
+            Clear();
             using (var reader = new StreamReader(assets.Open("games.txt")))
             {
                 string line;

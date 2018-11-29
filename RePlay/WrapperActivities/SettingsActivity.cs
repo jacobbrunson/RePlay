@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-
+using Android;
 using Android.App;
 using Android.Content;
 using Android.Content.PM;
@@ -18,12 +18,14 @@ namespace RePlay.WrapperActivities
     {
         GridView AssignedView, SavedView;
         ImageButton ALeftButton, ARightButton, SLeftButton, SRightButton;
+        ImageView PatientPicture;
+        TextView PatientName;
 
         static List<Prescription> saved = new List<Prescription> {
-            new Prescription("Bicep Curl", null, "FitMi", 3),
-            new Prescription("Wrist Supination", null, "FitMi", 3),
-            new Prescription("Left-to-Right", null, "FitMi", 3),
-            new Prescription("Typing", null, "FitMi", 3)
+            //new Prescription("Bicep Curl", null, "FitMi", 3),
+            //new Prescription("Wrist Supination", null, "FitMi", 3),
+            //new Prescription("Left-to-Right", null, "FitMi", 3),
+            //new Prescription("Typing", null, "FitMi", 3)
         };
 
         const int ItemsPerPage = 3;
@@ -42,6 +44,9 @@ namespace RePlay.WrapperActivities
             InitializeViews();
             AssignedView.Adapter = new CustomPrescriptionsListView(this, assigned_paginator.GeneratePage(ACurrentPage), assigned_paginator.ContainsLast(ACurrentPage));
             SavedView.Adapter = new CustomPrescriptionsListView(this, saved_paginator.GeneratePage(SCurrentPage));
+            PatientPicture = FindViewById<ImageView>(Resource.Id.settings_picture);
+            PatientPicture.Click += PatientPicture_Click;
+            PatientName = FindViewById<TextView>(Resource.Id.therapist_name);
         }
 
         void InitializeViews()
@@ -131,6 +136,21 @@ namespace RePlay.WrapperActivities
                 SLeftButton.Enabled = true;
                 SRightButton.Enabled = true;
             }
+        }
+
+        void PatientPicture_Click(object sender, EventArgs e)
+        {
+            string name = PatientName.Text;
+            Activity settings = this;
+            FragmentTransaction fm = settings.FragmentManager.BeginTransaction();
+            PatientFragment dialog = PatientFragment.NewInstance(name);
+            PatientFragment.DialogClosed += OnDialogClosed;
+            dialog.Show(fm, "dialog fragment");
+        }
+
+        void OnDialogClosed(object sender, string e)
+        {
+            PatientName.Text = e;
         }
     }
 }

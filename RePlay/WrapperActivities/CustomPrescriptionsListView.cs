@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-
+using Android;
 using Android.App;
 using Android.Content;
 using Android.OS;
@@ -57,6 +57,7 @@ namespace RePlay.WrapperActivities
 
             public override View GetView(int position, View convertView, ViewGroup parent)
             {
+                var settingsActivity = (SettingsActivity)Context;
                 View view = convertView;
 
                 if (view == null)
@@ -76,7 +77,22 @@ namespace RePlay.WrapperActivities
                         TextView DeviceText = view.FindViewById<TextView>(Resource.Id.device_name);
                         DeviceText.Text = card.Device;
                         TextView GameText = view.FindViewById<TextView>(Resource.Id.game_name);
+                        var deletePrescriptionButton = view.FindViewById<ImageButton>(Resource.Id.delete_prescription);
+                        deletePrescriptionButton.Click += (sender, args) =>
+                        {
+                            var prescriptionsPosition = position + SettingsActivity.ItemsPerPage * settingsActivity.ACurrentPage;
+                            settingsActivity.assigned_paginator.RemoveAt(prescriptionsPosition);
+                            PrescriptionManager.Instance.SavePrescription();
+                            settingsActivity.AssignedView.Adapter = new CustomPrescriptionsListView(
+                                settingsActivity,
+                                settingsActivity.assigned_paginator.GeneratePage(settingsActivity.ACurrentPage),
+                                settingsActivity.assigned_paginator.ContainsLast(settingsActivity.ACurrentPage));
+                        };
                         //GameText.Text = card.Game.Name;
+                        GameText.Text = card.Game.Name;
+                        ImageView PrescriptionImage = view.FindViewById<ImageView>(Resource.Id.prescription_image);
+                        //string imgName = ExerciseManager.Instance[card.Exercise] + "0";
+                        //PrescriptionImage.SetImageResource(settingsActivity.Resources.GetIdentifier(imgName, "drawable", null));
                     }
                     else
                     {
@@ -86,7 +102,7 @@ namespace RePlay.WrapperActivities
 
                 return view;
             }
-
+                
             void Add_Prescription_Click(object sender, EventArgs e)
             {
                 Activity settings = (Activity)Context;

@@ -1,9 +1,7 @@
-﻿
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-
 using Android;
 using Android.App;
 using Android.Content;
@@ -80,6 +78,20 @@ namespace RePlay.WrapperActivities
             {
                 //Intent intent = new Intent(this, typeof(Type.GetType()));
                 //intent.PutExtra("CONTENT_DIR", AssetNamespace);
+
+                /*
+                 * 
+                 * intent.PutExtra("type", Prescription.exercise);  // if not a prescription, choose an exercise string
+                 *
+                 * used in Game class:
+                 * FitMiExerciseType type = (FitMiExerciseType) Enum.Parse(typeof(FitMiExerciseType), Intent.GetExtraString("type"));
+                 * if(typeSupported(type)
+                 *      FitMiExerciseBase exercise = FitMiExerciseBase.GetExerciseClass(new HIDPuckDongle(this), FitMiExerciseType.Curls);
+                 * else 
+                 *      FitMiExerciseBase exercise = FitMiExerciseBase.GetExerciseClass(new HIDPuckDongle(this), defaultExercise);
+                 */
+
+
                 //StartActivity(intent);
             };
         }

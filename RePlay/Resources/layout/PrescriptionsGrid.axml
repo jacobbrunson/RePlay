@@ -35,7 +35,7 @@
                 android:layout_below="@id/prescription_image"
                 android:textSize="12dp" />
             <ImageButton
-                android:id="@+id/delete_image"
+                android:id="@+id/delete_prescription"
                 android:src="@drawable/cancel_24px"
                 android:layout_width="20dp"
                 android:layout_height="20dp"
@@ -50,7 +50,7 @@
                 android:layout_width="20dp"
                 android:layout_height="20dp"
                 android:layout_below="@id/prescription_image"
-                android:layout_toLeftOf="@id/delete_image"
+                android:layout_toLeftOf="@id/delete_prescription"
                 android:layout_marginTop="10dp"
                 android:src="@drawable/mode_24px"
                 android:scaleType="fitXY"

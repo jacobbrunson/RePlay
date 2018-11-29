@@ -1,4 +1,3 @@
-﻿
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -95,6 +94,11 @@ namespace RePlay.WrapperActivities
 
                 //StartActivity(intent);
             };
+        }
+
+        protected override void OnActivityResult(int requestCode, Result resultCode, Intent data)
+        {
+            System.Console.WriteLine("game finished!!!");
         }
     }
 }

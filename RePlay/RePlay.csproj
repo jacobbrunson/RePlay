@@ -111,14 +111,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="MainActivity.cs" />
-    <Compile Include="Prescription\StateManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Prescription\PrescriptionManager.cs" />
-    <Compile Include="Prescription\GameManager.cs" />
-    <Compile Include="Prescription\ExerciseManager.cs" />
     <Compile Include="Resources\Resource.designer.cs" />
-    <Compile Include="Prescription\Prescription.cs" />
-    <Compile Include="Prescription\RePlayGame.cs" />
     <Compile Include="Activities\GamesListActivity.cs" />
     <Compile Include="Activities\PrescriptionDoneActivity.cs" />
     <Compile Include="Activities\PromptActivity.cs" />

@@ -26,7 +26,7 @@ namespace RePlay.Activities
 
         const int PRESCRIPTIONS_PER_PAGE = 3;
 
-        AssignedPaginator AssignedPaginator = new AssignedPaginator(PRESCRIPTIONS_PER_PAGE, PrescriptionManager.Instance);
+        AssignedPaginator AssignedPaginator = AssignedPaginator.NewInstance(PRESCRIPTIONS_PER_PAGE, PrescriptionManager.Instance);
         Paginator<Prescription> SavedPaginator = new Paginator<Prescription>(PRESCRIPTIONS_PER_PAGE, saved);
 
         int ACurrentPage = 0;
@@ -161,8 +161,7 @@ namespace RePlay.Activities
         // Handle a new assigned prescription added
         public void NewPrescriptionAdded(){
             // Create a new assigned paginator object
-            if (PrescriptionManager.Instance.Count % PRESCRIPTIONS_PER_PAGE == 1) ACurrentPage += 1;
-            AssignedPaginator = new AssignedPaginator(PRESCRIPTIONS_PER_PAGE, PrescriptionManager.Instance);
+            AssignedPaginator = AssignedPaginator.NewInstance(PRESCRIPTIONS_PER_PAGE, PrescriptionManager.Instance);
             // Update the adapter
             AssignedView.Adapter = new CustomPrescriptionsCardView(this, AssignedPaginator.GeneratePage(ACurrentPage), AssignedPaginator.ContainsLast(ACurrentPage));
             ToggleAButtons();

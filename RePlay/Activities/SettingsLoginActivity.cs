@@ -9,6 +9,7 @@ using Android.Widget;
 // SettingsLoginActivity: Authenticate user to get to settings page
 namespace RePlay.Activities
 {
+    // Login screen to access the settings/prescriptions page
     [Activity(Label = "SettingsLoginActivity")]
     public class SettingsLoginActivity : Activity
     {
@@ -27,6 +28,9 @@ namespace RePlay.Activities
         EditText PasswordText;
         TextView PasswordPrompt;
 
+        // Inflates the settings login layout and add the
+        // event hanlders to the page elements (e.g. the
+        // next button, password field, back button)
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);

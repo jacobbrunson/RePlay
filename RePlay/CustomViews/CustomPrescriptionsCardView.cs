@@ -1,10 +1,12 @@
 using System;
 using System.Collections.Generic;
+using Android.App;
 using Android.Content;
 using Android.Views;
 using Android.Widget;
 using RePlay.Activities;
 using RePlay.Entity;
+using RePlay.Fragments;
 
 namespace RePlay.CustomViews
 {
@@ -115,13 +117,11 @@ namespace RePlay.CustomViews
         // Handle the event that the add button is clicked
         void Add_Prescription_Click(object sender, EventArgs e)
         {
-            /*
             // Get a new instance of the AddPrescriptionFragment
             Activity settings = (SettingsActivity)Context;
             FragmentTransaction fm = settings.FragmentManager.BeginTransaction();
             AddPrescriptionFragment dialog = AddPrescriptionFragment.NewInstance(settingsActivity);
             dialog.Show(fm, "dialog fragment");
-            */
         }
     }
 }

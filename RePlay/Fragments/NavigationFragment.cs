@@ -8,8 +8,14 @@ using RePlay.Activities;
 
 namespace RePlay.Fragments
 {
+    // Top navigation bar for going to the differnt activities
+    // of the RePlay app (i.e. games, settings, home screen)
     public class NavigationFragment : Fragment
     {
+        // Method that starts MainActivity if the user
+        // is not already on the home screen.
+        // This method is added to the Click delegate of the
+        // home button when OnCreateView is called
         void HomeClicked(object sender, EventArgs e)
         {
             ImageButton button = (ImageButton)sender;
@@ -20,6 +26,10 @@ namespace RePlay.Fragments
             }
         }
 
+        // Method that starts GamesListActivity if the user
+        // is not already on the games list screen.
+        // This method is added to the Click delegate of the
+        // game button when OnCreateView is called
         void GamesClicked(object sender, EventArgs e)
         {
             ImageButton button = (ImageButton)sender;
@@ -29,11 +39,18 @@ namespace RePlay.Fragments
             }
         }
 
+        // Stub method that will later be used to indicate
+        // the Bluetooth connection status of the FitMi
+        // device to the VNS chip implanted in the patient
         void ConnectionClicked(object sender, EventArgs e)
         {
             IsConnected = !IsConnected;
         }
 
+        // Method that starts SettingsLoginActivity if the user
+        // is not already on the settings login screen.
+        // This method is added to the Click delegate of the
+        // settings button when OnCreateView is called
         void SettingsClicked(object sender, EventArgs e)
         {
             ImageButton button = (ImageButton)sender;
@@ -45,6 +62,9 @@ namespace RePlay.Fragments
         }
 
         bool isConnected = true;
+        // Boolean property that sets the appropriate
+        // picture for `connectionButton` based on 
+        // whether the Bluetooth connection is active
         public bool IsConnected {
             get { return isConnected; }
             set
@@ -66,6 +86,8 @@ namespace RePlay.Fragments
             base.OnCreate(savedInstanceState);
         }
 
+        // Inflates the Navigation view and adds the resepective event
+        // handlers to the Click delegate of each button
         public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
         {
             View view = inflater.Inflate(Resource.Layout.Navigation, container, false);

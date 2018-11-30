@@ -7,12 +7,14 @@ using Android.Widget;
 
 namespace RePlay.Fragments
 {
+    // Fragment to update patient details and patient photo
     public class PatientFragment : DialogFragment
     {
         static string PFirst;
         static string PLast;
         public static event EventHandler<string> DialogClosed;
 
+        // Return an instance of this fragment with the first and last fields set
         public static PatientFragment NewInstance(string name)
         {
             PatientFragment PatientFragmentInstance = new PatientFragment();
@@ -29,6 +31,7 @@ namespace RePlay.Fragments
         }
 
 
+        // Default OnCreate method
         public override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
@@ -36,6 +39,9 @@ namespace RePlay.Fragments
             // Create your fragment here
         }
 
+
+        // Inflates the PatientFragment View, instantiates the EditText fields for updating the names,
+        // and instantiates a cancel and save button
         public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
         {
             // Use this to return your custom view for this Fragment
@@ -65,6 +71,12 @@ namespace RePlay.Fragments
             return rootView;
         }
 
+        // Dismisses this fragment and invokes the DialogClosed event
+        // with the patient name passed as a parameter.
+        // SettingsActivity is responsible for attaching an actual event
+        // handler to the DialogClosed event.
+        // That method sets the text of SettingsActivity's PatientName variable 
+        // as the `name` passed into the delegate.
         public override void OnDismiss(IDialogInterface dialog)
         {
             base.OnDismiss(dialog);

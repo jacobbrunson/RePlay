@@ -31,7 +31,7 @@ namespace RePlay.Fragments
         }
 
 
-        // Default OnCreate method
+        // Default OnCreate
         public override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);

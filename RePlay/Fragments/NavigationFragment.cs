@@ -81,6 +81,7 @@ namespace RePlay.Fragments
         ImageButton connectionButton;
 
 
+        // Default OnCreate
         public override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);

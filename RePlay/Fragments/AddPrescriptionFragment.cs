@@ -67,15 +67,17 @@ namespace RePlay.Fragments
                 {
                     RePlayGame game = GameManager.Instance.FindByName((string) gameSpinner.SelectedItem);
 
-                    if (game == null) Toast.MakeText(Context, "The game was not found.", ToastLength.Short);
+                    if (game == null) Toast.MakeText(Context, "The game was not found.", ToastLength.Short).Show();
                     else
                     {
                         Prescription p = new Prescription(exerciseSpinner.SelectedItem.ToString(), game,
                                                           DevicesList[0], timeNumberPicker.Value);
+
+                        PrescriptionManager.Instance.RemoveAt(PrescriptionManager.Instance.Count-1);
                         PrescriptionManager.Instance.Add(p);
 
-                        settingsActivity.NewPrescriptionAdded();
                         PrescriptionManager.Instance.SavePrescription();
+                        settingsActivity.NewPrescriptionAdded();
                     }
 
                     Dismiss();

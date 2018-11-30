@@ -97,6 +97,16 @@ namespace RePlay.CustomViews
                 else
                 {
                     view = LayoutInflater.From(Context).Inflate(Resource.Layout.SavedPrescriptionCard, null, false);
+                    Prescription currentPrescription = PrescriptionsList[position];
+
+                    TextView ExerciseText = view.FindViewById<TextView>(Resource.Id.exercise_name);
+                    ExerciseText.Text = currentPrescription.Exercise;
+
+                    TextView GameText = view.FindViewById<TextView>(Resource.Id.game_name);
+                    //GameText.Text = currentPrescription.Game.Name;
+
+                    ImageView PrescriptionImage = view.FindViewById<ImageView>(Resource.Id.exercise_image);
+                    // TODO: update the image based on the exercise name
                 }
             }
 

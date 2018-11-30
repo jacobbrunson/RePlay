@@ -18,7 +18,7 @@ namespace RePlay.Fragments
         public static PatientFragment NewInstance(string name)
         {
             PatientFragment PatientFragmentInstance = new PatientFragment();
-            if(name.Contains(' ')){
+            if(name.Contains(" ")){
                 string[] splitted = name.Split(' ');
                 PFirst = splitted[0];
                 PLast = splitted[1];

@@ -131,6 +131,7 @@
     <Compile Include="Manager\PrescriptionManager.cs" />
     <Compile Include="Manager\StateManager.cs" />
     <Compile Include="Resources\Resource.designer.cs" />
+    <Compile Include="Manager\AssignedPaginator.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />

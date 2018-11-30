@@ -7,7 +7,7 @@
     android:layout_height="match_parent">
     
     <fragment
-        android:name="RePlay.NavigationFragment"
+        android:name="RePlay.Fragments.NavigationFragment"
         android:id="@+id/navigation_fragment"
         android:layout_width="match_parent"
         android:layout_height="75dp"
@@ -151,7 +151,7 @@
     </RelativeLayout>
     
     <fragment
-        android:name="RePlay.FooterFragment"
+        android:name="RePlay.Fragments.FooterFragment"
         android:id="@+id/footer_fragment"
         android:layout_width="match_parent"
         android:layout_alignParentBottom="true"

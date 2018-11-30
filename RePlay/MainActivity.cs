@@ -2,8 +2,6 @@
 using Android.Widget;
 using Android.OS;
 using Android.Content;
-using System.IO;
-using System;
 using RePlay.Manager;
 using RePlay.Activities;
 

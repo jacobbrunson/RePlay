@@ -85,7 +85,10 @@ namespace RePlay.CustomViews
                     GameText.Text = currentPrescription.Game.Name;
 
                     ImageButton deletePrescriptionButton = view.FindViewById<ImageButton>(Resource.Id.delete_prescription);
-                    deletePrescriptionButton.Click += DeletePrescriptionButton_Click;
+                    deletePrescriptionButton.Click += (sender, args) =>
+                    {
+                        settingsActivity.PrescriptionDeleted(position);
+                    };
 
                     ImageView PrescriptionImage = view.FindViewById<ImageView>(Resource.Id.prescription_image);
                     // TODO: update the image based on the exercise name
@@ -98,20 +101,6 @@ namespace RePlay.CustomViews
             }
 
             return view;
-        }
-
-        // Handle the event that the delete button is clicked
-        void DeletePrescriptionButton_Click(object sender, EventArgs e)
-        {
-            /*
-            var prescriptionsPosition = position + SettingsActivity.ItemsPerPage * settingsActivity.ACurrentPage;
-            settingsActivity.assigned_paginator.RemoveAt(prescriptionsPosition);
-            PrescriptionManager.Instance.SavePrescription();
-            settingsActivity.AssignedView.Adapter = new CustomPrescriptionsListView(
-                settingsActivity,
-                settingsActivity.assigned_paginator.GeneratePage(settingsActivity.ACurrentPage),
-                settingsActivity.assigned_paginator.ContainsLast(settingsActivity.ACurrentPage));
-            */
         }
 
         // Handle the event that the add button is clicked

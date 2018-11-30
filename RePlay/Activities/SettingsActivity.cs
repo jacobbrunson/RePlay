@@ -22,7 +22,7 @@ namespace RePlay.Activities
 
         const int PRESCRIPTIONS_PER_PAGE = 3;
 
-        Paginator<Prescription> AssignedPaginator = new Paginator<Prescription>(PRESCRIPTIONS_PER_PAGE, PrescriptionManager.Instance);
+        AssignedPaginator AssignedPaginator = new AssignedPaginator(PRESCRIPTIONS_PER_PAGE, PrescriptionManager.Instance);
         Paginator<Prescription> SavedPaginator = new Paginator<Prescription>(PRESCRIPTIONS_PER_PAGE, saved);
 
         int ACurrentPage = 0;
@@ -143,6 +143,22 @@ namespace RePlay.Activities
         void OnDialogClosed(object sender, string e)
         {
             PatientName.Text = e;
+        }
+
+        // Handle a new assigned prescription added
+        public void NewPrescriptionAdded(){
+            // Create a new assigned paginator object
+            AssignedPaginator = new AssignedPaginator(PRESCRIPTIONS_PER_PAGE, PrescriptionManager.Instance);
+            // Update the adapter
+            AssignedView.Adapter = new CustomPrescriptionsCardView(this, AssignedPaginator.GeneratePage(ACurrentPage), AssignedPaginator.ContainsLast(ACurrentPage));
+        }
+
+        // Handle a prescription deleted
+        public void PrescriptionDeleted(int pos){
+            int position = pos + PRESCRIPTIONS_PER_PAGE * ACurrentPage;
+            AssignedPaginator.RemoveAt(position);
+            PrescriptionManager.Instance.SavePrescription();
+            AssignedView.Adapter = new CustomPrescriptionsCardView(this, AssignedPaginator.GeneratePage(ACurrentPage), AssignedPaginator.ContainsLast(ACurrentPage));
         }
     }
 }

@@ -10,6 +10,7 @@ namespace RePlay.Fragments
 {
     public class NavigationFragment : Fragment
     {
+
         void HomeClicked(object sender, EventArgs e)
         {
             ImageButton button = (ImageButton)sender;

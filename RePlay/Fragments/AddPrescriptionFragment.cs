@@ -73,18 +73,9 @@ namespace RePlay.Fragments
                         Prescription p = new Prescription(exerciseSpinner.SelectedItem.ToString(), game,
                                                           DevicesList[0], timeNumberPicker.Value);
                         PrescriptionManager.Instance.Add(p);
-                        /*
-                        if ((settingsActivity.Count + 1) % ItemsPerPage == 1) //+1 to account for last dummy element
-                        {
-                            settingsActivity.ACurrentPage += 1;
-                        }
-                        settingsActivity.assigned_paginator = new Paginator<Prescription>(ItemsPerPage, prescriptionManager);
-                        settingsActivity.AssignedView.Adapter = new CustomPrescriptionsListView(
-                            settingsActivity,
-                            settingsActivity.assigned_paginator.GeneratePage(settingsActivity.ACurrentPage),
-                            settingsActivity.assigned_paginator.ContainsLast(settingsActivity.ACurrentPage));
-                        prescriptionManager.SavePrescription();
-                        */
+
+                        settingsActivity.NewPrescriptionAdded();
+                        PrescriptionManager.Instance.SavePrescription();
                     }
 
                     Dismiss();

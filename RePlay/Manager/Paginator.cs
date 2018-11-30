@@ -6,7 +6,7 @@ namespace RePlay.Manager
     // a generic class for returning a list of items to display on the current page
     public class Paginator<T>
     {
-        public readonly List<T> ItemsList;
+        protected readonly List<T> ItemsList;
 
         public int TotalNumItems;
         public readonly int ItemsPerPage;
@@ -18,7 +18,7 @@ namespace RePlay.Manager
         public Paginator(int itemsPerPage, List<T> itemsList)
         {
             ItemsList = itemsList;
-            TotalNumItems = ItemsList.Count + 1; //+1 to account for plus button
+            TotalNumItems = ItemsList.Count;
             ItemsPerPage = itemsPerPage;
             ItemsRemaining = TotalNumItems % ItemsPerPage;
             LastPage = Math.Max((TotalNumItems - 1) / ItemsPerPage, 0);
@@ -36,23 +36,18 @@ namespace RePlay.Manager
                 data.Add(ItemsList[i]);
             }
 
-            //If this is the last page, add a dummy element for plus button
-            if (ContainsLast(curr))
-            {
-                data.Add(default(T));
-            }
-
             return data;
         }
 
         // remove the item at the specified position from the list
         public T RemoveAt(int position)
         {
-            var item = ItemsList[position];
+            T item = ItemsList[position];
             ItemsList.RemoveAt(position);
-            TotalNumItems = ItemsList.Count + 1; //+1 to account for plus button
+            TotalNumItems = ItemsList.Count;
             ItemsRemaining = TotalNumItems % ItemsPerPage;
             LastPage = Math.Max((TotalNumItems - 1) / ItemsPerPage, 0);
+
             return item;
         }
 

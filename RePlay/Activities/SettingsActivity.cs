@@ -170,8 +170,12 @@ namespace RePlay.Activities
         // Handle a prescription deleted
         public void PrescriptionDeleted(int pos){
             int position = pos + PRESCRIPTIONS_PER_PAGE * ACurrentPage;
+            if (position == PrescriptionManager.Instance.Count - 1) return;
             AssignedPaginator.RemoveAt(position);
+            AssignedPaginator.RemoveAt(PrescriptionManager.Instance.Count - 1);
             PrescriptionManager.Instance.SavePrescription();
+            AssignedPaginator = AssignedPaginator.NewInstance(PRESCRIPTIONS_PER_PAGE, PrescriptionManager.Instance);
+            if (PrescriptionManager.Instance.Count % PRESCRIPTIONS_PER_PAGE == 0) ACurrentPage -= 1;
             AssignedView.Adapter = new CustomPrescriptionsCardView(this, AssignedPaginator.GeneratePage(ACurrentPage), AssignedPaginator.ContainsLast(ACurrentPage));
             ToggleAButtons();
         }

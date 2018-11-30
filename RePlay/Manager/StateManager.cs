@@ -75,11 +75,8 @@ namespace RePlay.Manager
         {
             using (var writer = new StreamWriter(FilePath))
             {
-                if (timestamp != 0)
-                {
-                    writer.WriteLine(timestamp);
-                    writer.WriteLine(index);
-                }
+                writer.WriteLine(timestamp);
+                writer.WriteLine(index);
             }
         }
 

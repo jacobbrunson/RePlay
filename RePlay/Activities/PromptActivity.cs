@@ -74,10 +74,9 @@ namespace RePlay.Activities
                 {
                     RePlayGame game = prescription[index].Game;
                     Type t = Type.GetType(game.AssemblyQualifiedName); //This is what gets the correct name
-                    //Intent intent = new Intent(this, t);
+                    Intent intent = new Intent(this, t);
 
 
-                    Intent intent = new Intent(this, typeof(GamesListActivity));
                     intent.PutExtra("CONTENT_DIR", game.AssetNamespace); //Correct asset namespace
                     intent.PutExtra("exercise", prescription[index].Exercise);
                     intent.PutExtra("duration", prescription[index].Duration);
@@ -88,10 +87,11 @@ namespace RePlay.Activities
             {
                 // set index to 0 so patient can run through prescription again
                 index = 0;
+                StateManager.Instance.UpdateState(DateTimeOffset.Now.ToUnixTimeMilliseconds(), index);
 
                 // go to prescriptions finished page - located in branch patrick/exercises
-                //Intent intent = new Intent(this, typeof(PrescriptionDoneActivity));
-                //StartActivity(intent);
+                Intent intent = new Intent(this, typeof(PrescriptionDoneActivity));
+                StartActivity(intent);
             }
         }
 

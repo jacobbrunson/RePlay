@@ -159,7 +159,8 @@ namespace RePlay.Activities
         }
 
         // Handle a new assigned prescription added
-        public void NewPrescriptionAdded(){
+        public void NewPrescriptionAdded()
+        {
             // Create a new assigned paginator object
             AssignedPaginator = AssignedPaginator.NewInstance(PRESCRIPTIONS_PER_PAGE, PrescriptionManager.Instance);
             // Update the adapter
@@ -168,7 +169,8 @@ namespace RePlay.Activities
         }
 
         // Handle a prescription deleted
-        public void PrescriptionDeleted(int pos){
+        public void PrescriptionDeleted(int pos)
+        {
             int position = pos + PRESCRIPTIONS_PER_PAGE * ACurrentPage;
             if (position == PrescriptionManager.Instance.Count - 1) return;
             AssignedPaginator.RemoveAt(position);

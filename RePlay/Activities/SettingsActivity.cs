@@ -11,24 +11,23 @@ using RePlay.Manager;
 namespace RePlay.Activities
 {
     [Activity(Label = "Settings")]
-    public partial class SettingsActivity : Activity
+    public class SettingsActivity : Activity
     {
         GridView AssignedView, SavedView;
         ImageButton ALeftButton, ARightButton, SLeftButton, SRightButton;
         ImageView PatientPicture;
         TextView PatientName;
 
-        static List<Prescription> saved = new List<Prescription> {
-            //new Prescription("Bicep Curl", null, "FitMi", 3),
-            //new Prescription("Wrist Supination", null, "FitMi", 3),
-            //new Prescription("Left-to-Right", null, "FitMi", 3),
-            //new Prescription("Typing", null, "FitMi", 3)
-        };
+        static List<Prescription> saved = new List<Prescription>() { 
+            new Prescription("Bicep Curl", null, "FitMi", 3),
+            new Prescription("Bicep Curl", null, "FitMi", 4),
+            new Prescription("Bicep Curl", null, "FitMi", 5),
+            new Prescription("Bicep Curl", null, "FitMi", 12)};
 
-        const int ItemsPerPage = 3;
+        const int PRESCRIPTIONS_PER_PAGE = 3;
 
-        Paginator<Prescription> assigned_paginator = new Paginator<Prescription>(ItemsPerPage, PrescriptionManager.Instance);
-        Paginator<Prescription> saved_paginator = new Paginator<Prescription>(ItemsPerPage, saved);
+        AssignedPaginator AssignedPaginator = AssignedPaginator.NewInstance(PRESCRIPTIONS_PER_PAGE, PrescriptionManager.Instance);
+        Paginator<Prescription> SavedPaginator = new Paginator<Prescription>(PRESCRIPTIONS_PER_PAGE, saved);
 
         int ACurrentPage = 0;
         int SCurrentPage = 0;
@@ -39,8 +38,8 @@ namespace RePlay.Activities
 
             SetContentView(Resource.Layout.Settings);
             InitializeViews();
-            AssignedView.Adapter = new CustomPrescriptionsCardView(this, assigned_paginator.GeneratePage(ACurrentPage), assigned_paginator.ContainsLast(ACurrentPage));
-            SavedView.Adapter = new CustomPrescriptionsCardView(this, saved_paginator.GeneratePage(SCurrentPage));
+            AssignedView.Adapter = new CustomPrescriptionsCardView(this, AssignedPaginator.GeneratePage(ACurrentPage), AssignedPaginator.ContainsLast(ACurrentPage));
+            SavedView.Adapter = new CustomPrescriptionsCardView(this, SavedPaginator.GeneratePage(SCurrentPage));
             PatientPicture = FindViewById<ImageView>(Resource.Id.settings_picture);
             PatientPicture.Click += PatientPicture_Click;
             PatientName = FindViewById<TextView>(Resource.Id.therapist_name);
@@ -55,7 +54,7 @@ namespace RePlay.Activities
             // Initialize first pair of buttons
             ALeftButton = FindViewById<ImageButton>(Resource.Id.left_button_1);
             ARightButton = FindViewById<ImageButton>(Resource.Id.right_button_1);
-            ALeftButton.Enabled = false;
+            ToggleAButtons();
 
             ALeftButton.Click += LeftButton_Click_Assigned;
             ARightButton.Click += RightButton_Click_Assigned;
@@ -63,7 +62,7 @@ namespace RePlay.Activities
             // Initialize second pair of buttons
             SLeftButton = FindViewById<ImageButton>(Resource.Id.left_button_2);
             SRightButton = FindViewById<ImageButton>(Resource.Id.right_button_2);
-            SLeftButton.Enabled = false;
+            ToggleSButtons();
 
             SLeftButton.Click += LeftButton_Click_Saved;
             SRightButton.Click += RightButton_Click_Saved;
@@ -72,34 +71,38 @@ namespace RePlay.Activities
         void LeftButton_Click_Assigned(object sender, EventArgs e)
         {
             ACurrentPage -= 1;
-            AssignedView.Adapter = new CustomPrescriptionsCardView(this, assigned_paginator.GeneratePage(ACurrentPage), assigned_paginator.ContainsLast(ACurrentPage));
+            AssignedView.Adapter = new CustomPrescriptionsCardView(this, AssignedPaginator.GeneratePage(ACurrentPage), AssignedPaginator.ContainsLast(ACurrentPage));
             ToggleAButtons();
         }
 
         void RightButton_Click_Assigned(object sender, EventArgs e)
         {
             ACurrentPage += 1;
-            AssignedView.Adapter = new CustomPrescriptionsCardView(this, assigned_paginator.GeneratePage(ACurrentPage), assigned_paginator.ContainsLast(ACurrentPage));
+            AssignedView.Adapter = new CustomPrescriptionsCardView(this, AssignedPaginator.GeneratePage(ACurrentPage), AssignedPaginator.ContainsLast(ACurrentPage));
             ToggleAButtons();
         }
 
         void LeftButton_Click_Saved(object sender, EventArgs e)
         {
             SCurrentPage -= 1;
-            SavedView.Adapter = new CustomPrescriptionsCardView(this, saved_paginator.GeneratePage(SCurrentPage));
+            SavedView.Adapter = new CustomPrescriptionsCardView(this, SavedPaginator.GeneratePage(SCurrentPage));
             ToggleSButtons();
         }
 
         void RightButton_Click_Saved(object sender, EventArgs e)
         {
             SCurrentPage += 1;
-            SavedView.Adapter = new CustomPrescriptionsCardView(this, saved_paginator.GeneratePage(SCurrentPage));
+            SavedView.Adapter = new CustomPrescriptionsCardView(this, SavedPaginator.GeneratePage(SCurrentPage));
             ToggleSButtons();
         }
 
         void ToggleAButtons()
         {
-            if (ACurrentPage == assigned_paginator.LastPage)
+            if(ACurrentPage == AssignedPaginator.LastPage && ACurrentPage == 0){
+                ALeftButton.Enabled = false;
+                ARightButton.Enabled = false;
+            }
+            else if (ACurrentPage == AssignedPaginator.LastPage)
             {
                 ALeftButton.Enabled = true;
                 ARightButton.Enabled = false;
@@ -118,12 +121,17 @@ namespace RePlay.Activities
 
         void ToggleSButtons()
         {
-            if (SCurrentPage == saved_paginator.LastPage)
+            if (SCurrentPage == SavedPaginator.LastPage && SCurrentPage == 0)
+            {
+                SLeftButton.Enabled = false;
+                SRightButton.Enabled = false;
+            }
+            else if (SCurrentPage == SavedPaginator.LastPage)
             {
                 SLeftButton.Enabled = true;
                 SRightButton.Enabled = false;
             }
-            else if (ACurrentPage == 0)
+            else if (SCurrentPage == 0)
             {
                 SLeftButton.Enabled = false;
                 SRightButton.Enabled = true;
@@ -148,6 +156,29 @@ namespace RePlay.Activities
         void OnDialogClosed(object sender, string e)
         {
             PatientName.Text = e;
+        }
+
+        // Handle a new assigned prescription added
+        public void NewPrescriptionAdded()
+        {
+            // Create a new assigned paginator object
+            AssignedPaginator = AssignedPaginator.NewInstance(PRESCRIPTIONS_PER_PAGE, PrescriptionManager.Instance);
+            // Update the adapter
+            AssignedView.Adapter = new CustomPrescriptionsCardView(this, AssignedPaginator.GeneratePage(ACurrentPage), AssignedPaginator.ContainsLast(ACurrentPage));
+            ToggleAButtons();
+        }
+
+        // Handle a prescription deleted
+        public void PrescriptionDeleted(int pos)
+        {
+            int position = pos + PRESCRIPTIONS_PER_PAGE * ACurrentPage;
+            if (position == PrescriptionManager.Instance.Count - 1) return;
+            AssignedPaginator.RemoveAt(position);
+            AssignedPaginator.RemoveAt(PrescriptionManager.Instance.Count - 1);
+            PrescriptionManager.Instance.SavePrescription();
+            AssignedPaginator = AssignedPaginator.NewInstance(PRESCRIPTIONS_PER_PAGE, PrescriptionManager.Instance);
+            AssignedView.Adapter = new CustomPrescriptionsCardView(this, AssignedPaginator.GeneratePage(ACurrentPage), AssignedPaginator.ContainsLast(ACurrentPage));
+            ToggleAButtons();
         }
     }
 }

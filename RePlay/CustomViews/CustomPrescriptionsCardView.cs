@@ -1,10 +1,12 @@
 using System;
 using System.Collections.Generic;
+using Android.App;
 using Android.Content;
 using Android.Views;
 using Android.Widget;
 using RePlay.Activities;
 using RePlay.Entity;
+using RePlay.Fragments;
 
 namespace RePlay.CustomViews
 {
@@ -83,7 +85,10 @@ namespace RePlay.CustomViews
                     GameText.Text = currentPrescription.Game.Name;
 
                     ImageButton deletePrescriptionButton = view.FindViewById<ImageButton>(Resource.Id.delete_prescription);
-                    deletePrescriptionButton.Click += DeletePrescriptionButton_Click;
+                    deletePrescriptionButton.Click += (sender, args) =>
+                    {
+                        settingsActivity.PrescriptionDeleted(position);
+                    };
 
                     ImageView PrescriptionImage = view.FindViewById<ImageView>(Resource.Id.prescription_image);
                     // TODO: update the image based on the exercise name
@@ -92,36 +97,30 @@ namespace RePlay.CustomViews
                 else
                 {
                     view = LayoutInflater.From(Context).Inflate(Resource.Layout.SavedPrescriptionCard, null, false);
+                    Prescription currentPrescription = PrescriptionsList[position];
+
+                    TextView ExerciseText = view.FindViewById<TextView>(Resource.Id.exercise_name);
+                    ExerciseText.Text = currentPrescription.Exercise;
+
+                    TextView GameText = view.FindViewById<TextView>(Resource.Id.game_name);
+                    //GameText.Text = currentPrescription.Game.Name;
+
+                    ImageView PrescriptionImage = view.FindViewById<ImageView>(Resource.Id.exercise_image);
+                    // TODO: update the image based on the exercise name
                 }
             }
 
             return view;
         }
 
-        // Handle the event that the delete button is clicked
-        void DeletePrescriptionButton_Click(object sender, EventArgs e)
-        {
-            /*
-            var prescriptionsPosition = position + SettingsActivity.ItemsPerPage * settingsActivity.ACurrentPage;
-            settingsActivity.assigned_paginator.RemoveAt(prescriptionsPosition);
-            PrescriptionManager.Instance.SavePrescription();
-            settingsActivity.AssignedView.Adapter = new CustomPrescriptionsListView(
-                settingsActivity,
-                settingsActivity.assigned_paginator.GeneratePage(settingsActivity.ACurrentPage),
-                settingsActivity.assigned_paginator.ContainsLast(settingsActivity.ACurrentPage));
-            */
-        }
-
         // Handle the event that the add button is clicked
         void Add_Prescription_Click(object sender, EventArgs e)
         {
-            /*
             // Get a new instance of the AddPrescriptionFragment
             Activity settings = (SettingsActivity)Context;
             FragmentTransaction fm = settings.FragmentManager.BeginTransaction();
             AddPrescriptionFragment dialog = AddPrescriptionFragment.NewInstance(settingsActivity);
             dialog.Show(fm, "dialog fragment");
-            */
         }
     }
 }

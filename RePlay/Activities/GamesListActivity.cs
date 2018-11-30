@@ -14,10 +14,12 @@ namespace RePlay.Activities
     [Activity(Label = "GamesListActivity", ScreenOrientation = Android.Content.PM.ScreenOrientation.Landscape)]
     public class GamesListActivity : Activity
     {
+        const int GAMES_PER_PAGE = 6;
+
         GridView View;
         ImageButton LeftButton, RightButton;
         static readonly List<RePlayGame> games = GameManager.Instance;
-        Paginator<RePlayGame> p = new Paginator<RePlayGame>(6, games);
+        Paginator<RePlayGame> p = new Paginator<RePlayGame>(GAMES_PER_PAGE, games);
         int CurrentPage = 0;
 
         protected override void OnCreate(Bundle savedInstanceState)

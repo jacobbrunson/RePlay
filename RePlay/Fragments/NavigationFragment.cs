@@ -12,10 +12,6 @@ namespace RePlay.Fragments
     // of the RePlay app (i.e. games, settings, home screen)
     public class NavigationFragment : Fragment
     {
-        // Method that starts MainActivity if the user
-        // is not already on the home screen.
-        // This method is added to the Click delegate of the
-        // home button when OnCreateView is called
         void HomeClicked(object sender, EventArgs e)
         {
             ImageButton button = (ImageButton)sender;

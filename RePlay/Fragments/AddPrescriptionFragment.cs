@@ -5,124 +5,103 @@ using Android.Widget;
 using System.Collections.Generic;
 using RePlay.Manager;
 using RePlay.Entity;
+using RePlay.Activities;
 
 namespace RePlay.Fragments
 {
-    public partial class SettingsActivity : Activity
+    public class AddPrescriptionFragment : DialogFragment
     {
-        public class AddPrescriptionFragment : DialogFragment
+        readonly SettingsActivity settingsActivity;
+        readonly List<string> GamesList;
+        readonly List<string> ExercisesList;
+        readonly List<string> DevicesList = new List<string>() { "FitMi", "Knob sensor" };
+        readonly List<int> TimeList = new List<int>() { 1, 2, 3 };
+        const int MAX_TIME = 15;
+        const int MIN_TIME = 1;
+
+        public AddPrescriptionFragment(SettingsActivity settingsActivity)
         {
-            SettingsActivity settingsActivity;
+            this.settingsActivity = settingsActivity;
+            GamesList = GameManager.Instance.GetNames();
+            ExercisesList = new List<string>(ExerciseManager.Instance.Keys);
+        }
 
-            public AddPrescriptionFragment(SettingsActivity settingsActivity)
+        public static AddPrescriptionFragment NewInstance(SettingsActivity settingsActivity)
+        {
+            var dialogFragment = new AddPrescriptionFragment(settingsActivity);
+            return dialogFragment;
+        }
+
+        public override Dialog OnCreateDialog(Bundle savedInstanceState)
+        {
+            base.OnCreate(savedInstanceState);
+
+            // Begin building a new dialog.
+            var builder = new AlertDialog.Builder(Activity);
+
+            //Get the layout inflater
+            var inflater = Activity.LayoutInflater;
+
+            //Inflate the layout for this dialog
+            var dialogView = inflater.Inflate(Resource.Layout.AddPrescriptionFragment, null);
+
+            if (dialogView != null)
             {
-                this.settingsActivity = settingsActivity;
-            }
+                Spinner gameSpinner = dialogView.FindViewById<Spinner>(Resource.Id.gameSpinner);
+                Spinner exerciseSpinner = dialogView.FindViewById<Spinner>(Resource.Id.exerciseSpinner);
+                NumberPicker timeNumberPicker = dialogView.FindViewById<NumberPicker>(Resource.Id.timeNumberPicker);
 
-            public static AddPrescriptionFragment NewInstance(SettingsActivity settingsActivity)
-            {
-                var dialogFragment = new AddPrescriptionFragment(settingsActivity);
-                return dialogFragment;
-            }
+                timeNumberPicker.MinValue = MIN_TIME;
+                timeNumberPicker.MaxValue = MAX_TIME;
+                timeNumberPicker.Value = MIN_TIME;
+                timeNumberPicker.WrapSelectorWheel = false;
 
-            public override Dialog OnCreateDialog(Bundle savedInstanceState)
-            {
-                base.OnCreate(savedInstanceState);
+                gameSpinner.Adapter = new ArrayAdapter<string>(Context, Android.Resource.Layout.SimpleSpinnerItem, GamesList);
+                exerciseSpinner.Adapter = new ArrayAdapter<string>(Context, Android.Resource.Layout.SimpleSpinnerItem, ExercisesList);
 
-                // Begin building a new dialog.
-                var builder = new AlertDialog.Builder(Activity);
+                Button cancelButton = dialogView.FindViewById<Button>(Resource.Id.cancelButton);
+                Button addButton = dialogView.FindViewById<Button>(Resource.Id.addButton);
 
-                //Get the layout inflater
-                var inflater = Activity.LayoutInflater;
-
-                //Inflate the layout for this dialog
-                var dialogView = inflater.Inflate(Resource.Layout.AddPrescriptionFragment, null);
-
-                if (dialogView != null)
+                cancelButton.Click += CancelButton_Click;
+                addButton.Click += (sender, args) =>
                 {
-                    var gamesList = GameManager.Instance.GetNames();
-                    var exerciseList = new List<string>(ExerciseManager.Instance.Keys);
-                    var deviceList = new List<string>() { "FitMi", "Knob sensor" };
-                    var timeList = new List<int>() { 1, 2, 3 };
+                    RePlayGame game = GameManager.Instance.FindByName((string) gameSpinner.SelectedItem);
 
-                    var gameSpinner = dialogView.FindViewById<Spinner>(Resource.Id.gameSpinner);
-                    var exerciseSpinner = dialogView.FindViewById<Spinner>(Resource.Id.exerciseSpinner);
-                    var timeNumberPicker = dialogView.FindViewById<NumberPicker>(Resource.Id.timeNumberPicker);
-
-                    timeNumberPicker.MinValue = 1;
-                    timeNumberPicker.MaxValue = 15;
-                    timeNumberPicker.Value = 1;
-                    timeNumberPicker.WrapSelectorWheel = false;
-
-                    var gameAdapter = new ArrayAdapter<string>(Context, Android.Resource.Layout.SimpleSpinnerItem, gamesList);
-                    var exerciseAdapter = new ArrayAdapter<string>(Context, Android.Resource.Layout.SimpleSpinnerItem, exerciseList);
-
-                    gameSpinner.Adapter = gameAdapter;
-                    exerciseSpinner.Adapter = exerciseAdapter;
-
-                    var cancelButton = dialogView.FindViewById<Button>(Resource.Id.cancelButton);
-                    var addButton = dialogView.FindViewById<Button>(Resource.Id.addButton);
-
-                    cancelButton.Click += (sender, args) =>
+                    if (game == null) Toast.MakeText(Context, "The game was not found.", ToastLength.Short).Show();
+                    else
                     {
-                        Dismiss();
-                    };
+                        Prescription p = new Prescription(exerciseSpinner.SelectedItem.ToString(), game,
+                                                          DevicesList[0], timeNumberPicker.Value);
 
-                    addButton.Click += (sender, args) =>
-                    {
-                        var _dialog = dialogView;
-                        var _exerciseSpinner = _dialog.FindViewById<Spinner>(Resource.Id.exerciseSpinner);
-                        var _gameSpinner = _dialog.FindViewById<Spinner>(Resource.Id.gameSpinner);
-                        var _timeNumberPicker = _dialog.FindViewById<NumberPicker>(Resource.Id.timeNumberPicker);
+                        PrescriptionManager.Instance.RemoveAt(PrescriptionManager.Instance.Count-1);
+                        PrescriptionManager.Instance.Add(p);
 
-                        var prescriptionManager = PrescriptionManager.Instance;
-                        var gameManager = GameManager.Instance;
-                        RePlayGame game = gameManager.FindByName((string)_gameSpinner.SelectedItem);
-                        if (game == null)
-                        {
-                            Toast.MakeText(Context, "The game was not found.", ToastLength.Short);
-                        }
-                        else
-                        {
-                            Prescription p = new Prescription(
-                                (string)_exerciseSpinner.SelectedItem,
-                                game,
-                                null,
-                                _timeNumberPicker.Value
-                            );
-                            prescriptionManager.Add(p);
-                            /*
-                            if ((prescriptionManager.Count + 1) % ItemsPerPage == 1) //+1 to account for last dummy element
-                            {
-                                settingsActivity.ACurrentPage += 1;
-                            }
-                            settingsActivity.assigned_paginator = new Paginator<Prescription>(ItemsPerPage, prescriptionManager);
-                            settingsActivity.AssignedView.Adapter = new CustomPrescriptionsListView(
-                                settingsActivity,
-                                settingsActivity.assigned_paginator.GeneratePage(settingsActivity.ACurrentPage),
-                                settingsActivity.assigned_paginator.ContainsLast(settingsActivity.ACurrentPage));
-                            prescriptionManager.SavePrescription();
-                            */
-                        }
+                        PrescriptionManager.Instance.SavePrescription();
+                        settingsActivity.NewPrescriptionAdded();
+                    }
 
-                        Dismiss();
-                    };
+                    Dismiss();
+                };
 
-                    builder.SetView(dialogView);
-                }
-
-                //Create the builder 
-                var dialog = builder.Create();
-
-                //Now return the constructed dialog to the calling activity
-                return dialog;
+                builder.SetView(dialogView);
             }
 
-            void HandleNegativeButtonClick(object sender, DialogClickEventArgs e)
-            {
-                var dialog = (AlertDialog)sender;
-                dialog.Dismiss();
-            }
+            //Create the builder 
+            var dialog = builder.Create();
+
+            //Now return the constructed dialog to the calling activity
+            return dialog;
+        }
+
+        void HandleNegativeButtonClick(object sender, DialogClickEventArgs e)
+        {
+            var dialog = (AlertDialog)sender;
+            dialog.Dismiss();
+        }
+
+        void CancelButton_Click(object sender, System.EventArgs e)
+        {
+            Dismiss();
         }
     }
 }

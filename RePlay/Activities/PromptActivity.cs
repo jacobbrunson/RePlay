@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Android;
 using Android.App;
 using Android.Content;
 using Android.OS;
@@ -17,6 +18,7 @@ namespace RePlay.Activities
         // logic
         int index;
         List<Prescription> prescription;
+        ExerciseManager exercises;
 
         // ui
         ImageButton next;
@@ -46,6 +48,7 @@ namespace RePlay.Activities
 
             prescription = PrescriptionManager.Instance;
             index = StateManager.Instance.Index;
+            exercises = ExerciseManager.Instance;
             UpdateState();
         }
 
@@ -99,25 +102,13 @@ namespace RePlay.Activities
         void UpdateView()
         {
             exerciseText.Text = CapitalizeFirst(prescription[index].Exercise);
-            exercisePic.SetImageResource(MapNameToPic(prescription[index].Exercise));
+            exercisePic.SetImageResource(exercises.MapNameToPic(prescription[index].Exercise, this));
         }
 
         // utility method to return the input argument with the first letter in every word capitalized
         public string CapitalizeFirst(String text)
         {
             return string.Join(" ", text.Split().Select(x => x.Substring(0, 1).ToUpper() + x.Substring(1)));
-        }
-
-        // utility method to map the exercise name (as a string) into a resource drawable identifier
-        int MapNameToPic(string exercise)
-        {
-            switch (exercise)
-            {
-                case "wrist flexion":
-                    return Resource.Drawable.wristflex0;
-                default:
-                    return Resource.Drawable.curls0;
-            }
         }
     }
 }

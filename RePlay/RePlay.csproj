@@ -132,6 +132,8 @@
     <Compile Include="Manager\StateManager.cs" />
     <Compile Include="Resources\Resource.designer.cs" />
     <Compile Include="Manager\AssignedPaginator.cs" />
+    <Compile Include="Entity\Patient.cs" />
+    <Compile Include="Manager\PatientLoader.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />
@@ -229,6 +231,7 @@
     <AndroidAsset Include="Assets\AboutAssets.txt" />
     <AndroidAsset Include="Assets\DummyGame\temoc.xnb" />
     <AndroidAsset Include="Assets\exercises.txt" />
+    <AndroidAsset Include="Assets\defaultProfile.jpg" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\layout\PrescriptionDone.axml">

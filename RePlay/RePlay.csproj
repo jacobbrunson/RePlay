@@ -157,7 +157,6 @@
     <AndroidResource Include="Resources\drawable\rectangle2copy.png" />
     <AndroidResource Include="Resources\drawable\rectangle2.png" />
     <AndroidResource Include="Resources\layout\Navigation.axml" />
-    <AndroidResource Include="Resources\drawable\logo.jpg" />
     <AndroidResource Include="Resources\drawable\HOME.png" />
     <AndroidResource Include="Resources\drawable\pcmConnected.png" />
     <AndroidResource Include="Resources\drawable\games.png" />
@@ -223,6 +222,7 @@
     <AndroidResource Include="Resources\layout\PatientFragment.axml" />
     <AndroidResource Include="Resources\drawable\EditTextBorderBlack.xml" />
     <AndroidResource Include="Resources\values\Colors.xml" />
+    <AndroidResource Include="Resources\drawable\logo.png" />
   </ItemGroup>
   <ItemGroup>
     <AndroidAsset Include="Assets\games.txt" />

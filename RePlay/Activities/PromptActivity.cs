@@ -19,6 +19,7 @@ namespace RePlay.Activities
         int index;
         List<Prescription> prescription;
         ExerciseManager exercises;
+        ActivityLogManager log;
 
         // ui
         ImageButton next;
@@ -49,6 +50,7 @@ namespace RePlay.Activities
             prescription = PrescriptionManager.Instance;
             index = StateManager.Instance.Index;
             exercises = ExerciseManager.Instance;
+            log = ActivityLogManager.Instance;
             UpdateState();
         }
 
@@ -57,6 +59,11 @@ namespace RePlay.Activities
         {
             if(requestCode == REQUEST_CODE && resultCode == Result.Ok)
             {
+                log.SaveActivity(
+                    prescription[index].Exercise,
+                    prescription[index].Game.Name, 
+                    "prescription");
+
                 index++;
                 UpdateState();
             }

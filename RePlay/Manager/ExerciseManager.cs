@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using Android;
+using Android.App;
 using Android.Content.Res;
 
 namespace RePlay.Manager
@@ -43,6 +45,15 @@ namespace RePlay.Manager
                     Add(data[0], data[1]);
                 }
             }
+        }
+
+        // utility method to map the exercise name (as a string) into a resource drawable identifier
+        public int MapNameToPic(string exercise, Activity a)
+        {
+            string picName = this[exercise] + "0";
+            int resource = a.Resources.GetIdentifier(picName, "drawable", a.PackageName);
+
+            return resource == 0 ? Resource.Drawable.curls0 : resource;
         }
     }
 }

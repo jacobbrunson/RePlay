@@ -23,7 +23,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
 			android:textSize="50sp"
-            android:text="Congratulations! You have finished your prescription. Check out the game page:"
+            android:text="Congratulations! You have finished your prescription."
 			android:layout_centerHorizontal="true"
             android:layout_marginTop="200dp"
 			android:gravity="center"

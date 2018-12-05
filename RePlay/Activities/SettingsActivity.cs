@@ -26,6 +26,8 @@ namespace RePlay.Activities
         ImageView PatientPicture;
         TextView PatientName;
 
+        Patient patient;
+
         static List<Prescription> saved = new List<Prescription>() { 
             new Prescription("Bicep Curl", null, "FitMi", 3),
             new Prescription("Bicep Curl", null, "FitMi", 4),
@@ -55,6 +57,10 @@ namespace RePlay.Activities
             PatientPicture = FindViewById<ImageView>(Resource.Id.settings_picture);
             PatientPicture.Click += PatientPicture_Click;
             PatientName = FindViewById<TextView>(Resource.Id.therapist_name);
+
+            patient = PatientLoader.Load(Assets);
+            PatientName.Text = patient.FullName;
+            PatientPicture.SetImageBitmap(patient.Photo);
         }
 
         protected override void OnResume()
@@ -207,7 +213,7 @@ namespace RePlay.Activities
             string name = PatientName.Text;
             Activity settings = this;
             FragmentTransaction fm = settings.FragmentManager.BeginTransaction();
-            PatientFragment dialog = PatientFragment.NewInstance(name);
+            PatientFragment dialog = PatientFragment.NewInstance(patient);
             PatientFragment.DialogClosed += OnDialogClosed;
             dialog.Show(fm, "dialog fragment");
         }
@@ -216,9 +222,12 @@ namespace RePlay.Activities
         // DialogClosed delegate in order to update
         // the patient name after the user enters a
         // new name.
-        void OnDialogClosed(object sender, string e)
+        void OnDialogClosed(object sender, Patient p)
         {
-            PatientName.Text = e;
+            PatientName.Text = p.First + " " + p.Last;
+            PatientPicture.SetImageBitmap(p.Photo);
+            patient = p;
+            PatientLoader.Save(patient);
         }
 
         // Handle a new assigned prescription being added

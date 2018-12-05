@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Android;
 using Android.App;
 using Android.Content;
 using Android.OS;
@@ -17,6 +18,8 @@ namespace RePlay.Activities
         // logic
         int index;
         List<Prescription> prescription;
+        ExerciseManager exercises;
+        ActivityLogManager log;
 
         // ui
         ImageButton next;
@@ -46,6 +49,8 @@ namespace RePlay.Activities
 
             prescription = PrescriptionManager.Instance;
             index = StateManager.Instance.Index;
+            exercises = ExerciseManager.Instance;
+            log = ActivityLogManager.Instance;
             UpdateState();
         }
 
@@ -54,6 +59,11 @@ namespace RePlay.Activities
         {
             if(requestCode == REQUEST_CODE && resultCode == Result.Ok)
             {
+                log.SaveActivity(
+                    prescription[index].Exercise,
+                    prescription[index].Game.Name, 
+                    "prescription");
+
                 index++;
                 UpdateState();
             }
@@ -74,10 +84,9 @@ namespace RePlay.Activities
                 {
                     RePlayGame game = prescription[index].Game;
                     Type t = Type.GetType(game.AssemblyQualifiedName); //This is what gets the correct name
-                    //Intent intent = new Intent(this, t);
+                    Intent intent = new Intent(this, t);
 
 
-                    Intent intent = new Intent(this, typeof(GamesListActivity));
                     intent.PutExtra("CONTENT_DIR", game.AssetNamespace); //Correct asset namespace
                     intent.PutExtra("exercise", prescription[index].Exercise);
                     intent.PutExtra("duration", prescription[index].Duration);
@@ -88,10 +97,11 @@ namespace RePlay.Activities
             {
                 // set index to 0 so patient can run through prescription again
                 index = 0;
+                StateManager.Instance.UpdateState(DateTimeOffset.Now.ToUnixTimeMilliseconds(), index);
 
                 // go to prescriptions finished page - located in branch patrick/exercises
-                //Intent intent = new Intent(this, typeof(PrescriptionDoneActivity));
-                //StartActivity(intent);
+                Intent intent = new Intent(this, typeof(PrescriptionDoneActivity));
+                StartActivity(intent);
             }
         }
 
@@ -99,25 +109,13 @@ namespace RePlay.Activities
         void UpdateView()
         {
             exerciseText.Text = CapitalizeFirst(prescription[index].Exercise);
-            exercisePic.SetImageResource(MapNameToPic(prescription[index].Exercise));
+            exercisePic.SetImageResource(exercises.MapNameToPic(prescription[index].Exercise, this));
         }
 
         // utility method to return the input argument with the first letter in every word capitalized
         public string CapitalizeFirst(String text)
         {
             return string.Join(" ", text.Split().Select(x => x.Substring(0, 1).ToUpper() + x.Substring(1)));
-        }
-
-        // utility method to map the exercise name (as a string) into a resource drawable identifier
-        int MapNameToPic(string exercise)
-        {
-            switch (exercise)
-            {
-                case "wrist flexion":
-                    return Resource.Drawable.wristflex0;
-                default:
-                    return Resource.Drawable.curls0;
-            }
         }
     }
 }

@@ -57,6 +57,12 @@ namespace RePlay.Activities
             PatientName = FindViewById<TextView>(Resource.Id.therapist_name);
         }
 
+        protected override void OnResume()
+        {
+            base.OnResume();
+
+        }
+
         // Initialize the views for the different
         // elements of this page.
         void InitializeViews()

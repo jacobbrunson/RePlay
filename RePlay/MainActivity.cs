@@ -18,6 +18,7 @@ namespace RePlay
             GameManager.Instance.LoadGames(Assets);
             ExerciseManager.Instance.LoadExercises(Assets);
             PrescriptionManager.Instance.LoadPrescription();
+            SavedPrescriptionManager.Instance.LoadPrescription();
 
             // Set our view from the "main" layout resource
             SetContentView(Resource.Layout.Main);

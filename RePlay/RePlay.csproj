@@ -140,6 +140,7 @@
     <Compile Include="Manager\AssignedPaginator.cs" />
     <Compile Include="Entity\Patient.cs" />
     <Compile Include="Manager\PatientLoader.cs" />
+    <Compile Include="Manager\SavedPrescriptionManager.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />

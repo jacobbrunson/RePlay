@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using Android.App;
 using Android.OS;
 using Android.Widget;
@@ -17,7 +16,7 @@ namespace RePlay.Activities
     // she can add or delete game prescriptions
     // for the patient to complete.
     // The therapist can also update the
-    // patient's details and (todo) photo from
+    // patient's details and photo from
     // this page.
     public class SettingsActivity : Activity
     {
@@ -25,19 +24,12 @@ namespace RePlay.Activities
         ImageButton ALeftButton, ARightButton, SLeftButton, SRightButton;
         ImageView PatientPicture;
         TextView PatientName;
-
         Patient patient;
-
-        static List<Prescription> saved = new List<Prescription>() { 
-            new Prescription("Bicep Curl", null, "FitMi", 3),
-            new Prescription("Bicep Curl", null, "FitMi", 4),
-            new Prescription("Bicep Curl", null, "FitMi", 5),
-            new Prescription("Bicep Curl", null, "FitMi", 12)};
 
         const int PRESCRIPTIONS_PER_PAGE = 3;
 
         AssignedPaginator AssignedPaginator = AssignedPaginator.NewInstance(PRESCRIPTIONS_PER_PAGE, PrescriptionManager.Instance);
-        Paginator<Prescription> SavedPaginator = new Paginator<Prescription>(PRESCRIPTIONS_PER_PAGE, saved);
+        Paginator<Prescription> SavedPaginator = new Paginator<Prescription>(PRESCRIPTIONS_PER_PAGE, SavedPrescriptionManager.Instance);
 
         int ACurrentPage = 0;
         int SCurrentPage = 0;
@@ -251,6 +243,13 @@ namespace RePlay.Activities
             AssignedPaginator = AssignedPaginator.NewInstance(PRESCRIPTIONS_PER_PAGE, PrescriptionManager.Instance);
             AssignedView.Adapter = new CustomPrescriptionsCardView(this, AssignedPaginator.GeneratePage(ACurrentPage), AssignedPaginator.ContainsLast(ACurrentPage));
             ToggleAButtons();
+        }
+
+        public void RefreshSavedPrescriptions()
+        {
+            SavedPaginator = new Paginator<Prescription>(PRESCRIPTIONS_PER_PAGE, SavedPrescriptionManager.Instance);
+            SavedView.Adapter = new CustomPrescriptionsCardView(this, SavedPaginator.GeneratePage(SCurrentPage));
+            ToggleSButtons();
         }
     }
 }

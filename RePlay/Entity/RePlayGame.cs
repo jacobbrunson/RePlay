@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+
 namespace RePlay.Entity
 {
     // holds data pertaining to a specific game
@@ -18,6 +20,25 @@ namespace RePlay.Entity
             ImageAssetName = image_asset_name;
             IsGameAvailable = available;
             AssemblyQualifiedName = assemblyQualifiedName;
+        }
+
+        public override bool Equals(object obj)
+        {
+            if (!(obj is RePlayGame game)) return false;
+            return Name == game.Name && AssetNamespace == game.AssetNamespace
+                               && ImageAssetName == game.ImageAssetName && IsGameAvailable == game.IsGameAvailable
+                               && AssemblyQualifiedName == game.AssemblyQualifiedName;
+        }
+
+        public override int GetHashCode()
+        {
+            var hashCode = 404668865;
+            hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(Name);
+            hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(AssetNamespace);
+            hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(ImageAssetName);
+            hashCode = hashCode * -1521134295 + IsGameAvailable.GetHashCode();
+            hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(AssemblyQualifiedName);
+            return hashCode;
         }
     }
 }

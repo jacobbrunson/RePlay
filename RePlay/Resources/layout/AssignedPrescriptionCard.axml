@@ -86,6 +86,16 @@
                 android:layout_marginTop="3dp"
                 android:text="Breakout"
                 android:layout_below="@id/device_name"/>
+            <ImageButton
+                android:id="@+id/save_assigned_exercise"
+                android:src="@drawable/save"
+                android:scaleType="centerInside"
+                android:layout_height="wrap_content"
+                android:layout_width="60dp"
+                android:adjustViewBounds="true"
+                android:background="#ffffff"
+                android:layout_below="@id/device_name"
+                android:layout_alignRight="@id/delete_prescription" />
         </RelativeLayout>
     </android.support.v7.widget.CardView>
 </LinearLayout>

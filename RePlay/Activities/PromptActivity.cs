@@ -24,7 +24,7 @@ namespace RePlay.Activities
         // ui
         ImageButton next;
         ImageView exercisePic, devicePic;
-        TextView exerciseText;
+        TextView exerciseText, gameText;
 
         const int REQUEST_CODE = 5432;
 
@@ -37,16 +37,20 @@ namespace RePlay.Activities
 
             base.OnCreate(savedInstanceState);
 
-            next = FindViewById<ImageButton>(Resource.Id.next);
+            
+            // ui elements
+            gameText = FindViewById<TextView>(Resource.Id.prompt_game);
             exercisePic = FindViewById<ImageView>(Resource.Id.prompt_exercise_image);
             exerciseText = FindViewById<TextView>(Resource.Id.prompt_exercise_text);
             devicePic = FindViewById<ImageView>(Resource.Id.prompt_device);
+            next = FindViewById<ImageButton>(Resource.Id.next);
 
             FindViewById<ImageButton>(Resource.Id.cancel).Click += delegate {
                 Intent intent = new Intent(this, typeof(MainActivity));
                 StartActivity(intent);
             };
 
+            // managers
             prescription = PrescriptionManager.Instance;
             index = StateManager.Instance.Index;
             exercises = ExerciseManager.Instance;
@@ -109,6 +113,7 @@ namespace RePlay.Activities
         // update the exercise image, exercise name, and game description based on the current index
         void UpdateView()
         {
+            gameText.Text = prescription[index].Game.Name;
             exerciseText.Text = CapitalizeFirst(prescription[index].Exercise);
             exercisePic.SetImageResource(exercises.MapNameToPic(prescription[index].Exercise, this));
         }

@@ -51,6 +51,7 @@ namespace RePlay.Activities
             index = StateManager.Instance.Index;
             exercises = ExerciseManager.Instance;
             log = ActivityLogManager.Instance;
+            
             UpdateState();
         }
 

@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.IO;
 using RePlay.Entity;
+using Android.App;
+using Android.OS;
 
 namespace RePlay.Manager
 {
@@ -32,24 +34,31 @@ namespace RePlay.Manager
 
         public void ClearLogFile()
         {
-            System.IO.File.WriteAllText(FilePath, string.Empty);
+            if(IsExternalStorageWritable())
+            {
+                System.IO.File.WriteAllText(FilePath, string.Empty);
+            }
         }
 
         public List<String> LoadActivity()
         {
-            if (!File.Exists(FilePath))
+            if (IsExternalStorageWritable() && !File.Exists(FilePath))
             {
                 using (var writer = File.AppendText(FilePath));
             }
 
             List<String> activities = new List<String>();
-            using (var reader = new StreamReader(FilePath))
-            {
-                string line;
-                while ((line = reader.ReadLine()) != null)
-                { 
-                    activities.Add(line);
-                    Console.WriteLine(line);
+
+            if (IsExternalStorageWritable())
+            { 
+                using (var reader = new StreamReader(FilePath))
+                {
+                    string line;
+                    while ((line = reader.ReadLine()) != null)
+                    {
+                        activities.Add(line);
+                        Console.WriteLine(line);
+                    }
                 }
             }
 
@@ -59,11 +68,26 @@ namespace RePlay.Manager
         // append the exercise log list to a file for persistence
         public void SaveActivity(String exercise, String game, String type)
         {
-            String timestamp = DateTimeOffset.Now.ToString();
-            using (var writer = File.AppendText(FilePath))
+            if(IsExternalStorageWritable())
             {
-                writer.WriteLine(String.Format("{0},{1},{2},{3}", exercise, game, type, timestamp));
+                String timestamp = DateTimeOffset.Now.ToString();
+                using (var writer = File.AppendText(FilePath))
+                {
+                    writer.WriteLine(String.Format("{0},{1},{2},{3}", exercise, game, type, timestamp));
+                }
             }
+        }
+
+        public bool IsExternalStorageWritable()
+        {
+            String state = Android.OS.Environment.GetExternalStorageState(
+                Application.Context.GetExternalFilesDir(
+                    Android.OS.Environment.DirectoryDocuments));
+            if (Android.OS.Environment.MediaMounted.Equals(state))
+            {
+                return true;
+            }
+            return false;
         }
 
         // return the path of the log file
@@ -71,7 +95,8 @@ namespace RePlay.Manager
         {
             get
             {
-                string path = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
+                Java.IO.File directory = Android.App.Application.Context.GetExternalFilesDir(Android.OS.Environment.DirectoryDocuments);
+                String path = directory.ToString();
                 return Path.Combine(path, fileName);
             }
         }

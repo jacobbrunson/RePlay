@@ -233,6 +233,7 @@
     <AndroidResource Include="Resources\drawable\EditTextBorderBlack.xml" />
     <AndroidResource Include="Resources\values\Colors.xml" />
     <AndroidResource Include="Resources\drawable\logo.png" />
+    <AndroidResource Include="Resources\drawable\trracer.png" />
   </ItemGroup>
   <ItemGroup>
     <AndroidAsset Include="Assets\games.txt" />

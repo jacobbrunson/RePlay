@@ -23,7 +23,7 @@ namespace RePlay.Activities
 
         // ui
         ImageButton next;
-        ImageView exercisePic, devicePic;
+        ImageView exercisePic, devicePic, gameImage;
         TextView exerciseText, gameText;
 
         const int REQUEST_CODE = 5432;
@@ -40,6 +40,7 @@ namespace RePlay.Activities
             
             // ui elements
             gameText = FindViewById<TextView>(Resource.Id.prompt_game_text);
+            gameImage = FindViewById<ImageView>(Resource.Id.prompt_game_image)
             exercisePic = FindViewById<ImageView>(Resource.Id.prompt_exercise_image);
             exerciseText = FindViewById<TextView>(Resource.Id.prompt_exercise_text);
             devicePic = FindViewById<ImageView>(Resource.Id.prompt_device);
@@ -114,6 +115,7 @@ namespace RePlay.Activities
         void UpdateView()
         {
             gameText.Text = prescription[index].Game.Name;
+            gameImage.SetImageResource(prescription[index].Game.GetAssetResource(this));
             exerciseText.Text = CapitalizeFirst(prescription[index].Exercise);
             exercisePic.SetImageResource(exercises.MapNameToPic(prescription[index].Exercise, this));
         }

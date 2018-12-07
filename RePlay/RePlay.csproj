@@ -310,9 +310,6 @@
     <AndroidResource Include="Resources\drawable\wristFlexion.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\trracer.png" />
-  </ItemGroup>
-  <ItemGroup>
     <AndroidResource Include="Resources\drawable\BorderSlim.xml" />
   </ItemGroup>
   <ItemGroup>

@@ -4,7 +4,7 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#ffffff">
+    android:background="@color/txbdc_white">
     <fragment
         android:name="RePlay.Fragments.NavigationFragment"
         android:id="@+id/navigation_fragment"
@@ -20,7 +20,7 @@
         android:minHeight="25px"
         android:gravity="center_horizontal"
         android:paddingTop="60dp"
-        android:background="#ffffff">
+        android:background="@color/txbdc_white">
 		<LinearLayout
 			android:id="@+id/prompt_game"
 			android:layout_width="wrap_content"
@@ -33,7 +33,7 @@
 			<TextView
 				android:id="@+id/prompt_game_text"
 				android:text="Traffic Racer"
-				android:textColor="#69be28"
+				android:textColor="@color/txbdc_green"
 				android:textSize="24sp"
 				android:layout_height="wrap_content"
 				android:layout_width="287dp"
@@ -61,7 +61,7 @@
 			<TextView
 				android:id="@+id/prompt_exercise_text"
 				android:text="Reach Across"
-				android:textColor="#69be28"
+				android:textColor="@color/txbdc_green"
 				android:textSize="24sp"
 				android:layout_height="wrap_content"
 				android:layout_width="287dp"
@@ -93,7 +93,7 @@
             android:layout_width="90dp"
             android:layout_height="wrap_content"
             android:src="@drawable/cancel"
-            android:background="@android:color/background_light"
+            android:background="@color/txbdc_white"
             android:adjustViewBounds="true"
             android:scaleType="centerInside"
             android:layout_marginTop="25dp"
@@ -106,7 +106,7 @@
             android:layout_below="@id/prompt_device"
             android:layout_width="90dp"
             android:layout_height="wrap_content"
-            android:background="#ffffff"
+            android:background="@color/txbdc_white"
             android:adjustViewBounds="true"
             android:layout_marginTop="25dp"
             android:layout_alignParentStart="false"

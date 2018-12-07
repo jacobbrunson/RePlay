@@ -132,6 +132,7 @@
     <Compile Include="Manager\StateManager.cs" />
     <Compile Include="Resources\Resource.designer.cs" />
     <Compile Include="Manager\AssignedPaginator.cs" />
+    <Compile Include="Fragments\EditPrescriptionFragment.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />
@@ -223,6 +224,7 @@
     <AndroidResource Include="Resources\layout\PatientFragment.axml" />
     <AndroidResource Include="Resources\drawable\EditTextBorderBlack.xml" />
     <AndroidResource Include="Resources\values\Colors.xml" />
+    <AndroidResource Include="Resources\layout\EditPrescriptionFragment.axml" />
   </ItemGroup>
   <ItemGroup>
     <AndroidAsset Include="Assets\games.txt" />

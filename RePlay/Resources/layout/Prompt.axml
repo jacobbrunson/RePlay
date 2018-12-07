@@ -24,19 +24,19 @@
 		<LinearLayout
 			android:id="@+id/prompt_game"
 			android:layout_width="wrap_content"
-			android:layout_height="300dp"
+			android:layout_height="270dp"
 			android:layout_marginRight="30dp"
 			android:layout_marginTop="100dp"
-			android:background="@drawable/edittextborder"
+			android:background="@drawable/BorderSlim"
 			android:orientation="vertical"
 			 >
 			<TextView
 				android:id="@+id/prompt_game_text"
-				android:text="Reach Across"
+				android:text="Traffic Racer"
 				android:textColor="#69be28"
 				android:textSize="24sp"
 				android:layout_height="wrap_content"
-				android:layout_width="275dp"
+				android:layout_width="287dp"
 				android:layout_marginTop="10dp"
 				android:layout_marginBottom="10dp"
 				android:gravity="center_horizontal"/>
@@ -44,20 +44,18 @@
 				android:id="@+id/prompt_game_image"
 				android:src="@drawable/trracer"
 				android:layout_height="wrap_content"
-				android:layout_width="265dp"
+				android:layout_width="287dp"
 				android:scaleType="fitEnd"
-				android:layout_marginLeft="4dp"
-				android:layout_marginBottom="20dp"
 				android:adjustViewBounds="false"
 				 />
 		</LinearLayout>
 		<LinearLayout
 			android:id="@+id/prompt_exercise"
 			android:layout_width="wrap_content"
-			android:layout_height="300dp"
+			android:layout_height="270dp"
 			android:layout_alignTop="@id/prompt_game"
 			android:layout_toRightOf="@id/prompt_game"
-			android:background="@drawable/edittextborder"
+			android:background="@drawable/BorderSlim"
 			android:orientation="vertical"
 			 >
 			<TextView
@@ -66,7 +64,7 @@
 				android:textColor="#69be28"
 				android:textSize="24sp"
 				android:layout_height="wrap_content"
-				android:layout_width="275dp"
+				android:layout_width="287dp"
 				android:layout_marginTop="10dp"
 				android:layout_marginBottom="10dp"
 				android:gravity="center_horizontal"/>
@@ -74,19 +72,19 @@
 				android:id="@+id/prompt_exercise_image"
 				android:src="@drawable/reachacross0"
 				android:layout_height="wrap_content"
-				android:layout_width="265dp"
+				android:layout_width="287dp"
 				android:scaleType="centerInside"
-				android:adjustViewBounds="true"
+				android:adjustViewBounds="false"
 				 />
 		</LinearLayout>
         <ImageView
             android:id="@+id/prompt_device"
             android:src="@drawable/fitmi_dialog"
-            android:layout_height="302dp"
-			android:layout_width="277dp"
-            android:scaleType="centerInside"
+            android:layout_height="270dp"
+			android:layout_width="287dp"
+            android:scaleType="fitXY"
 			android:layout_toRightOf="@id/prompt_exercise"
-            android:adjustViewBounds="true"
+            android:adjustViewBounds="false"
 			android:layout_alignTop="@id/prompt_game"
             android:layout_marginLeft="30dp" />
         <ImageButton

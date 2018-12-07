@@ -10,13 +10,13 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         cardview:cardElevation="5dp"
-        cardview:cardBackgroundColor="@android:color/background_light"
+        cardview:cardBackgroundColor="@color/txbdc_white"
         cardview:cardUseCompatPadding="true">
         <ImageButton
             android:id="@+id/add_button"
             android:src="@drawable/plus"
             android:layout_height="wrap_content"
-            android:background="@android:color/background_light"
+            android:background="@color/txbdc_white"
             android:layout_gravity="center"
             android:scaleType="fitXY"
             android:layout_width="wrap_content"

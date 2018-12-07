@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:background="@android:color/background_light"
+    android:background="@color/txbdc_white"
     android:orientation="vertical"
     android:minHeight="150dp"
     android:minWidth="100dp"
@@ -14,7 +14,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/addExerciseText"
-        android:textColor="@android:color/holo_green_light"
+        android:textColor="@color/txbdc_green"
         android:layout_marginBottom="30dp" />
     <TextView
         android:text="Exercise:"
@@ -77,9 +77,9 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/timeText"
         android:id="@+id/cancelButton"
-        android:textColor="@android:color/holo_green_light"
+        android:textColor="@color/txbdc_green"
         android:text="CANCEL"
-        android:background="#ffffff"
+        android:background="@color/txbdc_white"
         android:padding="5dp"
         android:textSize="14dp"
         android:layout_alignLeft="@id/exerciseText"
@@ -90,9 +90,9 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/timeText"
         android:id="@+id/addButton"
-        android:background="#ffffff"
+        android:background="@color/txbdc_white"
         android:text="ADD"
-        android:textColor="@android:color/holo_green_light"
+        android:textColor="@color/txbdc_green"
         android:padding="5dp"
         android:textSize="14dp"
         android:layout_alignEnd="@id/exerciseSpinner"

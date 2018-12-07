@@ -77,7 +77,7 @@ namespace RePlay.Fragments
                 Spinner gameSpinner = dialogView.FindViewById<Spinner>(Resource.Id.gameSpinner);
                 gameSpinner.Adapter = new ArrayAdapter<string>(Context, Android.Resource.Layout.SimpleSpinnerItem, GamesList);
                 IEnumerable<int> gameIndex = Enumerable.Range(0, gameSpinner.Adapter.Count).
-                                             Where((_, index) => (string)gameSpinner.Adapter.GetItem(index) == PrescriptionToEdit.Game.AssemblyQualifiedName;
+                                                       Where((_, index) => (string)gameSpinner.Adapter.GetItem(index) == PrescriptionToEdit.Game.AssemblyQualifiedName);
                 // Note, the gameIndex query returns a collection,
                 // but since there's only going to be one element
                 // in it (the one that matches the prescription's
@@ -92,7 +92,7 @@ namespace RePlay.Fragments
                 Spinner exerciseSpinner = dialogView.FindViewById<Spinner>(Resource.Id.exerciseSpinner);
                 exerciseSpinner.Adapter = new ArrayAdapter<string>(Context, Android.Resource.Layout.SimpleSpinnerItem, ExercisesList);
                 IEnumerable<int> exerciseIndex = Enumerable.Range(0, exerciseSpinner.Adapter.Count).
-                                                 Where((_, index) => (string)exerciseSpinner.Adapter.GetItem(index) == PrescriptionToEdit.Exercise;
+                                                 Where((_, index) => (string)exerciseSpinner.Adapter.GetItem(index) == PrescriptionToEdit.Exercise);
                 gameSpinner.SetSelection(gameIndex.ElementAt(0));
 
                 NumberPicker timeNumberPicker = dialogView.FindViewById<NumberPicker>(Resource.Id.timeNumberPicker);
@@ -118,7 +118,7 @@ namespace RePlay.Fragments
                     PrescriptionToEdit.Duration = timeNumberPicker.Value;
                     PrescriptionToEdit.Exercise = exerciseSpinner.SelectedItem.ToString();
 
-                    settingsActivity.RefreshAssingedPrescriptions();
+                    settingsActivity.RefreshAssignedPrescriptions();
 
                     Dismiss();
                 };

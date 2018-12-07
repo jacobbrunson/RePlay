@@ -8,6 +8,7 @@ using RePlay.Activities;
 using RePlay.Entity;
 using RePlay.Fragments;
 using RePlay.Manager;
+using RePlay.DataClasses;
 
 namespace RePlay.CustomViews
 {
@@ -103,6 +104,14 @@ namespace RePlay.CustomViews
                         alert.Show();
                     };
 
+                    ImageButton editImageButton = view.FindViewById<ImageButton>(Resource.Id.edit_image);
+                    editImageButton.Click += (sender, arg) =>
+                    {
+                        Edit_Prescription_Click(sender, new EditPrescriptionEventArgs {
+                            Position = settingsActivity.ACurrentPageProp * SettingsActivity.PRESCRIPTIONS_PER_PAGE + position
+                        });
+                    };
+
                     ImageButton SaveAssigned = view.FindViewById<ImageButton>(Resource.Id.save_assigned_exercise);
                     SaveAssigned.Click += (sender, args) =>
                     {
@@ -192,6 +201,15 @@ namespace RePlay.CustomViews
             return view;
         }
 
+        void Edit_Prescription_Click(object sender, EditPrescriptionEventArgs e)
+        {
+            // Get a new instance of the AddPrescriptionFragment
+            Activity settings = (SettingsActivity)Context;
+            FragmentTransaction fm = settings.FragmentManager.BeginTransaction();
+            EditPrescriptionFragment dialog = EditPrescriptionFragment.NewInstance(settingsActivity, e);
+            dialog.Show(fm, "dialog fragment");
+        }
+ 
         // Handle the event that the add button is clicked
         void Add_Prescription_Click(object sender, EventArgs e)
         {

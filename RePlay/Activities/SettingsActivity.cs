@@ -26,12 +26,13 @@ namespace RePlay.Activities
         TextView PatientName;
         Patient patient;
 
-        const int PRESCRIPTIONS_PER_PAGE = 3;
+        public const int PRESCRIPTIONS_PER_PAGE = 3;
 
         AssignedPaginator AssignedPaginator = AssignedPaginator.NewInstance(PRESCRIPTIONS_PER_PAGE, PrescriptionManager.Instance);
         Paginator<Prescription> SavedPaginator = new Paginator<Prescription>(PRESCRIPTIONS_PER_PAGE, SavedPrescriptionManager.Instance);
 
         int ACurrentPage = 0;
+        public int ACurrentPageProp { get; }
         int SCurrentPage = 0;
 
         // Inflates the settigns page layout.

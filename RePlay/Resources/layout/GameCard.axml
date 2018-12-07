@@ -10,7 +10,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         cardview:cardElevation="5dp"
-        cardview:cardBackgroundColor="@android:color/background_light"
+        cardview:cardBackgroundColor="@color/txbdc_white"
         cardview:contentPaddingBottom="5dp"
         cardview:cardUseCompatPadding="true">
         <RelativeLayout
@@ -30,7 +30,7 @@
                 android:text="Breakout"
                 android:gravity="left"
                 android:layout_below="@id/gameslist_image"
-                android:textColor="@android:color/black"
+                android:textColor="@color/txbdc_black"
                 android:textSize="18dp"
                 android:layout_centerInParent="true"
                 android:layout_width="295dp"
@@ -39,7 +39,7 @@
                 android:layout_alignRight="@id/gameslist_image"
                 android:padding="8dp"
                 android:textStyle="bold"
-                android:background="@android:color/background_light"
+                android:background="@color/txbdc_white"
                 android:layout_marginTop="5dp" />
         </RelativeLayout>
     </android.support.v7.widget.CardView>

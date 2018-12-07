@@ -5,4 +5,5 @@
     <color name="txbdc_black">#000000</color>
     <color name="txbdc_offwhite">#f6f6f6</color>
     <color name="txbdc_lightgrey">#8690a0</color>
+    <color name="txbdc_grey">#474747</color>
 </resources>

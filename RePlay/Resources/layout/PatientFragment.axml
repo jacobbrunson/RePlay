@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:background="#ffffff"
+    android:background="@color/txbdc_white"
     android:orientation="vertical"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
@@ -26,7 +26,7 @@
         android:id="@+id/patient_camera"
         android:layout_width="45dp"
         android:layout_height="45dp"
-        android:background="@android:color/transparent"
+        android:background="@null"
         android:src="@drawable/add_photo"
         android:scaleType="fitXY"
         android:layout_marginLeft="85dp" />
@@ -35,7 +35,7 @@
         android:text="Patient Information"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textColor="#474747"
+        android:textColor="@color/txbdc_grey"
         android:textStyle="bold"
         android:textSize="20dp"
         android:layout_toRightOf="@id/patient_image"
@@ -44,7 +44,7 @@
     <TextView
         android:id="@+id/patient_fname_text"
         android:text="First Name"
-        android:textColor="#474747"
+        android:textColor="@color/txbdc_grey"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/green_banner_frag"
@@ -55,7 +55,7 @@
     <TextView
         android:id="@+id/patient_lname_text"
         android:text="Last Name"
-        android:textColor="#474747"
+        android:textColor="@color/txbdc_grey"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/green_banner_frag"
@@ -71,7 +71,7 @@
         android:layout_below="@id/patient_fname_text"
         android:layout_alignLeft="@id/patient_fname_text"
         android:background="@drawable/edittextborder"
-        android:textColor="#474747"
+        android:textColor="@color/txbdc_grey"
         android:textSize="15dp"
         android:layout_marginTop="10dp"
         android:hint="First" />
@@ -82,7 +82,7 @@
         android:layout_below="@id/patient_lname_text"
         android:layout_alignLeft="@id/patient_lname_text"
         android:background="@drawable/edittextborder"
-        android:textColor="#474747"
+        android:textColor="@color/txbdc_grey"
         android:textSize="15dp"
         android:layout_marginTop="10dp"
         android:hint="Last" />
@@ -93,7 +93,7 @@
         android:src="@drawable/cancel"
         android:scaleType="centerInside"
         android:adjustViewBounds="true"
-        android:background="#ffffff"
+        android:background="@color/txbdc_white"
         android:layout_below="@id/patient_lname"
         android:layout_marginTop="60dp"
         android:layout_toLeftOf="@+id/patient_save"
@@ -105,7 +105,7 @@
         android:src="@drawable/save"
         android:scaleType="centerInside"
         android:adjustViewBounds="true"
-        android:background="#ffffff"
+        android:background="@color/txbdc_white"
         android:layout_marginTop="60dp"
         android:layout_below="@id/patient_lname"
         android:layout_alignRight="@id/patient_lname"/>

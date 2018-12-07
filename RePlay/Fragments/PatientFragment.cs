@@ -1,32 +1,28 @@
 ﻿using System;
 using Android.App;
 using Android.Content;
+using Android.Graphics;
 using Android.OS;
+using Android.Provider;
 using Android.Views;
 using Android.Widget;
+using RePlay.Entity;
 
 namespace RePlay.Fragments
 {
     // Fragment to update patient details and patient photo
     public class PatientFragment : DialogFragment
     {
-        static string PFirst;
-        static string PLast;
-        public static event EventHandler<string> DialogClosed;
+        static Patient patient;
+        static ImageView photoView;
 
-        // Return an instance of this fragment with the first and last fields set
-        public static PatientFragment NewInstance(string name)
+        public static event EventHandler<Patient> DialogClosed;
+
+        // Return an instance of this fragment with the patient fields set
+        public static PatientFragment NewInstance(Patient patient)
         {
             PatientFragment PatientFragmentInstance = new PatientFragment();
-            if(name.Contains(" ")){
-                string[] splitted = name.Split(' ');
-                PFirst = splitted[0];
-                PLast = splitted[1];
-            }
-            else{
-                PFirst = name;
-                PLast = "";
-            }
+            PatientFragment.patient = patient;
             return PatientFragmentInstance;
         }
 
@@ -50,12 +46,15 @@ namespace RePlay.Fragments
             View rootView = inflater.Inflate(Resource.Layout.PatientFragment, container, false);
             EditText First = rootView.FindViewById<EditText>(Resource.Id.patient_fname);
             EditText Last = rootView.FindViewById<EditText>(Resource.Id.patient_lname);
-            First.Text = PFirst;
-            Last.Text = PLast;
+            First.Text = patient.First;
+            Last.Text = patient.Last;
 
             ImageButton Cancel = rootView.FindViewById<ImageButton>(Resource.Id.patient_cancel);
             ImageButton Save = rootView.FindViewById<ImageButton>(Resource.Id.patient_save);
-
+            ImageButton Camera = rootView.FindViewById<ImageButton>(Resource.Id.patient_camera);
+            photoView = rootView.FindViewById<ImageView>(Resource.Id.patient_image);
+            photoView.SetImageBitmap(patient.Photo);
+            
             Cancel.Click += (sender, args) =>
             {
                 Dismiss();
@@ -63,25 +62,38 @@ namespace RePlay.Fragments
 
             Save.Click += (sender, args) =>
             {
-                PFirst = First.Text;
-                PLast = Last.Text;
+                patient.First = First.Text;
+                patient.Last = Last.Text;
                 Dismiss();
+            };
+
+            Camera.Click += (sender, args) =>
+            {
+                Intent intent = new Intent(MediaStore.ActionImageCapture);
+                StartActivityForResult(intent, 0);
             };
 
             return rootView;
         }
 
+        //This will be called after taking an image with the camera
+        public override void OnActivityResult(int requestCode, Result resultCode, Intent data)
+        {
+            base.OnActivityResult(requestCode, resultCode, data);
+            patient.Photo = (Bitmap)data.Extras.Get("data");
+            photoView.SetImageBitmap(patient.Photo);
+        }
+
         // Dismisses this fragment and invokes the DialogClosed event
-        // with the patient name passed as a parameter.
+        // with the Patient (fname, lname, photo) passed as a parameter.
         // SettingsActivity is responsible for attaching an actual event
         // handler to the DialogClosed event.
         // That method sets the text of SettingsActivity's PatientName variable 
-        // as the `name` passed into the delegate.
+        // as the `name` passed into the delegate. It also sets the Photo.
         public override void OnDismiss(IDialogInterface dialog)
         {
             base.OnDismiss(dialog);
-            string name = PFirst + " " + PLast;
-            DialogClosed?.Invoke(this, name);
+            DialogClosed?.Invoke(this, patient);
         }
     }
 }

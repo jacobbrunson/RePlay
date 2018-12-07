@@ -22,7 +22,7 @@ namespace RePlay.Activities
 
             button.Click += delegate
             {
-                Intent intent = new Intent(this, typeof(GamesListActivity));
+                Intent intent = new Intent(this, typeof(MainActivity));
                 StartActivity(intent);
             };
         }

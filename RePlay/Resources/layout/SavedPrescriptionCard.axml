@@ -58,17 +58,6 @@
                 android:text="Breakout"
                 android:layout_below="@id/exercise_name"/>
             <ImageButton
-                android:id="@+id/edit_image"
-                android:layout_width="20dp"
-                android:layout_height="20dp"
-                android:layout_marginTop="10dp"
-                android:src="@drawable/mode_24px"
-                android:scaleType="fitXY"
-                android:background="@android:color/background_light"
-                android:layout_marginRight="10dp"
-                android:layout_below="@id/game_name"
-                android:layout_alignLeft="@id/game_name" />
-            <ImageButton
                 android:id="@+id/check_image"
                 android:src="@drawable/check_box_24px"
                 android:layout_width="20dp"
@@ -78,7 +67,7 @@
                 android:layout_marginTop="10dp"
                 android:layout_marginRight="10dp"
                 android:layout_below="@id/game_name"
-                android:layout_toRightOf="@id/edit_image" />
+                android:layout_alignLeft="@id/game_name" />
             <ImageButton
                 android:id="@+id/delete_image"
                 android:src="@drawable/delete_24px"

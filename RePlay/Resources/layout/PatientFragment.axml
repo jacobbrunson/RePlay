@@ -71,10 +71,11 @@
         android:layout_below="@id/patient_fname_text"
         android:layout_alignLeft="@id/patient_fname_text"
         android:background="@drawable/edittextborder"
-        android:textColor="@color/txbdc_grey"
+        android:textColor="@color/txbdc_lightgrey"
         android:textSize="15dp"
         android:layout_marginTop="10dp"
-        android:hint="First" />
+        android:hint="First"
+        android:fontFamily="sans-serif-light" />
     <EditText
         android:id="@+id/patient_lname"
         android:layout_width="200dp"
@@ -82,10 +83,11 @@
         android:layout_below="@id/patient_lname_text"
         android:layout_alignLeft="@id/patient_lname_text"
         android:background="@drawable/edittextborder"
-        android:textColor="@color/txbdc_grey"
+        android:textColor="@color/txbdc_lightgrey"
         android:textSize="15dp"
         android:layout_marginTop="10dp"
-        android:hint="Last" />
+        android:hint="Last"
+        android:fontFamily="sans-serif-light" />
     <ImageButton
         android:id="@+id/patient_cancel"
         android:layout_width="90dp"

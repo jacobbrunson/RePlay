@@ -45,7 +45,8 @@
             android:layout_marginTop="30dp"
             android:layout_marginLeft="10dp"
             android:hint="Patient Name"
-            android:text="Patient Name" />
+            android:text="Patient Name"
+            android:fontFamily="sans-serif-light" />
         <TextView
             android:id="@+id/assigned_exercises"
             android:text="Assigned Exercises"
@@ -56,7 +57,8 @@
             android:background="@color/txbdc_white"
             android:gravity="center_vertical"
             android:layout_alignBottom="@id/green_banner"
-            android:layout_marginLeft="190dp" />
+            android:layout_marginLeft="190dp"
+            android:fontFamily="sans-serif-light" />
         
         <RelativeLayout
             android:layout_width="match_parent"
@@ -107,7 +109,8 @@
             android:textColor="@color/txbdc_green"
             android:layout_below="@id/assigned_layout"
             android:layout_marginTop="2dp"
-            android:paddingLeft="190dp" />
+            android:paddingLeft="190dp"
+            android:fontFamily="sans-serif-light" />
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="fill_parent"

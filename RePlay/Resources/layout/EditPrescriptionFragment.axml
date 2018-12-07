@@ -9,11 +9,11 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent">
     <TextView
-        android:text="ADD AN EXERCISE"
+        android:text="EDIT EXERCISE"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/addExerciseText"
+        android:id="@+id/editExerciseText"
         android:textColor="@android:color/holo_green_light"
         android:layout_marginBottom="30dp" />
     <TextView
@@ -21,7 +21,7 @@
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/addExerciseText"
+        android:layout_below="@id/editExerciseText"
         android:id="@+id/exerciseText"
         android:textStyle="bold"
         android:layout_marginRight="20dp"
@@ -30,7 +30,7 @@
     <Spinner
         android:layout_width="250dp"
         android:layout_height="wrap_content"
-        android:layout_below="@id/addExerciseText"
+        android:layout_below="@id/editExerciseText"
         android:layout_toRightOf="@id/exerciseText"
         android:id="@+id/exerciseSpinner"
         android:clipChildren="false"
@@ -83,9 +83,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/timeText"
-        android:id="@+id/addButton"
+        android:id="@+id/saveButton"
         android:background="#ffffff"
-        android:text="ADD"
+        android:text="SAVE"
         android:textColor="@android:color/holo_green_light"
         android:padding="5dp"
         android:textSize="14dp"
@@ -95,7 +95,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/gameText"
-        android:layout_above="@id/addButton"
+        android:layout_above="@id/saveButton"
         android:layout_toRightOf="@id/timeText"
         android:id="@+id/timeNumberPicker"
         android:layout_alignLeft="@id/exerciseSpinner" />

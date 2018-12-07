@@ -133,6 +133,7 @@
     <Compile Include="Resources\Resource.designer.cs" />
     <Compile Include="Manager\AssignedPaginator.cs" />
     <Compile Include="Fragments\EditPrescriptionFragment.cs" />
+    <Compile Include="DataClasses\EditPrescriptionEventArgs.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />
@@ -299,6 +300,9 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\wristFlexion.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="DataClasses\" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <Choose>

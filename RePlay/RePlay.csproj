@@ -233,11 +233,8 @@
     <AndroidResource Include="Resources\layout\PatientFragment.axml" />
     <AndroidResource Include="Resources\drawable\EditTextBorderBlack.xml" />
     <AndroidResource Include="Resources\values\Colors.xml" />
-<<<<<<< HEAD
     <AndroidResource Include="Resources\layout\EditPrescriptionFragment.axml" />
-=======
     <AndroidResource Include="Resources\drawable\logo.png" />
->>>>>>> master
   </ItemGroup>
   <ItemGroup>
     <AndroidAsset Include="Assets\games.txt" />

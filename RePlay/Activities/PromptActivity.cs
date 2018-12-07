@@ -39,7 +39,7 @@ namespace RePlay.Activities
 
             
             // ui elements
-            gameText = FindViewById<TextView>(Resource.Id.prompt_game);
+            gameText = FindViewById<TextView>(Resource.Id.prompt_game_text);
             exercisePic = FindViewById<ImageView>(Resource.Id.prompt_exercise_image);
             exerciseText = FindViewById<TextView>(Resource.Id.prompt_exercise_text);
             devicePic = FindViewById<ImageView>(Resource.Id.prompt_device);

@@ -99,6 +99,8 @@ namespace RePlay.Fragments
                     PrescriptionToEdit.Duration = timeNumberPicker.Value;
                     PrescriptionToEdit.Exercise = exerciseSpinner.SelectedItem.ToString();
 
+                    settingsActivity.RefreshAssingedPrescriptions();
+
                     Dismiss();
                 };
 

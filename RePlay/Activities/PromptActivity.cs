@@ -37,7 +37,7 @@ namespace RePlay.Activities
 
             base.OnCreate(savedInstanceState);
 
-            
+
             // ui elements
             gameText = FindViewById<TextView>(Resource.Id.prompt_game_text);
             gameImage = FindViewById<ImageView>(Resource.Id.prompt_game_image);
@@ -56,7 +56,7 @@ namespace RePlay.Activities
             index = StateManager.Instance.Index;
             exercises = ExerciseManager.Instance;
             log = ActivityLogManager.Instance;
-            
+
             UpdateState();
         }
 
@@ -67,14 +67,14 @@ namespace RePlay.Activities
             {
                 log.SaveActivity(
                     prescription[index].Exercise,
-                    prescription[index].Game.Name, 
+                    prescription[index].Game.Name,
                     "prescription");
 
                 index++;
                 UpdateState();
             }
         }
-        
+
         // update the ui and onClick bindings to allow the next exercise in the patient's
         // prescription to be run; also responsible for letting the patient know when
         // they have completed their prescription in its entirety
@@ -84,7 +84,7 @@ namespace RePlay.Activities
             {
                 UpdateView();
                 StateManager.Instance.UpdateState(DateTimeOffset.Now.ToUnixTimeMilliseconds(), index);
-                
+
                 // load prescription[i].view
                 next.Click += delegate
                 {

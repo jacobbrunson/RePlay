@@ -10,7 +10,7 @@ using Android.Widget;
 namespace RePlay.Activities
 {
     // Login screen to access the settings/prescriptions page
-    [Activity(Label = "SettingsLoginActivity")]
+    [Activity(Label = "SettingsLoginActivity", ScreenOrientation = Android.Content.PM.ScreenOrientation.Landscape)]
     public class SettingsLoginActivity : Activity
     {
         // Display strings used on prompt

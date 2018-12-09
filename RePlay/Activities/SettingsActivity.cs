@@ -9,7 +9,7 @@ using RePlay.Manager;
 
 namespace RePlay.Activities
 {
-    [Activity(Label = "Settings")]
+    [Activity(Label = "Settings", ScreenOrientation = Android.Content.PM.ScreenOrientation.Landscape)]
     // Settings/prescriptions page
     // This page is intended for use by the
     // patient's physical therapist so he or

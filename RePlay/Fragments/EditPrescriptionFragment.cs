@@ -76,14 +76,15 @@ namespace RePlay.Fragments
                 // selected item of the spinner.
                 Spinner gameSpinner = dialogView.FindViewById<Spinner>(Resource.Id.gameSpinner);
                 gameSpinner.Adapter = new ArrayAdapter<string>(Context, Android.Resource.Layout.SimpleSpinnerItem, GamesList);
+                System.Console.WriteLine(PrescriptionToEdit.Game.Name);
                 IEnumerable<int> gameIndex = Enumerable.Range(0, gameSpinner.Adapter.Count).
-                                                       Where((_, index) => (string)gameSpinner.Adapter.GetItem(index) == PrescriptionToEdit.Game.AssemblyQualifiedName);
+                                                        Where((_, index) => (string)gameSpinner.Adapter.GetItem(index) == PrescriptionToEdit.Game.Name);
                 // Note, the gameIndex query returns a collection,
                 // but since there's only going to be one element
                 // in it (the one that matches the prescription's
                 // current game name), we take the first element
                 // of that collection -- the index of that game
-                // name -- to be the selected itme
+                // name -- to be the selected item
                 gameSpinner.SetSelection(gameIndex.ElementAt(0));
 
                 // We do the same thing for the other spinners

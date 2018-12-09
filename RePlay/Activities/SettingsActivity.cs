@@ -55,12 +55,6 @@ namespace RePlay.Activities
             PatientPicture.SetImageBitmap(patient.Photo);
         }
 
-        protected override void OnResume()
-        {
-            base.OnResume();
-
-        }
-
         // Initialize the views for the different
         // elements of this page.
         void InitializeViews()
@@ -245,11 +239,19 @@ namespace RePlay.Activities
             ToggleAButtons();
         }
 
+        // Saved Prescriptions list was changed; refresh the adapter and re-toggle buttons
         public void RefreshSavedPrescriptions()
         {
             SavedPaginator = new Paginator<Prescription>(PRESCRIPTIONS_PER_PAGE, SavedPrescriptionManager.Instance);
             SavedView.Adapter = new CustomPrescriptionsCardView(this, SavedPaginator.GeneratePage(SCurrentPage));
             ToggleSButtons();
+        }
+
+        // Activity is no longer in view; get rid of the dummy item we added
+        protected override void OnStop()
+        {
+            base.OnStop();
+            PrescriptionManager.Instance.RemoveAt(PrescriptionManager.Instance.Count - 1);
         }
     }
 }

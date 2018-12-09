@@ -60,7 +60,7 @@ namespace RePlay.Fragments
                 timeNumberPicker.MinValue = MIN_TIME;
                 timeNumberPicker.MaxValue = MAX_TIME;
                 timeNumberPicker.Value = MIN_TIME;
-                timeNumberPicker.WrapSelectorWheel = false;
+                timeNumberPicker.WrapSelectorWheel = true;
 
                 Button cancelButton = dialogView.FindViewById<Button>(Resource.Id.cancelButton);
                 Button addButton = dialogView.FindViewById<Button>(Resource.Id.addButton);

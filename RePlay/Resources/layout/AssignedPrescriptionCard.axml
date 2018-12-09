@@ -10,7 +10,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         cardview:cardElevation="5dp"
-        cardview:cardBackgroundColor="@android:color/background_light"
+        cardview:cardBackgroundColor="@color/txbdc_white"
         cardview:contentPaddingBottom="10dp"
         cardview:cardUseCompatPadding="true">
         <RelativeLayout
@@ -40,7 +40,7 @@
                 android:layout_width="20dp"
                 android:layout_height="20dp"
                 android:scaleType="fitXY"
-                android:background="@android:color/background_light"
+                android:background="@color/txbdc_white"
                 android:layout_below="@id/prescription_image"
                 android:layout_alignRight="@id/prescription_image"
                 android:layout_marginTop="10dp"
@@ -54,7 +54,7 @@
                 android:layout_marginTop="10dp"
                 android:src="@drawable/mode_24px"
                 android:scaleType="fitXY"
-                android:background="@android:color/background_light"
+                android:background="@color/txbdc_white"
                 android:layout_marginRight="10dp" />
             <TextView
                 android:id="@+id/exercise_name"
@@ -65,7 +65,7 @@
                 android:layout_marginTop="3dp"
                 android:layout_marginLeft="10dp"
                 android:textSize="24dp"
-                android:textStyle="bold"/>
+                android:textStyle="bold" />
             <TextView
                 android:id="@+id/device_name"
                 android:layout_below="@id/exercise_name"
@@ -75,11 +75,11 @@
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="3dp"
                 android:textSize="16dp"
-                android:textColor="#8690a0" />
+                android:textColor="@color/txbdc_lightgrey" />
             <TextView
                 android:id="@+id/game_name"
                 android:textSize="16dp"
-                android:textColor="#8690a0"
+                android:textColor="@color/txbdc_lightgrey"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
@@ -93,7 +93,7 @@
                 android:layout_height="wrap_content"
                 android:layout_width="60dp"
                 android:adjustViewBounds="true"
-                android:background="#ffffff"
+                android:background="@color/txbdc_white"
                 android:layout_below="@id/device_name"
                 android:layout_alignRight="@id/delete_prescription" />
         </RelativeLayout>

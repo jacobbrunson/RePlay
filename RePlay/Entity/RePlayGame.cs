@@ -1,3 +1,5 @@
+using Android;
+using Android.App;
 using System.Collections.Generic;
 
 namespace RePlay.Entity
@@ -39,6 +41,12 @@ namespace RePlay.Entity
             hashCode = hashCode * -1521134295 + IsGameAvailable.GetHashCode();
             hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(AssemblyQualifiedName);
             return hashCode;
+        }
+
+        public int GetAssetResource(Activity a)
+        {
+            int resource = a.Resources.GetIdentifier(ImageAssetName, "drawable", a.PackageName);
+            return resource == 0 ? Resource.Drawable.trracer : resource;
         }
     }
 }

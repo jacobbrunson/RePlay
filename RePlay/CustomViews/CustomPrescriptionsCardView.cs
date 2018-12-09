@@ -67,7 +67,7 @@ namespace RePlay.CustomViews
             // Get the view for this prescription; we must determine which layout to use
             if (view == null)
             {
-                // Use PrescriptionsGridPlus since this is the 
+                // Use PrescriptionsGridPlus
                 if (ContainsLast == true && position == PrescriptionsList.Count - 1)
                 {
                     view = LayoutInflater.From(Context).Inflate(Resource.Layout.AddPrescriptionCard, null, false);

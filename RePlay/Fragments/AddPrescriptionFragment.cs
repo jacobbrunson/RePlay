@@ -15,10 +15,7 @@ namespace RePlay.Fragments
     public class AddPrescriptionFragment : DialogFragment
     {
         readonly SettingsActivity settingsActivity;
-        readonly List<string> GamesList;
-        readonly List<string> ExercisesList;
         readonly List<string> DevicesList = new List<string>() { "FitMi", "Knob sensor" };
-        readonly List<int> TimeList = new List<int>() { 1, 2, 3 };
         const int MAX_TIME = 15;
         const int MIN_TIME = 1;
 
@@ -29,8 +26,6 @@ namespace RePlay.Fragments
         public AddPrescriptionFragment(SettingsActivity settingsActivity)
         {
             this.settingsActivity = settingsActivity;
-            GamesList = GameManager.Instance.GetNames();
-            ExercisesList = new List<string>(ExerciseManager.Instance.Keys);
         }
 
         // Return a new instance of this class
@@ -65,10 +60,7 @@ namespace RePlay.Fragments
                 timeNumberPicker.MinValue = MIN_TIME;
                 timeNumberPicker.MaxValue = MAX_TIME;
                 timeNumberPicker.Value = MIN_TIME;
-                timeNumberPicker.WrapSelectorWheel = false;
-
-                gameSpinner.Adapter = new ArrayAdapter<string>(Context, Android.Resource.Layout.SimpleSpinnerItem, GamesList);
-                exerciseSpinner.Adapter = new ArrayAdapter<string>(Context, Android.Resource.Layout.SimpleSpinnerItem, ExercisesList);
+                timeNumberPicker.WrapSelectorWheel = true;
 
                 Button cancelButton = dialogView.FindViewById<Button>(Resource.Id.cancelButton);
                 Button addButton = dialogView.FindViewById<Button>(Resource.Id.addButton);
@@ -91,14 +83,11 @@ namespace RePlay.Fragments
                         // device name and time duration as parameters
                         Prescription p = new Prescription(exerciseSpinner.SelectedItem.ToString(), game,
                                                           DevicesList[0], timeNumberPicker.Value);
-
                         PrescriptionManager.Instance.RemoveAt(PrescriptionManager.Instance.Count-1);
                         PrescriptionManager.Instance.Add(p);
-
                         PrescriptionManager.Instance.SavePrescription();
                         settingsActivity.NewPrescriptionAdded();
                     }
-
                     Dismiss();
                 };
 

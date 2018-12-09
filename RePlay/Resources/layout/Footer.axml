@@ -3,8 +3,8 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="35dp"
-    android:elevation="10dp"
-    android:background="#f6f6f6"
+    android:elevation="5dp"
+    android:background="@color/txbdc_offwhite"
     android:padding="5dp"
     android:id="@+id/footer_layout">
     <ImageView
@@ -13,7 +13,7 @@
         android:layout_height="wrap_content"
         android:src="@drawable/txbdc_text"
         android:padding="3dp"
-        android:background="#f6f6f6"/>
+        android:background="@color/txbdc_offwhite"/>
     
 </RelativeLayout>
     

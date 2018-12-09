@@ -7,7 +7,7 @@ namespace RePlay.Activities
 {
     // basic class for 1) notifying patients when they have completed their assigned prescriptions, and
     //                 2) prompting patients to check out the games list page
-    [Activity(Label = "PrescriptionDoneActivity")]
+    [Activity(Label = "PrescriptionDoneActivity", ScreenOrientation = Android.Content.PM.ScreenOrientation.Landscape)]
     public class PrescriptionDoneActivity : Activity
     {
         // sets up the views and onClick delegate allowing patients to navigate pages

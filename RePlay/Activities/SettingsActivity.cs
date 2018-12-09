@@ -9,7 +9,7 @@ using RePlay.Manager;
 
 namespace RePlay.Activities
 {
-    [Activity(Label = "Settings")]
+    [Activity(Label = "Settings", ScreenOrientation = Android.Content.PM.ScreenOrientation.Landscape)]
     // Settings/prescriptions page
     // This page is intended for use by the
     // patient's physical therapist so he or
@@ -54,12 +54,6 @@ namespace RePlay.Activities
             patient = PatientLoader.Load(Assets);
             PatientName.Text = patient.FullName;
             PatientPicture.SetImageBitmap(patient.Photo);
-        }
-
-        protected override void OnResume()
-        {
-            base.OnResume();
-
         }
 
         // Initialize the views for the different
@@ -258,6 +252,13 @@ namespace RePlay.Activities
             SavedPaginator = new Paginator<Prescription>(PRESCRIPTIONS_PER_PAGE, SavedPrescriptionManager.Instance);
             SavedView.Adapter = new CustomPrescriptionsCardView(this, SavedPaginator.GeneratePage(SCurrentPage));
             ToggleSButtons();
+        }
+
+        // Activity is no longer in view; get rid of the dummy item we added
+        protected override void OnStop()
+        {
+            base.OnStop();
+            PrescriptionManager.Instance.RemoveAt(PrescriptionManager.Instance.Count - 1);
         }
     }
 }

@@ -17,7 +17,7 @@
         android:layout_centerInParent="true"
         android:layout_below="@id/navigation_fragment"
         android:layout_above="@id/footer_fragment"
-        android:background="@android:color/white">
+        android:background="@color/txbdc_white">
         <ImageButton
             android:id="@+id/playButton"
             android:src="@drawable/play_green"
@@ -33,7 +33,7 @@
             android:id="@+id/main_text"
             android:text="Let's get started!"
             android:textStyle="bold"
-            android:textColor="@android:color/black"
+            android:textColor="@color/txbdc_black"
             android:layout_below="@id/playButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

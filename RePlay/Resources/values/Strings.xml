@@ -7,4 +7,36 @@
         <item>Device</item>
         <item>Exercise</item>
     </string-array>
+    <string-array name="exercise_options">
+        <item>Clapping</item>
+        <item>Bicep Curls</item>
+        <item>Finger Tap</item>
+        <item>Finger Twists</item>
+        <item>Flipping</item>
+        <item>Flyout</item>
+        <item>Grip</item>
+        <item>Key Pinch</item>
+        <item>Reach Across</item>
+        <item>Reach Diagonal</item>
+        <item>Reach Out</item>
+        <item>Rolling</item>
+        <item>Rotate</item>
+        <item>Shoulder Abduction</item>
+        <item>Shoulder Extension</item>
+        <item>Supination</item>
+        <item>Thumb Press</item>
+        <item>Touches</item>
+        <item>Wrist Deviation</item>
+        <item>Wrist Flexion</item>
+    </string-array>
+    <string-array name="games_options">
+        <item>Rep it out!</item>
+        <item>Traffic Racer</item>
+        <item>Breakout</item>
+        <item>Space Runner</item>
+        <item>Fruit Archery</item>
+        <item>Jumper</item>
+        <item>Typer Shark</item>
+        <item>Handwriting</item>
+    </string-array>
 </resources>

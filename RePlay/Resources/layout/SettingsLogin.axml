@@ -16,11 +16,11 @@
         android:layout_height="fill_parent"
         android:layout_below="@id/navigation_fragment"
         android:layout_above="@+id/footer_fragment"
-        android:background="#ffffff">
+        android:background="@color/txbdc_white">
         <TextView
             android:id="@+id/accessTextView"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:textColor="@android:color/black"
+            android:textColor="@color/txbdc_black"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="To access settings enter your password"
@@ -38,26 +38,27 @@
             android:layout_centerInParent="true"
             android:hint="Password"
             android:layout_marginTop="50dp"
-            android:textColor="@android:color/black"
-            android:textColorHint="@android:color/darker_gray"/>
+            android:textColor="@color/txbdc_black"
+            android:textColorHint="@color/txbdc_lightgrey"
+            android:fontFamily="sans-serif-light" />
         <TextView
             android:id="@+id/enter_password"
-            android:textColor="#69BE28"
+            android:textColor="@color/txbdc_green"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/password"
             android:text="Enter your password"
-            android:textStyle="bold"
             android:layout_marginTop="5dp"
             android:textAppearance="@android:style/TextAppearance.Material.Caption"
             android:layout_alignStart="@id/password"
-            android:layout_marginLeft="15dp" />
+            android:layout_marginLeft="15dp"
+            android:textStyle="bold" />
         <ImageButton
             android:id="@+id/settings_back"
             android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:src="@drawable/back"
-            android:background="#ffffff"
+            android:background="@color/txbdc_white"
             android:layout_below="@id/enter_password"
             android:layout_alignLeft="@id/password"
             android:scaleType="centerInside"
@@ -69,7 +70,7 @@
             android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:src="@drawable/next"
-            android:background="#ffffff"
+            android:background="@color/txbdc_white"
             android:layout_below="@id/enter_password"
             android:scaleType="centerInside"
             android:adjustViewBounds="true"

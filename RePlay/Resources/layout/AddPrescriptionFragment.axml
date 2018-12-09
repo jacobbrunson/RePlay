@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:background="@android:color/background_light"
+    android:background="@color/txbdc_white"
     android:orientation="vertical"
     android:minHeight="150dp"
     android:minWidth="100dp"
@@ -14,7 +14,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/addExerciseText"
-        android:textColor="@android:color/holo_green_light"
+        android:textColor="@color/txbdc_green"
         android:layout_marginBottom="30dp" />
     <TextView
         android:text="Exercise:"
@@ -29,14 +29,15 @@
         android:layout_marginLeft="50dp" />
     <Spinner
         android:layout_width="250dp"
-        android:layout_height="wrap_content"
+        android:layout_height="32dp"
         android:layout_below="@id/addExerciseText"
         android:layout_toRightOf="@id/exerciseText"
         android:id="@+id/exerciseSpinner"
         android:clipChildren="false"
         android:background="@drawable/customspinner"
         android:spinnerMode="dropdown"
-        android:padding="5dp" />
+        android:padding="5dp"
+        android:entries="@array/exercise_options" />
     <TextView
         android:text="Game:"
         android:textAppearance="?android:attr/textAppearanceLarge"
@@ -46,18 +47,21 @@
         android:id="@+id/gameText"
         android:textStyle="bold"
         android:layout_marginBottom="15dp"
-        android:layout_alignLeft="@id/exerciseText" />
+        android:layout_alignLeft="@id/exerciseText"
+        android:layout_marginTop="10dp" />
     <Spinner
         android:layout_width="250dp"
-        android:layout_height="wrap_content"
+        android:layout_height="32dp"
         android:layout_below="@id/exerciseText"
         android:layout_toRightOf="@id/gameText"
         android:id="@+id/gameSpinner"
         android:background="@drawable/customspinner"
         android:layout_alignLeft="@id/exerciseSpinner"
         android:spinnerMode="dropdown"
-        android:padding="5dp" />
-   <TextView
+        android:padding="5dp"
+        android:layout_marginTop="10dp"
+        android:entries="@array/games_options" />
+    <TextView
         android:text="Time:"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:layout_width="wrap_content"
@@ -66,31 +70,34 @@
         android:id="@+id/timeText"
         android:textStyle="bold"
         android:layout_marginBottom="15dp"
-        android:layout_alignLeft="@id/exerciseText" />
-   <Button
+        android:layout_alignLeft="@id/exerciseText"
+        android:layout_marginTop="10dp" />
+    <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/timeText"
         android:id="@+id/cancelButton"
-        android:textColor="@android:color/holo_green_light"
+        android:textColor="@color/txbdc_green"
         android:text="CANCEL"
-        android:background="#ffffff"
+        android:background="@color/txbdc_white"
         android:padding="5dp"
         android:textSize="14dp"
         android:layout_alignLeft="@id/exerciseText"
-        android:layout_marginLeft="75dp" />
+        android:layout_marginLeft="75dp"
+        android:layout_marginTop="20dp" />
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/timeText"
         android:id="@+id/addButton"
-        android:background="#ffffff"
+        android:background="@color/txbdc_white"
         android:text="ADD"
-        android:textColor="@android:color/holo_green_light"
+        android:textColor="@color/txbdc_green"
         android:padding="5dp"
         android:textSize="14dp"
         android:layout_alignEnd="@id/exerciseSpinner"
-        android:layout_marginRight="75dp" />
+        android:layout_marginRight="75dp"
+        android:layout_marginTop="20dp" />
     <NumberPicker
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -98,5 +105,7 @@
         android:layout_above="@id/addButton"
         android:layout_toRightOf="@id/timeText"
         android:id="@+id/timeNumberPicker"
-        android:layout_alignLeft="@id/exerciseSpinner" />
+        android:layout_alignLeft="@id/exerciseSpinner"
+        android:layout_marginTop="10dp"
+        android:theme="@style/NumberPickerTheme"/>
 </RelativeLayout>

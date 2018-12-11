@@ -87,6 +87,9 @@ namespace RePlay.CustomViews
                     TextView GameText = view.FindViewById<TextView>(Resource.Id.game_name);
                     GameText.Text = currentPrescription.Game.Name;
 
+                    TextView LastPlayed = view.FindViewById<TextView>(Resource.Id.last_played);
+                    LastPlayed.Text = LastPlayedText(currentPrescription.Game.Name);
+
                     ImageButton deletePrescriptionButton = view.FindViewById<ImageButton>(Resource.Id.delete_prescription);
                     deletePrescriptionButton.Click += (sender, args) =>
                     {
@@ -150,6 +153,9 @@ namespace RePlay.CustomViews
 
                     TextView GameText = view.FindViewById<TextView>(Resource.Id.game_name);
                     GameText.Text = currentPrescription.Game.Name;
+
+                    TextView LastPlayed = view.FindViewById<TextView>(Resource.Id.last_played);
+                    LastPlayed.Text = LastPlayedText(currentPrescription.Game.Name);
 
                     ImageButton DeletePrescriptionButton = view.FindViewById<ImageButton>(Resource.Id.delete_image);
                     DeletePrescriptionButton.Click += (sender, args) =>
@@ -219,5 +225,14 @@ namespace RePlay.CustomViews
             AddPrescriptionFragment dialog = AddPrescriptionFragment.NewInstance(settingsActivity);
             dialog.Show(fm, "dialog fragment");
         }
+
+        String LastPlayedText(String gameName)
+        {
+            Dictionary<string, string> lastPlayed = ActivityLogManager.Instance.LastPlayed;
+            string then = lastPlayed.ContainsKey(gameName) ? lastPlayed[gameName] : null;
+            int nDaysAgo = then == null ? -1 : (DateTimeOffset.Now - DateTimeOffset.Parse(then)).Days;
+            return nDaysAgo == -1 ? "Never played" : "Last played " + nDaysAgo + "d ago";
+        }
+         
     }
 }

@@ -12,6 +12,7 @@ namespace RePlay.Manager
     {
         static ActivityLogManager instance;
         const string fileName = "activity_log.dat";
+        public Dictionary<String, String> LastPlayed;
 
         // private constructor
         ActivityLogManager()
@@ -27,10 +28,24 @@ namespace RePlay.Manager
                 if (instance == null)
                 {
                     instance = new ActivityLogManager();
+                    instance.InitializeLastPlayed();
                 }
                 return instance;
             }
         }
+
+        private void InitializeLastPlayed()
+        {
+            LastPlayed = new Dictionary<string, string>();
+            List<string> activities = LoadActivity();
+            foreach(string line in activities)
+            {
+                string[] fields = line.Split(',');
+                string gameName = fields[1], lastPlayed = fields[fields.Length-1];
+                LastPlayed[gameName] = lastPlayed;
+            }
+        }
+
 
         public void ClearLogFile()
         {
@@ -70,7 +85,10 @@ namespace RePlay.Manager
         {
             if(IsExternalStorageWritable())
             {
+                // record the time the game was played
                 String timestamp = DateTimeOffset.Now.ToString();
+                LastPlayed[game] = timestamp;
+
                 using (var writer = File.AppendText(FilePath))
                 {
                     writer.WriteLine(String.Format("{0},{1},{2},{3}", exercise, game, type, timestamp));

@@ -21,7 +21,7 @@
                 android:src="@drawable/reach_across"
                 android:layout_width="fill_parent"
                 android:layout_height="135dp"
-                android:scaleType="fitXY"
+                android:scaleType="fitCenter"
                 android:adjustViewBounds="true" />
             <TextView
                 android:id="@+id/last_played"

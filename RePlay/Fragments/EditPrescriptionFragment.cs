@@ -17,10 +17,7 @@ namespace RePlay.Fragments
     public class EditPrescriptionFragment : DialogFragment
     {
         readonly SettingsActivity settingsActivity;
-        readonly List<string> GamesList;
-        readonly List<string> ExercisesList;
         readonly List<string> DevicesList = new List<string>() { "FitMi", "Knob sensor" };
-        readonly List<int> TimeList = new List<int>() { 1, 2, 3 };
         const int MAX_TIME = 15;
         const int MIN_TIME = 1;
         readonly int PrescriptionPosition;
@@ -35,8 +32,6 @@ namespace RePlay.Fragments
             this.settingsActivity = settingsActivity;
             PrescriptionPosition = e.Position;
             PrescriptionToEdit = PrescriptionManager.Instance[PrescriptionPosition];
-            GamesList = GameManager.Instance.GetNames();
-            ExercisesList = new List<string>(ExerciseManager.Instance.Keys);
         }
 
         // Return a new instance of this class
@@ -75,8 +70,6 @@ namespace RePlay.Fragments
                 // current game name, and set that index as the
                 // selected item of the spinner.
                 Spinner gameSpinner = dialogView.FindViewById<Spinner>(Resource.Id.gameSpinner);
-                gameSpinner.Adapter = new ArrayAdapter<string>(Context, Android.Resource.Layout.SimpleSpinnerItem, GamesList);
-                System.Console.WriteLine(PrescriptionToEdit.Game.Name);
                 IEnumerable<int> gameIndex = Enumerable.Range(0, gameSpinner.Adapter.Count).
                                                         Where((_, index) => (string)gameSpinner.Adapter.GetItem(index) == PrescriptionToEdit.Game.Name);
                 // Note, the gameIndex query returns a collection,
@@ -91,7 +84,6 @@ namespace RePlay.Fragments
                 // and the number picker.
 
                 Spinner exerciseSpinner = dialogView.FindViewById<Spinner>(Resource.Id.exerciseSpinner);
-                exerciseSpinner.Adapter = new ArrayAdapter<string>(Context, Android.Resource.Layout.SimpleSpinnerItem, ExercisesList);
                 IEnumerable<int> exerciseIndex = Enumerable.Range(0, exerciseSpinner.Adapter.Count).
                                                  Where((_, index) => (string)exerciseSpinner.Adapter.GetItem(index) == PrescriptionToEdit.Exercise);
                 gameSpinner.SetSelection(gameIndex.ElementAt(0));
@@ -102,7 +94,7 @@ namespace RePlay.Fragments
                 IEnumerable<int> timeIndex = Enumerable.Range(timeNumberPicker.MinValue, timeNumberPicker.MaxValue).
                                              Where((num, _) => num == PrescriptionToEdit.Duration);
                 timeNumberPicker.Value = timeIndex.ElementAt(0);
-                timeNumberPicker.WrapSelectorWheel = false;
+                timeNumberPicker.WrapSelectorWheel = true;
 
                 Button cancelButton = dialogView.FindViewById<Button>(Resource.Id.cancelButton);
                 Button saveButton = dialogView.FindViewById<Button>(Resource.Id.saveButton);

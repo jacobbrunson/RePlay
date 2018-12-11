@@ -26,10 +26,6 @@ namespace RePlay.CustomViews
             Context = mcontext;
             PrescriptionsList = prescriptions;
             ContainsLast = hasLastElement;
-            if (!ContainsLast)
-            {
-                PrescriptionsList.RemoveAt(PrescriptionsList.Count - 1);
-            }
             isAssigned = true;
             settingsActivity = (SettingsActivity) mcontext;
         }

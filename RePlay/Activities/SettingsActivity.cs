@@ -242,7 +242,6 @@ namespace RePlay.Activities
 
         public void RefreshAssignedPrescriptions()
         {
-            AssignedPaginator = AssignedPaginator.NewInstance(PRESCRIPTIONS_PER_PAGE, PrescriptionManager.Instance);
             AssignedView.Adapter = new CustomPrescriptionsCardView(this, AssignedPaginator.GeneratePage(ACurrentPage), AssignedPaginator.ContainsLast(ACurrentPage));
             ToggleAButtons();
         }

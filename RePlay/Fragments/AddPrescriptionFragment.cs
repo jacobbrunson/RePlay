@@ -18,6 +18,8 @@ namespace RePlay.Fragments
         readonly List<string> DevicesList = new List<string>() { "FitMi", "Knob sensor" };
         const int MAX_TIME = 15;
         const int MIN_TIME = 1;
+        const int MAX_REPS = 30;
+        const int MIN_REPS = 5;
 
         // Constructor for AddPrescriptionFragment
         // Takes an argument for an instance to
@@ -64,6 +66,26 @@ namespace RePlay.Fragments
 
                 Button cancelButton = dialogView.FindViewById<Button>(Resource.Id.cancelButton);
                 Button addButton = dialogView.FindViewById<Button>(Resource.Id.addButton);
+
+                gameSpinner.ItemSelected += (sender, args) =>
+                {
+                    string gameName = (string) gameSpinner.SelectedItem;
+                    TextView timeText = dialogView.FindViewById<TextView>(Resource.Id.timeText);
+                    if (gameName.Equals("Rep it out!"))
+                    {
+                        timeText.Text = "Reps:";
+                        timeNumberPicker.MinValue = MIN_REPS;
+                        timeNumberPicker.MaxValue = MAX_REPS;
+                        timeNumberPicker.Value = MIN_REPS;
+                    }
+                    else if(timeText.Text.Equals("Reps:") && !gameName.Equals("Rep it out!"))
+                    {
+                        timeText.Text = "Time:";
+                        timeNumberPicker.MinValue = MIN_TIME;
+                        timeNumberPicker.MaxValue = MAX_TIME;
+                        timeNumberPicker.Value = MIN_TIME;
+                    }
+                };
 
                 cancelButton.Click += CancelButton_Click;
                 // We add an anonymous method to the

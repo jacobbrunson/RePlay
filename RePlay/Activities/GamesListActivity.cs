@@ -18,6 +18,7 @@ namespace RePlay.Activities
 
         GridView View;
         ImageButton LeftButton, RightButton;
+        Spinner SortSpinner;
         static readonly List<RePlayGame> games = GameManager.Instance;
         Paginator<RePlayGame> p = new Paginator<RePlayGame>(GAMES_PER_PAGE, games);
         int CurrentPage = 0;
@@ -37,6 +38,8 @@ namespace RePlay.Activities
             View = FindViewById<GridView>(Resource.Id.gameslist_grid);
             LeftButton = FindViewById<ImageButton>(Resource.Id.gameslist_left);
             RightButton = FindViewById<ImageButton>(Resource.Id.gameslist_right);
+            SortSpinner = FindViewById<Spinner>(Resource.Id.gameslist_spinner);
+            SortSpinner.Enabled = false;
             LeftButton.Enabled = false;
 
             LeftButton.Click += LeftButton_Click;

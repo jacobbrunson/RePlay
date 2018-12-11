@@ -72,6 +72,7 @@
             android:layout_height="fill_parent"
             android:layout_toLeftOf="@id/gameslist_right"
             android:layout_toRightOf="@id/gameslist_left"
+            android:layout_below="@id/gameslist_spinner"
             android:paddingTop="15dp"
             android:horizontalSpacing="4dp"
             android:verticalSpacing="2dp"
@@ -79,10 +80,11 @@
             android:stretchMode="columnWidth"
             android:background="@color/txbdc_white"
             android:layout_marginBottom="10dp"
-            android:layout_below="@id/gameslist_spinner"
             android:scrollbars="none"
             android:gravity="center_horizontal"
-            android:layout_marginTop="10dp"/>
+            android:layout_marginTop="10dp"
+            android:layout_centerVertical="true"
+            android:layout_centerInParent="true" />
     </RelativeLayout>
     
     <fragment

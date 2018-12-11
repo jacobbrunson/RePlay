@@ -23,7 +23,7 @@ namespace RePlay.Activities
 
         // ui
         ImageButton next;
-        ImageView exercisePic, devicePic, gameImage;
+        ImageView exercisePic, gameImage;
         TextView exerciseText, gameText;
 
         const int REQUEST_CODE = 5432;
@@ -43,7 +43,6 @@ namespace RePlay.Activities
             gameImage = FindViewById<ImageView>(Resource.Id.prompt_game_image);
             exercisePic = FindViewById<ImageView>(Resource.Id.prompt_exercise_image);
             exerciseText = FindViewById<TextView>(Resource.Id.prompt_exercise_text);
-            devicePic = FindViewById<ImageView>(Resource.Id.prompt_device);
             next = FindViewById<ImageButton>(Resource.Id.next);
 
             FindViewById<ImageButton>(Resource.Id.cancel).Click += delegate {

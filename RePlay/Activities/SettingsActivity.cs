@@ -26,12 +26,13 @@ namespace RePlay.Activities
         TextView PatientName;
         Patient patient;
 
-        const int PRESCRIPTIONS_PER_PAGE = 3;
+        public const int PRESCRIPTIONS_PER_PAGE = 3;
 
         AssignedPaginator AssignedPaginator = AssignedPaginator.NewInstance(PRESCRIPTIONS_PER_PAGE, PrescriptionManager.Instance);
         Paginator<Prescription> SavedPaginator = new Paginator<Prescription>(PRESCRIPTIONS_PER_PAGE, SavedPrescriptionManager.Instance);
 
         int ACurrentPage = 0;
+        public int ACurrentPageProp { get; }
         int SCurrentPage = 0;
 
         // Inflates the settigns page layout.
@@ -239,7 +240,12 @@ namespace RePlay.Activities
             ToggleAButtons();
         }
 
-        // Saved Prescriptions list was changed; refresh the adapter and re-toggle buttons
+        public void RefreshAssignedPrescriptions()
+        {
+            AssignedView.Adapter = new CustomPrescriptionsCardView(this, AssignedPaginator.GeneratePage(ACurrentPage), AssignedPaginator.ContainsLast(ACurrentPage));
+            ToggleAButtons();
+        }
+
         public void RefreshSavedPrescriptions()
         {
             SavedPaginator = new Paginator<Prescription>(PRESCRIPTIONS_PER_PAGE, SavedPrescriptionManager.Instance);

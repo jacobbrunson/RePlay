@@ -138,6 +138,8 @@
     <Compile Include="Manager\StateManager.cs" />
     <Compile Include="Resources\Resource.designer.cs" />
     <Compile Include="Manager\AssignedPaginator.cs" />
+    <Compile Include="Fragments\EditPrescriptionFragment.cs" />
+    <Compile Include="DataClasses\EditPrescriptionEventArgs.cs" />
     <Compile Include="Entity\Patient.cs" />
     <Compile Include="Manager\PatientLoader.cs" />
     <Compile Include="Manager\SavedPrescriptionManager.cs" />
@@ -232,6 +234,7 @@
     <AndroidResource Include="Resources\layout\PatientFragment.axml" />
     <AndroidResource Include="Resources\drawable\EditTextBorderBlack.xml" />
     <AndroidResource Include="Resources\values\Colors.xml" />
+    <AndroidResource Include="Resources\layout\EditPrescriptionFragment.axml" />
     <AndroidResource Include="Resources\drawable\logo.png" />
     <AndroidResource Include="Resources\drawable\trracer.png" />
   </ItemGroup>
@@ -311,6 +314,7 @@
     <AndroidResource Include="Resources\drawable\wristFlexion.png" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="DataClasses\" />
     <AndroidResource Include="Resources\drawable\BorderSlim.xml" />
   </ItemGroup>
   <ItemGroup>

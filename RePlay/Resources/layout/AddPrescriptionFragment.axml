@@ -107,5 +107,6 @@
         android:id="@+id/timeNumberPicker"
         android:layout_alignLeft="@id/exerciseSpinner"
         android:layout_marginTop="10dp"
-        android:theme="@style/NumberPickerTheme"/>
+        android:theme="@style/NumberPickerTheme"
+        android:descendantFocusability="blocksDescendants" />
 </RelativeLayout>

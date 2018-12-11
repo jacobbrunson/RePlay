@@ -6,6 +6,8 @@ using System.Collections.Generic;
 using RePlay.Manager;
 using RePlay.Entity;
 using RePlay.Activities;
+using System.Linq;
+using System;
 
 namespace RePlay.Fragments
 {
@@ -16,8 +18,7 @@ namespace RePlay.Fragments
     {
         readonly SettingsActivity settingsActivity;
         readonly List<string> DevicesList = new List<string>() { "FitMi", "Knob sensor" };
-        const int MAX_TIME = 15;
-        const int MIN_TIME = 1;
+        readonly int []values = { 30, 60, 90, 120, 180, 240, 300 };
 
         // Constructor for AddPrescriptionFragment
         // Takes an argument for an instance to
@@ -57,9 +58,10 @@ namespace RePlay.Fragments
                 Spinner exerciseSpinner = dialogView.FindViewById<Spinner>(Resource.Id.exerciseSpinner);
                 NumberPicker timeNumberPicker = dialogView.FindViewById<NumberPicker>(Resource.Id.timeNumberPicker);
 
-                timeNumberPicker.MinValue = MIN_TIME;
-                timeNumberPicker.MaxValue = MAX_TIME;
-                timeNumberPicker.Value = MIN_TIME;
+                timeNumberPicker.MinValue = 0;
+                timeNumberPicker.MaxValue = values.Length-1;
+                timeNumberPicker.Value = 0;
+                timeNumberPicker.SetDisplayedValues(values.Select(value => "" + value).ToArray());
                 timeNumberPicker.WrapSelectorWheel = true;
 
                 Button cancelButton = dialogView.FindViewById<Button>(Resource.Id.cancelButton);
@@ -81,8 +83,12 @@ namespace RePlay.Fragments
                         // Create a new prescription object with the
                         // selected exercise name, RePlayGame,
                         // device name and time duration as parameters
+
+                        int value = values[timeNumberPicker.Value];
+
+                        Console.WriteLine("number value: " + value);
                         Prescription p = new Prescription(exerciseSpinner.SelectedItem.ToString(), game,
-                                                          DevicesList[0], timeNumberPicker.Value);
+                                                          DevicesList[0], value);
                         PrescriptionManager.Instance.RemoveAt(PrescriptionManager.Instance.Count-1);
                         PrescriptionManager.Instance.Add(p);
                         PrescriptionManager.Instance.SavePrescription();
